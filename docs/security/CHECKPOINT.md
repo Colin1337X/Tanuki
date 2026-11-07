@@ -76,3 +76,11 @@ Eleven confirmed finding groups and their remediations are documented in ASSESSM
 Assessment artifacts: ASSESSMENT.md and REMEDIATION_BACKLOG.md. Final active services created by the harnesses were closed. Existing real Windows data/server were not migrated or restarted. No production-readiness claim. Highest-priority next work is the independent envelope review, a backed-up offline upgrade/archival decision for real data, actual edge/container validation, and the operational controls in the backlog.
 
 The earlier IN PROGRESS headings are historical checkpoint entries, superseded by this final entry. Resume commands and environment paths are in REMEDIATION_BACKLOG.md.
+
+## Evidence-publication follow-up
+
+Added Git-rendered Mermaid before/after diagrams, a complete RT-01–RT-11 index, sanitized historical raw runner transcripts, a SHA-256 provenance manifest, and links to the actual PoC/regression sources. The selector accepts finding IDs only and invokes synthetic local tests; it has no remote-target argument.
+
+Verification: ten published artifact checksums/byte sizes and sanitizer fixtures passed; 62 local documentation links resolved; both diagram definitions cover all eleven findings (structural check, not a visual-render assertion). All eleven selectors ran in isolated WSL: 22 targeted cases passed, zero failed/skipped. Application runtime code was unchanged by this publication; the final 586-case assessment result above remains the historical full verification.
+
+PR #51 was already merged when this follow-up was prepared, so publication uses a new branch/PR based on current main. The original ignored logs remain untouched. No blanket force-add of coverage, keys, data or environment files occurred.

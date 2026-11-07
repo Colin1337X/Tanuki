@@ -2,6 +2,8 @@
 
 Assessment date: 2026-11-07. Final status: **bounded local assessment completed; production readiness not established**.
 
+Published evidence: [before/after Mermaid attack paths](ATTACK_PATHS.md), [complete finding index](FINDINGS.md), [sanitized raw transcripts](evidence/README.md), and [actual PoC scripts](pocs/README.md).
+
 ## Executive result
 
 The initial passing application suite did not establish the security boundaries it appeared to cover. Independent negative tests reproduced eight initial vulnerability groups. Further filesystem and role-boundary testing confirmed two more. Legacy plaintext recovery sources were also confirmed and given a production startup guard plus a verified encrypted-archive workflow.
@@ -27,7 +29,7 @@ Targets were the isolated Ubuntu 26.04 WSL2 environment, non-root UID 1000, Node
 
 The assessor already knew the codebase and cannot honestly claim a blind third-party assessment. Black-box work nevertheless checked externally visible HTTP/browser behavior independently of the old tests. White-box review covered every active route, live session checks, persistence, key handling, outbound clients and static serving. Deterministic races used real asynchronous Argon2 work or a held local provider response, not mocked cryptographic verification. Mutation testing used a fixed seed and 48 bounded ciphertext mutations. Parser tests used one conflicting framing request, not traffic flooding.
 
-Evidence is in `coverage/security/` (generated, ignored by Git):
+The original evidence remains in `coverage/security/` (generated, ignored by Git). Reviewed, sanitized copies are now [tracked in Git](evidence/README.md), with raw/sanitized checksums and an explicit provenance manifest:
 
 - `pre-fix-attacks.txt`: original ten secure-behavior assertions failed, with observable responses; includes prior-owner story retrieval after username reuse.
 - `pre-fix-provider-attacks.txt`: two additional failures; synthetic API credential and private-prompt forwarding were observed at local sinks.

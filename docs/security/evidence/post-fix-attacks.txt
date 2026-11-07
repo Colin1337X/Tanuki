@@ -1,0 +1,31 @@
+(node:<PID>) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ RT-01 route alias cannot bypass exhausted generation quota (20.1312ms)
+✔ RT-01 route aliases cannot evade same-account in-flight exclusion (81.6066ms)
+✔ RT-02 deleting a username cannot transfer old stories to a newly created account (81.1336ms)
+✔ RT-03 password reset during Argon2 verification cannot authenticate with the old password (105.3803ms)
+✔ RT-03 disable and re-enable during verification invalidates that authentication attempt (72.7554ms)
+✔ RT-04 database-only role tampering cannot turn a student session into administrator access (4.8147ms)
+✔ RT-04 database-only session reassignment cannot impersonate a victim (3.8134ms)
+✔ RT-04 changing a session expiry in SQLite cannot extend its authenticated lifetime (3.0116ms)
+Request failed: Invalid encrypted recording header
+✔ RT-05 encrypted recording header corruption cannot downgrade playback to unauthenticated bytes (12.1575ms)
+✔ RT-06 production-style generation cannot commit after its session is revoked in flight (100.2785ms)
+Story generation error: Error: AI endpoint origin is not allowed by the server operator
+    at new AIClient (<WORKSPACE>/server/lib/ai-client.js:8:46)
+    at generateStory (<WORKSPACE>/server/lib/openai.js:102:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async POST (<WORKSPACE>/server/routes/stories/generate/route.js:89:17)
+    at async Server.<anonymous> (<WORKSPACE>/server/index.js:71:24)
+RT-07 observation: {"status":500,"credentialForwarded":false}
+✔ RT-07 administrator endpoint override cannot forward operator API credentials to an untrusted origin (10.9939ms)
+RT-08 observation: {"requestBodyForwarded":false}
+✔ RT-08 AI redirects cannot forward private request bodies to another local origin (2.995ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 744.114

@@ -1,0 +1,208 @@
+(node:<PID>) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ RT-01 route alias cannot bypass exhausted generation quota (90.6318ms)
+✖ RT-01 route aliases cannot evade same-account in-flight exclusion (75.7566ms)
+RT-02 pre-fix ownership proof: {"status":200,"story":"Only recycled can read this story."}
+✖ RT-02 deleting a username cannot transfer old stories to a newly created account (84.7215ms)
+✖ RT-03 password reset during Argon2 verification cannot authenticate with the old password (111.2098ms)
+✖ RT-03 disable and re-enable during verification invalidates that authentication attempt (80.6442ms)
+✖ RT-04 database-only role tampering cannot turn a student session into administrator access (5.5307ms)
+✖ RT-04 database-only session reassignment cannot impersonate a victim (3.6425ms)
+✖ RT-04 changing a session expiry in SQLite cannot extend its authenticated lifetime (2.5419ms)
+✖ RT-05 encrypted recording header corruption cannot downgrade playback to unauthenticated bytes (14.3767ms)
+✖ RT-06 production-style generation cannot commit after its session is revoked in flight (108.854ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 0
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 825.8152
+
+✖ failing tests:
+
+test at tests\node\adversarial.test.js:12:1
+✖ RT-01 route alias cannot bypass exhausted generation quota (90.6318ms)
+  AssertionError [ERR_ASSERTION]: Trailing slash must share canonical quota
+
+  200 !== 429
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:12:455)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 429,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:13:1
+✖ RT-01 route aliases cannot evade same-account in-flight exclusion (75.7566ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  3 !== 1
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:13:245)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:14:1
+✖ RT-02 deleting a username cannot transfer old stories to a newly created account (84.7215ms)
+  AssertionError [ERR_ASSERTION]: Retired usernames must remain reserved while historical ownership uses usernames
+
+  200 !== 409
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:14:824)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 409,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:15:1
+✖ RT-03 password reset during Argon2 verification cannot authenticate with the old password (111.2098ms)
+  AssertionError [ERR_ASSERTION]: Credential snapshot changed while native Argon2 was running
+  + actual - expected
+
+  + {
+  +   role: 'student',
+  +   username: 'reset-race'
+  + }
+  - null
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:15:350)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { username: 'reset-race', role: 'student' },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:16:1
+✖ RT-03 disable and re-enable during verification invalidates that authentication attempt (80.6442ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + {
+  +   role: 'student',
+  +   username: 'disable-race'
+  + }
+  - null
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:16:359)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { username: 'disable-race', role: 'student' },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:17:1
+✖ RT-04 database-only role tampering cannot turn a student session into administrator access (5.5307ms)
+  AssertionError [ERR_ASSERTION]: Tampered role authorized admin endpoint: 200
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:17:263)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:18:1
+✖ RT-04 database-only session reassignment cannot impersonate a victim (3.6425ms)
+  AssertionError [ERR_ASSERTION]: A writer without the keyring must not forge a live session
+
+  200 !== 401
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:18:573)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:19:1
+✖ RT-04 changing a session expiry in SQLite cannot extend its authenticated lifetime (2.5419ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  200 !== 401
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:19:375)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:20:1
+✖ RT-05 encrypted recording header corruption cannot downgrade playback to unauthenticated bytes (14.3767ms)
+  AssertionError [ERR_ASSERTION]: Encrypted records must not be treated as legacy raw audio after header tampering
+
+  200 !== 500
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:20:748)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 500,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:21:1
+✖ RT-06 production-style generation cannot commit after its session is revoked in flight (108.854ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  200 !== 401
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:21:516)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

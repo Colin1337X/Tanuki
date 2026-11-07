@@ -42,3 +42,5 @@ Tests use Node's built-in runner, isolated temporary SQLite databases, real HTTP
 Read [deployment and recovery](docs/DEPLOYMENT.md) and [security boundaries](docs/SECURITY.md) before deploying. Passing tests does not establish production readiness.
 
 The [adversarial security assessment](docs/security/ASSESSMENT.md) documents confirmed fixes and remaining release blockers. Existing databases require a backed-up offline `npm run data:upgrade`; production refuses known plaintext migration JSON until `npm run data:archive-legacy` verifies and archives it.
+
+Security transparency: [before/after Mermaid attack graphs](docs/security/ATTACK_PATHS.md), [every assessment finding](docs/security/FINDINGS.md), [sanitized evidence logs](docs/security/evidence/README.md), and [local PoC sources](docs/security/pocs/README.md).
