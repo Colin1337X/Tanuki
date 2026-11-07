@@ -1,0 +1,25 @@
+✔ Linux deployment runs without root and without development dependencies (129.142892ms)
+✔ HTTPS shell has HSTS and a restrictive content security policy (13.326955ms)
+✔ Production bootstrap omits development accounts (116.646399ms)
+✔ Authenticated HTTPS session is Secure, HttpOnly, SameSite and non-cacheable (42.586029ms)
+✔ Production admin creates independent student accounts (167.407462ms)
+✔ Lexile and Classroom preferences persist through the production API (8.231987ms)
+✔ Production generation persists provider text with the correct owner (17.345907ms)
+{"requests":200,"concurrency":20,"elapsedMs":248,"p50Ms":12,"p95Ms":48,"maxMs":54}
+✔ HTTPS proxy preserves account isolation under concurrent reads (248.376622ms)
+✔ Cross-site mutations are rejected through the TLS proxy (1.435419ms)
+✔ Graceful process restart preserves sessions, stories and preferences (86.232147ms)
+✔ Offline backup and key rotation preserve decryptability after restart (123.024772ms)
+✔ Restoring a stopped database with its matching backup keys recovers records (81.317878ms)
+✔ Disabling an account revokes existing sessions immediately through HTTPS (8.170759ms)
+✔ Logout cannot be replayed after process restart (73.84407ms)
+✔ Production HTTP listener is bound only to loopback inside WSL (4.897406ms)
+Isolated production artifacts: <DISPOSABLE_FIXTURE>
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1246.758303

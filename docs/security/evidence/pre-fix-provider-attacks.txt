@@ -1,0 +1,56 @@
+(node:<PID>) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+RT-07 observation: {"status":200,"credentialForwarded":true}
+✖ RT-07 administrator endpoint override cannot forward operator API credentials to an untrusted origin (43.1587ms)
+RT-08 observation: {"requestBodyForwarded":true}
+✖ RT-08 AI redirects cannot forward private request bodies to another local origin (10.5428ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 331.4324
+
+✖ failing tests:
+
+test at tests\node\adversarial.test.js:22:1
+✖ RT-07 administrator endpoint override cannot forward operator API credentials to an untrusted origin (43.1587ms)
+  AssertionError [ERR_ASSERTION]: Untrusted endpoint received the operator API credential
+  + actual - expected
+
+  + 'Bearer <SYNTHETIC_API_KEY_REDACTED>'
+  - null
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:22:1202)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Bearer <SYNTHETIC_API_KEY_REDACTED>',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\node\adversarial.test.js:23:1
+✖ RT-08 AI redirects cannot forward private request bodies to another local origin (10.5428ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + '{"messages":[{"role":"user","content":"synthetic private student prompt"}]}'
+  - ''
+
+      at TestContext.<anonymous> (<WORKSPACE>/tests/node/adversarial.test.js:23:981)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1116:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:786:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '{"messages":[{"role":"user","content":"synthetic private student prompt"}]}',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

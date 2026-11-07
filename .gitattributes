@@ -1,0 +1,2 @@
+# Evidence checksums are over normalized LF files on every checkout platform.
+docs/security/evidence/** text eol=lf

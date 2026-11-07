@@ -1,0 +1,30 @@
+Roster role observation: {"read":200,"write":200}
+✖ Educator roster mistakes cannot authorize changes to an administrator profile (63.763583ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 318.802502
+
+✖ failing tests:
+
+test at tests/node/adversarial.test.js:32:1
+✖ Educator roster mistakes cannot authorize changes to an administrator profile (63.763583ms)
+  AssertionError [ERR_ASSERTION]: Classroom membership must not make an administrator a teacher-manageable student
+
+  200 !== 403
+
+      at TestContext.<anonymous> (<WSL_WORKSPACE>/tests/node/adversarial.test.js:32:772)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 403,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

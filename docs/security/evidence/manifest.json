@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "assessmentDate": "2026-11-07",
+  "finalVerifiedApplicationCommit": "b47dabc795dbfd59a3e3aa96bb8088903d2e36f0",
+  "note": "Raw source checksums identify locally retained logs. Published logs preserve outcomes and assertions but redact machine paths, process identifiers and synthetic credential representations. Tests were not rerun to generate these historical transcripts.",
+  "files": [
+    {
+      "file": "pre-fix-attacks.txt",
+      "source": "coverage/security/pre-fix-attacks.txt",
+      "rawSha256": "5e0fcab8aa7949af6a024c9dd6aa59e9c90f87569989cd4bd55fbfbde53fd398",
+      "sanitizedSha256": "f0165ccf1973021a394cf43e628fbdb95e8fa8f8a9af682469eb17a9a4827449",
+      "rawBytes": 8819,
+      "sanitizedBytes": 8465
+    },
+    {
+      "file": "pre-fix-provider-attacks.txt",
+      "source": "coverage/security/pre-fix-provider-attacks.txt",
+      "rawSha256": "adc3205c2346d23ab256fc8f26ffb4bd9208738ce77669f4f12b3b4e959d3c8e",
+      "sanitizedSha256": "44f60fd42cf975cebc2fa6e651e5e042fbf70c39fddf0928ac653c1d0dce2491",
+      "rawBytes": 2396,
+      "sanitizedBytes": 2314
+    },
+    {
+      "file": "pre-fix-symlink.txt",
+      "source": "coverage/security/pre-fix-symlink.txt",
+      "rawSha256": "229608c9f6ba91e21388c787e606fd634dbad5ba916b982cb5ab0862e42826d4",
+      "sanitizedSha256": "4ca5ab9ada1053ecbc143e9565111d404494c5ca119882f7294a16064bc47f24",
+      "rawBytes": 1055,
+      "sanitizedBytes": 1022
+    },
+    {
+      "file": "pre-fix-roster-role.txt",
+      "source": "coverage/security/pre-fix-roster-role.txt",
+      "rawSha256": "35ec26ffa86ce7c492e678191fad4245f78dedab914fba6a38ed78e4593c7e89",
+      "sanitizedSha256": "ea0cd48bc5c3da3b58f53fe81f26eb2230b2605c6ac823cba4d4af96a81e4633",
+      "rawBytes": 1054,
+      "sanitizedBytes": 1021
+    },
+    {
+      "file": "post-fix-attacks.txt",
+      "source": "coverage/security/post-fix-attacks.txt",
+      "rawSha256": "6033c8ed9661d83ed82f0882af54b759265bc6516ab5827a90d85d25ffcd18c2",
+      "sanitizedSha256": "2a6af5083d46b87ebdf9a76cbc059dc1e0dbfc7ebbe875273a25a4b9768d97a5",
+      "rawBytes": 2144,
+      "sanitizedBytes": 2069
+    },
+    {
+      "file": "full-suite.txt",
+      "source": "coverage/security/full-suite.txt",
+      "rawSha256": "7540bd5888ac3b1bf228567e12b476342c9c82397d28f34a5187db4d0d508e54",
+      "sanitizedSha256": "4685eb757a4c3d353b8842870889e4178f86870b5c4155b93ad64324656b2817",
+      "rawBytes": 47879,
+      "sanitizedBytes": 47516
+    },
+    {
+      "file": "production-smoke.txt",
+      "source": "coverage/security/production-smoke.txt",
+      "rawSha256": "2ef3f3c3794ba1a457d382bfbd01582a5bd2fc26f47825442e796edcef32fdad",
+      "sanitizedSha256": "a6800c5b58122e39bb18be3e48baefcb62e17804da9f937642d86270a014cefb",
+      "rawBytes": 1498,
+      "sanitizedBytes": 1489
+    },
+    {
+      "file": "runtime-security.txt",
+      "source": "coverage/security/runtime-security.txt",
+      "rawSha256": "a63ddc8cff0cdd25d3d6e9b8ef1f583085816bfed59702df7d7a2be32ffa1611",
+      "sanitizedSha256": "a63ddc8cff0cdd25d3d6e9b8ef1f583085816bfed59702df7d7a2be32ffa1611",
+      "rawBytes": 1622,
+      "sanitizedBytes": 1622
+    },
+    {
+      "file": "build.txt",
+      "source": "coverage/security/build.txt",
+      "rawSha256": "2e35a7b5824665758fc98dade6ecc9c036288fbb4e2d14cf8868e9c20eaa74a7",
+      "sanitizedSha256": "2e35a7b5824665758fc98dade6ecc9c036288fbb4e2d14cf8868e9c20eaa74a7",
+      "rawBytes": 114,
+      "sanitizedBytes": 114
+    },
+    {
+      "file": "summary.json",
+      "source": "coverage/security/summary.json",
+      "rawSha256": "92be0f6c3e9695fac74008deee596531d22b97c3e37241c351f278c9d7b7a031",
+      "sanitizedSha256": "92be0f6c3e9695fac74008deee596531d22b97c3e37241c351f278c9d7b7a031",
+      "rawBytes": 11346,
+      "sanitizedBytes": 11346
+    }
+  ]
+}
