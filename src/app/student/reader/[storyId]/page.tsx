@@ -62,7 +62,7 @@ export default function ReaderPage() {
   const [error, setError] = useState('');
 
   // Theme state
-  const [theme, setThemeState] = useState<Theme>('light');
+  const [theme, setThemeState] = useState<Theme>('studio');
 
   // Recording state
   const [recordings, setRecordings] = useState<Recording[]>([]);
@@ -367,7 +367,7 @@ export default function ReaderPage() {
 
   return (
     <ThemeWrapper>
-      <div className="min-h-screen flex flex-col">
+      <div className="reader-workspace min-h-screen flex flex-col">
         {/* Water progress bar — shown while streaming */}
         {streamState === 'streaming' && (
           <div className="water-progress-bar h-1.5 w-full" aria-label="Generating chapter…" role="progressbar" />
@@ -455,7 +455,7 @@ export default function ReaderPage() {
                 <span className="animate-pulse w-1.5 h-1.5 rounded-full bg-indigo-400 inline-block" />
                 Writing Chapter {chaptersDone + 1}…
               </p>
-              <p className="leading-relaxed whitespace-pre-wrap text-base">{streamingText}</p>
+              <p className="reading-prose leading-relaxed whitespace-pre-wrap text-base">{streamingText}</p>
             </div>
           )}
 
@@ -465,7 +465,7 @@ export default function ReaderPage() {
               style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.07) inset, 0 8px 32px rgba(0,0,0,0.2)' }}
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-3xl" />
-              <p className="leading-relaxed whitespace-pre-wrap text-base">{pages[pageIndex]}</p>
+              <p className="reading-prose leading-relaxed whitespace-pre-wrap text-base">{pages[pageIndex]}</p>
             </div>
           )}
 

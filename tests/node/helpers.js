@@ -1,0 +1,6 @@
+import fs from 'node:fs';import path from 'node:path';import os from 'node:os';
+export function isolate(){const dir=fs.mkdtempSync(path.join(os.tmpdir(),'tanuki-test-'));process.env.TANUKI_DATA_DIR=path.join(dir,'data');process.env.TANUKI_KEYRING_FILE=path.join(dir,'keyring.json');process.env.NODE_ENV='test';delete process.env.ADMIN_USERNAME;delete process.env.ADMIN_PASSWORD;delete process.env.OPENAI_API_KEY;delete process.env.OPENAI_BASE_URL;delete process.env.APP_ORIGIN;return dir;}
+export async function provisionKeys(){const {generateKeyring}=await import('../../server/lib/crypto.js');fs.writeFileSync(process.env.TANUKI_KEYRING_FILE,JSON.stringify(generateKeyring()),{mode:0o600});}
+export const password='correct horse battery test';
+export const plan={exposition:'A fox arrives.',risingAction:'A door appears.',climax:'The fox opens it.',fallingAction:'The forest wakes.',resolution:'Everyone finds a home.'};
+export function fixtureStory(id,username,extra={}){return {id,username,request:'An adventure for '+username,title:'The secret forest',story:'Only '+username+' can read this story.',createdAt:'2025-01-01T00:00:00.000Z',...extra};}

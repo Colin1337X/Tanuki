@@ -1,8 +1,8 @@
 'use client';
 
-export type Theme = 'light' | 'dark' | 'sepia' | 'orbs-white' | 'orbs-black' | 'forest' | 'ocean' | 'sunset' | 'midnight' | 'candy' | 'bubblegum' | 'neon' | 'lemon' | 'galaxy' | 'rose' | 'coffee' | 'arctic' | 'autumn' | 'emerald' | 'vapor' | 'terminal' | 'sakura' | 'lagoon' | 'desert' | 'lavender' | 'slate' | 'crimson' | 'meadow' | 'aurora' | 'coral' | 'storm' | 'mint' | 'sunset-dunes';
+export type Theme = 'studio' | 'classroom' | 'focus' | 'light' | 'dark' | 'sepia' | 'orbs-white' | 'orbs-black' | 'forest' | 'ocean' | 'sunset' | 'midnight' | 'candy' | 'bubblegum' | 'neon' | 'lemon' | 'galaxy' | 'rose' | 'coffee' | 'arctic' | 'autumn' | 'emerald' | 'vapor' | 'terminal' | 'sakura' | 'lagoon' | 'desert' | 'lavender' | 'slate' | 'crimson' | 'meadow' | 'aurora' | 'coral' | 'storm' | 'mint' | 'sunset-dunes';
 
-export const VALID_THEMES: Theme[] = ['light', 'dark', 'sepia', 'orbs-white', 'orbs-black', 'forest', 'ocean', 'sunset', 'midnight', 'candy', 'bubblegum', 'neon', 'lemon', 'galaxy', 'rose', 'coffee', 'arctic', 'autumn', 'emerald', 'vapor', 'terminal', 'sakura', 'lagoon', 'desert', 'lavender', 'slate', 'crimson', 'meadow', 'aurora', 'coral', 'storm', 'mint', 'sunset-dunes'];
+export const VALID_THEMES: Theme[] = ['studio', 'classroom', 'focus', 'light', 'dark', 'sepia', 'orbs-white', 'orbs-black', 'forest', 'ocean', 'sunset', 'midnight', 'candy', 'bubblegum', 'neon', 'lemon', 'galaxy', 'rose', 'coffee', 'arctic', 'autumn', 'emerald', 'vapor', 'terminal', 'sakura', 'lagoon', 'desert', 'lavender', 'slate', 'crimson', 'meadow', 'aurora', 'coral', 'storm', 'mint', 'sunset-dunes'];
 
 interface ThemeSelectorProps {
   current: Theme;
@@ -10,6 +10,9 @@ interface ThemeSelectorProps {
 }
 
 export const themes: { id: Theme; label: string; icon: string }[] = [
+  { id: 'studio', label: 'Studio', icon: '◒' },
+  { id: 'classroom', label: 'Classroom', icon: '✳' },
+  { id: 'focus', label: 'Focus', icon: '◻' },
   { id: 'light', label: 'Light', icon: '☀️' },
   { id: 'dark', label: 'Dark', icon: '🌙' },
   { id: 'sepia', label: 'Sepia', icon: '📜' },

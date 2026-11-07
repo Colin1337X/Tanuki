@@ -1,14 +1,20 @@
-# Tanuki Stories - Docker Compose (Minimal)
-# Node.js only — no Nginx reverse proxy, no uWSGI AI backend
-
 services:
-  # Next.js application (directly exposed)
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env_file:
-      - .env.local
+    build: .
+    env_file: .env.local
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      TANUKI_DATA_DIR: /app/data
+      TANUKI_KEYRING_FILE: /run/secrets/tanuki-keyring.json
     ports:
-      - "${TANUKI_PORT:-3000}:3000"
+      - "127.0.0.1:${TANUKI_PORT:-3000}:3000"
+    volumes:
+      - tanuki-data:/app/data
+      - ./.secrets/production-keyring.json:/run/secrets/tanuki-keyring.json:ro
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+volumes:
+  tanuki-data:

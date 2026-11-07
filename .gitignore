@@ -50,3 +50,7 @@ models/
 src-tauri/target/
 src-tauri/binaries/llama-server*
 src-tauri/gen/
+
+.secrets/
+/coverage/
+/test-results/

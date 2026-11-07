@@ -1,9 +1,13 @@
 import type { Metadata, Viewport } from 'next';
+import localFont from 'next/font/local';
 import './globals.css';
+import './studio.css';
+
+const fredoka = localFont({ src: './fonts/Fredoka.ttf', variable: '--font-fredoka', display: 'swap', weight: '300 700' });
 
 export const metadata: Metadata = {
   title: 'Tanuki Stories',
-  description: 'AI-generated stories for students',
+  description: 'A personal reading and writing studio for curious minds',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -13,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#e94560',
+  themeColor: '#f5f3ec',
   width: 'device-width',
   initialScale: 1,
   // No maximumScale/user-scalable lock: iPadOS ignores it anyway, and keeping
@@ -29,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <body className={fredoka.variable}>
         {children}
         <script
           dangerouslySetInnerHTML={{

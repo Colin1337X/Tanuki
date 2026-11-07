@@ -220,7 +220,7 @@ export default function OnboardingModal({
 }: OnboardingModalProps) {
   const [step, setStep] = useState<'reading-level' | 'preferences'>('reading-level');
   const [readingLevel, setReadingLevel] = useState<ReadingLevel | null>(initialReadingLevel ?? null);
-  const [theme, setTheme] = useState<string>(initialPreferences?.theme ?? 'light');
+  const [theme, setTheme] = useState<string>(initialPreferences?.theme ?? 'studio');
   const [favoriteGenres, setFavoriteGenres] = useState<string[]>(
     initialPreferences?.favoriteGenres ?? [],
   );
@@ -263,7 +263,7 @@ export default function OnboardingModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+    <div role="dialog" aria-modal="true" aria-label="Reading preferences" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
       <div className="glass-shimmer relative w-full max-w-lg bg-white/[0.07] backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/20 text-white overflow-hidden"
         style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.08) inset, 0 25px 50px -12px rgba(0,0,0,0.7), 0 0 80px -20px rgba(139,92,246,0.3)' }}
       >

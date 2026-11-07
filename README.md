@@ -1,159 +1,44 @@
 # Tanuki Stories
 
-An AI-powered story generation web app for students.
+A Node.js and vanilla JavaScript reading workspace with student, teacher, and administrator accounts. Studio, claymorphic Classroom, and Focus themes use a locally hosted Jua font. Students set a **0–1800L Lexile writing target in 50L steps** with an accessible slider. This target is a generation instruction, not a certified measurement; teacher reading levels and content restrictions remain authoritative.
 
-## Screenshots
+## Run locally
 
-### Login
+Use Node.js **24.8 or newer** (tested here on 25.5.0). SQLite and ML-KEM require a recent Node runtime.
 
-![Login page](public/screenshots/login.png)
-
-### Student Experience
-
-| Story Request | Reading a Story |
-|---|---|
-| ![Story request form](public/screenshots/student-story-request.png) | ![Student with story](public/screenshots/student-with-story.png) |
-
-**Story Reader**
-
-![Story reader](public/screenshots/story-reader.png)
-
-### Admin Dashboard
-
-| Student Management | Analytics |
-|---|---|
-| ![Admin students](public/screenshots/admin-students.png) | ![Admin analytics](public/screenshots/admin-analytics.png) |
-
-**Settings**
-
-![Admin settings](public/screenshots/admin-settings.png)
-
-### Themes
-
-Tanuki Stories ships with 33 built-in themes:
-
-| | | | |
-|---|---|---|---|
-| ![Light](public/screenshots/themes/theme-light.png) Light | ![Dark](public/screenshots/themes/theme-dark.png) Dark | ![Sepia](public/screenshots/themes/theme-sepia.png) Sepia | ![Forest](public/screenshots/themes/theme-forest.png) Forest |
-| ![Ocean](public/screenshots/themes/theme-ocean.png) Ocean | ![Sunset](public/screenshots/themes/theme-sunset.png) Sunset | ![Midnight](public/screenshots/themes/theme-midnight.png) Midnight | ![Candy](public/screenshots/themes/theme-candy.png) Candy |
-| ![Bubblegum](public/screenshots/themes/theme-bubblegum.png) Bubblegum | ![Neon](public/screenshots/themes/theme-neon.png) Neon | ![Lemon](public/screenshots/themes/theme-lemon.png) Lemon | ![Galaxy](public/screenshots/themes/theme-galaxy.png) Galaxy |
-| ![Rose](public/screenshots/themes/theme-rose.png) Rose | ![Coffee](public/screenshots/themes/theme-coffee.png) Coffee | ![Arctic](public/screenshots/themes/theme-arctic.png) Arctic | ![Autumn](public/screenshots/themes/theme-autumn.png) Autumn |
-| ![Emerald](public/screenshots/themes/theme-emerald.png) Emerald | ![Vapor](public/screenshots/themes/theme-vapor.png) Vapor | ![Orbs on White](public/screenshots/themes/theme-orbs-white.png) Orbs on White | ![Orbs on Black](public/screenshots/themes/theme-orbs-black.png) Orbs on Black |
-
----
-
-## Quick Install (Interactive)
-
-The interactive installers handle Node.js dependencies, AI backend setup (vLLM, llama.cpp, or external API), and `.env.local` generation in one step.
-
-**Linux / macOS:**
-```bash
-bash install.sh
-```
-
-**Windows:**
-```bat
-install.bat
-```
-
-The installer will ask you to choose from:
-
-| Option | Description |
-|---|---|
-| **Local — vLLM** | NVIDIA GPU required; installs `vllm`, picks a model, generates `start-vllm.sh/.bat` |
-| **Local — llama.cpp** | CPU or GPU; installs `llama-cpp-python[server]`, downloads a GGUF model, generates `start-llamacpp.sh/.bat` |
-| **External API** | OpenAI, Ollama, LM Studio, Together AI, Groq, or any custom OpenAI-compatible endpoint |
-| **Mock / no AI** | Demo mode – no API key needed |
-
-After running a local backend installer, start the AI server first, then start the app:
-
-```bash
-# Terminal 1 — AI server
-bash start-vllm.sh        # or: bash start-llamacpp.sh
-
-# Terminal 2 — Tanuki Stories
+```sh
+npm ci
 npm run dev
 ```
 
-Then open the **Admin UI → Settings** and set the *API Base URL* and *Model* to match your local server.
+Open http://localhost:3000. Development creates `admin / admin123` and `student / student123`, plus a development encryption key in `.secrets`. **Do not reuse this development database or its credentials in production.** Development returns clearly marked demo stories until an AI provider is configured.
 
----
-
-## Updating an Existing Install
-
-To update Tanuki Stories without reinstalling, run the update script from the directory where you originally installed it. It will pull the latest code (if you cloned via git), refresh Node.js dependencies, and optionally rebuild for production. Your `.env.local` and all student data in `data/` are left untouched.
-
-**Linux / macOS:**
-```bash
-bash update.sh
-```
-
-**Windows:**
-```bat
-update.bat
-```
-
----
-
-## Manual Setup
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Copy the example env file and fill in your settings:
-   ```bash
-   cp .env.local.example .env.local
-   ```
-   Edit `.env.local`:
-   - Set `OPENAI_API_KEY` to your API key (optional — the app runs in mock mode without one).
-   - Set `SESSION_SECRET` to a long random string.
-   - Optionally override `ADMIN_USERNAME` / `ADMIN_PASSWORD` (defaults: `admin` / `admin123`).
-     You can also configure multiple admins with comma-separated values (e.g. `ADMIN_USERNAME=admin,principal` and `ADMIN_PASSWORD=admin123,principal123`).
-   - Optionally set `OPENAI_BASE_URL` for a custom OpenAI-compatible endpoint (can also be changed later in the Admin UI).
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000).
-
----
-
-## Demo Accounts
-
-| Role    | Username  | Password     |
-|---------|-----------|--------------|
-| Admin   | `admin`   | `admin123`   |
-| Student | `student` | `student123` |
-
-> Default credentials can be overridden with the `ADMIN_USERNAME` / `ADMIN_PASSWORD` environment variables. Multiple admin accounts are supported using comma-separated values. Student accounts are managed through the Admin UI or imported via CSV.
-
----
+The active application is `server/`, `public/index.html`, and `public/assets/`. It has no bundler, Next.js, React, or TypeScript runtime. Only two production dependencies remain: native Rust Argon2 and Noble's AES-GCM-SIV implementation. Historical `src/`, `src-tauri/`, framework configuration, installers, and Selenium tests remain in the checkout but are inactive and excluded from the container. Do not use the old installers or desktop build instructions.
 
 ## Features
 
-### Student Experience
-- **Onboarding**: First-login wizard lets students pick their reading level (Pre-K → Doctorate) and preferred genres/theme; the range of available reading levels can be restricted by an admin.
-- **Story generation**: Students describe what they want, then optionally tune:
-  - Title, genre (Fantasy, Adventure, Mystery, Sci-Fi, Romance, Horror, Comedy, Historical, Other)
-  - Chapter count, reading complexity (Simple / Intermediate / Advanced), vocabulary complexity (Basic / Intermediate / Advanced)
-  - A free-form plot outline
-- **Story history**: All previously generated stories are listed on the dashboard and can be re-read at any time.
-- **Themes**: 33 built-in themes (Light, Dark, Sepia, Forest, Ocean, Sunset, Midnight, Candy, Bubblegum, Neon, Lemon, Galaxy, Rose, Coffee, Arctic, Autumn, Emerald, Vapor, Orbs on White, Orbs on Black, Terminal, Sakura, Lagoon, Desert, Lavender, Slate, Crimson, Meadow, Aurora, Coral, Storm, Mint, Dunes) — chosen during onboarding and changeable at any time via the ⚙️ button.
+- Students: story and nonfiction prompts, reviewed story plans, streamed chapters, library search, editing, browser print/PDF, reading text size, voice recordings, and saved preferences.
+- Teachers: assigned classroom settings and student reading settings, with server-enforced roster isolation.
+- Administrators: student/teacher accounts, CSV import, classroom membership, disabled accounts, activity, knowledge documents, AI endpoints and content settings.
+- SQLite transactions, opaque revocable sessions, encrypted record payloads and new recordings, and atomic legacy JSON import.
 
-### Admin Dashboard
-- **Settings**: Edit the system prompt sent to the AI, configure the API base URL and model name.
-- **Local model support**: Set a HuggingFace model ID (e.g. `facebook/opt-125m`) or an absolute path to a local `.safetensors` model directory to run inference entirely on-device via `@huggingface/transformers` — no external API needed.
-- **Story browser**: View all stories generated by all students.
-- **Student management**: Create individual student accounts (username + password) or bulk-import them from a CSV file (`username,password[,reading_level]`). Delete accounts as needed.
-- **Per-student settings**: Lock specific story options (chapter count, reading complexity, vocabulary complexity, genre) for individual students and set admin-controlled default values for those fields.
-- **Reading level range**: Restrict the reading levels students can choose during onboarding (e.g. limit to Elementary → High School).
-- **Analytics**: Per-student activity table showing reading level, onboarding status, total stories, stories in the last 7 / 30 days, and last active date.
+Local inference is supported through an **OpenAI-compatible HTTP endpoint**, not an embedded Transformers runtime. Knowledge retrieval uses local lexical matching. Browser printing exports the currently displayed chapter. Old native desktop packaging and embedded model management are not part of this runtime.
 
-### Technical
-- **Storage**: File-based JSON in `/data` (gitignored) — no database required.
-- **Auth**: Cookie-based sessions; no external auth library. One or more admin credentials can come from environment variables; student credentials are stored in `data/users.json`.
-- **AI backends**: OpenAI API, any OpenAI-compatible endpoint (Ollama, LM Studio, Together AI, Groq, vLLM, llama.cpp), or on-device HuggingFace transformers model. Falls back to mock mode when no key or model is configured.
+## Tests and reports
+
+```sh
+npx playwright install chromium
+npm test
+npm run test:coverage
+npm run coverage:report
+npm run build
+npm run crypto:benchmark
+```
+
+Tests use Node's built-in runner, isolated temporary SQLite databases, real HTTP requests, real cryptography, Chromium, and deterministic local provider fixtures. No production provider account is required. `coverage/report.html` and `coverage/summary.json` are generated alongside LCOV and raw browser V8 coverage. See [the verification report](docs/TEST_REPORT.md) and [WSL production-like results](docs/WSL_TEST_REPORT.md) for the actual runs, scope, and gaps.
+
+## Production
+
+Read [deployment and recovery](docs/DEPLOYMENT.md) and [security boundaries](docs/SECURITY.md) before deploying. Passing tests does not establish production readiness.
+
+The [adversarial security assessment](docs/security/ASSESSMENT.md) documents confirmed fixes and remaining release blockers. Existing databases require a backed-up offline `npm run data:upgrade`; production refuses known plaintext migration JSON until `npm run data:archive-legacy` verifies and archives it.
