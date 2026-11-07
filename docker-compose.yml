@@ -1,38 +1,20 @@
-# Tanuki Stories - Docker Compose
-# Production deployment with Nginx reverse proxy + uWSGI AI backend
-
 services:
-  # Nginx reverse proxy
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "${TANUKI_PORT:-80}:80"
-    volumes:
-      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    depends_on:
-      - app
-      - ai-backend
-    restart: unless-stopped
-
-  # Next.js application
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env_file:
-      - .env.local
-    expose:
-      - "3000"
-    restart: unless-stopped
-
-  # Python AI backend served via uWSGI
-  ai-backend:
-    build:
-      context: .
-      dockerfile: docker/ai-backend.Dockerfile
+    build: .
+    env_file: .env.local
     environment:
-      - AI_UPSTREAM_URL=${AI_UPSTREAM_URL:-http://host.docker.internal:8000/v1}
-      - AI_UPSTREAM_API_KEY=${AI_UPSTREAM_API_KEY:-EMPTY}
-    expose:
-      - "5000"
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      TANUKI_DATA_DIR: /app/data
+      TANUKI_KEYRING_FILE: /run/secrets/tanuki-keyring.json
+    ports:
+      - "127.0.0.1:${TANUKI_PORT:-3000}:3000"
+    volumes:
+      - tanuki-data:/app/data
+      - ./.secrets/production-keyring.json:/run/secrets/tanuki-keyring.json:ro
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+volumes:
+  tanuki-data:

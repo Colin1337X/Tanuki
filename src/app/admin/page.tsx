@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Brand from '@/components/Brand';
 import StoryCard from '@/components/StoryCard';
 import ThemeWrapper from '@/components/ThemeWrapper';
 import ThemeSelector, { Theme, VALID_THEMES } from '@/components/ThemeSelector';
@@ -113,7 +114,7 @@ export default function AdminPage() {
   const [recordings, setRecordings] = useState<RecordingInfo[]>([]);
 
   // Theme (synced with ThemeWrapper via localStorage + StorageEvent)
-  const [theme, setThemeState] = useState<Theme>('dark');
+  const [theme, setThemeState] = useState<Theme>('studio');
 
   useEffect(() => {
     const saved = localStorage.getItem('tanuki_theme') as Theme | null;
@@ -493,18 +494,14 @@ export default function AdminPage() {
 
   return (
     <ThemeWrapper>
-    <div className="min-h-screen" style={{ ['--header-height' as string]: '57px' }}>
+    <div className="educator-workspace min-h-screen" style={{ ['--header-height' as string]: '57px' }}>
       {/* Header */}
       <header
         className="sticky top-0 z-40 border-b border-white/10 px-4 sm:px-6 py-3 flex justify-between items-center gap-3 backdrop-blur-xl bg-white/[0.06]"
         style={{ boxShadow: '0 1px 0 rgba(255,255,255,0.06), 0 8px 32px rgba(0,0,0,0.20)' }}
       >
         <div className="flex items-center gap-3 min-w-0">
-          <span className="text-2xl shrink-0">🦝</span>
-          <div className="min-w-0">
-            <h1 className="text-base sm:text-lg font-bold leading-tight truncate">Tanuki Admin</h1>
-            <p className="text-[11px] opacity-50 leading-tight hidden sm:block">Dashboard &amp; controls</p>
-          </div>
+          <Brand />
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <ThemeSelector current={theme} onChange={handleThemeChange} />
@@ -524,6 +521,7 @@ export default function AdminPage() {
           {adminTabs.map((tab) => (
             <button
               key={tab.id}
+              aria-current={activeTab === tab.id ? "page" : undefined}
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-1.5 px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
                 activeTab === tab.id
@@ -539,6 +537,7 @@ export default function AdminPage() {
       </div>
 
       <main className="max-w-6xl mx-auto p-4 sm:p-6">
+        <section className="educator-welcome"><span className="eyebrow">SCHOOL WORKSPACE</span><h1>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</h1><p className="muted">A thoughtful space to help every reader grow.</p></section>
 
         {/* ── OVERVIEW TAB ─────────────────────────────────────────────── */}
         {activeTab === 'overview' && (

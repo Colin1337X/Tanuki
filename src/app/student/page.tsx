@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import ThemeWrapper from '@/components/ThemeWrapper';
 import StoryCard from '@/components/StoryCard';
+import Brand from '@/components/Brand';
 import OnboardingModal from '@/components/OnboardingModal';
 import { Story, LockableField, StoryPlan } from '@/lib/storage';
 import { ReadingLevel } from '@/lib/reading-levels';
@@ -47,6 +48,8 @@ interface OnboardingData {
 export default function StudentPage() {
   const router = useRouter();
   const [request, setRequest] = useState('');
+  const [libraryQuery, setLibraryQuery] = useState('');
+  const [libraryKind, setLibraryKind] = useState('all');
   const [options, setOptions] = useState<StoryOptions>(DEFAULT_OPTIONS);
   const [lockedFields, setLockedFields] = useState<LockableField[]>([]);
   const [stories, setStories] = useState<Story[]>([]);
@@ -71,7 +74,7 @@ export default function StudentPage() {
   const [editedPlan, setEditedPlan] = useState<StoryPlan | null>(null);
 
   // Theme state (synced with ThemeWrapper via localStorage + StorageEvent)
-  const [theme, setThemeState] = useState<Theme>('light');
+  const [theme, setThemeState] = useState<Theme>('studio');
 
   // Maturity state
   const [maturityRange, setMaturityRange] = useState<{ min: number; max: number }>({ min: 1, max: 6 });
@@ -327,8 +330,7 @@ export default function StudentPage() {
           style={{ boxShadow: '0 1px 0 rgba(255,255,255,0.08), 0 8px 32px rgba(0,0,0,0.18)' }}
         >
           <div className="flex items-center gap-3 min-w-0">
-            <span className="text-2xl shrink-0">🦝</span>
-            <h1 className="text-lg sm:text-xl font-bold truncate">Tanuki Stories</h1>
+            <Brand />
             {onboardingData?.readingLevel && (
               <span className="text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 px-2 py-0.5 rounded-full whitespace-nowrap hidden sm:inline">
                 {onboardingData.readingLevel}
@@ -355,8 +357,19 @@ export default function StudentPage() {
           </div>
         </header>
 
-        <main className="max-w-2xl lg:max-w-3xl mx-auto p-4 sm:p-6 space-y-8">
-          <section className="glass-shimmer relative bg-white/[0.07] backdrop-blur-xl rounded-3xl p-6 border border-white/20 shadow-xl"
+        <div className="workspace-layout">
+        <aside className="workspace-sidebar">
+          <span className="eyebrow">YOUR SPACE</span>
+          <a href="#create" className="sidebar-link">✳ <span>Create a story</span><span>↗</span></a>
+          <a href="#library" className="sidebar-link">▤ <span>My library</span><span>{stories.length}</span></a>
+          <button onClick={() => setShowOnboarding(true)} className="sidebar-link">⚙ <span>Reading preferences</span></button>
+          <div className="sidebar-note"><span className="note-spark">✦</span><h3>A little idea goes a long way.</h3><p>Start with a character, a place, or one wonderfully strange question.</p></div>
+          <div className="sidebar-bottom">MADE FOR YOUR IMAGINATION</div>
+        </aside>
+        <main className="student-workspace" id="main-content">
+          <section className="workspace-welcome"><div><span className="eyebrow">LET CURIOSITY LEAD THE WAY</span><h1>What will you imagine today?</h1><p className="muted">A world to discover. A story to make your own.</p></div><span className="welcome-emblem" aria-hidden="true">✳</span></section>
+          <div className="workspace-meta"><span>YOUR CREATIVE STUDIO</span><span>{stories.length} {stories.length === 1 ? 'story' : 'stories'} in your library</span></div>
+          <section id="create" className="composer glass-shimmer relative bg-white/[0.07] backdrop-blur-xl rounded-3xl p-6 border border-white/20 shadow-xl"
             style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.07) inset, 0 8px 32px rgba(0,0,0,0.2)' }}
           >
             {/* top highlight */}
@@ -391,9 +404,10 @@ export default function StudentPage() {
             )}
 
             <h2 className="text-lg font-semibold mb-4">
-              {infoMode ? '🔍 Research a Topic' : '✍️ Request a Story'}
+              {infoMode ? 'Follow your curiosity' : 'Every story starts with an idea'}
             </h2>
             <textarea
+              id="story-idea" aria-label={infoMode ? "Topic to research" : "Your story idea"}
               value={request}
               onChange={(e) => setRequest(e.target.value)}
               rows={4}
@@ -405,6 +419,7 @@ export default function StudentPage() {
               }
             />
 
+            {!infoMode && !request && <div className="idea-prompts"><span>Try a little inspiration</span>{['A fox who collects lost stars', 'A secret door in the school library', 'An underwater city of inventors'].map((idea) => <button key={idea} type="button" onClick={() => { setRequest(idea); document.getElementById('story-idea')?.focus(); }}>{idea} <span aria-hidden="true">↗</span></button>)}</div>}
             {/* Options toggle */}
             <button
               type="button"
@@ -682,17 +697,14 @@ export default function StudentPage() {
             </section>
           )}
 
-          {stories.length > 0 && (
-            <section>
-              <h2 className="text-lg font-semibold mb-4">📚 Your History ({stories.length})</h2>
-              <div className="space-y-4">
-                {stories.map((s) => (
-                  <StoryCard key={s.id} story={s} onUpdated={handleStoryUpdated} />
-                ))}
-              </div>
-            </section>
-          )}
+          <section id="library" className="library-section">
+            <div className="section-heading"><div><span className="eyebrow">COLLECTED ADVENTURES</span><h2>My library <span className="count-badge">{stories.length}</span></h2></div></div>
+            <div className="library-toolbar"><input aria-label="Search your library" type="search" placeholder="Search titles, ideas, or genres…" value={libraryQuery} onChange={(e) => setLibraryQuery(e.target.value)} /><select aria-label="Filter library" value={libraryKind} onChange={(e) => setLibraryKind(e.target.value)}><option value="all">All writing</option><option value="stories">Stories</option><option value="articles">Articles</option></select></div>
+            {stories.length === 0 ? <div className="empty-library"><span aria-hidden="true">▤</span><h3>Your bookshelf starts here.</h3><p>Create your first story above. You can come back to it whenever you like.</p><a href="#create">Start imagining →</a></div> : <div className="library-grid">{stories.filter((story) => (libraryKind === 'all' || (libraryKind === 'articles' ? story.infoMode : !story.infoMode)) && `${story.title ?? ''} ${story.request} ${story.options?.genre ?? ''}`.toLowerCase().includes(libraryQuery.toLowerCase())).map((story) => <StoryCard key={story.id} story={story} onUpdated={handleStoryUpdated} />)}</div>}
+            {stories.length > 0 && !stories.some((story) => (libraryKind === 'all' || (libraryKind === 'articles' ? story.infoMode : !story.infoMode)) && `${story.title ?? ''} ${story.request} ${story.options?.genre ?? ''}`.toLowerCase().includes(libraryQuery.toLowerCase())) && <p className="empty-library">No matches yet. Try another search or choose all writing.</p>}
+          </section>
         </main>
+        </div>
       </div>
     </ThemeWrapper>
   );

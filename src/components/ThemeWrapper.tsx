@@ -5,6 +5,7 @@ import OrbBackground from './OrbBackground';
 import { Theme, VALID_THEMES } from './ThemeSelector';
 
 const themeClasses: Record<Theme, string> = {
+  studio: '', classroom: '', focus: '',
   light: 'bg-white text-gray-900',
   dark: 'bg-gray-950 text-gray-100',
   sepia: 'bg-amber-50 text-amber-900',
@@ -45,7 +46,7 @@ interface ThemeWrapperProps {
 }
 
 export default function ThemeWrapper({ children }: ThemeWrapperProps) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('studio');
 
   useEffect(() => {
     const saved = localStorage.getItem('tanuki_theme') as Theme | null;
@@ -64,7 +65,7 @@ export default function ThemeWrapper({ children }: ThemeWrapperProps) {
   }, []);
 
   return (
-    <div data-theme={theme} className={`min-h-screen relative transition-colors duration-500 ${themeClasses[theme]}`}>
+    <div data-theme={theme} className={`app-theme min-h-screen relative transition-colors duration-500 ${themeClasses[theme]}`}>
       {(theme === 'orbs-white' || theme === 'orbs-black') && (
         <OrbBackground variant={theme === 'orbs-white' ? 'white' : 'black'} />
       )}

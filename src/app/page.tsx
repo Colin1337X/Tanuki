@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { isTauri, getLocalConfig } from '@/lib/tauri';
 import OobeWizard from '@/components/OobeWizard';
+import ThemeWrapper from '@/components/ThemeWrapper';
+import Brand from '@/components/Brand';
 
 export default function Home() {
   // On the local (Tauri) build, first run shows the OOBE wizard; the auth
@@ -49,12 +51,12 @@ export default function Home() {
   }, [oobeDone]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-950 via-purple-950 to-pink-950">
-      <div className="text-center text-white">
-        <div className="text-6xl mb-4">🦝</div>
-        <p className="text-purple-200">Loading...</p>
+    <ThemeWrapper><div className="min-h-screen flex items-center justify-center">
+      <div className="text-center" role="status">
+        <div className="mb-6"><Brand /></div>
+        <p className="muted">Opening your next chapter…</p>
       </div>
       <OobeWizard onComplete={() => setOobeDone(true)} />
-    </div>
+    </div></ThemeWrapper>
   );
 }

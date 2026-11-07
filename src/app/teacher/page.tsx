@@ -2,6 +2,9 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Brand from '@/components/Brand';
+import ThemeWrapper from '@/components/ThemeWrapper';
+import ThemePicker from '@/components/ThemePicker';
 import { ClassroomConfig } from '@/lib/storage';
 import { ReadingLevel, READING_LEVEL_VALUES } from '@/lib/reading-levels';
 import {
@@ -157,19 +160,18 @@ export default function TeacherPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900 text-white">
+    <ThemeWrapper><div className="educator-workspace min-h-screen">
       {/* Header */}
       <header className="border-b border-white/10 px-6 py-3 flex justify-between items-center backdrop-blur-sm bg-white/5">
         <div className="flex items-center gap-3">
-          <span className="text-2xl">🦝</span>
-          <h1 className="text-lg font-bold">Tanuki — Teacher Dashboard</h1>
+          <Brand />
         </div>
-        <button
+        <div className="flex gap-2 items-center"><ThemePicker /><button
           onClick={handleLogout}
           className="text-sm text-gray-400 hover:text-white transition-colors border border-white/20 px-3 py-1.5 rounded-xl hover:bg-white/10"
         >
           Logout
-        </button>
+        </button></div>
       </header>
 
       {/* Tab navigation */}
@@ -178,6 +180,7 @@ export default function TeacherPage() {
           {tabs.map((tab) => (
             <button
               key={tab.id}
+              aria-current={activeTab === tab.id ? "page" : undefined}
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-1.5 px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
                 activeTab === tab.id
@@ -193,6 +196,7 @@ export default function TeacherPage() {
       </div>
 
       <main className="max-w-6xl mx-auto p-4">
+        <section className="educator-welcome"><span className="eyebrow">TEACHING WORKSPACE</span><h1>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</h1><p className="muted">Big imaginations begin with a little encouragement.</p></section>
 
         {/* ── OVERVIEW TAB ─────────────────────────────────────────────── */}
         {activeTab === 'overview' && (
@@ -403,7 +407,7 @@ export default function TeacherPage() {
         )}
 
       </main>
-    </div>
+    </div></ThemeWrapper>
   );
 }
 

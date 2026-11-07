@@ -21,20 +21,23 @@ export default function StoryCard({ story, showUser = false, onUpdated }: StoryC
   async function handleSave() {
     setSaving(true);
     setSaveError('');
-    const res = await fetch(`/api/stories/${story.id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ story: editContent }),
-    });
-    setSaving(false);
-    if (!res.ok) {
-      const data = await res.json();
-      setSaveError(data.error ?? 'Save failed');
-      return;
+    try {
+      const res = await fetch(`/api/stories/${story.id}`, {
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ story: editContent }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? 'Save failed');
+      }
+      const updated: Story = await res.json();
+      setEditing(false);
+      onUpdated?.(updated);
+    } catch (error) {
+      setSaveError(error instanceof Error ? error.message : 'Unable to save. Please try again.');
+    } finally {
+      setSaving(false);
     }
-    const updated: Story = await res.json();
-    setEditing(false);
-    onUpdated?.(updated);
   }
 
   async function handleExportPdf() {
@@ -66,24 +69,43 @@ export default function StoryCard({ story, showUser = false, onUpdated }: StoryC
   }
 
   return (
-    <div className="glass-shimmer relative rounded-2xl p-6 shadow-xl border border-white/20 backdrop-blur-xl bg-white/[0.07]"
+    <div className="story-card glass-shimmer relative rounded-2xl p-6 shadow-xl border border-white/20 backdrop-blur-xl bg-white/[0.07]"
       style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.07) inset, 0 8px 32px rgba(0,0,0,0.25)' }}
     >
-      {/* top highlight */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-2xl" />
-      <div className="flex items-start justify-between mb-3">
+      <div className="story-card-top"><span className="story-category">{story.infoMode ? 'FIELD NOTES' : story.options?.genre || 'A TANUKI ORIGINAL'}</span><span className="text-xs opacity-60">{new Date(story.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span></div>
+      {showUser && <p className="text-xs opacity-60 mb-2">By {story.username}</p>}
+      <h3 className="mb-3">{story.title || story.request.slice(0, 60)}</h3>
+
+      {editing ? (
         <div>
-          {showUser && (
-            <span className="text-xs font-semibold uppercase tracking-wider opacity-60 mr-3">
-              {story.username}
-            </span>
-          )}
-          <span className="text-xs opacity-50">{date}</span>
-          {story.updatedAt && (
-            <span className="text-xs opacity-40 ml-2">(edited)</span>
-          )}
+          <textarea
+            aria-label="Edit story text"
+            value={editContent}
+            onChange={(e) => setEditContent(e.target.value)}
+            rows={10}
+            className="w-full bg-black/10 border border-white/20 rounded-xl p-3 text-sm resize-y focus:outline-none focus:ring-2 focus:ring-indigo-400 leading-relaxed"
+          />
+          {saveError && <p className="text-red-400 text-xs mt-1">{saveError}</p>}
+          <div className="flex gap-2 mt-2">
+            <button
+              onClick={handleSave}
+              disabled={saving}
+              className="text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-lg disabled:opacity-50 transition-colors"
+            >
+              {saving ? 'Saving…' : '💾 Save'}
+            </button>
+            <button
+              onClick={() => setEditing(false)}
+              className="text-xs opacity-60 hover:opacity-100 border border-white/20 px-4 py-1.5 rounded-lg hover:bg-white/10 transition-opacity"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
-        <div className="flex gap-2">
+      ) : (
+        <p className="story-preview leading-relaxed whitespace-pre-wrap">{story.story}</p>
+      )}
+        <div className="story-card-actions">
           <button
             onClick={() => router.push(`/student/reader/${story.id}`)}
             title="Open reader"
@@ -108,43 +130,6 @@ export default function StoryCard({ story, showUser = false, onUpdated }: StoryC
             </button>
           )}
         </div>
-      </div>
-
-      {story.title && (
-        <h3 className="font-semibold text-base mb-2">{story.title}</h3>
-      )}
-      <p className="text-sm italic opacity-70 mb-3 border-l-4 border-indigo-400 pl-3">
-        Request: {story.request}
-      </p>
-
-      {editing ? (
-        <div>
-          <textarea
-            value={editContent}
-            onChange={(e) => setEditContent(e.target.value)}
-            rows={10}
-            className="w-full bg-black/10 border border-white/20 rounded-xl p-3 text-sm resize-y focus:outline-none focus:ring-2 focus:ring-indigo-400 leading-relaxed"
-          />
-          {saveError && <p className="text-red-400 text-xs mt-1">{saveError}</p>}
-          <div className="flex gap-2 mt-2">
-            <button
-              onClick={handleSave}
-              disabled={saving}
-              className="text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-lg disabled:opacity-50 transition-colors"
-            >
-              {saving ? 'Saving…' : '💾 Save'}
-            </button>
-            <button
-              onClick={() => setEditing(false)}
-              className="text-xs opacity-60 hover:opacity-100 border border-white/20 px-4 py-1.5 rounded-lg hover:bg-white/10 transition-opacity"
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      ) : (
-        <p className="leading-relaxed whitespace-pre-wrap">{story.story}</p>
-      )}
     </div>
   );
 }
