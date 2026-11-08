@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { HttpResponse } from './http.js';
 import { requestContext,initializeAuth,getCurrentUser } from './lib/auth.js';
 import { consumeRateLimit,closeDatabase,DATA_DIR } from './lib/database.js';
+import { responseQueue,closeResponseQueue } from './lib/recipient-service.js';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const PUBLIC=path.join(ROOT,'public');
 const routes=[];
@@ -35,6 +36,7 @@ function validateBody(value) {
 }
 export function createAppServer() {
   initializeAuth();
+  if(process.env.TANUKI_RECIPIENT_ENCRYPTION==='1')responseQueue();
   if(process.env.NODE_ENV==='production'&&['users','stories','config','recordings','knowledge-base'].some(name=>fs.existsSync(path.join(DATA_DIR,name+'.json'))))throw new Error('Archive legacy JSON sources before production startup: npm run data:archive-legacy');
   if(process.env.NODE_ENV==='production' && !process.env.APP_ORIGIN?.startsWith('https://'))throw new Error('Set APP_ORIGIN to the public HTTPS origin');
   const server=createServer(async(req,res)=>{
@@ -94,7 +96,7 @@ export function createAppServer() {
         if(!file.startsWith(PUBLIC+path.sep)||!fs.existsSync(file)||!fs.statSync(file).isFile())throw Object.assign(new Error('Not found'),{status:404});
         const resolvedFile=fs.realpathSync(file);
         if(!resolvedFile.startsWith(fs.realpathSync(PUBLIC)+path.sep))throw Object.assign(new Error('Not found'),{status:404});
-        const type={'.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.html':'text/html; charset=utf-8','.ttf':'font/ttf','.png':'image/png','.ico':'image/x-icon','.json':'application/json'}[path.extname(file)]||'application/octet-stream';
+        const type={'.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.html':'text/html; charset=utf-8','.ttf':'font/ttf','.png':'image/png','.ico':'image/x-icon','.json':'application/json'}[path.extname(file)]||'application/octet-stream';
         res.setHeader('Content-Type',type);res.setHeader('Cache-Control','no-cache');
         if(req.method==='HEAD')res.end();else await pipeline(fs.createReadStream(resolvedFile),res);
       }
@@ -109,5 +111,5 @@ export function createAppServer() {
 if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const server=createAppServer();const port=Number(process.env.PORT||3000);
   server.listen(port,process.env.HOST||'127.0.0.1',()=>console.log(`Tanuki is listening on port ${port}`));
-  for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>server.close(()=>{closeDatabase();process.exit(0);}));
+  for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>server.close(async()=>{await closeResponseQueue();closeDatabase();process.exit(0);}));
 }

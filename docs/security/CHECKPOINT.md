@@ -1,5 +1,8 @@
 # Adversarial assessment checkpoint
 
+Latest continuation: [recipient encryption / durable queue checkpoint](RECIPIENT_ENCRYPTION.md).
+The historical assessment notes below predate that preview and its separate client-key boundary.
+
 Status: IN PROGRESS. No security conclusion yet.
 
 ## Scope and methodology

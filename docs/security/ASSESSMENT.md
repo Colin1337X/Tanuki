@@ -2,6 +2,10 @@
 
 Assessment date: 2026-11-07. Final status: **bounded local assessment completed; production readiness not established**.
 
+Follow-up: [recipient encryption and resumable queue checkpoint](RECIPIENT_ENCRYPTION.md)
+records the new feature-flagged implementation, 644 passing executions, incomplete rollout work,
+and RT-12 (provider stream truncation). The original counts and evidence below are historical.
+
 Published evidence: [before/after Mermaid attack paths](ATTACK_PATHS.md), [complete finding index](FINDINGS.md), [sanitized raw transcripts](evidence/README.md), and [actual PoC scripts](pocs/README.md).
 
 ## Executive result

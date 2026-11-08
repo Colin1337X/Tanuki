@@ -13,12 +13,13 @@ export function sanitize(text){
   .replace(/(?:file:\/\/\/)?[A-Za-z]:[\\/]proj[\\/]tanuki/gi,'<WORKSPACE>')
   .replace(/(?:file:\/\/)?\/home\/[^/\s]+\/tanuki-(?:redteam|wsl-validation)\.[^/\s]+\/app/g,'<WSL_WORKSPACE>')
   .replace(/\/home\/[^/\s]+\/tanuki-(?:redteam|wsl-validation)\.[^/\s]+/g,'<ISOLATED_WSL_RUN>')
+  .replace(/\/home\/[^/\s]+\/tanuki-encrypted-queue(?:-production)?/g,'<ISOLATED_WSL_RUN>')
   .replace(/\/tmp\/tanuki-[A-Za-z0-9_.-]+/g,'<DISPOSABLE_FIXTURE>')
   .replace(/\(node:\d+\)/g,'(node:<PID>)')
   .replace(/Bearer\s+synthetic-operator-api-key/g,'Bearer <SYNTHETIC_API_KEY_REDACTED>')
   .replace(/tanuki_session=[A-Za-z0-9_-]{20,}/g,'tanuki_session=<SESSION_REDACTED>');
 }
-function validate(text,name){
+export function validate(text,name){
  const forbidden=[/-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----/,/\b(?:sk-proj-|ghp_)[A-Za-z0-9_-]{16,}/,/tanuki_session=[A-Za-z0-9_-]{43}/,/\$argon2id\$v=\d+\$m=\d+,t=\d+,p=\d+\$[A-Za-z0-9+/]+\$[A-Za-z0-9+/]+/,/[A-Za-z]:[\\/]Users[\\/]/,/\/home\/(?!<)[^/\s]+\//,/Bearer\s+(?!<)[A-Za-z0-9_-]{12,}/];
  for(const pattern of forbidden)if(pattern.test(text))throw new Error('Manual review required; possible sensitive material in '+name);
 }

@@ -47,4 +47,4 @@ test('Container runs as non-root',()=>assert.match(fs.readFileSync('Dockerfile',
 test('Deployment persists SQLite data',()=>assert.match(fs.readFileSync('docker-compose.minimal.yml','utf8'),/tanuki-data:\/app\/data/));
 test('Deployment mounts keys read-only',()=>assert.match(fs.readFileSync('docker-compose.minimal.yml','utf8'),/keyring\.json:ro/));
 test('Docker build context excludes secrets',()=>{const ignore=fs.readFileSync('.dockerignore','utf8');assert.match(ignore,/^\.secrets$/m);assert.match(ignore,/^data$/m);assert.match(ignore,/^\.env\*$/m);});
-test('Runtime has only the two cryptographic dependencies',()=>{const pkg=JSON.parse(fs.readFileSync('package.json'));assert.deepEqual(Object.keys(pkg.dependencies).sort(),['@noble/ciphers','@node-rs/argon2']);assert.match(pkg.scripts.start,/server\/index.js/);});
+test('Runtime dependency allowlist contains only the three cryptographic libraries',()=>{const pkg=JSON.parse(fs.readFileSync('package.json'));assert.deepEqual(Object.keys(pkg.dependencies).sort(),['@noble/ciphers','@node-rs/argon2','openpgp']);assert.match(pkg.scripts.start,/server\/index.js/);});

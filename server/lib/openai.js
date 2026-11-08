@@ -209,6 +209,7 @@ function buildChapterUserMessage(userRequest, opts, plan, chapterIndex, totalCha
  * Yields string fragments as they arrive from the model.
  */
 export async function* generateChapterStream(options) {
+    options.signal?.throwIfAborted();
     const { systemPrompt, userRequest, storyOptions, apiBaseUrl, model, localModelId, contentMaturityLevel, blockedTopics, plan, chapterIndex, previousChapters = [], revisionNote, } = options;
     const apiKey = process.env.OPENAI_API_KEY;
     const totalChapters = storyOptions?.chapterCount ?? 1;
@@ -233,6 +234,7 @@ export async function* generateChapterStream(options) {
         await new Promise((r) => setTimeout(r, 400));
         const demo = `Chapter ${chapterIndex + 1}: Once upon a time, the story continued with great wonder and adventure. [Demo chapter — no API key configured. Configure an API key in your .env.local file to enable real generation.]`;
         for (const char of demo) {
+            options.signal?.throwIfAborted();
             yield char;
             await new Promise((r) => setTimeout(r, 8));
         }
@@ -258,7 +260,7 @@ export async function* generateChapterStream(options) {
         ],
         max_tokens: maxTokens,
         stream: true,
-    });
+    }, { signal: options.signal });
     for await (const chunk of stream) {
         const delta = chunk.choices[0]?.delta?.content ?? '';
         if (delta)
