@@ -17,6 +17,8 @@ The active application is `server/`, `public/index.html`, and `public/assets/`. 
 
 ## Features
 
+The opt-in [Trusted Worker Encryption architecture](docs/security/TRUSTED_WORKER.md) moves AI plaintext processing to a separately confined worker. It provides signed, recipient-encrypted, resumable responses and client-side decryption. The worker and provider see plaintext; this is not AI-stage E2EE. Provisioning, current test evidence, unfinished workflows and rollout limitations are documented there. Both preview flags default off.
+
 - Students: story and nonfiction prompts, reviewed story plans, streamed chapters, library search, editing, browser print/PDF, reading text size, voice recordings, and saved preferences.
 - Teachers: assigned classroom settings and student reading settings, with server-enforced roster isolation.
 - Administrators: student/teacher accounts, CSV import, classroom membership, disabled accounts, activity, knowledge documents, AI endpoints and content settings.

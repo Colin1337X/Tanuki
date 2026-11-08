@@ -1,0 +1,3 @@
+BEFORE: checkpoint accepted substituted public-key bytes despite expected fingerprint.
+AFTER: substitution rejected; the actual pinned public key remains accepted.
+Two controlled observations; not added to the automated test count. No private keys persisted.

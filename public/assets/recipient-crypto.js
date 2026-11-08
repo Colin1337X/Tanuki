@@ -5,9 +5,10 @@ export function recipientCrypto(pgp) {
     preferredSymmetricAlgorithm: pgp.enums.symmetric.aes256,
     preferredAEADAlgorithm: pgp.enums.aead.gcm,
     preferredCompressionAlgorithm: pgp.enums.compression.uncompressed };
-  async function publicKey(armored) {
+  async function publicKey(armored, expectedFingerprint) {
     if (typeof armored !== 'string' || armored.length > 16000) throw new Error('Invalid public key');
     const key = await pgp.readKey({ armoredKey: armored });
+    if(expectedFingerprint!==undefined&&key.getFingerprint()!==expectedFingerprint)throw new Error('Pinned public-key fingerprint mismatch');
     if (key.isPrivate() || key.keyPacket.version !== 6) throw new Error('Version 6 public key required');
     await key.verifyPrimaryKey();
     await key.getEncryptionKey();
@@ -26,7 +27,7 @@ export function recipientCrypto(pgp) {
   }
   async function encrypt(recipients, value, signingKey) {
     if (!Array.isArray(recipients) || !recipients.length || recipients.length > 16) throw new Error('Invalid recipients');
-    const keys = await Promise.all(recipients.map(publicKey));
+    const keys = await Promise.all(recipients.map(key=>publicKey(key)));
     return pgp.encrypt({ message: await pgp.createMessage({ text: JSON.stringify(value) }), encryptionKeys: keys,
       ...(signingKey ? { signingKeys: signingKey } : {}), config });
   }

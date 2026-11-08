@@ -8,6 +8,7 @@ import { HttpResponse } from './http.js';
 import { requestContext,initializeAuth,getCurrentUser } from './lib/auth.js';
 import { consumeRateLimit,closeDatabase,DATA_DIR } from './lib/database.js';
 import { responseQueue,closeResponseQueue } from './lib/recipient-service.js';
+import { trustedWorkerEnabled,trustedGenerations,closeTrustedGenerations } from './lib/trusted-generations.js';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const PUBLIC=path.join(ROOT,'public');
 const routes=[];
@@ -36,7 +37,8 @@ function validateBody(value) {
 }
 export function createAppServer() {
   initializeAuth();
-  if(process.env.TANUKI_RECIPIENT_ENCRYPTION==='1')responseQueue();
+  if(trustedWorkerEnabled()){if(process.env.TANUKI_RECIPIENT_ENCRYPTION!=='1')throw new Error('Trusted worker mode requires recipient encryption');trustedGenerations();}
+  else if(process.env.TANUKI_RECIPIENT_ENCRYPTION==='1')responseQueue();
   if(process.env.NODE_ENV==='production'&&['users','stories','config','recordings','knowledge-base'].some(name=>fs.existsSync(path.join(DATA_DIR,name+'.json'))))throw new Error('Archive legacy JSON sources before production startup: npm run data:archive-legacy');
   if(process.env.NODE_ENV==='production' && !process.env.APP_ORIGIN?.startsWith('https://'))throw new Error('Set APP_ORIGIN to the public HTTPS origin');
   const server=createServer(async(req,res)=>{
@@ -74,6 +76,7 @@ export function createAppServer() {
         const response=await requestContext.run(request,async()=>{
           if(url.pathname==='/api/auth/login'&&!consumeRateLimit(`ip:${req.socket.remoteAddress}`,100,15*60*1000))throw Object.assign(new Error('Too many sign-in attempts'),{status:429});
           if(req.method==='POST' && /^\/api\/stories\/(generate|plan|[^/]+\/chapter)$/.test(url.pathname)) {
+            if(trustedWorkerEnabled())throw Object.assign(new Error('Use Trusted Worker Encryption in the encrypted workspace; legacy plaintext generation is disabled'),{status:409});
             const user=await getCurrentUser();
             if(!user)throw Object.assign(new Error('Unauthorized'),{status:401});
             generationKey=user.username;
@@ -111,5 +114,5 @@ export function createAppServer() {
 if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const server=createAppServer();const port=Number(process.env.PORT||3000);
   server.listen(port,process.env.HOST||'127.0.0.1',()=>console.log(`Tanuki is listening on port ${port}`));
-  for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>server.close(async()=>{await closeResponseQueue();closeDatabase();process.exit(0);}));
+  for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>server.close(async()=>{await closeTrustedGenerations();await closeResponseQueue();closeDatabase();process.exit(0);}));
 }

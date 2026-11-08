@@ -49,8 +49,12 @@ export function createSessionToken(user) {
 }
 export function parseSessionToken(token) {
   if(typeof token!=='string'||!/^[A-Za-z0-9_-]{43}$/.test(token))return null;
+  return parseSessionHash(digest(token));
+}
+// Internal worker coordinator only. A stored digest is never accepted as an HTTP credential.
+export function parseSessionHash(tokenHash) {
+  if(typeof tokenHash!=='string'||!/^[a-f0-9]{64}$/.test(tokenHash))return null;
   try {
-    const tokenHash=digest(token);
     const session=database().prepare('SELECT * FROM sessions WHERE token_hash=? AND expires>?').get(tokenHash,Date.now());
     if(!session)return null;
     const proof=JSON.parse(unseal(session.credential_hash,`session:${tokenHash}`).toString());

@@ -1,3 +1,5 @@
 # Evidence checksums are over normalized LF files on every checkout platform.
 docs/security/evidence/** text eol=lf
 public/assets/vendor/** text eol=lf
+scripts/security/*.sh text eol=lf
+deploy/*.service text eol=lf

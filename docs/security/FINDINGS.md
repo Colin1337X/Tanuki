@@ -65,4 +65,24 @@ envelope, operator-approved endpoint/DNS risks, unverified Docker/real deploymen
 browser/device/accessibility and sustained-load coverage, inactive historical framework installers,
 and operator responsibility for external backups and bootstrap files.
 
-[Before/after Mermaid diagrams](ATTACK_PATHS.md) · [Full assessment](ASSESSMENT.md) · [Prioritized backlog](REMEDIATION_BACKLOG.md)
+## PRE-02 — Pinned label did not authenticate public-key bytes (preview checkpoint)
+
+At checkpoint `7f611ad`, the recipient public-key parser validated a key but did not
+compare its actual fingerprint to the expected pin. A malicious API could retain a
+trusted fingerprint label while substituting different public-key bytes. Depending on
+the use, this could direct future encryption to an attacker or substitute a signature
+verification key. This finding concerns the unreleased recipient preview, not a claim
+of exploitation of a historical live installation.
+
+The shared parser now compares the actual key fingerprint. The browser applies this
+check when using recipient, document-author and worker public keys. Unit tests reject
+substitution while accepting the genuine key; a Chromium regression substitutes worker
+public bytes behind the same label and verifies generation is rejected. The controlled
+[PoC](../../scripts/security/recipient-pin-poc.mjs) reproduces checkpoint acceptance and
+current rejection using disposable generated keys. See [observations](evidence/trusted-worker/recipient-pin-poc.log).
+
+The new worker also signs response chunks independently of the ordinary API, extending
+PRE-01's protection beyond the database-writer threat model. The complete findings
+inventory remains RT-01 through RT-12 plus PRE-01 and PRE-02; test counts are not finding counts.
+
+[Trusted-worker before/after diagram and remaining risks](TRUSTED_WORKER.md) · [Before/after Mermaid diagrams](ATTACK_PATHS.md) · [Full assessment](ASSESSMENT.md) · [Prioritized backlog](REMEDIATION_BACKLOG.md)

@@ -18,6 +18,11 @@ test('Authorized student and teacher decrypt signed recipient ciphertext', async
 test('Unrelated device cannot decrypt a classroom response', async () => {
   await assert.rejects(recipient.decrypt(strangerKey, encrypted, context, alice.publicKey));
 });
+test('Substituted public bytes cannot inherit a previously pinned fingerprint label',async()=>{
+  const pinned=(await recipient.publicKey(alice.publicKey)).getFingerprint();
+  await assert.rejects(recipient.publicKey(stranger.publicKey,pinned),/fingerprint mismatch/);
+  assert.equal((await recipient.publicKey(alice.publicKey,pinned)).getFingerprint(),pinned);
+});
 test('Public keys cannot be used as private decryption keys', async () => {
   await assert.rejects(recipient.decrypt(await recipient.publicKey(alice.publicKey), encrypted, context, alice.publicKey));
 });

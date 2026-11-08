@@ -1,0 +1,51 @@
+[Unit]
+Description=Tanuki trusted plaintext processing worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tanuki-worker
+Group=tanuki-worker
+EnvironmentFile=/etc/tanuki-worker/worker.env
+WorkingDirectory=/opt/tanuki-worker
+ExecStartPre=/usr/bin/node /opt/tanuki-worker/verify-worker.mjs /opt/tanuki-worker
+ExecStart=/usr/bin/node --max-old-space-size=128 /opt/tanuki-worker/worker/index.js
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=15
+KillMode=mixed
+StateDirectory=tanuki-worker
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+AmbientCapabilities=
+InaccessiblePaths=-/var/lib/tanuki -/etc/tanuki -/mnt -/run/WSL
+ReadOnlyPaths=/opt/tanuki-worker /etc/tanuki-worker
+ReadWritePaths=/var/lib/tanuki-worker
+LimitCORE=0
+LimitNOFILE=256
+MemoryMax=256M
+TasksMax=32
+CPUQuota=100%
+IPAddressDeny=any
+# Add only operator-approved provider/DNS addresses in a reviewed drop-in.
+# Default is deliberately unable to contact an external provider.
+IPAddressAllow=127.0.0.1/32
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,741 @@
+{
+  "generatedAt": "2026-11-08T23:20:31.160Z",
+  "node": "v24.22.2",
+  "server": {
+    "scope": "Loaded server modules only, excluding dependencies; child-process migration coverage is not included",
+    "lines": {
+      "covered": 2490,
+      "total": 2910,
+      "percent": 85.57
+    },
+    "functions": {
+      "covered": 321,
+      "total": 356,
+      "percent": 90.17
+    },
+    "branches": {
+      "covered": 1039,
+      "total": 1307,
+      "percent": 79.5
+    },
+    "files": [
+      {
+        "file": "server/http.js",
+        "lines": {
+          "covered": 13,
+          "total": 13
+        },
+        "functions": {
+          "covered": 3,
+          "total": 3
+        },
+        "branches": {
+          "covered": 4,
+          "total": 5
+        }
+      },
+      {
+        "file": "server/index.js",
+        "lines": {
+          "covered": 114,
+          "total": 118
+        },
+        "functions": {
+          "covered": 14,
+          "total": 16
+        },
+        "branches": {
+          "covered": 128,
+          "total": 134
+        }
+      },
+      {
+        "file": "server/lib/ai-client.js",
+        "lines": {
+          "covered": 23,
+          "total": 23
+        },
+        "functions": {
+          "covered": 5,
+          "total": 5
+        },
+        "branches": {
+          "covered": 28,
+          "total": 30
+        }
+      },
+      {
+        "file": "server/lib/auth.js",
+        "lines": {
+          "covered": 73,
+          "total": 73
+        },
+        "functions": {
+          "covered": 13,
+          "total": 13
+        },
+        "branches": {
+          "covered": 42,
+          "total": 47
+        }
+      },
+      {
+        "file": "server/lib/crypto.js",
+        "lines": {
+          "covered": 70,
+          "total": 70
+        },
+        "functions": {
+          "covered": 9,
+          "total": 9
+        },
+        "branches": {
+          "covered": 35,
+          "total": 40
+        }
+      },
+      {
+        "file": "server/lib/database.js",
+        "lines": {
+          "covered": 134,
+          "total": 134
+        },
+        "functions": {
+          "covered": 17,
+          "total": 17
+        },
+        "branches": {
+          "covered": 85,
+          "total": 90
+        }
+      },
+      {
+        "file": "server/lib/generation-policy.js",
+        "lines": {
+          "covered": 15,
+          "total": 15
+        },
+        "functions": {
+          "covered": 1,
+          "total": 1
+        },
+        "branches": {
+          "covered": 2,
+          "total": 2
+        }
+      },
+      {
+        "file": "server/lib/knowledge-base.js",
+        "lines": {
+          "covered": 3,
+          "total": 6
+        },
+        "functions": {
+          "covered": 1,
+          "total": 2
+        },
+        "branches": {
+          "covered": 2,
+          "total": 2
+        }
+      },
+      {
+        "file": "server/lib/openai.js",
+        "lines": {
+          "covered": 195,
+          "total": 264
+        },
+        "functions": {
+          "covered": 8,
+          "total": 13
+        },
+        "branches": {
+          "covered": 18,
+          "total": 54
+        }
+      },
+      {
+        "file": "server/lib/passwords.js",
+        "lines": {
+          "covered": 12,
+          "total": 12
+        },
+        "functions": {
+          "covered": 3,
+          "total": 3
+        },
+        "branches": {
+          "covered": 11,
+          "total": 11
+        }
+      },
+      {
+        "file": "server/lib/protected-content.js",
+        "lines": {
+          "covered": 108,
+          "total": 108
+        },
+        "functions": {
+          "covered": 33,
+          "total": 34
+        },
+        "branches": {
+          "covered": 88,
+          "total": 110
+        }
+      },
+      {
+        "file": "server/lib/reading-levels.js",
+        "lines": {
+          "covered": 54,
+          "total": 54
+        },
+        "functions": {
+          "covered": 1,
+          "total": 1
+        },
+        "branches": {
+          "covered": 2,
+          "total": 2
+        }
+      },
+      {
+        "file": "server/lib/recipient-crypto.js",
+        "lines": {
+          "covered": 3,
+          "total": 3
+        },
+        "functions": {
+          "covered": 0,
+          "total": 0
+        },
+        "branches": {
+          "covered": 1,
+          "total": 1
+        }
+      },
+      {
+        "file": "server/lib/recipient-service.js",
+        "lines": {
+          "covered": 4,
+          "total": 4
+        },
+        "functions": {
+          "covered": 2,
+          "total": 2
+        },
+        "branches": {
+          "covered": 3,
+          "total": 3
+        }
+      },
+      {
+        "file": "server/lib/response-queue.js",
+        "lines": {
+          "covered": 172,
+          "total": 179
+        },
+        "functions": {
+          "covered": 33,
+          "total": 35
+        },
+        "branches": {
+          "covered": 69,
+          "total": 83
+        }
+      },
+      {
+        "file": "server/lib/safety.js",
+        "lines": {
+          "covered": 29,
+          "total": 29
+        },
+        "functions": {
+          "covered": 0,
+          "total": 0
+        },
+        "branches": {
+          "covered": 1,
+          "total": 1
+        }
+      },
+      {
+        "file": "server/lib/storage.js",
+        "lines": {
+          "covered": 255,
+          "total": 260
+        },
+        "functions": {
+          "covered": 59,
+          "total": 60
+        },
+        "branches": {
+          "covered": 85,
+          "total": 99
+        }
+      },
+      {
+        "file": "server/lib/trusted-generations.js",
+        "lines": {
+          "covered": 94,
+          "total": 94
+        },
+        "functions": {
+          "covered": 35,
+          "total": 41
+        },
+        "branches": {
+          "covered": 72,
+          "total": 97
+        }
+      },
+      {
+        "file": "server/lib/web-search.js",
+        "lines": {
+          "covered": 18,
+          "total": 94
+        },
+        "functions": {
+          "covered": 0,
+          "total": 3
+        },
+        "branches": {
+          "covered": 1,
+          "total": 1
+        }
+      },
+      {
+        "file": "server/lib/worker-client.js",
+        "lines": {
+          "covered": 20,
+          "total": 20
+        },
+        "functions": {
+          "covered": 7,
+          "total": 8
+        },
+        "branches": {
+          "covered": 14,
+          "total": 22
+        }
+      },
+      {
+        "file": "server/routes/admin/analytics/route.js",
+        "lines": {
+          "covered": 124,
+          "total": 133
+        },
+        "functions": {
+          "covered": 12,
+          "total": 16
+        },
+        "branches": {
+          "covered": 44,
+          "total": 52
+        }
+      },
+      {
+        "file": "server/routes/admin/config/route.js",
+        "lines": {
+          "covered": 92,
+          "total": 185
+        },
+        "functions": {
+          "covered": 4,
+          "total": 6
+        },
+        "branches": {
+          "covered": 19,
+          "total": 36
+        }
+      },
+      {
+        "file": "server/routes/admin/students/[username]/route.js",
+        "lines": {
+          "covered": 13,
+          "total": 15
+        },
+        "functions": {
+          "covered": 1,
+          "total": 1
+        },
+        "branches": {
+          "covered": 6,
+          "total": 7
+        }
+      },
+      {
+        "file": "server/routes/admin/students/[username]/settings/route.js",
+        "lines": {
+          "covered": 53,
+          "total": 100
+        },
+        "functions": {
+          "covered": 4,
+          "total": 7
+        },
+        "branches": {
+          "covered": 26,
+          "total": 40
+        }
+      },
+      {
+        "file": "server/routes/admin/students/route.js",
+        "lines": {
+          "covered": 42,
+          "total": 49
+        },
+        "functions": {
+          "covered": 5,
+          "total": 5
+        },
+        "branches": {
+          "covered": 19,
+          "total": 24
+        }
+      },
+      {
+        "file": "server/routes/admin/teachers/route.js",
+        "lines": {
+          "covered": 27,
+          "total": 37
+        },
+        "functions": {
+          "covered": 4,
+          "total": 5
+        },
+        "branches": {
+          "covered": 10,
+          "total": 13
+        }
+      },
+      {
+        "file": "server/routes/auth/login/route.js",
+        "lines": {
+          "covered": 15,
+          "total": 15
+        },
+        "functions": {
+          "covered": 1,
+          "total": 1
+        },
+        "branches": {
+          "covered": 8,
+          "total": 9
+        }
+      },
+      {
+        "file": "server/routes/auth/logout/route.js",
+        "lines": {
+          "covered": 3,
+          "total": 3
+        },
+        "functions": {
+          "covered": 1,
+          "total": 1
+        },
+        "branches": {
+          "covered": 2,
+          "total": 2
+        }
+      },
+      {
+        "file": "server/routes/auth/me/route.js",
+        "lines": {
+          "covered": 9,
+          "total": 9
+        },
+        "functions": {
+          "covered": 1,
+          "total": 1
+        },
+        "branches": {
+          "covered": 4,
+          "total": 4
+        }
+      },
+      {
+        "file": "server/routes/info/documents/route.js",
+        "lines": {
+          "covered": 76,
+          "total": 76
+        },
+        "functions": {
+          "covered": 5,
+          "total": 5
+        },
+        "branches": {
+          "covered": 11,
+          "total": 16
+        }
+      },
+      {
+        "file": "server/routes/info/search/route.js",
+        "lines": {
+          "covered": 20,
+          "total": 28
+        },
+        "functions": {
+          "covered": 1,
+          "total": 1
+        },
+        "branches": {
+          "covered": 4,
+          "total": 6
+        }
+      },
+      {
+        "file": "server/routes/protected/route.js",
+        "lines": {
+          "covered": 70,
+          "total": 70
+        },
+        "functions": {
+          "covered": 8,
+          "total": 8
+        },
+        "branches": {
+          "covered": 44,
+          "total": 50
+        }
+      },
+      {
+        "file": "server/routes/stories/[id]/chapter/route.js",
+        "lines": {
+          "covered": 72,
+          "total": 82
+        },
+        "functions": {
+          "covered": 3,
+          "total": 3
+        },
+        "branches": {
+          "covered": 9,
+          "total": 18
+        }
+      },
+      {
+        "file": "server/routes/stories/[id]/extend/route.js",
+        "lines": {
+          "covered": 25,
+          "total": 27
+        },
+        "functions": {
+          "covered": 2,
+          "total": 3
+        },
+        "branches": {
+          "covered": 7,
+          "total": 11
+        }
+      },
+      {
+        "file": "server/routes/stories/[id]/recordings/[recordingId]/route.js",
+        "lines": {
+          "covered": 39,
+          "total": 41
+        },
+        "functions": {
+          "covered": 3,
+          "total": 3
+        },
+        "branches": {
+          "covered": 11,
+          "total": 17
+        }
+      },
+      {
+        "file": "server/routes/stories/[id]/recordings/route.js",
+        "lines": {
+          "covered": 80,
+          "total": 82
+        },
+        "functions": {
+          "covered": 4,
+          "total": 5
+        },
+        "branches": {
+          "covered": 27,
+          "total": 34
+        }
+      },
+      {
+        "file": "server/routes/stories/[id]/route.js",
+        "lines": {
+          "covered": 35,
+          "total": 37
+        },
+        "functions": {
+          "covered": 4,
+          "total": 4
+        },
+        "branches": {
+          "covered": 15,
+          "total": 18
+        }
+      },
+      {
+        "file": "server/routes/stories/generate/route.js",
+        "lines": {
+          "covered": 83,
+          "total": 119
+        },
+        "functions": {
+          "covered": 2,
+          "total": 2
+        },
+        "branches": {
+          "covered": 21,
+          "total": 30
+        }
+      },
+      {
+        "file": "server/routes/stories/plan/route.js",
+        "lines": {
+          "covered": 55,
+          "total": 63
+        },
+        "functions": {
+          "covered": 2,
+          "total": 2
+        },
+        "branches": {
+          "covered": 4,
+          "total": 12
+        }
+      },
+      {
+        "file": "server/routes/stories/route.js",
+        "lines": {
+          "covered": 12,
+          "total": 12
+        },
+        "functions": {
+          "covered": 2,
+          "total": 2
+        },
+        "branches": {
+          "covered": 7,
+          "total": 7
+        }
+      },
+      {
+        "file": "server/routes/stories/start/route.js",
+        "lines": {
+          "covered": 50,
+          "total": 60
+        },
+        "functions": {
+          "covered": 2,
+          "total": 2
+        },
+        "branches": {
+          "covered": 5,
+          "total": 13
+        }
+      },
+      {
+        "file": "server/routes/student/config/route.js",
+        "lines": {
+          "covered": 22,
+          "total": 22
+        },
+        "functions": {
+          "covered": 2,
+          "total": 2
+        },
+        "branches": {
+          "covered": 9,
+          "total": 12
+        }
+      },
+      {
+        "file": "server/routes/student/onboarding/route.js",
+        "lines": {
+          "covered": 64,
+          "total": 72
+        },
+        "functions": {
+          "covered": 4,
+          "total": 5
+        },
+        "branches": {
+          "covered": 36,
+          "total": 42
+        }
+      }
+    ]
+  },
+  "worker": {
+    "scope": "Loaded worker modules; separate OS processes are not instrumented",
+    "lines": {
+      "covered": 135,
+      "total": 159,
+      "percent": 84.91
+    },
+    "functions": {
+      "covered": 38,
+      "total": 41,
+      "percent": 92.68
+    },
+    "branches": {
+      "covered": 98,
+      "total": 127,
+      "percent": 77.17
+    },
+    "files": [
+      {
+        "file": "worker/engine.js",
+        "lines": {
+          "covered": 96,
+          "total": 96
+        },
+        "functions": {
+          "covered": 32,
+          "total": 32
+        },
+        "branches": {
+          "covered": 74,
+          "total": 95
+        }
+      },
+      {
+        "file": "worker/index.js",
+        "lines": {
+          "covered": 39,
+          "total": 63
+        },
+        "functions": {
+          "covered": 6,
+          "total": 9
+        },
+        "branches": {
+          "covered": 24,
+          "total": 32
+        }
+      }
+    ]
+  },
+  "browser": {
+    "metric": "V8 executed source-character ranges, union across Chromium tests; not statement or branch coverage",
+    "covered": 20674,
+    "total": 40377,
+    "percent": 51.2
+  },
+  "protectedBrowser": [
+    {
+      "file": "protected-workspace.js",
+      "covered": 13694,
+      "total": 18784,
+      "percent": 72.9,
+      "metric": "V8 executed source-character ranges, union across Chromium tests; not statement or branch coverage"
+    },
+    {
+      "file": "recipient-crypto.js",
+      "covered": 3711,
+      "total": 4984,
+      "percent": 74.46,
+      "metric": "V8 executed source-character ranges, union across Chromium tests; not statement or branch coverage"
+    }
+  ]
+}

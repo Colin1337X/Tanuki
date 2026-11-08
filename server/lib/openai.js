@@ -1,16 +1,10 @@
 import { MATURITY_LEVEL_DEFAULT } from './safety.js';
+import { MATURITY_INSTRUCTIONS } from './generation-policy.js';
 /**
  * Admin-controlled content maturity descriptions injected into the system
  * prompt to restrict or allow themes in generated stories.
  * Level 6 (None) intentionally has no entry — no safety clause is added.
  */
-const MATURITY_INSTRUCTIONS = {
-    1: 'Write extremely safe, gentle content appropriate for very young children (ages 3-5). Use only uplifting, happy themes. Avoid all conflict, threats, scary imagery, or negative emotions.',
-    2: 'Write child-safe content appropriate for ages 6-10. Mild conflict is acceptable but must resolve happily. Avoid violence, frightening themes, romance, or any adult topics.',
-    3: 'Write content appropriate for preteens (ages 10-13). Adventure and mild tension are acceptable. Avoid graphic violence, romantic content, or mature themes.',
-    4: 'Write content appropriate for teenagers (ages 13-17). Relatable teen themes, mild conflict, and light friendship/romance are acceptable. Avoid graphic violence, explicit content, or adult themes.',
-    5: 'Write content appropriate for young adults (ages 16+). Complex themes, moral ambiguity, and mature storylines are acceptable. Avoid explicit sexual content or graphic gore.',
-};
 function buildUserMessage(userRequest, opts) {
     const parts = [];
     if(Number.isInteger(opts?.lexileTarget))parts.push(`Aim for a reading difficulty near ${opts.lexileTarget}L Lexile. This is a target, not a certified measurement. Keep the assigned reading level and content limits authoritative.`);

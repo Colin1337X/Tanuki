@@ -14,6 +14,8 @@ export function sanitize(text){
   .replace(/(?:file:\/\/)?\/home\/[^/\s]+\/tanuki-(?:redteam|wsl-validation)\.[^/\s]+\/app/g,'<WSL_WORKSPACE>')
   .replace(/\/home\/[^/\s]+\/tanuki-(?:redteam|wsl-validation)\.[^/\s]+/g,'<ISOLATED_WSL_RUN>')
   .replace(/\/home\/[^/\s]+\/tanuki-encrypted-queue(?:-production)?/g,'<ISOLATED_WSL_RUN>')
+  .replace(/\/home\/[^/\s]+\/tanuki-worker-artifact-[A-Za-z0-9_.-]+/g,'<WORKER_ARTIFACT>')
+  .replace(/\/var\/lib\/tanuki-worker-validation-[A-Za-z0-9_.-]+/g,'<ISOLATED_WORKER_FIXTURE>')
   .replace(/\/tmp\/tanuki-[A-Za-z0-9_.-]+/g,'<DISPOSABLE_FIXTURE>')
   .replace(/\(node:\d+\)/g,'(node:<PID>)')
   .replace(/Bearer\s+synthetic-operator-api-key/g,'Bearer <SYNTHETIC_API_KEY_REDACTED>')
