@@ -1,0 +1,13 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'org.tanuki.stories'
+    compileSdk 36
+    defaultConfig { applicationId 'org.tanuki.stories'; minSdk 28; targetSdk 36; versionCode 1; versionName '1.0.0' }
+    buildTypes { release { minifyEnabled false } }
+    sourceSets { main { assets.srcDir layout.buildDirectory.dir('tanuki-assets') } }
+}
+tasks.register('copyTanukiFont', Copy) {
+    from '../../../public/assets/Jua-Regular.ttf'
+    into layout.buildDirectory.dir('tanuki-assets')
+}
+tasks.named('preBuild').configure { dependsOn 'copyTanukiFont' }

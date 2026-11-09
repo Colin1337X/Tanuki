@@ -7,7 +7,8 @@ if(process.env.GITHUB_REF?.startsWith('refs/tags/')&&process.env.GITHUB_REF!==`r
 const name=`tanuki-stories-${pkg.version}-${platform==='win32'?'windows':platform==='darwin'?'macos':'linux'}-${arch}`,out=path.resolve('dist',name);if(fs.existsSync(out))throw new Error('Choose a clean build output; existing bundles are never overwritten.');fs.mkdirSync(out,{recursive:true});
 for(const dir of ['server','installer','scripts','deploy','docs'])fs.cpSync(dir,path.join(out,dir),{recursive:true,filter:source=>!source.includes(path.sep+'evidence'+path.sep)&&!source.endsWith(path.sep+'evidence')});
 fs.mkdirSync(path.join(out,'public'),{recursive:true});for(const file of ['index.html','sw.js'])fs.copyFileSync(path.join('public',file),path.join(out,'public',file));fs.cpSync('public/assets',path.join(out,'public/assets'),{recursive:true});
-for(const file of ['package.json','package-lock.json','LICENSE','README.md'])fs.copyFileSync(file,path.join(out,file));
+for(const file of ['package.json','package-lock.json','LICENSE','README.md','install.bat','install.sh'])fs.copyFileSync(file,path.join(out,file));
+if(platform!=='win32')fs.chmodSync(path.join(out,'install.sh'),0o755);
 const npmCli=process.env.npm_execpath;if(!npmCli||!fs.existsSync(npmCli))throw new Error('Build with npm run release:bundle so the exact npm CLI is available.');
 const install=spawnSync(process.execPath,[npmCli,'ci','--omit=dev','--ignore-scripts','--no-audit','--no-fund'],{cwd:out,encoding:'utf8',windowsHide:true});if(install.status!==0)throw new Error('Production dependency installation failed: '+install.stderr);
 fs.mkdirSync(path.join(out,'runtime'));fs.copyFileSync(process.execPath,path.join(out,'runtime',platform==='win32'?'node.exe':'node'));if(platform!=='win32')fs.chmodSync(path.join(out,'runtime/node'),0o755);

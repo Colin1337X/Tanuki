@@ -58,3 +58,9 @@ src-tauri/gen/
 /installer/windows/*.png
 /installer/windows/*.bmp
 /installer/windows/*.ico
+/mobile/android/.gradle/
+/mobile/android/app/build/
+/mobile/android/build/
+/mobile/android/local.properties
+/mobile/ios/build/
+*.xcuserstate

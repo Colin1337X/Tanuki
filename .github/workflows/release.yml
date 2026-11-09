@@ -1,7 +1,7 @@
 name: Build installable releases
 on:
   pull_request:
-    paths: ['installer/**', 'scripts/release/**', '.github/workflows/**', 'package*.json']
+    paths: ['installer/**', 'install.bat', 'install.sh', 'scripts/release/**', '.github/workflows/**', 'package*.json']
   workflow_dispatch:
   push:
     tags: ['v*']
@@ -61,6 +61,7 @@ jobs:
           bundle="dist/tanuki-stories-$version-${{ matrix.platform }}-${{ matrix.arch }}"
           node scripts/release/verify.mjs "$bundle"
           cd "$bundle"
+          if [ -f runtime/node.exe ]; then MSYS_NO_PATHCONV=1 cmd.exe /c install.bat --check; else sh install.sh --check; fi
           if [ -f runtime/node.exe ]; then runtime/node.exe --test scripts/release/smoke.test.mjs; else runtime/node --test scripts/release/smoke.test.mjs; fi
       - name: Build native Linux or macOS installer
         if: runner.os != 'Windows'

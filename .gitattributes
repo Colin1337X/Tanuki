@@ -4,4 +4,7 @@ public/assets/vendor/** text eol=lf
 # Preserve the exact upstream hash-wasm distribution (including its CRLF bytes).
 public/assets/vendor/pq/argon2.mjs -text
 scripts/security/*.sh text eol=lf
+install.sh text eol=lf
+install.bat text eol=crlf
+mobile/**/*.sh text eol=lf
 deploy/*.service text eol=lf

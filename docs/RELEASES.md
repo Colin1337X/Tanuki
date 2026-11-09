@@ -20,6 +20,16 @@ privileged application service.
 
 ## Install and configure
 
+For script-based **Tanuki Server GUI installation**, extract the complete portable release and
+double-click `install.bat` on Windows, or run `sh install.sh` on Linux/macOS. Both verify the
+release manifest and open the same local graphical wizard used by native installers. They use
+the included Node runtime and never write plaintext passwords into shell configuration.
+`--check` verifies files without provisioning; `--no-open` prints the private setup link for
+headless access. These scripts replace the historical development installers. They do not
+download or silently trust an arbitrary release, install TLS, or enable privileged services.
+
+Android/iOS clients and signing requirements are described in [mobile clients](MOBILE.md).
+
 1. Download the correct architecture from a reviewed release. Compare its SHA-256 with
    `SHA256SUMS.txt`; also verify the GitHub provenance attestation against this repository.
    An unsigned checksum file alone does not authenticate a compromised download source.
