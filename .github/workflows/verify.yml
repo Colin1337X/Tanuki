@@ -1,0 +1,63 @@
+name: Verify application and isolation
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_call:
+permissions:
+  contents: read
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  security:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24.22.2
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Full application and browser coverage
+        run: |
+          set -o pipefail
+          npm run test:coverage | tee coverage/full-suite.log
+          npm run coverage:report
+      - name: Runtime and installed-profile regression
+        run: |
+          node --test scripts/security-runtime.test.js
+          node --test scripts/release/smoke.test.mjs
+      - name: Production-only dependency smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          fixture=$(mktemp -d)
+          cp -r server public scripts package.json package-lock.json "$fixture/"
+          cd "$fixture"
+          npm ci --omit=dev --ignore-scripts --no-audit --no-fund
+          node --test scripts/production-smoke.test.js
+      - name: Enforced worker identity and systemd isolation
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/build-worker.mjs "$RUNNER_TEMP/worker-artifact"
+          sudo useradd --system --user-group --no-create-home --shell /usr/sbin/nologin tanuki-ci-worker
+          worker_uid=$(id -u tanuki-ci-worker)
+          sudo env TANUKI_NODE="$(command -v node)" bash scripts/security/run-worker-isolation.sh "$RUNNER_TEMP/worker-artifact" "$worker_uid" "$(id -u)"
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: verification-evidence
+          path: |
+            coverage/full-suite.log
+            coverage/report.html
+            coverage/summary.json
+            coverage/lcov.info
+            coverage/installer-*.png
+          retention-days: 14

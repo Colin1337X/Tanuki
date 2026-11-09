@@ -19,7 +19,11 @@
     "data:upgrade": "node --env-file-if-exists=.env.local scripts/upgrade-data.js",
     "data:archive-legacy": "node --env-file-if-exists=.env.local scripts/archive-legacy.js",
     "crypto:benchmark:pq": "node scripts/benchmark-pq.mjs",
-    "crypto:vendor": "node scripts/vendor-pq.mjs"
+    "crypto:vendor": "node scripts/vendor-pq.mjs",
+    "release:bundle": "node scripts/release/bundle.mjs",
+    "release:archive": "node scripts/release/archive.mjs",
+    "setup": "node installer/setup.mjs",
+    "start:installed": "node installer/start.mjs"
   },
   "dependencies": {
     "@noble/ciphers": "^2.4.0",

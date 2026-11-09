@@ -4,6 +4,10 @@ A Node.js and vanilla JavaScript reading workspace with student, teacher, and ad
 
 ## Run locally
 
+For self-contained Windows, macOS (Intel/Apple Silicon), and Linux installers, see
+[installable releases and production rollout](docs/RELEASES.md). They include Node and a
+graphical setup wizard; the source-development commands below are not required by end users.
+
 Use Node.js **24.8 or newer** (latest WSL verification: 24.22.2). SQLite and ML-KEM require a recent Node runtime.
 
 ```sh

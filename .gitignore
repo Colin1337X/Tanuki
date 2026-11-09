@@ -54,3 +54,7 @@ src-tauri/gen/
 .secrets/
 /coverage/
 /test-results/
+/dist/
+/installer/windows/*.png
+/installer/windows/*.bmp
+/installer/windows/*.ico

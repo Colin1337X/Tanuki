@@ -1,0 +1,11 @@
+# Replace this host with the exact HTTPS origin entered during setup.
+stories.example.org {
+    encode zstd gzip
+    request_body {
+        max_size 6MB
+    }
+    reverse_proxy 127.0.0.1:3000 {
+        flush_interval -1
+    }
+    # No shared API cache. Keep the application's no-store/private headers intact.
+}
