@@ -27,6 +27,7 @@ jobs:
       - name: Full application and browser coverage
         run: |
           set -o pipefail
+          mkdir -p coverage
           npm run test:coverage | tee coverage/full-suite.log
           npm run coverage:report
       - name: Runtime and installed-profile regression
