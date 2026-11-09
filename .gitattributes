@@ -1,5 +1,7 @@
 # Evidence checksums are over normalized LF files on every checkout platform.
 docs/security/evidence/** text eol=lf
 public/assets/vendor/** text eol=lf
+# Preserve the exact upstream hash-wasm distribution (including its CRLF bytes).
+public/assets/vendor/pq/argon2.mjs -text
 scripts/security/*.sh text eol=lf
 deploy/*.service text eol=lf
