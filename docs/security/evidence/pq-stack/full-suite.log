@@ -1,0 +1,863 @@
+
+> tanuki-stories@1.0.0 test:coverage
+> node -e "require('node:fs').mkdirSync('coverage',{recursive:true})" && node --experimental-test-coverage --test --test-concurrency=1 --test-coverage-include=server/** --test-coverage-include=worker/** --test-coverage-include=public/assets/pq-recipient.js --test-coverage-include=public/assets/app.js --test-reporter=spec --test-reporter=lcov --test-reporter-destination=stdout --test-reporter-destination=coverage/lcov.info tests/node/*.test.js
+
+✔ RT-01 route alias cannot bypass exhausted generation quota (28.823257ms)
+✔ RT-01 route aliases cannot evade same-account in-flight exclusion (73.112043ms)
+✔ RT-02 deleting a username cannot transfer old stories to a newly created account (82.832358ms)
+✔ RT-03 password reset during Argon2 verification cannot authenticate with the old password (118.214208ms)
+✔ RT-03 disable and re-enable during verification invalidates that authentication attempt (62.643796ms)
+✔ RT-04 database-only role tampering cannot turn a student session into administrator access (4.986779ms)
+✔ RT-04 database-only session reassignment cannot impersonate a victim (2.19959ms)
+✔ RT-04 changing a session expiry in SQLite cannot extend its authenticated lifetime (2.053863ms)
+Request failed: Invalid encrypted recording header
+✔ RT-05 encrypted recording header corruption cannot downgrade playback to unauthenticated bytes (14.837134ms)
+✔ RT-06 production-style generation cannot commit after its session is revoked in flight (98.404383ms)
+Story generation error: Error: AI endpoint origin is not allowed by the server operator
+    at new AIClient (file://<ISOLATED_WSL_RUN>/server/lib/ai-client.js:8:46)
+    at generateStory (file://<ISOLATED_WSL_RUN>/server/lib/openai.js:96:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async POST (file://<ISOLATED_WSL_RUN>/server/routes/stories/generate/route.js:89:17)
+    at async Server.<anonymous> (file://<ISOLATED_WSL_RUN>/server/index.js:76:24)
+RT-07 observation: {"status":500,"credentialForwarded":false}
+✔ RT-07 administrator endpoint override cannot forward operator API credentials to an untrusted origin (17.290813ms)
+RT-08 observation: {"requestBodyForwarded":false}
+✔ RT-08 AI redirects cannot forward private request bodies to another local origin (2.425411ms)
+✔ Public ML-KEM key alone cannot forge a server-authenticated encrypted record (0.856249ms)
+✔ Bounded deterministic ciphertext mutations never return plaintext (10.667867ms)
+✔ Sensitive paths and obsolete framework endpoints cannot expose secrets anonymously (7.507846ms)
+✔ Student-supplied identity and privilege fields cannot change ownership during generation (67.876995ms)
+✔ Authentication failures do not reveal whether a username exists (66.922064ms)
+✔ Login route alias shares the IP throttle rather than bypassing it (1.626055ms)
+✔ Conflicting Content-Length and Transfer-Encoding are rejected by the real HTTP parser (2.331022ms)
+✔ A shared intermediary never reuses an authenticated response between accounts (19.976176ms)
+Roster role observation: {"read":403,"write":403}
+✔ Educator roster mistakes cannot authorize changes to an administrator profile (56.378008ms)
+✔ Anonymous cannot read /api/auth/me (33.668758ms)
+✔ Anonymous cannot read /api/stories (3.282978ms)
+✔ Anonymous cannot read /api/stories/alice-story (2.626747ms)
+✔ Anonymous cannot read /api/stories/alice-story/recordings (1.999381ms)
+✔ Anonymous cannot read /api/student/config (2.133054ms)
+✔ Anonymous cannot read /api/student/onboarding (1.817787ms)
+✔ Anonymous cannot read /api/admin/config (1.808751ms)
+✔ Anonymous cannot read /api/admin/students (2.294293ms)
+✔ Anonymous cannot read /api/admin/teachers (2.227497ms)
+✔ Anonymous cannot read /api/admin/analytics (1.960457ms)
+✔ Anonymous cannot read /api/admin/students/alice/settings (1.611541ms)
+✔ Anonymous cannot read /api/info/documents (2.524923ms)
+✔ Anonymous cannot read /api/info/search (2.740732ms)
+✔ Anonymous cannot POST /api/admin/students (1.433441ms)
+✔ Anonymous cannot POST /api/admin/teachers (1.067599ms)
+✔ Anonymous cannot POST /api/admin/config (1.505397ms)
+✔ Anonymous cannot POST /api/admin/students/alice/settings (1.488394ms)
+✔ Anonymous cannot DELETE /api/admin/students/alice (1.565491ms)
+✔ Anonymous cannot POST /api/info/documents (1.549289ms)
+✔ Anonymous cannot DELETE /api/info/documents (2.55943ms)
+✔ Anonymous cannot PATCH /api/stories/alice-story (2.272978ms)
+✔ Anonymous cannot POST /api/stories/alice-story/extend (2.187606ms)
+✔ Anonymous cannot POST /api/stories/generate (1.800865ms)
+✔ Anonymous cannot POST /api/stories/plan (1.500207ms)
+✔ Anonymous cannot POST /api/stories/start (1.434983ms)
+✔ Anonymous cannot POST /api/student/onboarding (1.305148ms)
+✔ alice cannot perform administrator operation POST /api/admin/students (3.179445ms)
+✔ alice cannot perform administrator operation POST /api/admin/teachers (2.441043ms)
+✔ alice cannot perform administrator operation POST /api/admin/config (2.290757ms)
+✔ alice cannot perform administrator operation POST /api/admin/students/alice/settings (2.484819ms)
+✔ alice cannot perform administrator operation DELETE /api/admin/students/alice (1.894191ms)
+✔ alice cannot perform administrator operation POST /api/info/documents (3.184375ms)
+✔ alice cannot perform administrator operation DELETE /api/info/documents (2.291052ms)
+✔ bob cannot perform administrator operation POST /api/admin/students (2.314817ms)
+✔ bob cannot perform administrator operation POST /api/admin/teachers (2.33468ms)
+✔ bob cannot perform administrator operation POST /api/admin/config (1.927525ms)
+✔ bob cannot perform administrator operation POST /api/admin/students/alice/settings (1.830477ms)
+✔ bob cannot perform administrator operation DELETE /api/admin/students/alice (2.214262ms)
+✔ bob cannot perform administrator operation POST /api/info/documents (2.164062ms)
+✔ bob cannot perform administrator operation DELETE /api/info/documents (2.247069ms)
+✔ teacher cannot perform admin-only POST /api/admin/students (2.228725ms)
+✔ teacher cannot perform admin-only POST /api/admin/teachers (2.633079ms)
+✔ teacher cannot perform admin-only DELETE /api/admin/students/alice (2.082999ms)
+✔ teacher cannot perform admin-only POST /api/info/documents (2.494832ms)
+✔ teacher cannot perform admin-only DELETE /api/info/documents (2.008167ms)
+✔ outsider cannot perform admin-only POST /api/admin/students (2.347953ms)
+✔ outsider cannot perform admin-only POST /api/admin/teachers (3.222364ms)
+✔ outsider cannot perform admin-only DELETE /api/admin/students/alice (3.079077ms)
+✔ outsider cannot perform admin-only POST /api/info/documents (1.992748ms)
+✔ outsider cannot perform admin-only DELETE /api/info/documents (2.31382ms)
+✔ admin /api/auth/me is private, non-cacheable and varies by account (2.312403ms)
+✔ admin /api/stories is private, non-cacheable and varies by account (6.520209ms)
+✔ admin /api/admin/config is private, non-cacheable and varies by account (2.227129ms)
+✔ admin /api/admin/students is private, non-cacheable and varies by account (3.894551ms)
+✔ admin /api/admin/teachers is private, non-cacheable and varies by account (3.698533ms)
+✔ admin /api/admin/analytics is private, non-cacheable and varies by account (5.387417ms)
+✔ admin /api/info/documents is private, non-cacheable and varies by account (1.710855ms)
+✔ alice /api/auth/me is private, non-cacheable and varies by account (1.762653ms)
+✔ alice /api/stories is private, non-cacheable and varies by account (2.748386ms)
+✔ alice /api/stories/alice-story is private, non-cacheable and varies by account (3.891148ms)
+✔ alice /api/student/config is private, non-cacheable and varies by account (8.012029ms)
+✔ alice /api/student/onboarding is private, non-cacheable and varies by account (4.777513ms)
+✔ teacher /api/auth/me is private, non-cacheable and varies by account (1.86722ms)
+✔ teacher /api/admin/config is private, non-cacheable and varies by account (4.126302ms)
+✔ teacher /api/admin/students is private, non-cacheable and varies by account (6.278592ms)
+✔ teacher /api/admin/analytics is private, non-cacheable and varies by account (9.106678ms)
+✔ Cross-account isolation: bob GET /api/stories/alice-story (2.546054ms)
+✔ Cross-account isolation: bob PATCH /api/stories/alice-story (3.103068ms)
+✔ Cross-account isolation: bob POST /api/stories/alice-story/extend (3.214168ms)
+✔ Cross-account isolation: bob POST /api/stories/alice-story/chapter (4.390615ms)
+✔ Cross-account isolation: bob GET /api/stories/alice-story/recordings (2.759595ms)
+✔ Cross-account isolation: teacher GET /api/stories/alice-story (2.162088ms)
+✔ Cross-account isolation: teacher PATCH /api/stories/alice-story (2.982129ms)
+✔ Cross-account isolation: teacher POST /api/stories/alice-story/extend (2.844403ms)
+✔ Cross-account isolation: teacher POST /api/stories/alice-story/chapter (3.76279ms)
+✔ Cross-account isolation: teacher GET /api/stories/alice-story/recordings (2.429514ms)
+✔ Cross-account isolation: outsider GET /api/stories/alice-story (2.576221ms)
+✔ Cross-account isolation: outsider PATCH /api/stories/alice-story (2.784514ms)
+✔ Cross-account isolation: outsider POST /api/stories/alice-story/extend (4.027231ms)
+✔ Cross-account isolation: outsider POST /api/stories/alice-story/chapter (3.666543ms)
+✔ Cross-account isolation: outsider GET /api/stories/alice-story/recordings (2.680429ms)
+✔ Story listing only contains the current student’s data (2.836127ms)
+✔ Switching cookies on the same URL never returns the previous account (8.333032ms)
+✔ Teacher student list excludes unmanaged students (6.909655ms)
+✔ Teacher cannot self-assign another student through classroom edits (6.355603ms)
+✔ Teacher cannot modify an unmanaged classroom (5.249204ms)
+✔ Teacher cannot edit an unmanaged student’s profile (5.529636ms)
+✔ Teacher cannot disable a managed student (6.992963ms)
+✔ Administrator accounts cannot be deleted through student routes (2.062546ms)
+✔ Onboarding cannot escalate student to admin (4.702236ms)
+✔ Onboarding cannot escalate student to teacher (4.305953ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 1 (1.855251ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 2 (1.002612ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 3 (0.892748ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 4 (1.08401ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 5 (0.911022ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 6 (0.850408ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 7 (0.821654ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 8 (1.367536ms)
+✔ /api/auth/login rejects malformed or unsafe JSON case 9 (0.861549ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 1 (1.635968ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 2 (1.689345ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 3 (1.767006ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 4 (1.829409ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 5 (1.69752ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 6 (3.221662ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 7 (1.936441ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 8 (1.573565ms)
+✔ /api/student/onboarding rejects malformed or unsafe JSON case 9 (1.691933ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 1 (1.873375ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 2 (1.680672ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 3 (1.505216ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 4 (1.660961ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 5 (1.545503ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 6 (1.506348ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 7 (1.662614ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 8 (1.617648ms)
+✔ /api/admin/students rejects malformed or unsafe JSON case 9 (1.556783ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 1 (1.609844ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 2 (1.626907ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 3 (1.611417ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 4 (1.652655ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 5 (1.549248ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 6 (1.549683ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 7 (1.905885ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 8 (1.574928ms)
+✔ /api/admin/config rejects malformed or unsafe JSON case 9 (3.309222ms)
+✔ /api/stories/generate rejects invalid request=null (3.839063ms)
+✔ /api/stories/generate rejects invalid request=123 (2.750283ms)
+✔ /api/stories/generate rejects invalid request={} (3.004882ms)
+✔ /api/stories/generate rejects invalid request=[] (2.526137ms)
+✔ /api/stories/generate rejects invalid request="" (2.491275ms)
+✔ /api/stories/generate rejects invalid request="   " (2.553248ms)
+✔ /api/stories/generate rejects invalid request="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx (2.264552ms)
+✔ /api/stories/generate rejects invalid title={} (2.71327ms)
+✔ /api/stories/generate rejects invalid genre=[] (2.269291ms)
+✔ /api/stories/generate rejects invalid plot=42 (2.538499ms)
+✔ /api/stories/generate rejects invalid chapterCount=0 (2.260984ms)
+✔ /api/stories/generate rejects invalid chapterCount=-1 (2.460967ms)
+✔ /api/stories/generate rejects invalid chapterCount=21 (3.626139ms)
+✔ /api/stories/generate rejects invalid chapterCount=1.5 (2.621772ms)
+✔ /api/stories/generate rejects invalid chapterCount="2" (2.412772ms)
+✔ /api/stories/generate rejects invalid contentMaturityLevel=0 (2.529703ms)
+✔ /api/stories/generate rejects invalid contentMaturityLevel=7 (2.472997ms)
+✔ /api/stories/generate rejects invalid contentMaturityLevel="2" (2.183038ms)
+✔ /api/stories/generate rejects invalid contentMaturityLevel=2.5 (2.82433ms)
+✔ /api/stories/generate rejects invalid plan=null (2.642302ms)
+✔ /api/stories/generate rejects invalid plan={} (2.595348ms)
+✔ /api/stories/plan rejects invalid request=null (2.522951ms)
+✔ /api/stories/plan rejects invalid request=123 (2.24785ms)
+✔ /api/stories/plan rejects invalid request={} (2.532238ms)
+✔ /api/stories/plan rejects invalid request=[] (2.42217ms)
+✔ /api/stories/plan rejects invalid request="" (2.446324ms)
+✔ /api/stories/plan rejects invalid request="   " (3.667475ms)
+✔ /api/stories/plan rejects invalid request="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx (2.542408ms)
+✔ /api/stories/plan rejects invalid title={} (2.316771ms)
+✔ /api/stories/plan rejects invalid genre=[] (2.449015ms)
+✔ /api/stories/plan rejects invalid plot=42 (3.167064ms)
+✔ /api/stories/plan rejects invalid chapterCount=0 (2.496711ms)
+✔ /api/stories/plan rejects invalid chapterCount=-1 (2.197836ms)
+✔ /api/stories/plan rejects invalid chapterCount=21 (2.265454ms)
+✔ /api/stories/plan rejects invalid chapterCount=1.5 (2.419314ms)
+✔ /api/stories/plan rejects invalid chapterCount="2" (2.412011ms)
+✔ /api/stories/plan rejects invalid contentMaturityLevel=0 (2.597351ms)
+✔ /api/stories/plan rejects invalid contentMaturityLevel=7 (2.218875ms)
+✔ /api/stories/plan rejects invalid contentMaturityLevel="2" (2.686174ms)
+✔ /api/stories/plan rejects invalid contentMaturityLevel=2.5 (2.384658ms)
+✔ /api/stories/plan rejects invalid plan=null (3.699906ms)
+✔ /api/stories/plan rejects invalid plan={} (2.536446ms)
+✔ /api/stories/start rejects invalid request=null (1.575309ms)
+✔ /api/stories/start rejects invalid request=123 (1.618981ms)
+✔ /api/stories/start rejects invalid request={} (1.660099ms)
+✔ /api/stories/start rejects invalid request=[] (1.481462ms)
+✔ /api/stories/start rejects invalid request="" (1.579351ms)
+✔ /api/stories/start rejects invalid request="   " (1.662859ms)
+✔ /api/stories/start rejects invalid request="xxxxxxxxxxxxxxxxxxxxxxxxxxxxx (1.631846ms)
+✔ /api/stories/start rejects invalid title={} (1.464629ms)
+✔ /api/stories/start rejects invalid genre=[] (1.527869ms)
+✔ /api/stories/start rejects invalid plot=42 (1.528651ms)
+✔ /api/stories/start rejects invalid chapterCount=0 (1.450723ms)
+✔ /api/stories/start rejects invalid chapterCount=-1 (1.563937ms)
+✔ /api/stories/start rejects invalid chapterCount=21 (1.551429ms)
+✔ /api/stories/start rejects invalid chapterCount=1.5 (2.087612ms)
+✔ /api/stories/start rejects invalid chapterCount="2" (1.627527ms)
+✔ /api/stories/start rejects invalid contentMaturityLevel=0 (1.699373ms)
+✔ /api/stories/start rejects invalid contentMaturityLevel=7 (1.43824ms)
+✔ /api/stories/start rejects invalid contentMaturityLevel="2" (1.614703ms)
+✔ /api/stories/start rejects invalid contentMaturityLevel=2.5 (1.645421ms)
+✔ /api/stories/start rejects invalid plan=null (1.685827ms)
+✔ /api/stories/start rejects invalid plan={} (1.453408ms)
+✔ Invalid session token "" fails authentication (0.843395ms)
+✔ Invalid session token "admin" fails authentication (0.893539ms)
+✔ Invalid session token "undefined" fails authentication (0.734269ms)
+✔ Invalid session token "null" fails authentication (0.784353ms)
+✔ Invalid session token "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" fails authentication (0.762081ms)
+✔ Invalid session token "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" fails authentication (0.795765ms)
+✔ Invalid session token "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.signa fails authentication (0.753304ms)
+✔ Invalid session token "../secret" fails authentication (0.929328ms)
+✔ Invalid session token "%00" fails authentication (0.976316ms)
+✔ Invalid session token "💥" fails authentication (0.933264ms)
+✔ Invalid session token "eyJyb2xlIjoiYWRtaW4ifQ" fails authentication (0.852933ms)
+✔ Invalid session token "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" fails authentication (0.958753ms)
+✔ Cross-origin mutation rejected for https://evil.example (0.93564ms)
+✔ Cross-origin mutation rejected for null (0.859465ms)
+✔ Cross-origin mutation rejected for http://localhost.evil.example (0.863573ms)
+✔ Cross-origin mutation rejected for https://tanuki.example.evil.test (1.249498ms)
+✔ Same-origin mutation accepted (4.216042ms)
+✔ Fetch metadata blocks cross-site submissions even without Origin (0.955977ms)
+✔ Mutation rejects content type text/plain (0.706707ms)
+✔ Mutation rejects content type application/x-www-form-urlencoded (0.693091ms)
+✔ Mutation rejects content type text/html (0.606657ms)
+✔ Payloads over 1 MiB are rejected without parsing (3.148834ms)
+✔ Deep nesting is rejected without a stack overflow (2.097185ms)
+✔ Lexile target rejects -50 (2.5441ms)
+✔ Lexile target rejects 1801 (2.433241ms)
+✔ Lexile target rejects 1850 (2.427519ms)
+✔ Lexile target rejects 25 (2.773672ms)
+✔ Lexile target rejects 100.5 (2.213592ms)
+✔ Lexile target rejects "600" (5.316799ms)
+✔ Lexile target rejects null (2.458093ms)
+✔ Lexile target 0 persists (7.125714ms)
+✔ Lexile target 50 persists (7.064327ms)
+✔ Lexile target 600 persists (7.036906ms)
+✔ Lexile target 1750 persists (7.29925ms)
+✔ Lexile target 1800 persists (7.093062ms)
+✔ Theme preference studio persists across sessions (7.358254ms)
+✔ Theme preference classroom persists across sessions (8.694521ms)
+✔ Theme preference focus persists across sessions (6.822891ms)
+✔ Successful sign-in sets an HttpOnly SameSite cookie and no cache (67.352613ms)
+✔ Unknown account and wrong password return the same public error (66.213869ms)
+✔ Rate limit applies before password work after repeated failures (321.245791ms)
+✔ Logout revokes a copied session token, not merely the browser cookie (3.909261ms)
+✔ Deleted account immediately loses existing session access (35.386847ms)
+✔ Disabled account loses sessions, including after re-enabling (46.4509ms)
+✔ Password change invalidates all previously issued tokens (64.111897ms)
+✔ Expired session is refused (2.899012ms)
+✔ Concurrent account creation gives one winner without overwrites (198.849231ms)
+✔ Concurrent session and data reads remain isolated (75.593656ms)
+✔ Concurrent generation is rejected rather than duplicated (814.555156ms)
+✔ Static traversal or secret path denied: /assets/../../.env.local (1.114768ms)
+✔ Static traversal or secret path denied: /data/tanuki.sqlite (0.855568ms)
+✔ Static traversal or secret path denied: /server/lib/auth.js (0.600095ms)
+✔ Static traversal or secret path denied: /.secrets/development-keyring.json (0.50236ms)
+✔ Static traversal or secret path denied: /%2e%2e/package.json (0.726875ms)
+✔ Static traversal or secret path denied: /assets/%2e%2e/%2e%2e/package.json (0.579085ms)
+✔ Native shell / has security headers and no private content (2.097056ms)
+✔ Native shell /login has security headers and no private content (1.157659ms)
+✔ Native shell /student has security headers and no private content (1.081175ms)
+✔ Native shell /admin has security headers and no private content (1.115831ms)
+✔ Native shell /teacher has security headers and no private content (1.008317ms)
+✔ Native shell /student/reader/alice-story has security headers and no private content (1.109178ms)
+✔ Shell HEAD returns no body with the proper MIME type (1.479935ms)
+✔ Unknown API returns non-cacheable 404 (0.821833ms)
+✔ Unsupported endpoint method returns 405 (1.543492ms)
+✔ Search rejects malformed query null (1.940405ms)
+✔ Search rejects malformed query 42 (1.728008ms)
+✔ Search rejects malformed query {} (1.645222ms)
+✔ Search rejects malformed query [] (1.60207ms)
+✔ Search rejects malformed query "" (1.613191ms)
+✔ Search rejects malformed query "xxxxxxxxxxxxxxxxxxx (1.500057ms)
+✔ studio login at 375px has usable layout and loaded Jua (255.858644ms)
+✔ studio student at 375px has usable layout and loaded Jua (317.364472ms)
+✔ studio reader at 375px has usable layout and loaded Jua (79.09918ms)
+✔ studio administrator at 375px has usable layout and loaded Jua (88.559227ms)
+✔ studio login at 768px has usable layout and loaded Jua (66.440164ms)
+✔ studio student at 768px has usable layout and loaded Jua (97.906337ms)
+✔ studio reader at 768px has usable layout and loaded Jua (65.874735ms)
+✔ studio administrator at 768px has usable layout and loaded Jua (85.260029ms)
+✔ studio login at 1440px has usable layout and loaded Jua (68.86972ms)
+✔ studio student at 1440px has usable layout and loaded Jua (98.606908ms)
+✔ studio reader at 1440px has usable layout and loaded Jua (80.681554ms)
+✔ studio administrator at 1440px has usable layout and loaded Jua (88.072044ms)
+✔ classroom login at 375px has usable layout and loaded Jua (67.341744ms)
+✔ classroom student at 375px has usable layout and loaded Jua (149.006407ms)
+✔ classroom reader at 375px has usable layout and loaded Jua (74.00959ms)
+✔ classroom administrator at 375px has usable layout and loaded Jua (91.114201ms)
+✔ classroom login at 768px has usable layout and loaded Jua (75.534973ms)
+✔ classroom student at 768px has usable layout and loaded Jua (139.295382ms)
+✔ classroom reader at 768px has usable layout and loaded Jua (91.199767ms)
+✔ classroom administrator at 768px has usable layout and loaded Jua (107.262584ms)
+✔ classroom login at 1440px has usable layout and loaded Jua (90.275338ms)
+✔ classroom student at 1440px has usable layout and loaded Jua (114.1867ms)
+✔ classroom reader at 1440px has usable layout and loaded Jua (76.305119ms)
+✔ classroom administrator at 1440px has usable layout and loaded Jua (86.578172ms)
+✔ focus login at 375px has usable layout and loaded Jua (76.920701ms)
+✔ focus student at 375px has usable layout and loaded Jua (153.839905ms)
+✔ focus reader at 375px has usable layout and loaded Jua (78.190431ms)
+✔ focus administrator at 375px has usable layout and loaded Jua (91.94133ms)
+✔ focus login at 768px has usable layout and loaded Jua (75.942154ms)
+✔ focus student at 768px has usable layout and loaded Jua (103.762065ms)
+✔ focus reader at 768px has usable layout and loaded Jua (80.273375ms)
+✔ focus administrator at 768px has usable layout and loaded Jua (84.558055ms)
+✔ focus login at 1440px has usable layout and loaded Jua (75.954415ms)
+✔ focus student at 1440px has usable layout and loaded Jua (102.738675ms)
+✔ focus reader at 1440px has usable layout and loaded Jua (93.392729ms)
+✔ focus administrator at 1440px has usable layout and loaded Jua (87.569014ms)
+✔ studio login fields have accessible names and keyboard submit works (249.297167ms)
+✔ studio preferences dialog traps keyboard focus and Escape restores focus (156.177072ms)
+✔ studio primary reading text meets WCAG AA contrast (86.608027ms)
+✔ studio theme selector persists through reload (147.475612ms)
+✔ classroom login fields have accessible names and keyboard submit works (202.917866ms)
+✔ classroom preferences dialog traps keyboard focus and Escape restores focus (186.575067ms)
+✔ classroom primary reading text meets WCAG AA contrast (100.619941ms)
+✔ classroom theme selector persists through reload (165.205885ms)
+✔ focus login fields have accessible names and keyboard submit works (188.00998ms)
+✔ focus preferences dialog traps keyboard focus and Escape restores focus (167.002081ms)
+✔ focus primary reading text meets WCAG AA contrast (89.010754ms)
+✔ focus theme selector persists through reload (159.812677ms)
+✔ Lexile slider supports keyboard steps and announces its value (140.382131ms)
+✔ Lexile and theme preferences survive browser reload and server read (320.509085ms)
+✔ Saved account theme loads in a fresh browser without local preferences (88.373977ms)
+✔ All rendered preference controls have labels and unique IDs (118.351466ms)
+✔ Library search filters actual title data (93.487274ms)
+✔ Library article filter excludes fiction (98.646277ms)
+✔ Library empty search explains no matches (94.653886ms)
+✔ Student library never displays another account title (83.719963ms)
+✔ Prompt inspiration fills the editable story input (127.236691ms)
+✔ Reader chapter navigation preserves order and bounds (195.399608ms)
+✔ Reader text enlargement persists after reload (154.337924ms)
+✔ Reader text controls enforce readable size bounds (888.651759ms)
+✔ Stored story markup is displayed literally without executing script (71.800321ms)
+✔ Failed login exposes an accessible error without navigating (188.022351ms)
+✔ Logout revokes session and browser cannot navigate back into private data (184.409534ms)
+✔ Teacher navigation contains only permitted sections (131.110992ms)
+✔ Reader edit saves real data and collapses obsolete chapter content (218.586038ms)
+✔ Security browser: deleted account cannot save preferences or reload private content (259.440466ms)
+✔ Security browser: student cannot use educator UI or privileged API through direct navigation (148.578283ms)
+✔ Security browser: stored hostile story markup cannot execute when an administrator opens the library (158.193615ms)
+✔ Security browser: teacher cannot reassign a roster with an authenticated direct API request (97.625091ms)
+✔ Security browser: a second local origin cannot read credentialed private API responses (101.846964ms)
+✔ RFC8452 C.2 vector 1: exact ciphertext and authentication tag (3.340527ms)
+✔ RFC8452 C.2 vector 1: authenticated decryption (0.426106ms)
+✔ RFC8452 C.2 vector 1: modified tag rejected (0.431871ms)
+✔ RFC8452 C.2 vector 2: exact ciphertext and authentication tag (0.330415ms)
+✔ RFC8452 C.2 vector 2: authenticated decryption (0.150786ms)
+✔ RFC8452 C.2 vector 2: modified tag rejected (0.491585ms)
+✔ RFC8452 C.2 vector 3: exact ciphertext and authentication tag (0.227821ms)
+✔ RFC8452 C.2 vector 3: authenticated decryption (0.242278ms)
+✔ RFC8452 C.2 vector 3: modified tag rejected (0.316929ms)
+✔ RFC8452 C.2 vector 4: exact ciphertext and authentication tag (0.199818ms)
+✔ RFC8452 C.2 vector 4: authenticated decryption (0.189228ms)
+✔ RFC8452 C.2 vector 4: modified tag rejected (0.178477ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 1 (0.844687ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 2 (0.246266ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 3 (0.237654ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 4 (0.176905ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 5 (0.240194ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 6 (0.357747ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 7 (0.193566ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 8 (0.135165ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 9 (0.240425ms)
+✔ NIST ACVP/OpenSSL ML-KEM-1024 decapsulation vector 10 (0.260924ms)
+✔ Encrypted envelope preserves 0 binary bytes (3.936533ms)
+✔ Encrypted envelope preserves 1 binary bytes (1.412802ms)
+✔ Encrypted envelope preserves 15 binary bytes (1.079922ms)
+✔ Encrypted envelope preserves 16 binary bytes (1.677707ms)
+✔ Encrypted envelope preserves 17 binary bytes (2.126198ms)
+✔ Encrypted envelope preserves 31 binary bytes (1.129627ms)
+✔ Encrypted envelope preserves 32 binary bytes (1.095601ms)
+✔ Encrypted envelope preserves 33 binary bytes (1.019498ms)
+✔ Encrypted envelope preserves 255 binary bytes (2.231299ms)
+✔ Encrypted envelope preserves 4096 binary bytes (2.568116ms)
+✔ Encrypted envelope preserves 65536 binary bytes (13.437759ms)
+✔ Envelope rejects bit-flipped data (1.195871ms)
+✔ Envelope rejects bit-flipped kem (0.844246ms)
+✔ Envelope rejects bit-flipped nonce (1.886808ms)
+✔ Envelope prevents record substitution into "story:bob" (0.988068ms)
+✔ Envelope prevents record substitution into "users:alice" (0.89913ms)
+✔ Envelope prevents record substitution into "story:alice\u0000" (1.237109ms)
+✔ Envelope prevents record substitution into "" (0.752887ms)
+✔ Envelope prevents record substitution into "story:ALICE" (0.768103ms)
+✔ Envelope rejects missing v (0.640869ms)
+✔ Envelope rejects missing kid (0.875736ms)
+✔ Envelope rejects missing kem (2.348431ms)
+✔ Envelope rejects missing nonce (0.558256ms)
+✔ Envelope rejects missing data (1.146433ms)
+✔ Malformed envelope "" fails closed (0.065253ms)
+✔ Malformed envelope "{}" fails closed (0.019206ms)
+✔ Malformed envelope "null" fails closed (0.012153ms)
+✔ Malformed envelope "[]" fails closed (0.013836ms)
+✔ Malformed envelope "{" fails closed (0.09032ms)
+✔ Malformed envelope "{\"v\":2}" fails closed (0.036719ms)
+✔ Repeated encryption uses distinct nonces and KEM ciphertexts (1.376347ms)
+✔ Unknown key ID cannot silently decrypt (0.827945ms)
+✔ ML-KEM native round-trip produces 32-byte shared secret and 1568-byte ciphertext (0.147659ms)
+✔ ML-KEM implicit rejection does not yield legitimate shared secret (0.172877ms)
+✔ Keyring rejects mismatched native public/private keys (1.390049ms)
+✔ Passwords use Argon2id v19, 64 MiB, three passes, one lane (0.192224ms)
+✔ Argon2id PHC output agrees with independent native OpenSSL implementation (83.701075ms)
+✔ Argon2id unique salt for each password hash (30.324567ms)
+✔ Argon2id correct password verifies (31.966722ms)
+✔ Argon2id rejects incorrect "wrong" password (30.915329ms)
+✔ Argon2id rejects incorrect "A meaningful test password" password (32.519262ms)
+✔ Argon2id rejects incorrect "a meaningful test password " password (31.266709ms)
+✔ Argon2id rejects incorrect "" password (30.774684ms)
+✔ Argon2id rejects incorrect "\u0000" password (30.938959ms)
+✔ Argon2id rejects incorrect "🙂" password (30.473334ms)
+✔ Argon2id preserves exact UTF-8 password "한글 암호와 공백 123" (90.437584ms)
+✔ Argon2id preserves exact UTF-8 password "pass\u0000word is preserved" (90.877079ms)
+✔ Argon2id preserves exact UTF-8 password "é and é differ" (91.072369ms)
+✔ Malformed password hash "" is rejected (0.477974ms)
+✔ Malformed password hash "bad hash" is rejected (0.244793ms)
+✔ Malformed password hash "$argon2id$" is rejected (0.283235ms)
+✔ Malformed password hash "scrypt:123" is rejected (0.271985ms)
+✔ Account validation rejects username "" (0.265703ms)
+✔ Account validation rejects username "../alice" (0.080132ms)
+✔ Account validation rejects username "alice bob" (0.015069ms)
+✔ Account validation rejects username "__proto__" (0.011021ms)
+✔ Account validation rejects username "<script>" (0.009618ms)
+✔ Account validation rejects username "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" (0.009859ms)
+✔ Account validation rejects password shape string:0 (0.04757ms)
+✔ Account validation rejects password shape string:5 (0.045506ms)
+✔ Account validation rejects password shape string:11 (0.063961ms)
+✔ Account validation rejects password shape string:1025 (0.028504ms)
+✔ Account validation rejects password shape object:4 (0.013326ms)
+✔ Account validation rejects password shape number:3 (0.019667ms)
+✔ Maximum allowed credentials are accepted (0.045275ms)
+✔ Hashing non-string input is rejected (0.09522ms)
+✔ stories: write/read preserves structured Unicode data (8.688899ms)
+✔ stories: payload is not stored in plaintext (0.268548ms)
+✔ stories: updates cannot create duplicate primary keys (2.556814ms)
+✔ stories: rollback restores previous payload (1.563216ms)
+✔ stories: deletion is exact and idempotent (0.207302ms)
+✔ config: write/read preserves structured Unicode data (1.286152ms)
+✔ config: payload is not stored in plaintext (0.115147ms)
+✔ config: updates cannot create duplicate primary keys (4.037571ms)
+✔ config: rollback restores previous payload (1.092586ms)
+✔ config: deletion is exact and idempotent (0.122642ms)
+✔ recordings: write/read preserves structured Unicode data (1.191964ms)
+✔ recordings: payload is not stored in plaintext (0.065574ms)
+✔ recordings: updates cannot create duplicate primary keys (1.970756ms)
+✔ recordings: rollback restores previous payload (1.566643ms)
+✔ recordings: deletion is exact and idempotent (0.071766ms)
+✔ knowledge-base: write/read preserves structured Unicode data (1.392062ms)
+✔ knowledge-base: payload is not stored in plaintext (0.055896ms)
+✔ knowledge-base: updates cannot create duplicate primary keys (1.724105ms)
+✔ knowledge-base: rollback restores previous payload (1.541685ms)
+✔ knowledge-base: deletion is exact and idempotent (0.127812ms)
+✔ test: write/read preserves structured Unicode data (1.7275ms)
+✔ test: payload is not stored in plaintext (0.064132ms)
+✔ test: updates cannot create duplicate primary keys (2.041271ms)
+✔ test: rollback restores previous payload (1.297599ms)
+✔ test: deletion is exact and idempotent (0.076965ms)
+✔ SQLite WAL is enabled (0.068179ms)
+✔ SQLite foreign keys are enabled (0.029526ms)
+✔ SQLite rejects sessions for nonexistent users (0.112232ms)
+✔ User credentials stored as Argon2id hashes with encrypted profile (87.262239ms)
+✔ Duplicate user insertion refuses overwriting existing roles (1.649369ms)
+✔ User profile update retains credentials and other preferences (2.573376ms)
+✔ Updating a missing account returns null without insertion (0.11102ms)
+✔ Invalid SQL role cannot be persisted (31.67717ms)
+✔ Usernames containing SQL syntax remain data, not queries (32.331498ms)
+✔ Nested transaction failure rolls back outer writes (2.102726ms)
+✔ Database connection remains usable after rollback (1.436386ms)
+✔ CSV import preserves profile and cannot replace teachers (70.853806ms)
+✔ CSV imported password is Argon2id and actually verifies (31.97351ms)
+✔ CSV skips invalid usernames and short passwords without deleting data (8.668413ms)
+✔ CSV headerless import and RAZ reading levels work (38.297027ms)
+✔ Story edits update chapter reader content consistently (3.248588ms)
+✔ Chapter appends preserve order and reconstructed prose (10.921541ms)
+✔ Completing then extending a story preserves existing chapters (3.462738ms)
+✔ Missing story appendChapter returns null (0.844347ms)
+✔ Missing story markStoryComplete returns null (0.742685ms)
+✔ Missing story extendStory returns null (0.916893ms)
+✔ Missing story updateStory returns null (0.849111ms)
+✔ Recording metadata lookup isolates story IDs (2.455058ms)
+✔ Deleting recording metadata leaves other recordings intact (1.685698ms)
+✔ Knowledge document upsert and delete are durable (3.655352ms)
+✔ Rate limits persist across database reopen (1.007706ms)
+✔ Expired rate limit windows permit another attempt (0.120217ms)
+✔ Cross-process story appends cannot lose updates (134.752079ms)
+✔ Corrupted database ciphertext fails closed without overwriting the record (1.483795ms)
+✔ Moving encrypted payload across collections is detected (1.10009ms)
+✔ Rotation reencrypts records and preserves all user and story data (22.093778ms)
+✔ Old ciphertext backups still decrypt after rotation (22.292032ms)
+✔ Database survives close and reopen after rotation (3.533683ms)
+✔ All classroom restrictions accumulate instead of first match winning (3.35515ms)
+✔ Overlapping classrooms enforce the tightest maturity maximum (3.655407ms)
+✔ Classroom ordering cannot change effective safety (7.157139ms)
+✔ Conflicting maturity minimum cannot override a safer maximum (3.095338ms)
+✔ Migration preserves users, settings, stories, recordings and references (93.714705ms)
+✔ Migrated plaintext password still verifies (105.69298ms)
+✔ Migration preserves original files for recovery (78.477461ms)
+✔ Migration does not reimport stale source data (116.410046ms)
+✔ Existing Argon2id hashes are not double hashed (77.998523ms)
+✔ Corrupt legacy users aborts without resetting source (37.351314ms)
+✔ Corrupt legacy stories aborts without resetting source (37.978255ms)
+✔ Corrupt legacy config aborts without resetting source (35.937136ms)
+✔ Corrupt legacy recordings aborts without resetting source (35.773881ms)
+✔ Corrupt legacy knowledge-base aborts without resetting source (37.758545ms)
+✔ Non-array legacy users is refused (35.942702ms)
+✔ Non-array legacy stories is refused (36.099552ms)
+✔ Non-array legacy recordings is refused (35.819613ms)
+✔ Non-array legacy knowledge-base is refused (38.143101ms)
+✔ Duplicate legacy usernames cannot overwrite roles (70.703056ms)
+✔ Partial migration rolls back and can be retried after repair (154.025374ms)
+✔ Wrong keyring cannot open the database (72.653744ms)
+✔ Missing configured keyring is never auto-generated (37.701563ms)
+✔ Production cannot start without an administrator (38.798657ms)
+✔ Production rejects bootstrap password "" (39.572369ms)
+✔ Production rejects bootstrap password "short" (37.001167ms)
+✔ Production rejects bootstrap password "admin123" (39.479143ms)
+✔ Production only bootstraps explicitly configured admins (81.816371ms)
+✔ Production requires an HTTPS public origin (142.911679ms)
+✔ Production cookies have Secure, HttpOnly and no plaintext credentials (222.44347ms)
+✔ Container runs as non-root (0.55031ms)
+✔ Deployment persists SQLite data (0.393324ms)
+✔ Deployment mounts keys read-only (0.1113ms)
+✔ Docker build context excludes secrets (0.418492ms)
+✔ Runtime dependency allowlist contains only the explicitly reviewed cryptographic libraries (0.18478ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ New recipient identities use independent ML-KEM-1024 and ML-DSA-87 keys (0.864043ms)
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ Native and browser implementations interoperate in both directions for multi-recipient signed content (109.116704ms)
+✔ Browser-generated encrypted backup unlocks natively with identical public identity (30.448506ms)
+✔ Backup parameter injection is rejected before expensive key derivation (0.885739ms)
+✔ Backup ciphertext, salt, nonce and fingerprint substitution fail closed (122.470337ms)
+✔ PQ public-key pin compares actual bytes; private seeds cannot be enrolled as public keys (2.274532ms)
+✔ PQ signatures reject another signer, message mutation and truncated signature (4.320866ms)
+✔ PQ signed envelopes reject metadata, wrapped key and content tampering (9.095604ms)
+✔ Unsigned envelopes cannot bypass expected sender verification (2.652069ms)
+✔ Unsigned envelope AEAD independently binds KEM, recipient set and payload without relying on a signature (6.081099ms)
+✔ PQ envelopes reject reordered and duplicate recipients, unknown fields and noncanonical base64 (2.940731ms)
+✔ Public-only keys and wrong context cannot decrypt or release response text (4.821953ms)
+✔ New encryption refuses legacy or mixed recipients without silently falling back (95.221474ms)
+✔ Storage v2 signs with ML-DSA-87 and retains authenticated v1 read compatibility (3.657988ms)
+✔ Changing storage v2 version cannot select the legacy derivation or omit authentication (0.986576ms)
+✔ HKDF-SHA-512 primitive agrees between browser and native with a long bound context (1.229265ms)
+✔ Wycheproof HKDF-SHA-512 tcId 1 derives exact reference bytes (1.980776ms)
+✔ Wycheproof HKDF-SHA-512 tcId 2 derives exact reference bytes (0.47036ms)
+✔ Wycheproof HKDF-SHA-512 tcId 3 derives exact reference bytes (0.442587ms)
+✔ Vendored browser crypto bytes match their recorded upstream inputs and rewritten output (3.314112ms)
+✔ NIST FIPS204 ML-DSA-87 external sigVer tcId 61: modified message (25.008294ms)
+✔ NIST FIPS204 ML-DSA-87 external sigVer tcId 62: modified message (17.883991ms)
+✔ NIST FIPS204 ML-DSA-87 external sigVer tcId 63: valid signature and message - signature should verify successfully (17.930116ms)
+✔ NIST FIPS204 ML-DSA-87 external sigVer tcId 64: modified signature - commitment (17.847032ms)
+✔ NIST FIPS204 ML-DSA-87 external sigVer tcId 65: modified signature - hint (1.728632ms)
+✔ NIST FIPS204 ML-DSA-87 external sigVer tcId 66: modified message (15.889904ms)
+✔ NIST FIPS204 ML-DSA-87 external sigVer tcId 67: valid signature and message - signature should verify successfully (17.274911ms)
+✔ NIST FIPS204 ML-DSA-87 external sigVer tcId 68: modified signature - commitment (16.925696ms)
+✔ A real legacy keyring and database rotate to the new suite without losing data or password hashes (49.854551ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+✔ Protected responses remain private and noncacheable for authenticated accounts (53.120689ms)
+✔ Device command replay is rejected even under a valid application session (73.59041ms)
+✔ Tampered and expired signed commands are rejected (16.871362ms)
+✔ A valid session alone cannot enroll an additional unauthorized key (21.47578ms)
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ Student creates private draft whose inner plaintext is unavailable to server-managed keys (45.150252ms)
+✔ Student, teacher and administrator sessions cannot retrieve private drafts (143.654947ms)
+✔ Cross-classroom and administrator recipient injection is rejected (136.927095ms)
+✔ Private mode cannot silently include an educator recipient (41.853784ms)
+✔ Concurrent revision updates accept exactly one writer (72.591702ms)
+✔ Authorized teacher decrypts a classroom submission, then loses API access on reassignment (172.626518ms)
+✔ AI generation requires explicit plaintext-disclosure consent (22.596527ms)
+✔ Generation continues when the initiating HTTP response has ended (235.260948ms)
+✔ Concurrent authenticated reconnects are isolated and decryptable for authorized teacher (137.73361ms)
+✔ Explicit cancellation reaches the local provider transport (92.301031ms)
+✔ Revoked session cannot reconnect despite possessing the legitimate device key (3.046791ms)
+✔ Truncated provider stream is interrupted instead of falsely marked complete (60.984011ms)
+✔ Oversized provider events terminate generation within parser bounds (65.848698ms)
+✔ Revoked device cannot retrieve data or bootstrap itself again (68.706959ms)
+✔ Deleted account sessions fail before protected device operations (2.200902ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ studio: protected editor is labelled, responsive, and saves client-encrypted text (922.688366ms)
+✔ classroom: protected editor is labelled, responsive, and saves client-encrypted text (804.341006ms)
+✔ focus: protected editor is labelled, responsive, and saves client-encrypted text (782.252787ms)
+✔ Browser refuses classroom sharing until teacher identity is externally pinned (607.687763ms)
+✔ Fresh browser generates its private key locally and saves recovery material before enrollment (742.030288ms)
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ Browser closure does not stop provider; a fresh browser resumes from encrypted checkpoint (1822.970709ms)
+✔ Authorized student and teacher decrypt signed recipient ciphertext (13.069904ms)
+✔ Unrelated device cannot decrypt a classroom response (2.744225ms)
+✔ Substituted public bytes cannot inherit a previously pinned fingerprint label (2.692641ms)
+✔ Public keys cannot be used as private decryption keys (2.784961ms)
+✔ Account password or incorrect recovery secret cannot unlock device backup (40.649043ms)
+✔ Context substitution fails after valid cryptographic decryption (11.317592ms)
+✔ Wrong sender and unsigned ciphertext fail signature verification (8.236682ms)
+✔ Malformed ciphertext and corrupted encrypted backup fail closed (0.306519ms)
+✔ Ciphertext bit corruption fails AEAD verification without releasing text (0.733056ms)
+✔ Recipient packets require AES-256-GCM authenticated encryption and fresh salts (3.008328ms)
+✔ Legacy non-AEAD messages are rejected instead of silently downgraded (7.950051ms)
+✔ Browser library is byte-identical to the pinned installed distribution (1.126973ms)
+✔ Recipient encryption is randomized for identical content (5.803845ms)
+✔ Assembler rejects gaps, conflicting duplicates and cross-generation deliveries (6.830025ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ SIGKILL leaves committed ciphertext recoverable and provider state interrupted after process restart (295.04918ms)
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ Isolated server copy with database, backup, source, configuration and every server key cannot decrypt client-protected text (308.493888ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ Generation finishes without any HTTP subscriber and persists only recipient ciphertext (36.577763ms)
+✔ Independent concurrent reconnects receive the same ordered ciphertext (50.872132ms)
+✔ Acknowledgements are digest-bound and cannot move a device cursor backward (27.143709ms)
+✔ Cross-account and unlisted device requests cannot retrieve ciphertext (21.410771ms)
+✔ Cancellation aborts the provider and is durably recorded (9.130995ms)
+✔ Authorization changes during provider work prevent persistence (5.249104ms)
+✔ Provider errors cannot leak exception text into persisted job state (5.883293ms)
+✔ Restart retains partial ciphertext and marks unfinished work interrupted (22.901655ms)
+✔ Disabled accounts cannot resume using a previously valid device (19.998175ms)
+✔ Per-user active generation quota rejects racing second work (10.244119ms)
+✔ Expired generations lose ciphertext, then their bounded tombstones are removed (19.041525ms)
+✔ Database writer cannot replace the authenticated recipient set (17.942798ms)
+✔ Public recipient key cannot forge a server-origin queue chunk through database writes (19.431732ms)
+✔ Account deletion cascades response ciphertext and acknowledgement removal (19.347474ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+{"event":"generation_started","id":"f09b185d-eaa8-4850-bbba-8baa5697ab2b"}
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+{"event":"generation_complete","id":"f09b185d-eaa8-4850-bbba-8baa5697ab2b"}
+✔ studio: primary composer enters trusted mode without sending plaintext to the ordinary API (2233.351999ms)
+{"event":"generation_started","id":"54ef1374-0ac5-40e7-9822-8ea616308cc1"}
+{"event":"generation_complete","id":"54ef1374-0ac5-40e7-9822-8ea616308cc1"}
+✔ classroom: primary composer enters trusted mode without sending plaintext to the ordinary API (2247.845107ms)
+{"event":"generation_started","id":"c167e7f4-e206-41db-8853-6ace0d165d43"}
+{"event":"generation_complete","id":"c167e7f4-e206-41db-8853-6ace0d165d43"}
+✔ focus: primary composer enters trusted mode without sending plaintext to the ordinary API (2363.408075ms)
+✔ A compromised API cannot swap worker public bytes while retaining a trusted fingerprint label (900.976049ms)
+{"event":"generation_started","id":"d5c636f2-0261-4954-b85e-7b1df7a3d384"}
+{"event":"generation_complete","id":"d5c636f2-0261-4954-b85e-7b1df7a3d384"}
+✔ A closed browser resumes worker-signed output from an encrypted checkpoint without duplication (3427.555305ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+✔ mTLS rejects missing and unapproved application client certificates (11.403302ms)
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+{"event":"generation_started","id":"1130b50f-bf16-48d6-acc7-5669f78e6edb"}
+{"event":"generation_complete","id":"1130b50f-bf16-48d6-acc7-5669f78e6edb"}
+✔ Ordinary API receives encrypted input and returns worker-signed recipient ciphertext (898.116601ms)
+✔ Trusted mode refuses legacy and in-process plaintext generation paths (23.457957ms)
+✔ Wrong class and cross-student recipients cannot be authorized by the API (83.993426ms)
+{"event":"generation_started","id":"d61b21eb-56e5-49f5-a4f3-8b78bdade44b"}
+{"event":"generation_cancelled","id":"d61b21eb-56e5-49f5-a4f3-8b78bdade44b"}
+{"event":"generation_interrupted","id":"d61b21eb-56e5-49f5-a4f3-8b78bdade44b"}
+✔ Session revocation while provider is active prevents both API and worker chunk persistence (373.165306ms)
+{"event":"generation_started","id":"1cf512b4-c13c-4d99-82d1-50def748c1f5"}
+{"event":"generation_cancelled","id":"1cf512b4-c13c-4d99-82d1-50def748c1f5"}
+{"event":"generation_interrupted","id":"1cf512b4-c13c-4d99-82d1-50def748c1f5"}
+✔ Teacher reassignment revokes pending distribution before durable encrypted output (513.773156ms)
+{"event":"generation_started","id":"13c98374-5623-4e3d-a498-a96db068a253"}
+✔ Application coordinator restart recovers an active independent worker without resending input (1061.955988ms)
+{"event":"generation_complete","id":"13c98374-5623-4e3d-a498-a96db068a253"}
+{"event":"generation_started","id":"d299acfc-bd6e-4d80-be5d-f30e008de012"}
+{"event":"generation_complete","id":"d299acfc-bd6e-4d80-be5d-f30e008de012"}
+✔ Ordinary API cannot forge a worker signature with its public processing identity (818.043018ms)
+{"event":"generation_started","id":"0cd2d5fc-1281-4dc5-ae55-9f224c4dd8cd"}
+{"event":"generation_cancelled","id":"0cd2d5fc-1281-4dc5-ae55-9f224c4dd8cd"}
+{"event":"generation_interrupted","id":"0cd2d5fc-1281-4dc5-ae55-9f224c4dd8cd"}
+✔ SQLite API write failure does not authorize a new worker durable chunk (486.444158ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ Trusted worker decrypts input only in memory; no output is durable before API authorization (60.025236ms)
+✔ Student and assigned teacher decrypt output; processing worker and stranger cannot (39.926097ms)
+✔ Substituting a recipient key outside the signed encrypted input fails (7.088388ms)
+✔ Cross-account and generation substitution fails before provider access (9.409592ms)
+✔ Unsigned, wrong-signer, stale and non-consenting encrypted inputs fail closed (16.344355ms)
+✔ Generation identifiers cannot be replayed after a valid completed operation (29.594855ms)
+✔ Explicit revocation before commit discards pending output and aborts provider (14.06223ms)
+✔ Expired authorization lease cannot persist pending output (18.063662ms)
+✔ Wrong chunk acknowledgements and altered worker signatures are rejected (26.709445ms)
+✔ Truncated upstream output is interrupted without a fabricated terminal chunk (21.252153ms)
+✔ Worker restart preserves committed encrypted chunks and terminates unfinished generation (13.15779ms)
+✔ SQLite write failure never acknowledges or fabricates a committed chunk (13.981466ms)
+✔ Worker artifacts reproduce identical source/dependency hashes without application auth/storage modules (511.565869ms)
+✔ Worker artifact verification rejects modified deployed source (25.597714ms)
+✔ Worker artifact verification rejects extra unreviewed files (25.94126ms)
+✔ Generation persists provider prose with owner and Lexile difficulty (38.821614ms)
+✔ Planning parses a complete provider plan (16.12264ms)
+Plan generation error: Error: AI provider did not return a valid story plan
+    at planStory (file://<ISOLATED_WSL_RUN>/server/lib/openai.js:172:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async POST (file://<ISOLATED_WSL_RUN>/server/routes/stories/plan/route.js:46:22)
+    at async Server.<anonymous> (file://<ISOLATED_WSL_RUN>/server/index.js:76:24)
+✔ Malformed configured provider plan fails without substituting demo output (10.540956ms)
+Story generation error: Error: AI provider returned 503
+    at Object.create (file://<ISOLATED_WSL_RUN>/server/lib/ai-client.js:13:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async generateStory (file://<ISOLATED_WSL_RUN>/server/lib/openai.js:100:22)
+    at async POST (file://<ISOLATED_WSL_RUN>/server/routes/stories/generate/route.js:89:17)
+    at async Server.<anonymous> (file://<ISOLATED_WSL_RUN>/server/index.js:76:24)
+✔ Provider failure never persists an invented successful story (15.105545ms)
+✔ Accepted story plan creates an owned empty chapter record (10.090946ms)
+✔ Malformed chapter requests fail before contacting provider (6.205056ms)
+✔ Fragmented UTF-8 SSE chapter is persisted exactly once and completes (19.003136ms)
+✔ Completed chapter cannot be replayed (6.452952ms)
+✔ Extension reopens a completed story with an increased chapter target (7.319755ms)
+✔ Recording upload encrypts bytes on disk and preserves playback (12.66428ms)
+✔ Another account cannot upload into an owned story (4.124268ms)
+✔ Another account cannot play a known recording ID (3.666032ms)
+✔ Recording rejects invalid or unavailable chapter "-1" (3.928747ms)
+✔ Recording rejects invalid or unavailable chapter "0.5" (3.814984ms)
+✔ Recording rejects invalid or unavailable chapter "0abc" (3.469585ms)
+✔ Recording rejects invalid or unavailable chapter "" (5.041463ms)
+✔ Recording rejects invalid or unavailable chapter "1" (3.790957ms)
+✔ Recording rejects invalid or unavailable chapter "9007199254740993" (3.719543ms)
+✔ Recording rejects unsupported MIME text/html (3.656705ms)
+✔ Recording rejects unsupported MIME audio/webm-evil (3.758051ms)
+✔ Recording rejects unsupported MIME application/javascript (3.545539ms)
+✔ Recording upload requires a file (3.023837ms)
+✔ Recording upload rejects data over five MiB (19.468571ms)
+Request failed: Encrypted record signature authentication failed
+✔ Corrupted encrypted recording fails closed without serving ciphertext (4.538009ms)
+✔ Recording metadata cannot traverse outside its storage directory (6.169857ms)
+✔ Administrator knowledge document creation, retrieval and deletion persist (9.081191ms)
+ℹ tests 670
+ℹ suites 0
+ℹ pass 670
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47530.786701
+ℹ start of coverage report
+ℹ -----------------------------------------------------------------------------------------------------------------------------------------------------
+ℹ file                         | line % | branch % | funcs % | uncovered lines
+ℹ -----------------------------------------------------------------------------------------------------------------------------------------------------
+ℹ public                       |        |          |         |
+ℹ  assets                      |        |          |         |
+ℹ   pq-recipient.js            | 100.00 |    87.60 |   92.86 |
+ℹ server                       |        |          |         |
+ℹ  http.js                     | 100.00 |    80.00 |  100.00 |
+ℹ  index.js                    |  96.61 |    95.52 |   87.50 | 115-118
+ℹ  lib                         |        |          |         |
+ℹ   ai-client.js               | 100.00 |    93.33 |  100.00 |
+ℹ   auth.js                    | 100.00 |    89.36 |  100.00 |
+ℹ   crypto.js                  | 100.00 |    92.31 |  100.00 |
+ℹ   database.js                | 100.00 |    94.44 |  100.00 |
+ℹ   generation-policy.js       | 100.00 |   100.00 |  100.00 |
+ℹ   knowledge-base.js          |  50.00 |   100.00 |   50.00 | 3-5
+ℹ   openai.js                  |  73.86 |    33.33 |   61.54 | 16-17 22-23 25-26 32-51 82-85 91-92 137-140 142-152 173 192-194 197-198 227-236 238-243
+ℹ   passwords.js               | 100.00 |   100.00 |  100.00 |
+ℹ   pq-primitives.js           | 100.00 |   100.00 |  100.00 |
+ℹ   protected-content.js       | 100.00 |    79.28 |   97.06 |
+ℹ   reading-levels.js          | 100.00 |   100.00 |  100.00 |
+ℹ   recipient-crypto.js        | 100.00 |   100.00 |  100.00 |
+ℹ   recipient-service.js       | 100.00 |   100.00 |  100.00 |
+ℹ   response-queue.js          |  96.09 |    83.13 |   94.29 | 91-94 162-164
+ℹ   safety.js                  | 100.00 |   100.00 |  100.00 |
+ℹ   storage.js                 |  98.08 |    85.86 |   98.33 | 9-13
+ℹ   trusted-generations.js     | 100.00 |    74.23 |   85.37 |
+ℹ   web-search.js              |  19.15 |   100.00 |    0.00 | 19-94
+ℹ   worker-client.js           | 100.00 |    63.64 |   87.50 |
+ℹ  routes                      |        |          |         |
+ℹ   admin                      |        |          |         |
+ℹ    analytics                 |        |          |         |
+ℹ     route.js                 |  93.23 |    84.62 |   75.00 | 37-40 87 112-115
+ℹ    config                    |        |          |         |
+ℹ     route.js                 |  49.73 |    52.78 |   66.67 | 47-51 53-54 56-64 77-78 93-94 105-108 110-113 115-118 120-137 139-168 170-182
+ℹ    students                  |        |          |         |
+ℹ     [username]               |        |          |         |
+ℹ      route.js                |  86.67 |    85.71 |  100.00 | 12-13
+ℹ      settings                |        |          |         |
+ℹ       route.js               |  53.00 |    65.00 |   57.14 | 17-21 42-43 52-61 63-64 66-73 75-90 92-93 96-97
+ℹ     route.js                 |  85.71 |    79.17 |  100.00 | 36-39 43-44 48
+ℹ    teachers                  |        |          |         |
+ℹ     route.js                 |  72.97 |    76.92 |   80.00 | 24-33
+ℹ   auth                       |        |          |         |
+ℹ    login                     |        |          |         |
+ℹ     route.js                 | 100.00 |    88.89 |  100.00 |
+ℹ    logout                    |        |          |         |
+ℹ     route.js                 | 100.00 |   100.00 |  100.00 |
+ℹ    me                        |        |          |         |
+ℹ     route.js                 | 100.00 |   100.00 |  100.00 |
+ℹ   info                       |        |          |         |
+ℹ    documents                 |        |          |         |
+ℹ     route.js                 | 100.00 |    68.75 |  100.00 |
+ℹ    search                    |        |          |         |
+ℹ     route.js                 |  71.43 |    66.67 |  100.00 | 19 21-27
+ℹ   protected                  |        |          |         |
+ℹ    route.js                  | 100.00 |    88.00 |  100.00 |
+ℹ   stories                    |        |          |         |
+ℹ    [id]                      |        |          |         |
+ℹ     chapter                  |        |          |         |
+ℹ      route.js                |  87.80 |    50.00 |  100.00 | 7-8 13-14 19-20 66-69
+ℹ     extend                   |        |          |         |
+ℹ      route.js                |  92.59 |    63.64 |   66.67 | 17-18
+ℹ     recordings               |        |          |         |
+ℹ      [recordingId]           |        |          |         |
+ℹ       route.js               |  95.12 |    64.71 |  100.00 | 29-30
+ℹ      route.js                |  97.56 |    79.41 |   80.00 | 46-47
+ℹ     route.js                 |  94.59 |    83.33 |  100.00 | 25-26
+ℹ    generate                  |        |          |         |
+ℹ     route.js                 |  69.75 |    70.00 |  100.00 | 48-52 56-86
+ℹ    plan                      |        |          |         |
+ℹ     route.js                 |  87.30 |    33.33 |  100.00 | 19-21 40-44
+ℹ    route.js                  | 100.00 |   100.00 |  100.00 |
+ℹ    start                     |        |          |         |
+ℹ     route.js                 |  83.33 |    38.46 |  100.00 | 14-15 22-24 43-47
+ℹ   student                    |        |          |         |
+ℹ    config                    |        |          |         |
+ℹ     route.js                 | 100.00 |    75.00 |  100.00 |
+ℹ    onboarding                |        |          |         |
+ℹ     route.js                 |  88.89 |    85.71 |   80.00 | 10-11 14 43-44 68-70
+ℹ worker                       |        |          |         |
+ℹ  engine.js                   | 100.00 |    77.89 |  100.00 |
+ℹ  index.js                    |  61.90 |    78.13 |   66.67 | 11-29 59-63
+ℹ -----------------------------------------------------------------------------------------------------------------------------------------------------
+ℹ all files                    |  86.22 |    80.43 |   90.87 |
+ℹ -----------------------------------------------------------------------------------------------------------------------------------------------------
+ℹ end of coverage report

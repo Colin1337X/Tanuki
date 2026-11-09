@@ -2,7 +2,7 @@ import fs from 'node:fs';import path from 'node:path';import {spawnSync} from 'n
 const output=path.resolve(process.argv[2]||'dist/trusted-worker');
 if(fs.existsSync(output))throw new Error('Choose a new output directory; existing artifacts are never overwritten');
 fs.mkdirSync(output,{recursive:true});
-for(const file of ['worker/index.js','worker/engine.js','server/lib/ai-client.js','server/lib/generation-policy.js','public/assets/recipient-crypto.js']){fs.mkdirSync(path.dirname(path.join(output,file)),{recursive:true});fs.copyFileSync(file,path.join(output,file));}
+for(const file of ['worker/index.js','worker/engine.js','server/lib/pq-primitives.js','server/lib/ai-client.js','server/lib/generation-policy.js','public/assets/pq-recipient.js']){fs.mkdirSync(path.dirname(path.join(output,file)),{recursive:true});fs.copyFileSync(file,path.join(output,file));}
 for(const file of ['package.json','package-lock.json'])fs.copyFileSync(path.join('worker',file),path.join(output,file));
 fs.copyFileSync('scripts/verify-worker.mjs',path.join(output,'verify-worker.mjs'));
 const installed=spawnSync(process.platform==='win32'?'npm.cmd':'npm',['ci','--omit=dev','--ignore-scripts','--no-audit','--no-fund'],{cwd:output,encoding:'utf8',shell:false});

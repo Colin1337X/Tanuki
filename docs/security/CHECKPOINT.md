@@ -1,6 +1,7 @@
 # Adversarial assessment checkpoint
 
-Latest continuation: [trusted worker checkpoint and actual verification results](TRUSTED_WORKER.md).
+Latest continuation: [post-quantum stack migration and verification](CRYPTO_STACK.md).
+Previous continuation: [trusted worker checkpoint and actual verification results](TRUSTED_WORKER.md).
 Prior continuation: [recipient encryption / durable queue checkpoint](RECIPIENT_ENCRYPTION.md).
 The historical assessment notes below predate that preview and its separate client-key boundary.
 

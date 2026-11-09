@@ -1,0 +1,97 @@
+{
+  "hashes/_u64.js": {
+    "source": "@noble/hashes/_u64.js",
+    "sourceSha256": "b09da8c07fe8187c07649494cdb7cd0bcf13df90b506a9473d19e4d5f8c2e102",
+    "publishedSha256": "b09da8c07fe8187c07649494cdb7cd0bcf13df90b506a9473d19e4d5f8c2e102"
+  },
+  "hashes/legacy.js": {
+    "source": "@noble/hashes/legacy.js",
+    "sourceSha256": "690553a41af2fdd1e32ff6b534ba8508e95f1861c09c2d62fe762b6b501e09be",
+    "publishedSha256": "690553a41af2fdd1e32ff6b534ba8508e95f1861c09c2d62fe762b6b501e09be"
+  },
+  "hashes/_md.js": {
+    "source": "@noble/hashes/_md.js",
+    "sourceSha256": "60cf3010fda89e3e4d3f0e7ff1ce249e9c467f34b4fd41b6fd6101d9f69be763",
+    "publishedSha256": "bacb3ed9d4ba718358b69820a40a8056c5c718385d05f7ac17f960e9ad13bbde"
+  },
+  "hashes/sha2.js": {
+    "source": "@noble/hashes/sha2.js",
+    "sourceSha256": "471746bba6ec4c6238ca41358d1d3b40b6ff31cf3363f0b4d550c649c1a8e83b",
+    "publishedSha256": "471746bba6ec4c6238ca41358d1d3b40b6ff31cf3363f0b4d550c649c1a8e83b"
+  },
+  "hashes/utils.js": {
+    "source": "@noble/hashes/utils.js",
+    "sourceSha256": "037ad49adb78168b6b699598fd33f85f7877456b1d28b4d032e2a1a16807947c",
+    "publishedSha256": "eea079513c48af2c42e69d64604cc33a8ed0f6262264627e697a39baf036cc96"
+  },
+  "hashes/sha3.js": {
+    "source": "@noble/hashes/sha3.js",
+    "sourceSha256": "9a81e1edb24eae27b335533220167609cfb58008c5690e140ce478acdc669f32",
+    "publishedSha256": "9a81e1edb24eae27b335533220167609cfb58008c5690e140ce478acdc669f32"
+  },
+  "curves/abstract/modular.js": {
+    "source": "@noble/curves/abstract/modular.js",
+    "sourceSha256": "9ced3aa10598277a735e54f7b61d88e929d565da884ba5385f9006ebb3b6aab2",
+    "publishedSha256": "82ab1796a2e935bad0f8f64a605d26e35b11a9eea71ca9cdafd83a927d3b921e"
+  },
+  "curves/abstract/fft.js": {
+    "source": "@noble/curves/abstract/fft.js",
+    "sourceSha256": "a4b2ff7ca33f4acc85d61f0e83ec3303c3f6b38ecc19b20d0f6462d820e518cf",
+    "publishedSha256": "a8557c7224f19a71428efe80561683abd6f1f2c08955fe2f517436067b1416da"
+  },
+  "post-quantum/utils.js": {
+    "source": "@noble/post-quantum/utils.js",
+    "sourceSha256": "01e9046ea3e45fe7569d3ae2881515d0a9446882d602255ab7627915aa0fd2af",
+    "publishedSha256": "0af9a9c9d750e7cdcb434bb57996a55633a31edc5170470dbc3e11eb348fc7cd"
+  },
+  "post-quantum/_crystals.js": {
+    "source": "@noble/post-quantum/_crystals.js",
+    "sourceSha256": "f8a50221e4d2e7e849e8e4f7443ecff2f722581aef592c907ed57a5480c72885",
+    "publishedSha256": "5343309d91841694c44e8f0a7d8e16f17f048468b5416d5b8ce462c91d088116"
+  },
+  "post-quantum/ml-kem.js": {
+    "source": "@noble/post-quantum/ml-kem.js",
+    "sourceSha256": "e5f1a3fa994f663c48f64b0583cf29ddbb2cfb7f3dd63fe18a7beb7aa9c12541",
+    "publishedSha256": "803d3f09f0e2a6705e17fc6d00bf781be13e86b11ed04b7658e9ed272d01812b"
+  },
+  "hashes/hmac.js": {
+    "source": "@noble/hashes/hmac.js",
+    "sourceSha256": "fec9f8f3aeda785ea2de91cc4c059d54ef98196261c026c43f48341007ae52c9",
+    "publishedSha256": "fec9f8f3aeda785ea2de91cc4c059d54ef98196261c026c43f48341007ae52c9"
+  },
+  "curves/utils.js": {
+    "source": "@noble/curves/utils.js",
+    "sourceSha256": "be9ff86aef76419376e4d66cf01a134f3117f1f8dd62d81f1b79100145503367",
+    "publishedSha256": "9499a4687155eac3d1e8bb452c594a5818d1320430e60a45ce29fe57cb3fb31c"
+  },
+  "post-quantum/ml-dsa.js": {
+    "source": "@noble/post-quantum/ml-dsa.js",
+    "sourceSha256": "7c64e733930b115b72bd0585731d8202f1caa819e081cc1e682a19d1fcbcfbda",
+    "publishedSha256": "b74a691255ab59b5bf9912b906ef9f9af5d3a875c80b0e99107f5910d0789dbd"
+  },
+  "ciphers/utils.js": {
+    "source": "@noble/ciphers/utils.js",
+    "sourceSha256": "a443ec1f60d1aaa25d1b7d8c102d33c0e8e6d683ada1ad17be9c32e69170ff95",
+    "publishedSha256": "d9f63769a0e924b914cf8e89c3e9ecd07957379f597c18e9572d3c3f7b43bfd7"
+  },
+  "ciphers/_polyval.js": {
+    "source": "@noble/ciphers/_polyval.js",
+    "sourceSha256": "735b078133e0c5a97dd984a21389f152dc7958b283f52504f6f0906ded243fa5",
+    "publishedSha256": "edfb4a78038b7a8c356e0f94ff9e333c8e995bcb1f56b35c30318fbdb56fbca8"
+  },
+  "ciphers/aes.js": {
+    "source": "@noble/ciphers/aes.js",
+    "sourceSha256": "941ebefe14c48cd1401ffe52f329d4e6ff14f3f596681b211a33cde21de3a90c",
+    "publishedSha256": "c1cba8630081147bfab7a35ead227abb540637aa9e4c362501195c2e7dc60e28"
+  },
+  "hashes/hkdf.js": {
+    "source": "@noble/hashes/hkdf.js",
+    "sourceSha256": "ccb942a8008f974018965eeb1e33b8f4739bf767c6f95f2ceb06f5873a302f67",
+    "publishedSha256": "94ff326f710327a35f57ee1006f84e6fb5dc64056fe4370ce649fae2cf91768d"
+  },
+  "argon2.mjs": {
+    "source": "hash-wasm/dist/index.esm.js",
+    "sourceSha256": "2d6333a619d7f64adc313a38732425fc0c6f0baaa36c1419cf05672bcd89340d",
+    "publishedSha256": "2d6333a619d7f64adc313a38732425fc0c6f0baaa36c1419cf05672bcd89340d"
+  }
+}

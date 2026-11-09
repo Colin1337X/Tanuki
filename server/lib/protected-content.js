@@ -59,6 +59,7 @@ export async function verifyCommand(request) {
 }
 export async function enroll(user, command, signature) {
   const publicKey = command.payload.publicKey, id = await fingerprint(publicKey);
+  if((await recipient.publicKey(publicKey)).suite!==SUITE)fail(400,'New devices require the post-quantum suite');
   await assertCurrentUser(user);
   return transaction(() => {
     const previous = devices(user.username);
@@ -89,7 +90,7 @@ export function listDocuments(user, currentDevice) {
 export function saveDocument(user, command) {
   const p = command.payload;
   if (typeof p.id !== 'string' || !/^[a-f0-9-]{36}$/.test(p.id) || !Number.isSafeInteger(p.revision) || p.revision < 1 ||
-      typeof p.ciphertext !== 'string' || p.ciphertext.length > 512000 || !p.ciphertext.startsWith('-----BEGIN PGP MESSAGE-----')) fail(400, 'Invalid protected document');
+      typeof p.ciphertext !== 'string' || p.ciphertext.length > 512000 || !isPostQuantumEnvelope(p.ciphertext)) fail(400, 'Invalid protected document');
   const recipients = recipientsFor(user.username, p.recipients, p.mode).map(({ username, fingerprint }) => ({ username, fingerprint }));
   if (!recipients.some(r => r.fingerprint === command.device && r.username === user.username)) fail(400, 'Writing device must be a recipient');
   return transaction(() => {
@@ -106,3 +107,4 @@ export function saveDocument(user, command) {
     return { id: p.id, revision: p.revision };
   });
 }
+import {isPostQuantumEnvelope,SUITE} from '../../public/assets/pq-recipient.js';
