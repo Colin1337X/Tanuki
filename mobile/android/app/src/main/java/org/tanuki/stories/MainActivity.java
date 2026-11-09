@@ -18,6 +18,7 @@ public final class MainActivity extends Activity {
         super.onCreate(state);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         WebView.setWebContentsDebuggingEnabled(false);
+        if(android.os.Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::navigateBack);
         showSetup();
     }
     private void showSetup() {
@@ -52,6 +53,6 @@ public final class MainActivity extends Activity {
         // No native JavaScript bridge, file picker, camera, microphone or external intent handler.
         web.loadUrl(server+"/");
     }
-    @Override public void onBackPressed(){if(web!=null&&web.canGoBack())web.goBack();else showSetup();}
+    private void navigateBack(){if(web!=null&&web.canGoBack())web.goBack();else if(web!=null)showSetup();else finish();}
     @Override protected void onDestroy(){if(web!=null){web.stopLoading();web.destroy();web=null;}super.onDestroy();}
 }
