@@ -64,8 +64,9 @@ arguments. HTTPS provider trust and credential scope remain an operator responsi
 Install/extract the application at `/opt/tanuki`. Create a dedicated `tanuki` system user/group
 with `/var/lib/tanuki` as its private state directory, owned by that account. Run setup as that
 user with `TANUKI_PROFILE_DIR=/var/lib/tanuki/profile` and `--no-open`. For a headless host, use an
-SSH local port forward to the temporary loopback port printed by setup, then open the private
-fragment-token link locally. Do not forward the setup listener publicly or share its token.
+SSH local port forward using the same local and remote port printed by setup, then open the
+private fragment-token link locally. Setup validates the exact Host, including that port.
+Do not forward the setup listener publicly or share its token.
 
 Review/install `deploy/tanuki-api.service` and your reverse proxy. The service uses an
 unprivileged identity, read-only system paths, no capabilities, no new privileges, a private

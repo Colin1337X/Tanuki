@@ -1,6 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {chromium} from 'playwright';
 import {createSetup} from '../../installer/setup.mjs';import {validateSettings} from '../../installer/profile.mjs';
 import {request as rawRequest} from 'node:http';
+import {spawnSync} from 'node:child_process';
 const settings={origin:'https://stories.synthetic.example',port:31821,username:'principal',password:' a synthetic passphrase 123 ',providerUrl:'https://provider.synthetic.example/v1',providerKey:'synthetic-install-provider-secret'};
 async function fixture(){const root=fs.mkdtempSync(path.join(os.tmpdir(),'tanuki-installer-'));return createSetup({profile:path.join(root,'profile')});}
 async function request(s,body,headers={}){const options={method:'POST',headers:{Authorization:'Bearer '+s.token,'Content-Type':'application/json',Origin:s.origin,...headers}},data=typeof body==='string'?body:JSON.stringify(body);if(headers.Host)return new Promise((resolve,reject)=>{const req=rawRequest(s.origin+'/api/install',options,res=>{res.resume();res.on('end',()=>resolve({status:res.statusCode}));});req.on('error',reject);req.end(data);});return fetch(s.origin+'/api/install',{...options,body:data});}
@@ -18,6 +19,20 @@ test('Concurrent installation publishes one profile, keeps credentials off disk 
   }finally{await s.close();}
 });
 test('Existing data is preserved even when the profile lacks an installation marker',async()=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'tanuki-installer-existing-')),profile=path.join(root,'profile');fs.mkdirSync(profile);fs.writeFileSync(path.join(profile,'sentinel'),'existing private records');const s=await createSetup({profile});try{assert.equal((await request(s,settings)).status,409);assert.equal(fs.readFileSync(path.join(profile,'sentinel'),'utf8'),'existing private records');}finally{await s.close();}});
+
+test('Provider rotation authenticates the new destination and credential together and preserves them on invalid updates',async()=>{
+  const s=await fixture();try{
+    assert.equal((await request(s,settings)).status,201);
+    const next={providerUrl:'https://replacement.synthetic.example/v1',providerKey:'synthetic-rotated-key'},env={...process.env,TANUKI_PROFILE_DIR:s.profile,TANUKI_KEYRING_FILE:path.join(s.profile,'keyring.json')};
+    const update=input=>spawnSync(process.execPath,['installer/provider.mjs'],{env,input:JSON.stringify(input),encoding:'utf8',timeout:15000});
+    const result=update(next);assert.equal(result.status,0,result.stderr);assert.equal((result.stdout+result.stderr).includes(next.providerKey),false);
+    const file=path.join(s.profile,'secrets.json'),sealed=fs.readFileSync(file,'utf8');assert.equal(sealed.includes(next.providerKey),false);
+    const opened=spawnSync(process.execPath,['--input-type=module','-e',"import fs from 'node:fs';import {unseal} from './server/lib/crypto.js';process.stdout.write(unseal(fs.readFileSync(process.argv[1],'utf8'),'installation-provider-v1'));",file],{env,encoding:'utf8',timeout:15000});
+    assert.equal(opened.status,0,opened.stderr);assert.deepEqual(JSON.parse(opened.stdout),next);
+    for(const patch of[{providerUrl:'http://insecure.synthetic.example'},{providerUrl:'https://user:secret@provider.synthetic.example'},{providerKey:''}]){assert.notEqual(update({...next,...patch}).status,0);assert.equal(fs.readFileSync(file,'utf8'),sealed);}
+    fs.writeFileSync(file+'.new','interrupted update');assert.notEqual(update({...next,providerKey:'another-synthetic-key'}).status,0);assert.equal(fs.readFileSync(file,'utf8'),sealed);assert.equal(fs.readFileSync(file+'.new','utf8'),'interrupted update');
+  }finally{await s.close();}
+});
 test('Setup frontend is local-only, no-store, framed out and serves no arbitrary files',async()=>{const s=await fixture();try{const response=await fetch(s.origin);assert.match(response.headers.get('content-security-policy'),/frame-ancestors 'none'/);assert.equal(response.headers.get('cache-control'),'no-store');assert.equal((await fetch(s.origin+'/keyring.json')).status,404);assert.equal((await fetch(s.origin+'/../package.json')).status,404);assert.equal((await fetch(s.origin+'/api/state',{headers:{Authorization:'Bearer '+s.token}})).status,200);}finally{await s.close();}});
 test('Desktop graphical installer completes provisioning without retaining credentials in browser storage',async()=>{
   const s=await fixture(),browser=await chromium.launch({headless:true});try{
