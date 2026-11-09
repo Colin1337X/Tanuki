@@ -49,3 +49,17 @@ classroom use, encrypted content, server switching, accessibility, background/re
 and OS-version compatibility still require acceptance testing before distribution. Passing a
 build is not evidence that all web features work inside mobile WebViews. Store acceptance of
 a web-based client has not been evaluated.
+
+## Verification checkpoint — 2026-11-10
+
+Source `9729b05` is tracked by the [mobile build run](https://github.com/Colin1337X/Tanuki/actions/runs/42716071897).
+Android passed 19 URL-policy assertions, debug/release compilation, release lint and debug
+APK signature verification. iOS passed 18 URL-policy assertions, simulator/device compilation
+and unsigned IPA packaging. These assertion counts are not additional Node test-case counts.
+The workflow also attempts an installed iOS simulator launch and records a screenshot; consult
+the run's final status for that check. Physical-device acceptance remains outstanding.
+
+The [server installer run](https://github.com/Colin1337X/Tanuki/actions/runs/42715785826)
+passed on all four OS/architecture targets, including actual script-entry integrity checks and
+native installation/login tests. The shared GUI passed all 10 installer regressions locally
+in isolated WSL2, with zero failures or skips; the complete CI application suite passed 680.
