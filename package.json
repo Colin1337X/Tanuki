@@ -11,7 +11,7 @@
     "start": "node --env-file-if-exists=.env.local server/index.js",
     "build": "node scripts/check.js",
     "test": "node --test --test-concurrency=1 tests/node/*.test.js",
-    "test:coverage": "node -e \"require('node:fs').mkdirSync('coverage',{recursive:true})\" && node --experimental-test-coverage --test --test-concurrency=1 --test-coverage-include=server/** --test-coverage-include=public/assets/app.js --test-reporter=spec --test-reporter=lcov --test-reporter-destination=stdout --test-reporter-destination=coverage/lcov.info tests/node/*.test.js",
+    "test:coverage": "node -e \"require('node:fs').mkdirSync('coverage',{recursive:true})\" && node --experimental-test-coverage --test --test-concurrency=1 --test-coverage-include=server/** --test-coverage-include=worker/** --test-coverage-include=public/assets/app.js --test-reporter=spec --test-reporter=lcov --test-reporter-destination=stdout --test-reporter-destination=coverage/lcov.info tests/node/*.test.js",
     "keys:create": "node scripts/create-keys.js",
     "keys:rotate": "node --env-file-if-exists=.env.local scripts/rotate-keys.js",
     "crypto:benchmark": "node scripts/benchmark-crypto.js",
@@ -20,8 +20,9 @@
     "data:archive-legacy": "node --env-file-if-exists=.env.local scripts/archive-legacy.js"
   },
   "dependencies": {
+    "@noble/ciphers": "^2.4.0",
     "@node-rs/argon2": "^2.2.2",
-    "@noble/ciphers": "^2.4.0"
+    "openpgp": "6.3.2"
   },
   "devDependencies": {
     "playwright": "^1.56.1"

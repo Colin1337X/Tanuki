@@ -1,16 +1,10 @@
 import { MATURITY_LEVEL_DEFAULT } from './safety.js';
+import { MATURITY_INSTRUCTIONS } from './generation-policy.js';
 /**
  * Admin-controlled content maturity descriptions injected into the system
  * prompt to restrict or allow themes in generated stories.
  * Level 6 (None) intentionally has no entry — no safety clause is added.
  */
-const MATURITY_INSTRUCTIONS = {
-    1: 'Write extremely safe, gentle content appropriate for very young children (ages 3-5). Use only uplifting, happy themes. Avoid all conflict, threats, scary imagery, or negative emotions.',
-    2: 'Write child-safe content appropriate for ages 6-10. Mild conflict is acceptable but must resolve happily. Avoid violence, frightening themes, romance, or any adult topics.',
-    3: 'Write content appropriate for preteens (ages 10-13). Adventure and mild tension are acceptable. Avoid graphic violence, romantic content, or mature themes.',
-    4: 'Write content appropriate for teenagers (ages 13-17). Relatable teen themes, mild conflict, and light friendship/romance are acceptable. Avoid graphic violence, explicit content, or adult themes.',
-    5: 'Write content appropriate for young adults (ages 16+). Complex themes, moral ambiguity, and mature storylines are acceptable. Avoid explicit sexual content or graphic gore.',
-};
 function buildUserMessage(userRequest, opts) {
     const parts = [];
     if(Number.isInteger(opts?.lexileTarget))parts.push(`Aim for a reading difficulty near ${opts.lexileTarget}L Lexile. This is a target, not a certified measurement. Keep the assigned reading level and content limits authoritative.`);
@@ -209,6 +203,7 @@ function buildChapterUserMessage(userRequest, opts, plan, chapterIndex, totalCha
  * Yields string fragments as they arrive from the model.
  */
 export async function* generateChapterStream(options) {
+    options.signal?.throwIfAborted();
     const { systemPrompt, userRequest, storyOptions, apiBaseUrl, model, localModelId, contentMaturityLevel, blockedTopics, plan, chapterIndex, previousChapters = [], revisionNote, } = options;
     const apiKey = process.env.OPENAI_API_KEY;
     const totalChapters = storyOptions?.chapterCount ?? 1;
@@ -233,6 +228,7 @@ export async function* generateChapterStream(options) {
         await new Promise((r) => setTimeout(r, 400));
         const demo = `Chapter ${chapterIndex + 1}: Once upon a time, the story continued with great wonder and adventure. [Demo chapter — no API key configured. Configure an API key in your .env.local file to enable real generation.]`;
         for (const char of demo) {
+            options.signal?.throwIfAborted();
             yield char;
             await new Promise((r) => setTimeout(r, 8));
         }
@@ -258,7 +254,7 @@ export async function* generateChapterStream(options) {
         ],
         max_tokens: maxTokens,
         stream: true,
-    });
+    }, { signal: options.signal });
     for await (const chunk of stream) {
         const delta = chunk.choices[0]?.delta?.content ?? '';
         if (delta)

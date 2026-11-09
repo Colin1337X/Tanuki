@@ -1,0 +1,16 @@
+✔ Dedicated worker runs under a different UID with no API-record or immutable-code write access (1612.089841ms)
+✔ Ordinary API identity cannot read worker processing keys or spool files (0.589364ms)
+✔ Systemd enforces worker memory, process, CPU and core-dump limits (40.225368ms)
+✔ Worker rejects missing client certificate and exposes no plaintext/private-key RPC (4.90751ms)
+✔ Separate worker produces client-decryptable classroom output without plaintext in the API transport (669.912977ms)
+✔ SIGKILL of the ordinary API leaves generation in the independent worker and reconnect resumes (748.187187ms)
+✔ Worker SIGKILL preserves partial response and reports interruption without restarting provider (2393.272279ms)
+✔ Worker/API persistent files and operational logs contain no synthetic plaintext generation marker (41.656828ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5775.338086

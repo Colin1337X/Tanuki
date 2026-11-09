@@ -1,0 +1,29 @@
+✔ Linux deployment runs without root and without development dependencies (171.048758ms)
+✔ HTTPS shell has HSTS and a restrictive content security policy (15.423598ms)
+✔ Production bootstrap omits development accounts (120.971584ms)
+✔ Authenticated HTTPS session is Secure, HttpOnly, SameSite and non-cacheable (44.485492ms)
+✔ Production admin creates independent student accounts (189.777968ms)
+✔ Lexile and Classroom preferences persist through the production API (9.953546ms)
+✔ Production generation persists provider text with the correct owner (35.331541ms)
+✔ Production device enrollment succeeds through HTTPS without uploading its private key (111.331794ms)
+✔ HTTPS encrypted generation resumes with private cache headers and client-side decryption (59.691085ms)
+{"requests":200,"concurrency":20,"elapsedMs":282,"p50Ms":13,"p95Ms":64,"maxMs":67}
+✔ HTTPS proxy preserves account isolation under concurrent reads (282.710076ms)
+✔ Cross-site mutations are rejected through the TLS proxy (1.697483ms)
+✔ Graceful process restart preserves sessions, stories and preferences (109.132158ms)
+✔ Production restart retains recipient ciphertext and authenticated completion (19.374773ms)
+✔ Offline backup and key rotation preserve decryptability after restart (140.711159ms)
+✔ Restoring a stopped database with its matching backup keys recovers records (100.493653ms)
+✔ Disabling an account revokes existing sessions immediately through HTTPS (9.773254ms)
+✔ Disabled account cannot resume encrypted output with a previously authorized device (3.591124ms)
+✔ Logout cannot be replayed after process restart (96.367786ms)
+✔ Production HTTP listener is bound only to loopback inside WSL (4.645109ms)
+Isolated production artifacts: <DISPOSABLE_FIXTURE>
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1711.531364

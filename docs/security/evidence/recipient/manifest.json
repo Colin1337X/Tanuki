@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "baseCommit": "d4dac6e",
+  "scope": "Isolated WSL synthetic fixtures only. Source hashes normalize CRLF to LF; logs are sanitized without changing outcomes.",
+  "files": [
+    {
+      "file": "full-suite.log",
+      "rawSha256": "bb19fbbde96162f30f2d3a8f53e88f1cff2d7f4a13b6142fba9458eebf1023e7",
+      "publishedSha256": "3433575b9507c3ba830efc3d710f032b07320a24806e20b013e4b60d80de1e8b"
+    },
+    {
+      "file": "production.log",
+      "rawSha256": "5a220022a5f8f3215e8ab6c6f582f049ee199559615ca52f91ca98f4b354c499",
+      "publishedSha256": "f3c36d908bf8065dcce1f91f2e43bc1702ad0a82e4b499272ee3b062e8600092"
+    },
+    {
+      "file": "runtime.log",
+      "rawSha256": "5403d9caa06a9ff1a9dafd10b15f4c6c9f4b323d3b384ca3aada090eb132f6db",
+      "publishedSha256": "5403d9caa06a9ff1a9dafd10b15f4c6c9f4b323d3b384ca3aada090eb132f6db"
+    },
+    {
+      "file": "summary.json",
+      "rawSha256": "249bab51d97719cea78a7ca2a1ecf164b8119fef10a33c9d13d815b3181bc2ab",
+      "publishedSha256": "249bab51d97719cea78a7ca2a1ecf164b8119fef10a33c9d13d815b3181bc2ab"
+    },
+    {
+      "file": "stream-completion-poc.log",
+      "rawSha256": "b55d14549bdeace43392194e6355c27dc156254ca3c3f253c3823d8829b1f141",
+      "publishedSha256": "b55d14549bdeace43392194e6355c27dc156254ca3c3f253c3823d8829b1f141"
+    },
+    {
+      "file": "queue-origin-before.log",
+      "rawSha256": "70e8ffbdc76c3ea0903eb91ad504f0f6e775c3e77bda6e891986a484bcec4e61",
+      "publishedSha256": "f3c0427846f85d304763bc181d8a050764badab467d651a6542d5bf8d3e8691d"
+    },
+    {
+      "file": "queue-origin-after.log",
+      "rawSha256": "36aee2ec8b96715c879ca180bc9ab25c24a0e98e61cf2ee192e006d691528da1",
+      "publishedSha256": "36aee2ec8b96715c879ca180bc9ab25c24a0e98e61cf2ee192e006d691528da1"
+    },
+    {
+      "file": "build.log",
+      "rawSha256": "f77570a6676e21691f5a0ae17854ef7c92346d78a32f8f2f5424cbbda28a61bf",
+      "publishedSha256": "f77570a6676e21691f5a0ae17854ef7c92346d78a32f8f2f5424cbbda28a61bf"
+    }
+  ],
+  "sourceSha256": {
+    "server/http.js": "ba5b7dc494cc0db09cd53787ddd063fef1b61010030c9c412f84dbf1802ef71d",
+    "server/index.js": "a29da61375e0932977256ffb212b0508d20c643ee00d623b40e47f19e79a9ffe",
+    "server/lib/ai-client.js": "a9c11d28a78d04e259cd9c26ba0eca47f625dd4260a3bcf7688ba898c39514a2",
+    "server/lib/auth.js": "fd8c8e5857c88dfa48397e650e25388f875cfaa2d5bbc991f7c85d5630807429",
+    "server/lib/crypto.js": "33becfd84e62f6d414be17a47bf50a4b262dd593f9642c6a58b7e8810661aa21",
+    "server/lib/database.js": "12d21b105595e8f69fdbec6fdca5bf67a017b667deeb831f7781d89eb1cae826",
+    "server/lib/knowledge-base.js": "d8977182da367c0fd73d17914642f5399b59679935d8758e59ca192bd43e2d62",
+    "server/lib/local-model.js": "ebf109ffd325cc3ce66564a4e5c3455f75917e2993aefb7e9b473c0a36cbd067",
+    "server/lib/openai.js": "220af3ce5b6a2c94deed33a0f83a07e671745be9d1e2b92d4cb8ac5ab48d5c51",
+    "server/lib/passwords.js": "3d17d05fb3031d34e78c05107a2a6b628b811163cb7d2f630b4e3d8ab7f70abf",
+    "server/lib/protected-content.js": "c12b2dd361aabb1cf3cb3b15941fb0badcc5a4f9321ab951cec40651049906d5",
+    "server/lib/reading-levels.js": "6d24cc405c469e14f7e68e9b6faf75d5f18fec7fd5911d46290eb1b7692c11e5",
+    "server/lib/recipient-crypto.js": "a927243be22ee10f2914d32a1b5ae7eb19f3c0d9eae5675e3ddaa06a18813bd4",
+    "server/lib/recipient-service.js": "77ae91611474015443b62f11c9fe2c44023f4c9635ad3b77136f1606d224ba7d",
+    "server/lib/response-queue.js": "056af2605ae504625be5af440c3535b18dee2b33d0d9b8c0bca8e167db0c77d2",
+    "server/lib/safety.js": "549b5b80939bb14227d49c06c74ff856751d9005a7807776e1423ff2822cbc75",
+    "server/lib/storage.js": "8f25737ffd620ffd8afd94fed106e57a99195187c32f08f3f4797ca084965a4f",
+    "server/lib/web-search.js": "96edf44d5b332d02118d665a34c6158052cfdd8e927792e1e2d2d87f2a1bab92",
+    "server/routes/admin/analytics/route.js": "a276463bb0af0b70ce817ef543f8ed7b4b625df69a5ed630af93190d1850ecaf",
+    "server/routes/admin/config/route.js": "cd80c3b7d6aab5b3bdfd0ebe789f3ba16cbd18bc376b9551f964dfb791b0e578",
+    "server/routes/admin/students/route.js": "6fe9bf1852b1bf074143df983473b61ed3de2789c709913fee59add061f06781",
+    "server/routes/admin/students/[username]/route.js": "f32a687898d7ac98d5275a86bf29a79f0be6ebb75d17e26426f02988022116d5",
+    "server/routes/admin/students/[username]/settings/route.js": "e3393e011103524f7ff3e929167dc11944192ddd827be9961ad617c33ab44494",
+    "server/routes/admin/teachers/route.js": "9124fcf641bedaf4664761f6fee5542a39fc6ad0680c5503ce611ce6899153ac",
+    "server/routes/auth/login/route.js": "73ad937355fcb82f4fb263b42931f3d1c85115cfbbcdd7e970d98c213c101190",
+    "server/routes/auth/logout/route.js": "33b6f85a79b39a71803434d494e7e23e1b600967465d1e16922b227b9ac61895",
+    "server/routes/auth/me/route.js": "0b546961963b66b60042eb41f1b4896486cf132a68fbf13dab4f7628908d4f3d",
+    "server/routes/info/documents/route.js": "6d5d0bde47fc8757495a2c36e99db4bb9f1e6089610187f1d4d038ce01df77a1",
+    "server/routes/info/search/route.js": "b9d16a30038b8fc1f82de2a4239e1778776a05786a5a7230fb3e0924beaf5bde",
+    "server/routes/protected/route.js": "72f6782dd2b2753f590bd9d9ec1c47eebb3242e98c218ddbbc7e35e1997ec6e1",
+    "server/routes/stories/generate/route.js": "b1c96de80c8803f6949e3721a044b075b921966b11004f7b7cc5361b628ed517",
+    "server/routes/stories/plan/route.js": "c8f5e2211fc366874b332c19ddaf08ab71f130b3bda179a0d1143cc543c35ecc",
+    "server/routes/stories/route.js": "2ae743ddf96d534a40617e2c0b9b83cc7627eec153a76d8b8d9ebb9f3c3c8a14",
+    "server/routes/stories/start/route.js": "fe80e503dc620c0ce16da8a93478629bef25cb67ce899be20cc5f8da7ab8eb4b",
+    "server/routes/stories/[id]/chapter/route.js": "39b61e00b39a0f7adfae08bd113be68f8e3715f040eb627cb4c4092281bd8670",
+    "server/routes/stories/[id]/extend/route.js": "cf63b4f75c863f7aea3a2eeb7b49d4c015ee4f8aed334ccbb2527f27185372b8",
+    "server/routes/stories/[id]/recordings/route.js": "1630792d06fbc45e55abe07628267b4d9e0e59fa1c616d014e6edf747436fdae",
+    "server/routes/stories/[id]/recordings/[recordingId]/route.js": "a416f0e20b02e0e561d4753cd978eeffa57fc523261ea6347bf998d2173130c4",
+    "server/routes/stories/[id]/route.js": "5c862dface77e32f9c08545ba48209afa9179a2e50983e0d7b47fc7a51953152",
+    "server/routes/student/config/route.js": "3a89ffd9e18839275b2a29853ce08fa4503e591b2efbc9c5f5cd034f34fd4e3c",
+    "server/routes/student/onboarding/route.js": "c2722b41c7a6acfb1c0a16bf5a030d675dac2d9a9ee3b7d21dc2385fef4273cb",
+    "public/assets/app.css": "ad8758e656a9f0978a07e19ac812e958e8a073728fc2ff9d6775ab30fe850c31",
+    "public/assets/app.js": "f7527ed45ba1804a93087795521f84945fa52048c6d09e1e751aecc180a492b6",
+    "public/assets/protected-workspace.js": "daa84d75c95555dfa99c20c465481d89ef84f790b9b073910f0a15b01f644b31",
+    "public/assets/recipient-crypto.js": "4c1c6253c2182922b4214d6def0b69f60e04b38694dcc4ea83c3696963c70da1",
+    "public/assets/vendor/openpgp.min.mjs": "7d3285efa6dfedbb34a136d8b5ad21c28fb973269df0b2818dcb74dfb40b59d9",
+    "public/index.html": "467757bb8a5b6021a3f90916b005e2500738cbae03f3f848e06ed163b0eaae86",
+    "public/sw.js": "0f3fed8231fe3f1753940a8023c260240a7ad89385b2842e4c5659f6ea713a33",
+    "tests/node/adversarial.test.js": "cd3f3eb9916ba84cc0fe5fb33efeb7569792c8938ac2d1129e550257664ce6f2",
+    "tests/node/api.test.js": "40a6e53697d26ea83b57b1686f16615870b6ac35fd2d5cab4b8a5d6978ce9927",
+    "tests/node/browser.test.js": "c0c4b3d0eb3687c8f3834671a4c79f54d821101e29c6eb6a760d0762cbe2efd8",
+    "tests/node/crypto.test.js": "357e2a2a9face115146891579e3a2d4ca89c51219a3c328d52d7f2c7f4e8caba",
+    "tests/node/database.test.js": "a0cbecb84b770f7b3baae22019387bd4608bd1d4435bdaee380a1376a98f5d0d",
+    "tests/node/helpers.js": "838c88bd51ebedea5a1db057213871b4d116b3e501cbc6bf84ef00de3526b107",
+    "tests/node/migration.test.js": "77036e99fa2ca88f9baeee1402541ae1952aaf477b2bd0b64f726e821c08420e",
+    "tests/node/protected-api.test.js": "626e326cd6df49f1294d28b4b62abe2a776e4518b268052f7f3012e791a4732b",
+    "tests/node/protected-browser.test.js": "d230cb11da79697c841681b79911bd56944b31418f7f9fd6f33599c141864165",
+    "tests/node/recipient-crypto.test.js": "7549412a8e9929c2c91d08b0a1a6f73cc6cb4615d97b5cd7dbc869bb97b2ed8a",
+    "tests/node/recipient-restart.test.js": "618978ed064125d83976158bbad551e1d76278d1241369fd915e2635dc6b71e6",
+    "tests/node/response-queue.test.js": "c0382a3af4afc231185acd12a23111512251cd57fb6d093a128214d17dd2064f",
+    "tests/node/workflows.test.js": "36147c3885f7c183378caae8da088731fe339ba243ee04eb1e815f8a20fd9db7",
+    "package.json": "44936fd895820aa6fa8886e09f22e3a227e52301f5c96f1881131fd1094ffb58",
+    "package-lock.json": "868686e6203f9c55b37a478b4f15cbd4540e4fcc2f0cfafa7bd1d4030ba643f3",
+    "scripts/production-smoke.test.js": "9d94fd40786d20339ee1148ec0f99064c9c0fd7397ff7ac2862c868cc27e3c34"
+  }
+}

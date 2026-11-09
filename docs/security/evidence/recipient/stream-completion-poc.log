@@ -1,0 +1,2 @@
+{"finding":"RT-12","version":"before","fixture":"loopback SSE without completion sentinel","deltas":1,"acceptedAsComplete":true}
+{"finding":"RT-12","version":"after","fixture":"loopback SSE without completion sentinel","deltas":1,"acceptedAsComplete":false}

@@ -1,0 +1,24 @@
+✔ SIGKILL leaves committed ciphertext recoverable and provider state interrupted after process restart (353.877745ms)
+✔ Isolated server copy with database, backup, source, configuration and every server key cannot decrypt client-protected text (474.763384ms)
+✔ Generation finishes without any HTTP subscriber and persists only recipient ciphertext (37.995497ms)
+✔ Independent concurrent reconnects receive the same ordered ciphertext (26.033344ms)
+✔ Acknowledgements are digest-bound and cannot move a device cursor backward (14.668158ms)
+✔ Cross-account and unlisted device requests cannot retrieve ciphertext (13.719841ms)
+✔ Cancellation aborts the provider and is durably recorded (2.218843ms)
+✔ Authorization changes during provider work prevent persistence (1.480495ms)
+✔ Provider errors cannot leak exception text into persisted job state (1.28277ms)
+✔ Restart retains partial ciphertext and marks unfinished work interrupted (14.525385ms)
+✔ Disabled accounts cannot resume using a previously valid device (13.955004ms)
+✔ Per-user active generation quota rejects racing second work (8.03372ms)
+✔ Expired generations lose ciphertext, then their bounded tombstones are removed (13.756701ms)
+✔ Database writer cannot replace the authenticated recipient set (13.458122ms)
+✔ Public recipient key cannot forge a server-origin queue chunk through database writes (19.679491ms)
+✔ Account deletion cascades response ciphertext and acknowledgement removal (14.582925ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 923.505728

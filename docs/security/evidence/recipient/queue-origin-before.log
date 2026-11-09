@@ -1,0 +1,52 @@
+✔ Generation finishes without any HTTP subscriber and persists only recipient ciphertext (24.851909ms)
+✔ Independent concurrent reconnects receive the same ordered ciphertext (13.211336ms)
+✔ Acknowledgements are digest-bound and cannot move a device cursor backward (9.452877ms)
+✔ Cross-account and unlisted device requests cannot retrieve ciphertext (9.272866ms)
+✔ Cancellation aborts the provider and is durably recorded (1.258534ms)
+✔ Authorization changes during provider work prevent persistence (0.69683ms)
+✔ Provider errors cannot leak exception text into persisted job state (0.693403ms)
+✔ Restart retains partial ciphertext and marks unfinished work interrupted (8.780383ms)
+✔ Disabled accounts cannot resume using a previously valid device (8.574333ms)
+✔ Per-user active generation quota rejects racing second work (6.12974ms)
+✔ Expired generations lose ciphertext, then their bounded tombstones are removed (7.135329ms)
+✖ Database writer cannot replace the authenticated recipient set (8.134439ms)
+✖ Public recipient key cannot forge a server-origin queue chunk through database writes (10.864291ms)
+✔ Account deletion cascades response ciphertext and acknowledgement removal (9.228834ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 12
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 437.8033
+
+✖ failing tests:
+
+test at tests/node/response-queue.test.js:106:1
+✖ Database writer cannot replace the authenticated recipient set (8.134439ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file://<ISOLATED_WSL_RUN>/tests/node/response-queue.test.js:109:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /integrity|authentication/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/node/response-queue.test.js:112:1
+✖ Public recipient key cannot forge a server-origin queue chunk through database writes (10.864291ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file://<ISOLATED_WSL_RUN>/tests/node/response-queue.test.js:116:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

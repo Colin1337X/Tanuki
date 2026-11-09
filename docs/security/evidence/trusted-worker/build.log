@@ -1,0 +1,5 @@
+
+> tanuki-stories@1.0.0 build
+> node scripts/check.js
+
+Syntax checked 89 JavaScript modules. No bundler required.
