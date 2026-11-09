@@ -1,0 +1,47 @@
+{
+  "source": "https://github.com/C2SP/wycheproof/blob/main/testvectors_v1/hkdf_sha512_test.json",
+  "tests": [
+    {
+      "tcId": 1,
+      "comment": "",
+      "flags": [
+        "Normal",
+        "EmptySalt"
+      ],
+      "ikm": "24aeff2645e3e0f5494a9a102778c43a",
+      "salt": "",
+      "info": "",
+      "size": 20,
+      "okm": "dd2599840b09699c6200b5cba79002b3aa75c61b",
+      "result": "valid"
+    },
+    {
+      "tcId": 2,
+      "comment": "",
+      "flags": [
+        "Normal",
+        "EmptySalt"
+      ],
+      "ikm": "a23632e18ec76b59b1c87008da3f8a7e",
+      "salt": "",
+      "info": "",
+      "size": 42,
+      "okm": "c4af93d4bae9ca2b45f590cd3d2f539ff5749d7b0864fbe44a438d38a2f8e5afe01641145e389c989766",
+      "result": "valid"
+    },
+    {
+      "tcId": 3,
+      "comment": "",
+      "flags": [
+        "Normal",
+        "EmptySalt"
+      ],
+      "ikm": "a4748031a14d3e6aafe42aa20c568f5f",
+      "salt": "",
+      "info": "",
+      "size": 64,
+      "okm": "62ea97e06051e40b79deb127a4da294f557cafa3d7a90a75c02064571dfbbe4699129bdcec4b39eed7757ce8e3571589f7d8f5523c0dc3fd6a56b099fb4bfd51",
+      "result": "valid"
+    }
+  ]
+}

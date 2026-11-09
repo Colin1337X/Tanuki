@@ -1,0 +1,64 @@
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The encapsulateBits Web Crypto API method is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+{
+  "node": "v24.22.2",
+  "platform": "linux",
+  "arch": "x64",
+  "scope": "Same-machine primitive comparison in Node; browser engine/device performance and all available third-party implementations are not measured.",
+  "results": [
+    {
+      "name": "Native OpenSSL / Rust ML-KEM-1024 encapsulate",
+      "iterations": 100,
+      "msPerOperation": 0.156
+    },
+    {
+      "name": "Native OpenSSL / Rust ML-KEM-1024 decapsulate",
+      "iterations": 100,
+      "msPerOperation": 0.112
+    },
+    {
+      "name": "Native OpenSSL / Rust ML-DSA-87 sign",
+      "iterations": 100,
+      "msPerOperation": 0.739
+    },
+    {
+      "name": "Native OpenSSL / Rust ML-DSA-87 verify",
+      "iterations": 100,
+      "msPerOperation": 0.303
+    },
+    {
+      "name": "Native OpenSSL / Rust Argon2id 64 MiB t=3 p=1",
+      "iterations": 3,
+      "msPerOperation": 29.881
+    },
+    {
+      "name": "Browser Noble / WASM ML-KEM-1024 encapsulate",
+      "iterations": 100,
+      "msPerOperation": 0.493
+    },
+    {
+      "name": "Browser Noble / WASM ML-KEM-1024 decapsulate",
+      "iterations": 100,
+      "msPerOperation": 0.558
+    },
+    {
+      "name": "Browser Noble / WASM ML-DSA-87 sign",
+      "iterations": 100,
+      "msPerOperation": 6.094
+    },
+    {
+      "name": "Browser Noble / WASM ML-DSA-87 verify",
+      "iterations": 100,
+      "msPerOperation": 1.657
+    },
+    {
+      "name": "Browser Noble / WASM Argon2id 64 MiB t=3 p=1",
+      "iterations": 3,
+      "msPerOperation": 140.535
+    }
+  ]
+}

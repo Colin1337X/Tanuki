@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomBytes } from 'node:crypto';
-import { recipient } from '../../server/lib/recipient-crypto.js';
-import { ChunkAssembler } from '../../public/assets/recipient-crypto.js';
+// Preserve all OpenPGP compatibility assertions while new writes use the PQ suite.
+import { ChunkAssembler,recipientCrypto } from '../../public/assets/recipient-crypto.js';
 import * as pgp from 'openpgp';
+const recipient=recipientCrypto(pgp);
 import fs from 'node:fs';
 
 const secret = randomBytes(32).toString('hex');

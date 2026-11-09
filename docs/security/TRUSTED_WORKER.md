@@ -1,5 +1,9 @@
 # Trusted Worker Encryption checkpoint
 
+**Cryptography update:** [the new PQ stack and migration guide](CRYPTO_STACK.md)
+supersede this checkpoint's OpenPGP new-write algorithms. The 682-execution results below
+remain historical; the later report contains results for the new stack.
+
 This is an opt-in implementation checkpoint, not approval for a production rollout or an independent security audit. The secure generation path uses a separate Linux worker process and OS identity. The browser encrypts a signed request to that worker; the ordinary API forwards ciphertext. The worker and the configured AI provider process plaintext. This is **Trusted Worker Encryption**, not end-to-end secrecy from the AI processor.
 
 ## Boundaries and protocol

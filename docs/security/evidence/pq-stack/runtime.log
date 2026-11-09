@@ -1,0 +1,23 @@
+✔ Runtime: non-root Linux fixtures and private keys live off Windows mounts (2.862952ms)
+✔ Crash during SQLite write transaction preserves committed records and rolls back partial writes (115.704165ms)
+✔ Crash during account deletion rolls back account, session and retirement marker atomically (175.062482ms)
+Static symlink result: {"status":404,"returnedKey":false}
+✔ Committed deletion survives process death and reserves the old username (179.534803ms)
+✔ Corrupted SQLite file fails closed without overwriting it with an empty database (71.140458ms)
+✔ Missing production key never causes auto-generation or silent data reset (103.367518ms)
+✔ Removing the trusted-upgrade marker cannot bless tampered credential metadata (105.435637ms)
+✔ Trusted upgrade preserves legacy plaintext migration, old encrypted records and credential hashes while revoking old sessions (194.758725ms)
+✔ Active SQLite main/WAL files do not contain a migrated plaintext password (76.492553ms)
+✔ Database-only copies cannot decrypt content, while the server key owner can: this is not E2EE (103.675684ms)
+✔ Runtime: static asset symlinks cannot expose a private key outside the public root (151.320082ms)
+✔ Production refuses to serve while plaintext legacy migration sources remain (151.143731ms)
+✔ Legacy archival preserves exact recoverable bytes and removes only verified plaintext sources (134.792233ms)
+✔ A damaged archive aborts safely and retains the original migration source (76.180888ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1692.090489

@@ -46,7 +46,7 @@ export function createAppServer() {
     const headers={
       'X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','X-Frame-Options':'DENY',
       'Permissions-Policy':'camera=(), geolocation=(), microphone=(self)',
-      'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      'Content-Security-Policy':"default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
     };
     if(process.env.NODE_ENV==='production')headers['Strict-Transport-Security']='max-age=31536000';
     for(const [key,value] of Object.entries(headers))res.setHeader(key,value);

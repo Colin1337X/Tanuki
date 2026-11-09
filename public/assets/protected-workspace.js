@@ -1,6 +1,8 @@
 import * as pgp from './vendor/openpgp.min.mjs';
 import { recipientCrypto, ChunkAssembler } from './recipient-crypto.js';
-const cryptoBox = recipientCrypto(pgp);
+import {postQuantumRecipient} from './pq-recipient.js';
+import {browserPrimitives} from './pq-primitives.js';
+const cryptoBox = postQuantumRecipient(browserPrimitives,recipientCrypto(pgp));
 const random = () => [...crypto.getRandomValues(new Uint8Array(32))].map(n => n.toString(16).padStart(2, '0')).join('');
 let vault;
 

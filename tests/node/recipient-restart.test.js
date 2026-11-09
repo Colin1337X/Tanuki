@@ -46,7 +46,7 @@ test('Isolated server copy with database, backup, source, configuration and ever
   fs.symlinkSync(path.resolve('node_modules'),path.join(copy,'node_modules'),'dir');
   const attack=`import {getRecords,closeDatabase} from './server/lib/database.js';import {loadKeyring} from './server/lib/crypto.js';import {recipient} from './server/lib/recipient-crypto.js';
     const doc=getRecords('protected-documents')[0];let recovered=false,attempts=0;
-    for(const key of [...loadKeyring().keys.values()].map(k=>k.privateKey).concat(await Promise.all(doc.publicKeys.map(k=>recipient.publicKey(k))))){attempts++;try{await recipient.decrypt(key,doc.ciphertext,{purpose:'compromise-acceptance'});recovered=true;}catch{}}
+    for(const key of [...loadKeyring().keys.values()].map(k=>k.privateKey).concat(await Promise.all(doc.publicKeys.map(k=>recipient.publicKey(k))))){attempts++;try{await recipient.decrypt(key,doc.ciphertext,{purpose:'compromise-acceptance'},doc.publicKeys[0]);recovered=true;}catch{}}
     console.log(JSON.stringify({outerStorageDecrypted:true,attempts,recovered}));closeDatabase();`;
   const result=spawnSync(process.execPath,['--input-type=module','-e',attack],{cwd:copy,env:{PATH:process.env.PATH,NODE_ENV:'test',TANUKI_DATA_DIR:path.join(copy,'data'),TANUKI_KEYRING_FILE:path.join(copy,'keys.json')},encoding:'utf8',timeout:10000});
   assert.equal(result.status,0,result.stderr);const observed=JSON.parse(result.stdout);assert.equal(observed.outerStorageDecrypted,true);assert.ok(observed.attempts>=3);assert.equal(observed.recovered,false);

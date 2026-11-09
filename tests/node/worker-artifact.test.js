@@ -6,7 +6,7 @@ test('Worker artifacts reproduce identical source/dependency hashes without appl
   for(const dir of[a,b]){const result=run('scripts/build-worker.mjs',dir);assert.equal(result.status,0,result.stderr);assert.equal(run('scripts/verify-worker.mjs',dir).status,0);}
   const first=JSON.parse(fs.readFileSync(path.join(a,'artifact-manifest.json'))),second=JSON.parse(fs.readFileSync(path.join(b,'artifact-manifest.json')));assert.deepEqual(first,second);
   assert.equal(Object.keys(first.files).some(name=>/server\/lib\/(auth|database|storage)\.js$/.test(name)),false);
-  assert.deepEqual(Object.keys(JSON.parse(fs.readFileSync(path.join(a,'package.json'))).dependencies),['openpgp']);
+  assert.deepEqual(Object.keys(JSON.parse(fs.readFileSync(path.join(a,'package.json'))).dependencies).sort(),['@noble/ciphers','@node-rs/argon2']);
 });
 test('Worker artifact verification rejects modified deployed source',()=>{
   fs.appendFileSync(path.join(a,'worker/engine.js'),'\n// synthetic unauthorized change\n');const result=run('scripts/verify-worker.mjs',a);assert.notEqual(result.status,0);assert.match(result.stderr,/integrity mismatch/);

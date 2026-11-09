@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import https from 'node:https';
 import { fileURLToPath } from 'node:url';
-import * as pgp from 'openpgp';
+import {postQuantumRecipient} from '../public/assets/pq-recipient.js';
+import {nativePrimitives} from '../server/lib/pq-primitives.js';
 import { TrustedWorker } from './engine.js';
 
 const cleanFingerprint=value=>String(value||'').replace(/:/g,'').toLowerCase();
@@ -27,8 +28,7 @@ export function deploymentConfig(env=process.env) {
     port:Number(env.TANUKI_WORKER_PORT||3101),apiKey:env.TANUKI_WORKER_PROVIDER_KEY,model:env.TANUKI_WORKER_MODEL||'gpt-4o-mini'};
 }
 export async function createWorkerServer(config) {
-  const key=await pgp.readPrivateKey({armoredKey:fs.readFileSync(config.keyFile,'utf8')});
-  if(key.keyPacket.version!==6||!key.isDecrypted())throw new Error('Worker requires a provisioned v6 processing identity');
+  const key=await postQuantumRecipient(nativePrimitives).readProcessingKey(fs.readFileSync(config.keyFile,'utf8'));
   // An operator-owned immutable origin; jobs cannot specify endpoints or credentials.
   process.env.OPENAI_BASE_URL=config.providerURL;delete process.env.AI_ALLOWED_ORIGINS;
   const worker=new TrustedWorker({databasePath:path.join(config.data,'queue.sqlite'),key,providerURL:config.providerURL,apiKey:config.apiKey,model:config.model,

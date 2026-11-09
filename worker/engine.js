@@ -1,12 +1,12 @@
 // Trusted plaintext boundary. No imports of application authentication/storage or recipient secrets.
 import { DatabaseSync } from 'node:sqlite';
 import { createHash } from 'node:crypto';
-import { recipientCrypto } from '../public/assets/recipient-crypto.js';
-import * as pgp from 'openpgp';
+import {postQuantumRecipient} from '../public/assets/pq-recipient.js';
+import {nativePrimitives} from '../server/lib/pq-primitives.js';
 import AIClient from '../server/lib/ai-client.js';
 import { workerSystemPrompt } from '../server/lib/generation-policy.js';
 
-const box=recipientCrypto(pgp), hash=value=>createHash('sha256').update(value).digest('hex');
+const box=postQuantumRecipient(nativePrimitives), hash=value=>createHash('sha256').update(value).digest('hex');
 const failure=(status,message)=>{throw Object.assign(new Error(message),{status});};
 export const LIMITS=Object.freeze({workers:4,jobs:1000,bytes:256*1024*1024,jobBytes:8*1024*1024,chunks:512,retention:86400000,lease:15000});
 

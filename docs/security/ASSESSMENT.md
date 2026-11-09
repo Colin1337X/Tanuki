@@ -2,6 +2,9 @@
 
 Assessment date: 2026-11-07. Final status: **bounded local assessment completed; production readiness not established**.
 
+Current cryptographic follow-up: [PQ stack migration](CRYPTO_STACK.md), including legacy
+read compatibility, reference vectors, actual adapter benchmarks and rollout limitations.
+
 Latest follow-up: [Trusted Worker Encryption checkpoint](TRUSTED_WORKER.md), with
 682 passing executions, separate-UID WSL verification, PRE-02 remediation, and explicit
 deployment and unfinished-work limitations. Both encryption preview flags remain off by default.

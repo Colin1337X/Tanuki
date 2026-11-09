@@ -1,0 +1,34 @@
+✔ Linux deployment runs without root and without development dependencies (149.982233ms)
+✔ HTTPS shell has HSTS and a restrictive content security policy (18.834103ms)
+✔ Production bootstrap omits development accounts (124.890278ms)
+✔ Authenticated HTTPS session is Secure, HttpOnly, SameSite and non-cacheable (44.611319ms)
+✔ Production admin creates independent student accounts (163.830556ms)
+✔ Lexile and Classroom preferences persist through the production API (11.931221ms)
+(node:<PID>) ExperimentalWarning: The ML-KEM-1024 Web Crypto API algorithm is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:<PID>) ExperimentalWarning: The ML-DSA-87 Web Crypto API algorithm is an experimental feature and might change at any time
+(node:<PID>) ExperimentalWarning: The getPublicKey Web Crypto API method is an experimental feature and might change at any time
+✔ Production generation persists provider text with the correct owner (19.434935ms)
+✔ Production device enrollment succeeds through HTTPS without uploading its private key (86.217101ms)
+(node:<PID>) ExperimentalWarning: The decapsulateBits Web Crypto API method is an experimental feature and might change at any time
+✔ HTTPS encrypted generation resumes with private cache headers and client-side decryption (78.944264ms)
+{"requests":200,"concurrency":20,"elapsedMs":355,"p50Ms":19,"p95Ms":40,"maxMs":51}
+✔ HTTPS proxy preserves account isolation under concurrent reads (355.176641ms)
+✔ Cross-site mutations are rejected through the TLS proxy (2.728001ms)
+✔ Graceful process restart preserves sessions, stories and preferences (106.703536ms)
+✔ Production restart retains recipient ciphertext and authenticated completion (17.630697ms)
+✔ Offline backup and key rotation preserve decryptability after restart (148.249602ms)
+✔ Restoring a stopped database with its matching backup keys recovers records (101.674313ms)
+✔ Disabling an account revokes existing sessions immediately through HTTPS (12.90959ms)
+✔ Disabled account cannot resume encrypted output with a previously authorized device (4.494539ms)
+✔ Logout cannot be replayed after process restart (98.472105ms)
+✔ Production HTTP listener is bound only to loopback inside WSL (7.227516ms)
+Isolated production artifacts: <DISPOSABLE_FIXTURE>
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1775.872373
