@@ -17,9 +17,10 @@ export function validateSettings(input){
 export function restrictDirectory(dir){
   fs.chmodSync(dir,0o700);
   if(process.platform==='win32'){
-    const identity=spawnSync('whoami.exe',['/user','/fo','csv','/nh'],{encoding:'utf8',windowsHide:true});
+    const systemDirectory=path.join(process.env.SystemRoot||'C:\\Windows','System32');
+    const identity=spawnSync(path.join(systemDirectory,'whoami.exe'),['/user','/fo','csv','/nh'],{encoding:'utf8',windowsHide:true});
     const sid=identity.stdout?.match(/S-1-5-(?:\d+-)*\d+/)?.[0];if(identity.status!==0||!sid)throw new Error('Cannot determine the local account identity.');
-    const secured=spawnSync('icacls.exe',[dir,'/inheritance:r','/grant:r',`*${sid}:(OI)(CI)F`,'*S-1-5-18:(OI)(CI)F'],{encoding:'utf8',windowsHide:true});
+    const secured=spawnSync(path.join(systemDirectory,'icacls.exe'),[dir,'/inheritance:r','/grant:r',`*${sid}:(OI)(CI)F`,'*S-1-5-18:(OI)(CI)F'],{encoding:'utf8',windowsHide:true});
     if(secured.status!==0)throw new Error('Cannot protect the installation data directory.');
   }
 }
