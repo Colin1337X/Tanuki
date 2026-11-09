@@ -76,6 +76,18 @@ jobs:
           ditto -c -k --keepParent build/simulator/Build/Products/Debug-iphonesimulator/Tanuki.app build/artifacts/Tanuki-iOS-simulator.zip
           printf '%s\n' 'UNSIGNED IPA: not installable on a physical iPhone. Use export-signed.sh with your Apple signing identity and provisioning profile. No App Store or TestFlight submission has occurred.' > build/artifacts/READ-ME.txt
           (cd build/artifacts && shasum -a 256 ./*.ipa ./*.zip > SHA256SUMS.txt)
+      - name: Launch installed iOS simulator client
+        working-directory: mobile/ios
+        run: |
+          device=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; print(next(d["udid"] for group in json.load(sys.stdin)["devices"].values() for d in group if d["name"].startswith("iPhone")))')
+          xcrun simctl boot "$device"
+          xcrun simctl bootstatus "$device" -b
+          xcrun simctl install "$device" build/simulator/Build/Products/Debug-iphonesimulator/Tanuki.app
+          xcrun simctl launch "$device" org.tanuki.stories
+          sleep 3
+          xcrun simctl spawn "$device" launchctl list | grep org.tanuki.stories
+          xcrun simctl io "$device" screenshot build/artifacts/ios-server-picker.png
+          xcrun simctl shutdown "$device"
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: mobile-ios-candidates
