@@ -4,6 +4,10 @@ A Node.js and vanilla JavaScript reading workspace with student, teacher, and ad
 
 ## Run locally
 
+For self-contained Windows, macOS (Intel/Apple Silicon), and Linux installers, see
+[installable releases and production rollout](docs/RELEASES.md). They include Node and a
+graphical setup wizard; the source-development commands below are not required by end users.
+
 Use Node.js **24.8 or newer** (latest WSL verification: 24.22.2). SQLite and ML-KEM require a recent Node runtime.
 
 ```sh
@@ -13,7 +17,7 @@ npm run dev
 
 Open http://localhost:3000. Development creates `admin / admin123` and `student / student123`, plus a development encryption key in `.secrets`. **Do not reuse this development database or its credentials in production.** Development returns clearly marked demo stories until an AI provider is configured.
 
-The active application is `server/`, `public/index.html`, and `public/assets/`. It has no bundler, Next.js, React, or TypeScript runtime. Its cryptographic dependencies provide native Rust Argon2id, Noble AES-GCM-SIV/PQ/browser hashing, browser Argon2 WASM, and OpenPGP legacy-read compatibility. New encryption uses the [AES-256-GCM-SIV / Argon2id / HKDF-SHA-512 / ML-KEM-1024 / ML-DSA-87 stack](docs/security/CRYPTO_STACK.md), with native OpenSSL PQ operations on the server. Historical `src/`, `src-tauri/`, framework configuration, installers, and Selenium tests remain in the checkout but are inactive and excluded from the container. Do not use the old installers or desktop build instructions.
+The active application is `server/`, `public/index.html`, and `public/assets/`. It has no bundler, Next.js, React, or TypeScript runtime. Its cryptographic dependencies provide native Rust Argon2id, Noble AES-GCM-SIV/PQ/browser hashing, browser Argon2 WASM, and OpenPGP legacy-read compatibility. New encryption uses the [AES-256-GCM-SIV / Argon2id / HKDF-SHA-512 / ML-KEM-1024 / ML-DSA-87 stack](docs/security/CRYPTO_STACK.md), with native OpenSSL PQ operations on the server. Historical `src/`, `src-tauri/`, framework configuration and Selenium tests remain inactive. The current `install.bat` / `install.sh` scripts launch verified server graphical setup from portable release bundles. [Android and iOS clients](docs/MOBILE.md) connect to an existing HTTPS server.
 
 ## Features
 

@@ -1,0 +1,148 @@
+name: Build installable releases
+on:
+  pull_request:
+    paths: ['installer/**', 'install.bat', 'install.sh', 'scripts/release/**', '.github/workflows/**', 'package*.json']
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
+  bundle:
+    needs: verify
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            platform: linux
+            arch: x64
+          - os: windows-2025
+            platform: windows
+            arch: x64
+          - os: macos-15-intel
+            platform: macos
+            arch: x64
+          - os: macos-15
+            platform: macos
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24.22.2
+          cache: npm
+      - run: npm ci
+      - name: Render installer artwork
+        if: runner.os == 'Windows'
+        run: |
+          npx playwright install chromium
+          node scripts/release/installer-art.mjs
+          ./installer/windows/convert-art.ps1
+      - run: npm run release:bundle
+      - name: Verify and smoke-test the actual bundled runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(node -p "require('./package.json').version")
+          bundle="dist/tanuki-stories-$version-${{ matrix.platform }}-${{ matrix.arch }}"
+          node scripts/release/verify.mjs "$bundle"
+          cd "$bundle"
+          if [ -f runtime/node.exe ]; then MSYS_NO_PATHCONV=1 cmd.exe /c install.bat --check; else sh install.sh --check; fi
+          if [ -f runtime/node.exe ]; then runtime/node.exe --test scripts/release/smoke.test.mjs; else runtime/node --test scripts/release/smoke.test.mjs; fi
+      - name: Build native Linux or macOS installer
+        if: runner.os != 'Windows'
+        run: node scripts/release/native-package.mjs
+      - name: Install and test Debian package
+        if: runner.os == 'Linux'
+        run: |
+          sudo dpkg -i dist/artifacts/*.deb
+          node scripts/release/verify.mjs /opt/tanuki
+          cd /opt/tanuki
+          runtime/node --test scripts/release/smoke.test.mjs
+          sudo dpkg --remove tanuki-stories
+      - name: Install and test macOS package
+        if: runner.os == 'macOS'
+        run: |
+          sudo installer -pkg dist/artifacts/*.pkg -target /
+          target='/Applications/Tanuki Stories.app/Contents/Resources/app'
+          node scripts/release/verify.mjs "$target"
+          cd "$target"
+          runtime/node --test scripts/release/smoke.test.mjs
+      - name: Compile native Windows graphical installer
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $version = (Get-Content package.json | ConvertFrom-Json).version
+          $compiler = Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6\ISCC.exe'
+          if (!(Test-Path -LiteralPath $compiler)) { throw 'The pinned runner image must provide Inno Setup 6.' }
+          $bundle = (Resolve-Path "dist/tanuki-stories-$version-windows-x64").Path
+          & $compiler "/DAppVersion=$version" "/DBundlePath=$bundle" installer/windows/tanuki.iss
+          if ($LASTEXITCODE -ne 0) { throw 'Installer compilation failed.' }
+      - name: Install and uninstall Windows payload in a disposable directory
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $setup = (Get-ChildItem dist/artifacts/*Setup-x64.exe).FullName
+          $target = Join-Path $env:RUNNER_TEMP 'tanuki-installer-smoke'
+          $process = Start-Process -FilePath $setup -ArgumentList @('/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART',"/DIR=`"$target`"") -WindowStyle Hidden -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw 'Installer execution failed.' }
+          & "$target/runtime/node.exe" scripts/release/verify.mjs $target --installed
+          if ($LASTEXITCODE -ne 0) { throw 'Installed payload integrity failed.' }
+          if (!(Test-Path "$target/installer/setup.mjs")) { throw 'Installed application is missing.' }
+          Push-Location $target
+          try {
+            & ./runtime/node.exe --test scripts/release/smoke.test.mjs
+            if ($LASTEXITCODE -ne 0) { throw 'Installed runtime smoke test failed.' }
+          } finally { Pop-Location }
+          $uninstall = Start-Process -FilePath "$target/unins000.exe" -ArgumentList @('/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART') -WindowStyle Hidden -Wait -PassThru
+          if ($uninstall.ExitCode -ne 0) { throw 'Uninstaller failed.' }
+      - run: npm run release:archive
+      - uses: actions/attest-build-provenance@8beda2b7ed98355c0e97c0a63bec38ae472e66c4 # v4
+        if: github.event_name != 'pull_request'
+        with:
+          subject-path: dist/artifacts/*
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: release-${{ matrix.platform }}-${{ matrix.arch }}
+          path: dist/artifacts/*
+          if-no-files-found: error
+          retention-days: 30
+  draft-release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: bundle
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          pattern: release-*
+          path: artifacts
+      - name: Create a draft release for operator review
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          find artifacts -name SHA256SUMS.txt -exec cat {} + > SHA256SUMS.txt
+          mapfile -d '' assets < <(find artifacts -type f ! -name SHA256SUMS.txt -print0)
+          gh release create "$RELEASE_TAG" "${assets[@]}" SHA256SUMS.txt --target "$RELEASE_SHA" --draft --title "Tanuki Stories $RELEASE_TAG" --notes 'Self-contained Windows, macOS and Linux installers. Verify SHA256SUMS and GitHub provenance. Read the release/deployment guide before publishing or admitting users. Windows Authenticode signing, Apple signing/notarization, and deployment acceptance remain operator requirements.'

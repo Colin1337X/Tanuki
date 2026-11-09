@@ -1,0 +1,30 @@
+[Unit]
+Description=Tanuki Stories application
+After=network-online.target
+[Service]
+Type=simple
+User=tanuki
+Group=tanuki
+WorkingDirectory=/opt/tanuki
+Environment=TANUKI_PROFILE_DIR=/var/lib/tanuki/profile
+ExecStart=/opt/tanuki/runtime/node /opt/tanuki/installer/start.mjs
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+CapabilityBoundingSet=
+RestrictSUIDSGID=yes
+LimitCORE=0
+MemoryMax=1G
+TasksMax=128
+ReadWritePaths=/var/lib/tanuki
+[Install]
+WantedBy=multi-user.target
