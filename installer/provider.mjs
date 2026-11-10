@@ -1,5 +1,7 @@
+import { lockProfile } from './profile-lock.mjs';
 import fs from 'node:fs';import path from 'node:path';import readline from 'node:readline/promises';import {Writable} from 'node:stream';import {defaultProfile} from './profile.mjs';
 const profile=defaultProfile();if(!fs.existsSync(path.join(profile,'installed')))throw new Error('Complete setup first. Stop the server before changing its provider.');
+lockProfile(profile);
 let input;
 if(process.stdin.isTTY){let muted=false;const output=new Writable({write(chunk,encoding,done){if(!muted)process.stdout.write(chunk);done();}}),rl=readline.createInterface({input:process.stdin,output,terminal:true});try{const providerUrl=await rl.question('Approved HTTPS provider URL: ');process.stdout.write('Provider key (hidden): ');muted=true;const providerKey=await rl.question('');process.stdout.write('\n');input={providerUrl,providerKey};}finally{rl.close();}}
 else{const chunks=[];let length=0;for await(const chunk of process.stdin){length+=chunk.length;if(length>16384)throw new Error('Input too large');chunks.push(chunk);}input=JSON.parse(Buffer.concat(chunks).toString());for(const chunk of chunks)chunk.fill(0);}

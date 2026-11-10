@@ -1,6 +1,8 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      target: production
     env_file: .env.local
     environment:
       NODE_ENV: production
@@ -12,6 +14,11 @@ services:
     volumes:
       - tanuki-data:/app/data
       - ./.secrets/production-keyring.json:/run/secrets/tanuki-keyring.json:ro
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    mem_limit: 1g
+    pids_limit: 128
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true

@@ -47,6 +47,13 @@ jobs:
           cd "$fixture"
           npm ci --omit=dev --ignore-scripts --no-audit --no-fund
           node --test scripts/production-smoke.test.js
+      - name: Read-only non-root container acceptance
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker build --target production -t tanuki-production .
+          docker build --target validation -t tanuki-validation .
+          docker run --rm --read-only --tmpfs /tmp:rw,nosuid,nodev,size=256m --cap-drop ALL --security-opt no-new-privileges --memory 1g --pids-limit 128 tanuki-validation
       - name: Enforced worker identity and systemd isolation
         shell: bash
         run: |

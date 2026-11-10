@@ -8,6 +8,8 @@ export const COOKIE_NAME = 'tanuki_session';
 const digest = token => createHash('sha256').update(token).digest('hex');
 let initialized=false;
 let dummyHash;
+let activeVerifications=0;
+const MAX_PASSWORD_VERIFICATIONS=4;
 export function initializeAuth() {
   if(initialized)return;
   transaction(()=>{
@@ -27,6 +29,9 @@ export function initializeAuth() {
   initialized=true;
 }
 export async function validateCredentials(username,password) {
+  if(activeVerifications>=MAX_PASSWORD_VERIFICATIONS)throw Object.assign(new Error('Sign-in is busy. Try again shortly.'),{status:429});
+  activeVerifications++;
+  try {
   initializeAuth();
   const user=readUser(username);
   dummyHash ||= hashPassword(randomBytes(32).toString('hex'));
@@ -36,6 +41,7 @@ export async function validateCredentials(username,password) {
   const identity={username:current.username,role:current.role};
   Object.defineProperty(identity,'authVersion',{value:current.authVersion});
   return identity;
+  } finally { activeVerifications--; }
 }
 export function createSessionToken(user) {
   const record=readUser(user.username);
