@@ -23,7 +23,7 @@ The `Build mobile clients` GitHub workflow builds:
   It is not installable on physical iPhones. The unsigned Xcode archive and a simulator app
   accompany it. This is not an App Store or TestFlight release.
 
-Android requires JDK 17, Gradle 8.13 and Android SDK 36. Run `gradle :app:assembleDebug
+Android requires JDK 17, Gradle 8.14.6 and Android SDK 36. Run `gradle :app:assembleDebug
 :app:assembleRelease :app:lintRelease` from `mobile/android`. The CI download verifies the
 pinned Gradle distribution SHA-256. No server credentials or signing secrets belong in Git.
 

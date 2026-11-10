@@ -21,6 +21,10 @@ jobs:
         with:
           node-version: 24.22.2
           cache: npm
+      - name: Audit application and isolated worker dependencies
+        run: |
+          npm audit --audit-level=low
+          npm audit --prefix worker --audit-level=low
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run build

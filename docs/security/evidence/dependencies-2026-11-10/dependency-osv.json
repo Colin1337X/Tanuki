@@ -1,0 +1,3731 @@
+{
+  "inventory": [
+    {
+      "scope": "package-lock.json",
+      "name": "@noble/ciphers",
+      "version": "2.4.0",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@noble/curves",
+      "version": "2.4.0",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@noble/hashes",
+      "version": "2.4.0",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@noble/post-quantum",
+      "version": "0.7.1",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-android-arm-eabi",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-android-arm64",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-darwin-arm64",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-darwin-x64",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-freebsd-x64",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-linux-arm-gnueabihf",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-linux-arm64-gnu",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-linux-arm64-musl",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-linux-x64-gnu",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-linux-x64-musl",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-win32-arm64-msvc",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-win32-ia32-msvc",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "@node-rs/argon2-win32-x64-msvc",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "hash-wasm",
+      "version": "4.12.0",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "openpgp",
+      "version": "6.3.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "playwright",
+      "version": "1.65.0",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "package-lock.json",
+      "name": "playwright-core",
+      "version": "1.65.0",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@noble/ciphers",
+      "version": "2.4.0",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-android-arm-eabi",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-android-arm64",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-darwin-arm64",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-darwin-x64",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-freebsd-x64",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-linux-arm-gnueabihf",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-linux-arm64-gnu",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-linux-arm64-musl",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-linux-x64-gnu",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-linux-x64-musl",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-win32-arm64-msvc",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-win32-ia32-msvc",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "worker/package-lock.json",
+      "name": "@node-rs/argon2-win32-x64-msvc",
+      "version": "2.2.2",
+      "ecosystem": "npm"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "adler2",
+      "version": "2.0.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ahash",
+      "version": "0.8.12",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "aho-corasick",
+      "version": "1.1.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "alloc-no-stdlib",
+      "version": "3.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "alloc-stdlib",
+      "version": "0.3.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "android_system_properties",
+      "version": "0.1.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "anstream",
+      "version": "1.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "anstyle",
+      "version": "1.0.14",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "anstyle-parse",
+      "version": "1.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "anstyle-query",
+      "version": "1.1.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "anstyle-wincon",
+      "version": "3.0.11",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "anyhow",
+      "version": "1.0.104",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "atk",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "atk-sys",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "atomic-waker",
+      "version": "1.1.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "autocfg",
+      "version": "1.5.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "base64",
+      "version": "0.21.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "base64",
+      "version": "0.22.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "base64",
+      "version": "0.23.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bit-set",
+      "version": "0.8.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bit-set",
+      "version": "0.11.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bit-vec",
+      "version": "0.8.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bit-vec",
+      "version": "0.10.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bitflags",
+      "version": "1.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bitflags",
+      "version": "2.13.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "block-buffer",
+      "version": "0.10.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "block2",
+      "version": "0.6.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "brotli",
+      "version": "9.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "brotli-decompressor",
+      "version": "6.3.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bs58",
+      "version": "0.5.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bumpalo",
+      "version": "3.20.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bytemuck",
+      "version": "1.25.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "byteorder",
+      "version": "1.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "bytes",
+      "version": "1.12.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cairo-rs",
+      "version": "0.18.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cairo-sys-rs",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "camino",
+      "version": "1.2.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cargo-platform",
+      "version": "0.1.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cargo_metadata",
+      "version": "0.19.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cargo_toml",
+      "version": "1.0.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cc",
+      "version": "1.11.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cesu8",
+      "version": "1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cfb",
+      "version": "0.14.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cfg-expr",
+      "version": "0.15.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "chrono",
+      "version": "0.4.45",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "colorchoice",
+      "version": "1.0.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "combine",
+      "version": "4.6.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cookie",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "core-foundation",
+      "version": "0.9.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "core-foundation",
+      "version": "0.10.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "core-foundation-sys",
+      "version": "0.8.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "core-graphics",
+      "version": "0.25.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "core-graphics-types",
+      "version": "0.2.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "core_detect",
+      "version": "1.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cpufeatures",
+      "version": "0.2.17",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "crc32fast",
+      "version": "1.5.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "crossbeam-channel",
+      "version": "0.5.17",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "crossbeam-deque",
+      "version": "0.8.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "crossbeam-epoch",
+      "version": "0.9.21",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "crossbeam-utils",
+      "version": "0.8.23",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "crypto-common",
+      "version": "0.1.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cssparser",
+      "version": "0.37.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cssparser",
+      "version": "0.38.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "cssparser-macros",
+      "version": "0.7.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ctor",
+      "version": "1.0.13",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "darling",
+      "version": "0.24.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "darling_core",
+      "version": "0.24.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "darling_macro",
+      "version": "0.24.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dbus",
+      "version": "0.9.12",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "deranged",
+      "version": "0.5.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "derive_more",
+      "version": "2.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "derive_more-impl",
+      "version": "2.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "digest",
+      "version": "0.10.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "directories",
+      "version": "5.0.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dirs",
+      "version": "7.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dirs-sys",
+      "version": "0.4.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dirs-sys",
+      "version": "0.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dispatch2",
+      "version": "0.3.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "displaydoc",
+      "version": "0.2.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dlopen2",
+      "version": "0.8.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dlopen2_derive",
+      "version": "0.4.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dom_query",
+      "version": "0.28.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dom_query",
+      "version": "0.29.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dpi",
+      "version": "0.1.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dtoa",
+      "version": "1.0.11",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dtoa-short",
+      "version": "0.3.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dunce",
+      "version": "1.0.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "dyn-clone",
+      "version": "1.0.20",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "either",
+      "version": "1.19.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "embed-resource",
+      "version": "3.0.12",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "embed_plist",
+      "version": "1.2.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "encoding_rs",
+      "version": "0.8.44",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "env_filter",
+      "version": "2.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "env_logger",
+      "version": "0.11.11",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "equivalent",
+      "version": "1.0.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "erased-serde",
+      "version": "0.4.11",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "errno",
+      "version": "0.3.14",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "fallible-iterator",
+      "version": "0.3.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "fallible-streaming-iterator",
+      "version": "0.1.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "fastrand",
+      "version": "2.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "fdeflate",
+      "version": "0.3.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "field-offset",
+      "version": "0.3.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "find-msvc-tools",
+      "version": "0.1.15",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "flate2",
+      "version": "1.1.11",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "fnv",
+      "version": "1.0.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "foldhash",
+      "version": "0.2.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "foreign-types",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "foreign-types",
+      "version": "0.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "foreign-types-macros",
+      "version": "0.2.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "foreign-types-shared",
+      "version": "0.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "foreign-types-shared",
+      "version": "0.3.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "form_urlencoded",
+      "version": "1.2.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "futures-channel",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "futures-core",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "futures-executor",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "futures-io",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "futures-macro",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "futures-sink",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "futures-task",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "futures-util",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gdk",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gdk-pixbuf",
+      "version": "0.18.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gdk-pixbuf-sys",
+      "version": "0.18.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gdk-sys",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gdkwayland-sys",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gdkx11",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gdkx11-sys",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "generic-array",
+      "version": "0.14.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "getrandom",
+      "version": "0.2.17",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "getrandom",
+      "version": "0.3.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "getrandom",
+      "version": "0.4.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gio",
+      "version": "0.18.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gio-sys",
+      "version": "0.18.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "glib",
+      "version": "0.18.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "glib-macros",
+      "version": "0.18.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "glib-sys",
+      "version": "0.18.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "glob",
+      "version": "0.3.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gobject-sys",
+      "version": "0.18.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gtk",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gtk-sys",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "gtk3-macros",
+      "version": "0.18.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "h2",
+      "version": "0.4.20",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hashbrown",
+      "version": "0.12.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hashbrown",
+      "version": "0.14.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hashlink",
+      "version": "0.9.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "heck",
+      "version": "0.4.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "heck",
+      "version": "0.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hex",
+      "version": "0.4.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "html5ever",
+      "version": "0.39.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "html5ever",
+      "version": "0.40.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "http",
+      "version": "1.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "http-body",
+      "version": "1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "http-body-util",
+      "version": "0.1.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "httparse",
+      "version": "1.10.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hyper",
+      "version": "1.12.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hyper-rustls",
+      "version": "0.27.10",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hyper-tls",
+      "version": "0.6.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "hyper-util",
+      "version": "0.1.21",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "iana-time-zone",
+      "version": "0.1.65",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "iana-time-zone-haiku",
+      "version": "0.1.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ico",
+      "version": "0.6.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "icu_collections",
+      "version": "2.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "icu_locale_core",
+      "version": "2.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "icu_normalizer",
+      "version": "2.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "icu_normalizer_data",
+      "version": "2.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "icu_properties",
+      "version": "2.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "icu_properties_data",
+      "version": "2.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "icu_provider",
+      "version": "2.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ident_case",
+      "version": "1.0.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "idna",
+      "version": "1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "idna_adapter",
+      "version": "1.2.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "indexmap",
+      "version": "1.9.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "indexmap",
+      "version": "2.14.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "infer",
+      "version": "0.22.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ipnet",
+      "version": "2.12.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "is-docker",
+      "version": "0.2.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "is-wsl",
+      "version": "0.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "is_terminal_polyfill",
+      "version": "1.70.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "itoa",
+      "version": "1.0.19",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "javascriptcore-rs",
+      "version": "1.1.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "javascriptcore-rs-sys",
+      "version": "1.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jiff",
+      "version": "0.2.42",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jiff-core",
+      "version": "0.1.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jiff-static",
+      "version": "0.2.42",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jiff-tzdb",
+      "version": "0.1.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jiff-tzdb-platform",
+      "version": "0.1.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jni",
+      "version": "0.21.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jni-sys",
+      "version": "0.3.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jni-sys",
+      "version": "0.4.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jni-sys-macros",
+      "version": "0.4.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "js-sys",
+      "version": "0.3.107",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "json-patch",
+      "version": "4.2.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "jsonptr",
+      "version": "0.7.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "keyboard-types",
+      "version": "0.8.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "libappindicator",
+      "version": "0.9.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "libappindicator-sys",
+      "version": "0.9.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "libc",
+      "version": "0.2.191",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "libdbus-sys",
+      "version": "0.2.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "libloading",
+      "version": "0.7.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "libredox",
+      "version": "0.1.25",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "libsqlite3-sys",
+      "version": "0.28.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "linux-raw-sys",
+      "version": "0.12.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "litemap",
+      "version": "0.8.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "lock_api",
+      "version": "0.4.14",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "log",
+      "version": "0.4.35",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "markup5ever",
+      "version": "0.39.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "markup5ever",
+      "version": "0.40.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "memchr",
+      "version": "2.8.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "memoffset",
+      "version": "0.9.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "mime",
+      "version": "0.3.18",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "miniz_oxide",
+      "version": "0.8.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "miniz_oxide",
+      "version": "0.9.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "mio",
+      "version": "1.2.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "muda",
+      "version": "0.20.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "multiversion_no_op",
+      "version": "1.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "native-tls",
+      "version": "0.2.18",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ndk",
+      "version": "0.9.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ndk-context",
+      "version": "0.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ndk-sys",
+      "version": "0.6.0+11769913",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "new_debug_unreachable",
+      "version": "1.0.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ntapi",
+      "version": "0.4.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "num-conv",
+      "version": "0.2.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "num-traits",
+      "version": "0.2.19",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "num_enum",
+      "version": "0.7.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "num_enum_derive",
+      "version": "0.7.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2",
+      "version": "0.6.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-app-kit",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-cloud-kit",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-core-data",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-core-foundation",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-core-graphics",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-core-image",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-core-location",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-core-text",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-encode",
+      "version": "4.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-exception-helper",
+      "version": "0.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-foundation",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-io-surface",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-quartz-core",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-ui-kit",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-user-notifications",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "objc2-web-kit",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "once_cell",
+      "version": "1.21.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "once_cell_polyfill",
+      "version": "1.70.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "open",
+      "version": "5.4.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "openssl",
+      "version": "0.10.82",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "openssl-macros",
+      "version": "0.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "openssl-probe",
+      "version": "0.2.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "openssl-sys",
+      "version": "0.9.118",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "option-ext",
+      "version": "0.2.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "os_pipe",
+      "version": "1.2.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "pango",
+      "version": "0.18.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "pango-sys",
+      "version": "0.18.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "parking_lot",
+      "version": "0.12.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "parking_lot_core",
+      "version": "0.9.12",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "percent-encoding",
+      "version": "2.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf",
+      "version": "0.13.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf",
+      "version": "0.14.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf_codegen",
+      "version": "0.13.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf_codegen",
+      "version": "0.14.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf_generator",
+      "version": "0.13.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf_generator",
+      "version": "0.14.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf_macros",
+      "version": "0.13.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf_macros",
+      "version": "0.14.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf_shared",
+      "version": "0.13.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "phf_shared",
+      "version": "0.14.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "pin-project-lite",
+      "version": "0.2.17",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "pkg-config",
+      "version": "0.3.34",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "plist",
+      "version": "1.10.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "png",
+      "version": "0.18.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "portable-atomic",
+      "version": "1.15.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "portable-atomic-util",
+      "version": "0.2.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "potential_utf",
+      "version": "0.1.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "powerfmt",
+      "version": "0.2.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "precomputed-hash",
+      "version": "0.1.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "proc-macro-crate",
+      "version": "1.3.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "proc-macro-crate",
+      "version": "2.0.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "proc-macro-crate",
+      "version": "3.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "proc-macro-error",
+      "version": "1.0.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "proc-macro-error-attr",
+      "version": "1.0.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "quick-xml",
+      "version": "0.42.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "quote",
+      "version": "1.0.47",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "r-efi",
+      "version": "5.3.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "r-efi",
+      "version": "6.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "raw-window-handle",
+      "version": "0.6.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rayon",
+      "version": "1.12.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rayon-core",
+      "version": "1.13.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "redox_syscall",
+      "version": "0.5.18",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "redox_users",
+      "version": "0.4.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "redox_users",
+      "version": "0.5.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ref-cast",
+      "version": "1.0.27",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ref-cast-impl",
+      "version": "1.0.27",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "regex",
+      "version": "1.13.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "regex-automata",
+      "version": "0.4.18",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "regex-syntax",
+      "version": "0.8.11",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "reqwest",
+      "version": "0.12.28",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "reqwest",
+      "version": "0.13.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ring",
+      "version": "0.17.14",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rusqlite",
+      "version": "0.31.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rustc-hash",
+      "version": "2.1.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rustc_version",
+      "version": "0.4.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rustix",
+      "version": "1.1.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rustls",
+      "version": "0.23.46",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rustls-pki-types",
+      "version": "1.15.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rustls-webpki",
+      "version": "0.103.16",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "rustversion",
+      "version": "1.0.23",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "ryu",
+      "version": "1.0.23",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "same-file",
+      "version": "1.0.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "schannel",
+      "version": "0.1.30",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "schemars",
+      "version": "0.8.22",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "schemars",
+      "version": "0.9.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "schemars",
+      "version": "1.2.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "schemars_derive",
+      "version": "0.8.22",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "scopeguard",
+      "version": "1.2.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "security-framework",
+      "version": "3.7.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "security-framework-sys",
+      "version": "2.17.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "selectors",
+      "version": "0.38.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "selectors",
+      "version": "0.41.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "semver",
+      "version": "1.0.28",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde",
+      "version": "1.0.229",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde-untagged",
+      "version": "0.1.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_core",
+      "version": "1.0.229",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_derive_internals",
+      "version": "0.29.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_json",
+      "version": "1.0.154",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_repr",
+      "version": "0.1.21",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_spanned",
+      "version": "0.6.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_spanned",
+      "version": "1.1.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_urlencoded",
+      "version": "0.7.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_with",
+      "version": "3.24.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serde_with_macros",
+      "version": "3.24.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serialize-to-javascript",
+      "version": "0.1.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "serialize-to-javascript-impl",
+      "version": "0.1.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "servo_arc",
+      "version": "0.4.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "servo_arc",
+      "version": "0.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "sha2",
+      "version": "0.10.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "shared_child",
+      "version": "1.1.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "shlex",
+      "version": "2.0.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "signal-hook-registry",
+      "version": "1.4.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "simd-adler32",
+      "version": "0.3.10",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "simdutf8",
+      "version": "0.1.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "siphasher",
+      "version": "1.0.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "slab",
+      "version": "0.4.12",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "smallvec",
+      "version": "1.16.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "socket2",
+      "version": "0.6.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "softbuffer",
+      "version": "0.4.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "soup3",
+      "version": "0.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "soup3-sys",
+      "version": "0.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "stable_deref_trait",
+      "version": "1.2.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "static_vcruntime",
+      "version": "3.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "string_cache",
+      "version": "0.9.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "string_cache",
+      "version": "0.11.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "string_cache_codegen",
+      "version": "0.6.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "string_cache_codegen",
+      "version": "0.11.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "strsim",
+      "version": "0.11.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "subtle",
+      "version": "2.6.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "swift-rs",
+      "version": "1.0.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "syn",
+      "version": "1.0.109",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "syn",
+      "version": "2.0.119",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "syn",
+      "version": "3.0.10",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "sync_wrapper",
+      "version": "1.0.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "synstructure",
+      "version": "0.14.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "sysinfo",
+      "version": "0.30.13",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "system-configuration",
+      "version": "0.7.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "system-configuration-sys",
+      "version": "0.6.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "system-deps",
+      "version": "6.2.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tao",
+      "version": "0.37.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tao-macros",
+      "version": "0.1.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "target-lexicon",
+      "version": "0.12.16",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri",
+      "version": "2.12.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-build",
+      "version": "2.7.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-codegen",
+      "version": "2.7.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-macros",
+      "version": "2.7.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-plugin",
+      "version": "2.7.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-plugin-shell",
+      "version": "2.6.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-runtime",
+      "version": "2.12.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-runtime-wry",
+      "version": "2.12.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-utils",
+      "version": "2.10.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tauri-winres",
+      "version": "0.3.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tempfile",
+      "version": "3.27.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tendril",
+      "version": "0.5.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "thiserror",
+      "version": "1.0.69",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "thiserror",
+      "version": "2.0.21",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "thiserror-impl",
+      "version": "1.0.69",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "thiserror-impl",
+      "version": "2.0.21",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "time",
+      "version": "0.3.55",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "time-core",
+      "version": "0.1.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "time-macros",
+      "version": "0.2.32",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tinystr",
+      "version": "0.8.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tinyvec",
+      "version": "1.13.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tokio",
+      "version": "1.54.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tokio-macros",
+      "version": "2.7.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tokio-native-tls",
+      "version": "0.3.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tokio-rustls",
+      "version": "0.26.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tokio-util",
+      "version": "0.7.20",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml",
+      "version": "0.8.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml",
+      "version": "1.2.1+spec-1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml_datetime",
+      "version": "0.6.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml_datetime",
+      "version": "1.1.3+spec-1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml_edit",
+      "version": "0.19.15",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml_edit",
+      "version": "0.20.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml_edit",
+      "version": "0.25.19+spec-1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml_parser",
+      "version": "1.1.5+spec-1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "toml_writer",
+      "version": "1.2.0+spec-1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tower",
+      "version": "0.5.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tower-http",
+      "version": "0.6.11",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tower-layer",
+      "version": "0.3.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tower-service",
+      "version": "0.3.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tracing",
+      "version": "0.1.44",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tracing-core",
+      "version": "0.1.36",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "tray-icon",
+      "version": "0.25.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "try-lock",
+      "version": "0.2.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "typeid",
+      "version": "1.0.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "typenum",
+      "version": "1.20.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "unicode-ident",
+      "version": "1.0.27",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "unicode-segmentation",
+      "version": "1.13.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "untrusted",
+      "version": "0.9.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "url",
+      "version": "2.5.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "urlpattern",
+      "version": "0.6.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "utf8_iter",
+      "version": "1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "utf8parse",
+      "version": "0.2.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "utf_types",
+      "version": "1.0.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "uuid",
+      "version": "1.29.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "vcpkg",
+      "version": "0.2.15",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "version-compare",
+      "version": "0.2.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "version_check",
+      "version": "0.9.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "vswhom",
+      "version": "0.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "vswhom-sys",
+      "version": "0.1.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "walkdir",
+      "version": "2.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "want",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wasi",
+      "version": "0.11.1+wasi-snapshot-preview1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wasip2",
+      "version": "1.0.4+wasi-0.2.12",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wasm-bindgen",
+      "version": "0.2.130",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wasm-bindgen-futures",
+      "version": "0.4.80",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wasm-bindgen-macro",
+      "version": "0.2.130",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wasm-bindgen-macro-support",
+      "version": "0.2.130",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wasm-bindgen-shared",
+      "version": "0.2.130",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wasm-streams",
+      "version": "0.5.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "web-sys",
+      "version": "0.3.107",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "web-time",
+      "version": "1.1.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "web_atoms",
+      "version": "0.2.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "web_atoms",
+      "version": "0.3.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "webkit2gtk",
+      "version": "2.0.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "webkit2gtk-sys",
+      "version": "2.0.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "webview2-com",
+      "version": "0.39.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "webview2-com-macros",
+      "version": "0.8.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "webview2-com-sys",
+      "version": "0.39.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "winapi",
+      "version": "0.3.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "winapi-i686-pc-windows-gnu",
+      "version": "0.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "winapi-util",
+      "version": "0.1.11",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "winapi-x86_64-pc-windows-gnu",
+      "version": "0.4.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "window-vibrancy",
+      "version": "0.8.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows",
+      "version": "0.52.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows",
+      "version": "0.62.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-collections",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-core",
+      "version": "0.52.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-core",
+      "version": "0.62.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-future",
+      "version": "0.3.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-implement",
+      "version": "0.60.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-interface",
+      "version": "0.59.3",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-link",
+      "version": "0.2.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-numerics",
+      "version": "0.3.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-registry",
+      "version": "0.6.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-result",
+      "version": "0.4.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-strings",
+      "version": "0.5.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-sys",
+      "version": "0.45.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-sys",
+      "version": "0.48.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-sys",
+      "version": "0.52.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-sys",
+      "version": "0.60.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-sys",
+      "version": "0.61.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-targets",
+      "version": "0.42.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-targets",
+      "version": "0.48.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-targets",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-targets",
+      "version": "0.53.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-threading",
+      "version": "0.2.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows-version",
+      "version": "0.1.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_aarch64_gnullvm",
+      "version": "0.42.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_aarch64_gnullvm",
+      "version": "0.48.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_aarch64_gnullvm",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_aarch64_gnullvm",
+      "version": "0.53.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_aarch64_msvc",
+      "version": "0.42.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_aarch64_msvc",
+      "version": "0.48.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_aarch64_msvc",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_aarch64_msvc",
+      "version": "0.53.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_gnu",
+      "version": "0.42.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_gnu",
+      "version": "0.48.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_gnu",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_gnu",
+      "version": "0.53.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_gnullvm",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_gnullvm",
+      "version": "0.53.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_msvc",
+      "version": "0.42.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_msvc",
+      "version": "0.48.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_msvc",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_i686_msvc",
+      "version": "0.53.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_gnu",
+      "version": "0.42.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_gnu",
+      "version": "0.48.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_gnu",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_gnu",
+      "version": "0.53.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_gnullvm",
+      "version": "0.42.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_gnullvm",
+      "version": "0.48.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_gnullvm",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_gnullvm",
+      "version": "0.53.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_msvc",
+      "version": "0.42.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_msvc",
+      "version": "0.48.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_msvc",
+      "version": "0.52.6",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "windows_x86_64_msvc",
+      "version": "0.53.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "winnow",
+      "version": "0.5.40",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "winnow",
+      "version": "1.0.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "winreg",
+      "version": "0.56.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wit-bindgen",
+      "version": "0.57.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "writeable",
+      "version": "0.6.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "wry",
+      "version": "0.57.2",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "x11",
+      "version": "2.21.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "x11-dl",
+      "version": "2.21.0",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "yoke",
+      "version": "0.8.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "yoke-derive",
+      "version": "0.8.4",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zerocopy",
+      "version": "0.8.63",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zerocopy-derive",
+      "version": "0.8.63",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zerofrom",
+      "version": "0.1.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zerofrom-derive",
+      "version": "0.1.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zeroize",
+      "version": "1.9.1",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zerotrie",
+      "version": "0.2.5",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zerovec",
+      "version": "0.11.9",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zerovec-derive",
+      "version": "0.11.7",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zlib-rs",
+      "version": "0.6.8",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "inactive Tauri; fresh resolution",
+      "name": "zmij",
+      "version": "1.0.23",
+      "ecosystem": "crates.io"
+    },
+    {
+      "scope": "Android build tool",
+      "name": "org.gradle:gradle-core",
+      "version": "8.13",
+      "ecosystem": "Maven"
+    },
+    {
+      "scope": "Android build tool",
+      "name": "org.gradle:gradle-core",
+      "version": "8.14.6",
+      "ecosystem": "Maven"
+    },
+    {
+      "scope": "Android build tool",
+      "name": "com.android.tools.build:gradle",
+      "version": "8.13.2",
+      "ecosystem": "Maven"
+    }
+  ],
+  "findings": [
+    {
+      "version": "0.18.5",
+      "ecosystem": "crates.io",
+      "name": "glib",
+      "scope": "inactive Tauri; fresh resolution",
+      "id": "GHSA-wrw7-89jp-8q8g"
+    },
+    {
+      "version": "0.18.5",
+      "ecosystem": "crates.io",
+      "name": "glib",
+      "scope": "inactive Tauri; fresh resolution",
+      "id": "RUSTSEC-2024-0429"
+    },
+    {
+      "version": "0.28.0",
+      "ecosystem": "crates.io",
+      "name": "libsqlite3-sys",
+      "scope": "inactive Tauri; fresh resolution",
+      "id": "RUSTSEC-2026-0459"
+    },
+    {
+      "version": "1.0.4",
+      "ecosystem": "crates.io",
+      "name": "proc-macro-error",
+      "scope": "inactive Tauri; fresh resolution",
+      "id": "RUSTSEC-2024-0370"
+    }
+  ],
+  "details": {
+    "RUSTSEC-2024-0370": {
+      "id": "RUSTSEC-2024-0370",
+      "summary": "proc-macro-error is unmaintained",
+      "details": "proc-macro-error's maintainer seems to be unreachable, with no commits for 2 years, no releases pushed for 4 years, and no activity on the GitLab repo or response to email.\n\nproc-macro-error also depends on `syn 1.x`, which may be bringing duplicate dependencies into dependant build trees.\n\n## Possible Alternative(s)\n\n- [manyhow](https://crates.io/crates/manyhow)\n- [proc-macro2-diagnostics](https://github.com/SergioBenitez/proc-macro2-diagnostics)",
+      "modified": "2026-06-07T20:00:03.923932350Z",
+      "published": "2024-09-01T12:00:00Z",
+      "database_specific": {
+        "license": "CC0-1.0"
+      },
+      "references": [
+        {
+          "type": "PACKAGE",
+          "url": "https://crates.io/crates/proc-macro-error"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://rustsec.org/advisories/RUSTSEC-2024-0370.html"
+        },
+        {
+          "type": "REPORT",
+          "url": "https://gitlab.com/CreepySkeleton/proc-macro-error/-/issues/20"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "proc-macro-error",
+            "ecosystem": "crates.io",
+            "purl": "pkg:cargo/proc-macro-error"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0.0.0-0"
+                }
+              ]
+            }
+          ],
+          "ecosystem_specific": {
+            "affects": {
+              "os": [],
+              "functions": [],
+              "arch": []
+            },
+            "affected_functions": null
+          },
+          "database_specific": {
+            "cvss": null,
+            "informational": "unmaintained",
+            "source": "https://github.com/rustsec/advisory-db/blob/osv/crates/RUSTSEC-2024-0370.json",
+            "categories": []
+          }
+        }
+      ],
+      "schema_version": "1.7.5"
+    },
+    "RUSTSEC-2026-0459": {
+      "id": "RUSTSEC-2026-0459",
+      "summary": "`libsqlite3-sys` via C SQLite CVE-2026-119375",
+      "details": "SQLite versions before 3.54.0 can return uninitialized page-cache memory when a process opens a database file together with a sibling write-ahead-log (`-wal`) file whose page size differs from the database's. A crafted pair of files can make ordinary queries return stale bytes from the process's memory. The attack vector is local and needs the victim to open the files.\n\nAs `libsqlite3-sys` bundles SQLite when it is built from its bundled source (the `bundled` feature, which `rusqlite`'s `bundled` feature enables), it is susceptible to the vulnerability. The releases `0.6.0` to `0.38.2` bundle SQLite `3.13.0` to `3.53.2` and are affected; the earlier releases contain no SQLite source. `libsqlite3-sys` was updated to bundle the patched version of SQLite in `0.39.0` (SQLite `3.54.0`) and `0.39.1` (SQLite `3.54.1`), released with [`rusqlite` 0.41](https://github.com/rusqlite/rusqlite/releases/tag/v0.41.0). `libsqlite3-sys` `0.39` declares Rust 1.88 and `rusqlite` `0.41` declares Rust 1.89.\n\nOnly a process that opens a database file, with its `-wal`, that a less trusted party could have written is exposed. A build that links a system SQLite instead of the bundled source is not affected by the copy in this crate; its exposure is that of the system library's version. The `bundled-sqlcipher` feature builds SQLCipher instead of SQLite; in `0.39.0` and `0.39.1` it depends on `sqlcipher-src =419.0.6`, which bundles SQLite `3.53.4` and is affected.",
+      "aliases": [
+        "CVE-2026-119375",
+        "GHSA-72w2-rjgg-q729"
+      ],
+      "modified": "2026-11-09T10:00:02.337112425Z",
+      "published": "2026-10-30T12:00:00Z",
+      "database_specific": {
+        "license": "CC0-1.0"
+      },
+      "references": [
+        {
+          "type": "PACKAGE",
+          "url": "https://crates.io/crates/libsqlite3-sys"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://rustsec.org/advisories/RUSTSEC-2026-0459.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119375"
+        },
+        {
+          "type": "WEB",
+          "url": "https://sqlite.org/bugs/info/2026-08-17T15:54:41Z"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/sqlite/sqlite/commit/e5bf119821f25be1d7f10ef0a2edbe175289166e"
+        },
+        {
+          "type": "WEB",
+          "url": "https://sqlite.org/releaselog/3_54_0.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/rusqlite/rusqlite/releases/tag/v0.41.0"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "libsqlite3-sys",
+            "ecosystem": "crates.io",
+            "purl": "pkg:cargo/libsqlite3-sys"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0.6.0"
+                },
+                {
+                  "fixed": "0.39.0"
+                }
+              ]
+            }
+          ],
+          "ecosystem_specific": {
+            "affects": {
+              "functions": [],
+              "arch": [],
+              "os": []
+            },
+            "affected_functions": null
+          },
+          "database_specific": {
+            "source": "https://github.com/rustsec/advisory-db/blob/osv/crates/RUSTSEC-2026-0459.json",
+            "cvss": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+            "informational": null,
+            "categories": [
+              "memory-exposure"
+            ]
+          }
+        }
+      ],
+      "schema_version": "1.9.2",
+      "severity": [
+        {
+          "type": "CVSS_V4",
+          "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+        }
+      ]
+    },
+    "GHSA-wrw7-89jp-8q8g": {
+      "id": "GHSA-wrw7-89jp-8q8g",
+      "summary": "Unsoundness in `Iterator` and `DoubleEndedIterator` impls for `glib::VariantStrIter`",
+      "details": "The `VariantStrIter::impl_get` function (called internally by implementations of the `Iterator` and `DoubleEndedIterator` traits for this type) was unsound, resulting in undefined behaviour.\n\nAn immutable reference `&p` to a `*mut libc::c_char` pointer initialized to `NULL` was passed as an argument to a C function that that mutates the pointer behind `&p` in-place (i.e. as an out-argument), which was unsound. After changes in recent versions of the Rust compiler, these unsound writes through `&p` now seem to be completely disregarded when building the `glib` crate with optimizations.\n\nThis subsequently caused all calls of `VariantStrIter::impl_get` to violate the safety requirements of the `std::ffi::CStr::from_ptr` function - which requires its argument to be a valid pointer to a C-style string - resulting in crashes due to `NULL` pointer dereferences.\n\nThis was fixed by passing the out-argument pointer explitly as `&mut p` instead of `&p`.\n\nThis issue has been present since this code was initially added in `glib` v0.15.0. The mismatch in mutability was likely missed (and not raised as an error by the compiler) because the C function wrapped by `VariantStrIter::impl_get` is variadic (`glib_sys::g_variant_get_child`), and the pointer in question is one of the variadic arguments.\n\n",
+      "aliases": [
+        "RUSTSEC-2024-0429"
+      ],
+      "modified": "2025-10-28T06:29:26.473225Z",
+      "published": "2024-12-23T20:19:24Z",
+      "database_specific": {
+        "nvd_published_at": null,
+        "cwe_ids": [],
+        "severity": "MODERATE",
+        "github_reviewed": true,
+        "github_reviewed_at": "2024-12-23T20:19:24Z"
+      },
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/gtk-rs/gtk-rs-core/pull/1343"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/gtk-rs/gtk-rs-core"
+        },
+        {
+          "type": "WEB",
+          "url": "https://rustsec.org/advisories/RUSTSEC-2024-0429.html"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "glib",
+            "ecosystem": "crates.io",
+            "purl": "pkg:cargo/glib"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0.15.0"
+                },
+                {
+                  "fixed": "0.20.0"
+                }
+              ]
+            }
+          ],
+          "database_specific": {
+            "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2024/12/GHSA-wrw7-89jp-8q8g/GHSA-wrw7-89jp-8q8g.json"
+          }
+        }
+      ],
+      "schema_version": "1.9.0",
+      "severity": [
+        {
+          "type": "CVSS_V4",
+          "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+        }
+      ]
+    },
+    "RUSTSEC-2024-0429": {
+      "id": "RUSTSEC-2024-0429",
+      "summary": "Unsoundness in `Iterator` and `DoubleEndedIterator` impls for `glib::VariantStrIter`",
+      "details": "The `VariantStrIter::impl_get` function (called internally by implementations of the `Iterator` and `DoubleEndedIterator` traits for this type) was unsound, resulting in undefined behaviour.\n\nAn immutable reference `&p` to a `*mut libc::c_char` pointer initialized to `NULL` was passed as an argument to a C function that that mutates the pointer behind `&p` in-place (i.e. as an out-argument), which was unsound. After changes in recent versions of the Rust compiler, these unsound writes through `&p` now seem to be completely disregarded when building the `glib` crate with optimizations.\n\nThis subsequently caused all calls of `VariantStrIter::impl_get` to violate the safety requirements of the `std::ffi::CStr::from_ptr` function - which requires its argument to be a valid pointer to a C-style string - resulting in crashes due to `NULL` pointer dereferences.\n\nThis was fixed by passing the out-argument pointer explitly as `&mut p` instead of `&p`.\n\nThis issue has been present since this code was initially added in `glib` v0.15.0. The mismatch in mutability was likely missed (and not raised as an error by the compiler) because the C function wrapped by `VariantStrIter::impl_get` is variadic (`glib_sys::g_variant_get_child`), and the pointer in question is one of the variadic arguments.",
+      "aliases": [
+        "GHSA-wrw7-89jp-8q8g"
+      ],
+      "modified": "2025-10-28T06:29:26.473225Z",
+      "published": "2024-03-30T12:00:00Z",
+      "database_specific": {
+        "license": "CC0-1.0"
+      },
+      "references": [
+        {
+          "type": "PACKAGE",
+          "url": "https://crates.io/crates/glib"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://rustsec.org/advisories/RUSTSEC-2024-0429.html"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/gtk-rs/gtk-rs-core/pull/1343"
+        }
+      ],
+      "affected": [
+        {
+          "package": {
+            "name": "glib",
+            "ecosystem": "crates.io",
+            "purl": "pkg:cargo/glib"
+          },
+          "ranges": [
+            {
+              "type": "SEMVER",
+              "events": [
+                {
+                  "introduced": "0.15.0"
+                },
+                {
+                  "fixed": "0.20.0"
+                }
+              ]
+            }
+          ],
+          "ecosystem_specific": {
+            "affected_functions": null,
+            "affects": {
+              "arch": [],
+              "functions": [
+                "glib::VariantStrIter::last",
+                "glib::VariantStrIter::next",
+                "glib::VariantStrIter::next_back",
+                "glib::VariantStrIter::nth",
+                "glib::VariantStrIter::nth_back"
+              ],
+              "os": []
+            }
+          },
+          "database_specific": {
+            "categories": [],
+            "cvss": null,
+            "informational": "unsound",
+            "source": "https://github.com/rustsec/advisory-db/blob/osv/crates/RUSTSEC-2024-0429.json"
+          }
+        }
+      ],
+      "schema_version": "1.7.3"
+    }
+  },
+  "scannedAt": "2026-11-10T12:09:22.4821321Z"
+}

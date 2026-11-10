@@ -1,1 +1,20 @@
 plugins { id 'com.android.application' version '8.13.2' apply false }
+
+// Resolve the build plugins and shipping runtime graph; emit exact versions for advisory scanning.
+tasks.register('dependencyInventory') {
+    doLast {
+        def entries = []
+        [buildscript.configurations.classpath,
+         project(':app').buildscript.configurations.classpath,
+         project(':app').configurations.releaseRuntimeClasspath].each { configuration ->
+            configuration.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+                def id = artifact.moduleVersion.id
+                entries.add([ecosystem: 'Maven', name: "${id.group}:${id.name}".toString(), version: id.version, scope: 'Android build/runtime'])
+            }
+        }
+        entries.add([ecosystem: 'Maven', name: 'org.gradle:gradle-core', version: gradle.gradleVersion, scope: 'Android build tool'])
+        def output = layout.buildDirectory.file('dependency-inventory.json').get().asFile
+        output.parentFile.mkdirs()
+        output.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(entries.unique { "${it.name}@${it.version}" }))
+    }
+}
