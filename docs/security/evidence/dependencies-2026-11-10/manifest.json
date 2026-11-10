@@ -25,23 +25,23 @@
       "file": "android-before.json"
     },
     {
-      "bytes": 382,
-      "sha256": "10a04b6b27a231e178917702ff818bd455809fd3a0da1adfc8a3675f3e669371",
+      "bytes": 360,
+      "sha256": "382dc9dbc634fe8c777606509be98a89cf019c49b573b2010ce495d23ba52725",
       "file": "dependency-npm-app.json"
     },
     {
-      "bytes": 382,
-      "sha256": "6fd36f796f61dfa557e2bdb5de3914560246a11b439a39a16fee833deca11e94",
+      "bytes": 360,
+      "sha256": "263bb66bd2a3f047e4f5eec9c30a1644b60d76c1de7f569d5327df1350f48940",
       "file": "dependency-npm-worker.json"
     },
     {
-      "bytes": 102661,
-      "sha256": "e8a67430792223d5dfa807e4037c3982ba968cc1fd6c996a08ef9093966ef3e1",
+      "bytes": 98930,
+      "sha256": "7e648a25033e45b0e5aecb90e341f22fd2ddf101769bc94e240d0328964f5124",
       "file": "dependency-osv.json"
     },
     {
-      "bytes": 12908,
-      "sha256": "80942f58b8a83baf19151a1e45a7cd41c981817be4c17e12fd72bbbda9c16042",
+      "bytes": 12501,
+      "sha256": "023579949838efb32031ea06dca6bdd2b3a746134b38f549b3864184dd4e9249",
       "file": "gradle-advisories.json"
     },
     {
@@ -50,10 +50,11 @@
       "file": "inactive-tauri-Cargo.lock"
     },
     {
-      "bytes": 1144,
-      "sha256": "623f07cf654d8f0b36d02d2e101797a57c480c6094978e22a9449a8ac146e96e",
+      "bytes": 1105,
+      "sha256": "4bc96a7aa5deeb1328aca12bff22c8579cee6b372cf81922dc4170b05eaeb86a",
       "file": "runtime-review.json"
     }
   ],
-  "codeCommit": "22db6b405254d8b09ec3b8d4d8702b61033abba2"
+  "codeCommit": "22db6b405254d8b09ec3b8d4d8702b61033abba2",
+  "hashScope": "Committed Git blob bytes (LF normalized); checkouts may convert line endings"
 }
