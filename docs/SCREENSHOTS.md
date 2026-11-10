@@ -64,6 +64,22 @@ continue to apply regardless of the selected visual theme.
 
 ## Tanuki Server graphical installation
 
+### Native Windows installer
+
+These captures show the actual compiled Inno Setup installer from
+[server build 42715785826](https://github.com/Colin1337X/Tanuki/actions/runs/42715785826).
+It was installed into the explicitly authorized test directory `E:\proj\tanukitest`, and all
+543 installed payload files passed manifest verification. Automatic profile setup was turned
+off before finishing; this capture did not provision a production account or expose a server.
+
+![Native Windows installer welcome screen](screenshots/windows-installer-welcome.png)
+
+![Native Windows installer ready to install into the test directory](screenshots/windows-installer-ready.png)
+
+![Native Windows installer after successful installation](screenshots/windows-installer-complete.png)
+
+### Shared graphical setup
+
 The native Windows, macOS and Linux packages launch the same local web-based setup wizard.
 The portable bundle's `install.bat` and `install.sh` entry points open it after integrity
 verification. These screenshots show that shared wizard, not a macOS package-manager or
