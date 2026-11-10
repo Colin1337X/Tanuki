@@ -1,5 +1,11 @@
 # Android and iOS clients
 
+<img src="screenshots/ios-server-picker.png" width="320" alt="Actual iOS simulator client showing the HTTPS server picker">
+
+See the [website and installer screenshot gallery](SCREENSHOTS.md) for all four themes and
+the responsive classroom workspace. This native capture comes from the verified iOS simulator
+run, not a physical-device acceptance test.
+
 These apps connect to an existing HTTPS Tanuki Server; they do not run Node, SQLite or AI
 generation on the phone. The server retains its independent generation worker and resumable
 response architecture. Native shells use Android WebView and iOS WKWebView with no JavaScript
