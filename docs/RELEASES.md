@@ -126,7 +126,9 @@ not present in this repository. Generated installers are unsigned candidates; Gi
 does not replace OS trust signatures. Do not instruct users to disable Gatekeeper or SmartScreen.
 Public desktop distribution needs those signing/notarization steps before publishing a release.
 
-Real-host TLS/DNS, backups and restore acceptance, realistic capacity testing, administrator
-recovery, and the security review of the new cryptographic envelope remain necessary. Passing
+Offline backup, session-revoking restore and administrator recovery are implemented and tested;
+use the [operations guide](OPERATIONS.md) for installed profiles. Real-host TLS/DNS, a restore
+drill on the actual backup storage, realistic capacity testing, and independent security review
+of the new cryptographic envelope remain necessary. Passing
 CI or producing installers does not establish production readiness. Earlier reports describe
 unfinished encrypted multi-chapter/feedback/history workflows; packaging does not complete them.

@@ -9,7 +9,7 @@ run, not a physical-device acceptance test.
 These apps connect to an existing HTTPS Tanuki Server; they do not run Node, SQLite or AI
 generation on the phone. The server retains its independent generation worker and resumable
 response architecture. Native shells use Android WebView and iOS WKWebView with no JavaScript
-bridge or third-party runtime. The hosted application supplies its Jua UI and three themes.
+bridge or third-party runtime. The hosted application supplies its Jua UI and four themes.
 
 ## Build outputs
 

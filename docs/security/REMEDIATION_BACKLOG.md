@@ -1,63 +1,42 @@
-# Prioritized remediation and verification backlog
+# First-public-release verification backlog
 
-This backlog separates fixes verified locally from release work that remains. It does not treat passing tests as approval to deploy.
+Tanuki has not been released to public users. This checklist concerns a fresh installation; historical migration procedures are only relevant if an operator elects to import development data. Passing tests does not establish production readiness.
 
-## Verified fixes
+## Fixed and covered by regression tests
 
-| IDs | Result | Evidence |
-|---|---|---|
-| RT-01–RT-08 | Demonstrated paths blocked; original twelve security regressions preserved | Final 557-case WSL suite, pre-fix logs, adversarial tests |
-| RT-09 | Static symlink to disposable key returns 404 | WSL runtime harness |
-| RT-10 | Misconfigured classroom cannot grant teacher access to administrator profile | Adversarial and browser authorization tests |
-| RT-11 | Production refuses known plaintext migration sources; encrypted archival verifies bytes before removal | WSL migration/archive harness |
+| Area | Change and evidence |
+|---|---|
+| RT-01–RT-08 | Original twelve security regressions preserved; original findings and sanitized reproduction evidence remain in this directory. |
+| RT-09–RT-11 | Static symlink disclosure, classroom privilege confusion and plaintext migration startup paths blocked by existing runtime/browser tests. |
+| Runtime dependencies | Node 26.13.0 supplies SQLite 3.54.0, fixing the previously identified active SQLite advisory. Runtime guards reject older bundles. See DEPENDENCY_AUDIT.md and evidence/runtime-2026-11-11. |
+| Android build dependencies | Reviewed overrides and Gradle update remove the previously detected advisory matches; scan and APK build/lint remain CI gates. Historical Tauri is inactive. |
+| Offline recovery | Installed-profile backup/restore validates encrypted records, rejects corrupt inventories, preserves data and revokes restored sessions. Existing-admin recovery uses Argon2id and revokes all sessions. See tests/node/maintenance.test.js and ../OPERATIONS.md. |
+| Exclusive profile access | Server, provider configuration and maintenance share a lock. Dead-owner recovery is tested with SIGKILL; ambiguous ownership fails closed. |
+| Authentication capacity | Four concurrent password verifications maximum. Excess requests fail with 429; real Argon2 tests verify recovery of capacity. |
+| Reverse-proxy identity | Forwarded addresses are accepted only from explicitly trusted IPs and use the rightmost address. Real HTTP tests verify independent quotas and spoof resistance. |
+| Container configuration | Pinned Node image matches the supported runtime; read-only filesystem, non-root identity, dropped capabilities and bounded memory/processes. Actual container acceptance is now a required CI step. |
 
-## P0 — required before upgrading an existing deployment
+## Remaining first-release gates
 
-1. **Take and test an offline backup of data and its matching keyring.** Stop all application processes. Establish a rollback copy outside the active service path. Acceptance: a separate restore can read representative users/stories/recordings with the matching keys.
-2. **Run the trusted upgrade once, then archive legacy inputs.** Use `npm run data:upgrade`, followed by `npm run data:archive-legacy`, with the intended data/key paths configured. Acceptance: records/password hashes preserved, old sessions revoked, archive decrypts byte-for-byte, no known legacy JSON remains in the live data directory, normal startup succeeds without `TANUKI_ALLOW_LEGACY_UPGRADE`. Never retain that override in the service environment. These commands have not been run on the user's real Windows data.
-3. **Review the complete encrypted-envelope and migration design independently.** Existing ML-KEM/HKDF/AES-GCM-SIV storage now additionally uses native HMAC origin authentication. Acceptance: qualified review of key separation, encoding, authentication ordering, legacy downgrade rules, lifecycle and rotation; published vectors alone are insufficient. No E2EE/FIPS claim.
-4. **Validate the actual deployment edge and filesystem policy.** Container build/run remains unverified. Acceptance: private service data/key permissions, immutable assets, actual TLS proxy/cache tests with two accounts, correct WSL/host firewall behavior, no public Node listener, restricted backups and operator-approved egress. Symlink defense is not a sandbox against arbitrary service-account code execution.
-5. **Configure outbound trust explicitly.** Set `OPENAI_BASE_URL` to the intended endpoint; add only necessary origins to `AI_ALLOWED_ORIGINS`. Acceptance: intended provider works, unapproved origins and all redirects fail, no credential-bearing cleartext transport outside an intentionally trusted local network. Add deployment egress restrictions/DNS controls; application origin allowlisting is not IP pinning.
+1. **Upstream runtime update:** the announced November 11 Node security release was not yet published at the last check. Apply the official patched runtime, update all bundle/container pins and rerun platform acceptance when available. The already-fixed SQLite issue is not an outstanding blocker.
+2. **Distribution identity:** Windows signing and Apple signing/notarization require actual developer credentials. Existing outputs are unsigned candidates. iOS device distribution also requires provisioning. Do not publish unsigned candidates as fully verified signed installers or ask users to bypass platform protections.
+3. **Target-host acceptance:** validate the chosen public domain, TLS/reverse proxy, firewall, service identity, file ACLs, actual backup storage and restore drill. Local/CI synthetic tests cannot establish these properties for an unspecified host. Configure only the approved AI provider and deployment egress; origin allowlisting is not DNS/IP pinning.
+4. **Independent cryptographic review:** review envelope encoding, key ownership/separation, authenticated ordering, downgrade rules and rotation. Reference vectors and application tests are necessary evidence but not an independent audit. The packaged baseline disables recipient/worker preview flags and processes AI plaintext in the backend/provider; do not label it E2EE.
+5. **Realistic acceptance:** load/soak tests at expected school size, physical mobile devices, accessibility/screen readers, microphone workflows, and privacy/content-safety requirements for the intended audience. Bounded login work does not prove throughput or age suitability.
 
-## P1 — security and operational work before sensitive/student-data rollout
+## Operational limitations to retain
 
-- **Restore-session revocation:** provide an operationally reviewed restore procedure/command that revokes all restored sessions before exposure. Complete historical snapshots are replayable; database authentication is not monotonic anti-rollback storage.
-- **Account lifecycle/retention:** retired usernames are now reserved. Introduce immutable account IDs if name reuse is required, with an explicit data/roster reassignment policy and migration tests. Do not remove tombstones to work around the restriction.
-- **Legacy raw audio and historical copies:** decide retention and re-encryption policy for explicitly marked old raw audio, external JSON/CSV/backups and old bootstrap environment files. Production archival only handles known live-directory JSON sources. Secure deletion from SSDs or existing snapshots is not guaranteed.
-- **Rate limits and capacity:** test realistic school-size traffic, Argon2 memory pressure, SQLite scale and provider response sizes. Current IP throttling sees the socket address; an entire reverse-proxied school can share one limit. Keep one application process until generation coordination is shared safely.
-- **Identity recovery and stronger authentication:** define secure administrator/password recovery, MFA where appropriate, weak legacy credential replacement, incident-driven revocation and audit trails. Do not infer uniform authentication timing for all imported hash parameters.
-- **Key custody:** enforce restrictive service-account ACLs/modes on deployed keyrings and backups, test corrupt/lost-key recovery, consider managed key custody. Never log keys or embed them in client assets/images.
-- **Dependency maintenance:** run a fresh advisory/provenance review through approved infrastructure, pin/validate deployment Node and container images, monitor native crypto dependencies. The latest local run used cached packages; the prior clean audit is time-bound.
-- **Retire obsolete deployment paths:** remove or disable legacy framework installers and desktop instructions through the normal authorized repository process. Current Node runtime excludes them, but human misdeployment remains possible. No tool restriction was circumvented to remove them.
+- One application process per installed profile on one host. Multi-host/shared-filesystem coordination is unsupported.
+- Backups contain private keys and require separate trusted custody. Whole-snapshot rollback is not prevented by database authentication; the restore command revokes sessions before publication.
+- Retired usernames remain reserved. Do not remove tombstones to reuse a name without an explicit immutable-ID migration and reassignment policy.
+- Local recovery assumes a trusted profile owner. Compromise of the service identity or backup/key custody exceeds the application authorization boundary.
+- Define retention, incident response and secret-redacted monitoring before admitting student data.
+- Unfinished encrypted multi-chapter/feedback/history preview workflows are not enabled by baseline packaging.
 
-## P2 — broader verification and product risks
+## Optional development-data import
 
-- Actual provider failures, output bounds, DNS rebinding/approved-host compromise, streaming disconnect and revocation interleavings beyond the tested cases.
-- Browser history/BFCache across shared-device account changes; Firefox/Safari/mobile devices; real microphone flows; full accessibility and screen-reader audit.
-- Full security logging/alerting with secrets redacted, abuse response, backup retention and institution-specific privacy/compliance review.
-- Content safety and prompt injection controls: model instructions do not guarantee age suitability, factual accuracy or a certified Lexile score.
-- Sustained load/soak tests, power-loss simulation, multi-host storage and failure injection beyond controlled SIGKILL.
+Fresh installations do not need a legacy migration. If preserving old legitimate development data, take an offline copy and use the documented trusted upgrade/archive commands. Verify password hashes and records, session revocation and encrypted archive contents before normal production startup. Never retain TANUKI_ALLOW_LEGACY_UPGRADE in a service environment. No real user data was migrated in this assessment.
 
-## Safe continuation commands
+## Verification
 
-Use the isolated Linux copy and runtime; do not point these tests at production accounts:
-
-```sh
-export PATH=/home/colin/tanuki-wsl-validation.e8sQlQ/runtime/bin:/usr/bin:/bin
-export LD_LIBRARY_PATH=/home/colin/tanuki-wsl-validation.e8sQlQ/browser-libs/root/usr/lib/x86_64-linux-gnu
-cd /home/colin/tanuki-redteam.MN9NIh/app
-npm run test:coverage
-npm run coverage:report
-node --test scripts/security-runtime.test.js
-npm run build
-cd ../production
-node --test scripts/production-smoke.test.js
-```
-
-The production harness requires a separate `npm ci --omit=dev` installation and OpenSSL. All harness accounts/keys/data are synthetic and disposable. Existing private temporary fixture directories remain for investigation; test services exit at the end of each run.
-
-## Dependency release hold — 2026-11-10
-
-Before production publication, resolve the bundled SQLite CVE-2026-119375 and apply/retest the announced Node November security release. Review [DEPENDENCY_AUDIT.md](DEPENDENCY_AUDIT.md) and require the resolved Android scan plus APK build/lint to pass. Do not reactivate the historical Tauri target with its documented vulnerable graph.
-
-Update 2026-11-11: active SQLite CVE-2026-119375 is fixed by the validated Node 26.13.0 runtime upgrade. Replace old deployed bundles. Keep the announced November Node security release as outstanding; do not carry the already-fixed active SQLite item as an unresolved blocker. Historical Tauri remains inactive.
+Use isolated profiles, test databases, mock provider services and disposable keys. Run `npm run test:coverage`, `npm run coverage:report`, `node --test scripts/security-runtime.test.js`, and `node --test scripts/release/smoke.test.mjs` under the pinned runtime. The verification workflow additionally tests a production-only dependency install, the read-only container, and separate-UID worker isolation. Consult the latest recorded run rather than treating historical pass counts as current evidence.
