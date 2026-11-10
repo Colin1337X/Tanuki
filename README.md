@@ -72,3 +72,5 @@ finished. Keep the feature disabled for sensitive rollout. Read the
 [architecture, verification evidence and remaining blockers](docs/security/RECIPIENT_ENCRYPTION.md).
 
 Teachers can explore classroom participation, daily creation trends, reading-level settings, and individual activity in the [statistics overview](docs/TEACHER-STATISTICS.md).
+
+The latest [dependency security review](docs/security/DEPENDENCY_AUDIT.md) documents a production-release hold for unresolved bundled-runtime advisories, plus the build-tool remediations and scan evidence.

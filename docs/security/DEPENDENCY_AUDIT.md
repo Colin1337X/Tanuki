@@ -36,3 +36,74 @@ Raw public-package scan evidence is in [evidence/dependencies-2026-11-10](eviden
 - [SQLite advisory](https://rustsec.org/advisories/RUSTSEC-2026-0459.html), [upstream fix](https://github.com/sqlite/sqlite/commit/e5bf119821f25be1d7f10ef0a2edbe175289166e), [Node 24.22.2 SQLite source](https://github.com/nodejs/node/blob/v24.22.2/deps/sqlite/sqlite3.c).
 - [Node November security preannouncement](https://github.com/nodejs/nodejs.org/blob/main/apps/site/pages/en/blog/vulnerability/november-2026-security-releases.md), [Node 24.22.2 release](https://nodejs.org/en/blog/release/v24.22.2).
 - [glib advisory](https://rustsec.org/advisories/RUSTSEC-2024-0429.html), [proc-macro-error notice](https://rustsec.org/advisories/RUSTSEC-2024-0370.html), [download-artifact advisory](https://github.com/actions/download-artifact/security/advisories/GHSA-cxww-7g56-2vh6).
+
+## Android transitive findings from the first CI scan
+
+The first resolved Android scan checked 126 package/version entries and correctly failed with 49 advisory matches across 12 coordinates (48 distinct GHSA IDs). These are the build-plugin graph, not evidence that the shipped WebView client exposes each vulnerable function. The raw before report preserves affected ranges and upstream references. No findings were suppressed.
+
+| Affected coordinate | Resolved version | Advisory / CVE |
+| --- | --- | --- |
+| org.bouncycastle:bcpkix-jdk18on | 1.79 | [GHSA-wg6q-6289-32hp](https://osv.dev/vulnerability/GHSA-wg6q-6289-32hp) · CVE-2026-5588 |
+| com.google.guava:guava | 33.3.1-jre | [GHSA-xxph-c9ww-hj94](https://osv.dev/vulnerability/GHSA-xxph-c9ww-hj94) · CVE-2026-102554 |
+| org.apache.commons:commons-compress | 1.21 | [GHSA-4265-ccf5-phj5](https://osv.dev/vulnerability/GHSA-4265-ccf5-phj5) · CVE-2024-26308 |
+| org.apache.commons:commons-compress | 1.21 | [GHSA-4g9r-vxhx-9pgx](https://osv.dev/vulnerability/GHSA-4g9r-vxhx-9pgx) · CVE-2024-25710 |
+| org.bouncycastle:bcprov-jdk18on | 1.79 | [GHSA-574f-3g2m-x479](https://osv.dev/vulnerability/GHSA-574f-3g2m-x479) · CVE-2025-14813 |
+| org.bouncycastle:bcprov-jdk18on | 1.79 | [GHSA-9pwp-9qqc-pr26](https://osv.dev/vulnerability/GHSA-9pwp-9qqc-pr26) · CVE-2026-8763 |
+| org.bouncycastle:bcprov-jdk18on | 1.79 | [GHSA-c3fc-8qff-9hwx](https://osv.dev/vulnerability/GHSA-c3fc-8qff-9hwx) · CVE-2026-0636 |
+| org.bouncycastle:bcprov-jdk18on | 1.79 | [GHSA-p93r-85wp-75v3](https://osv.dev/vulnerability/GHSA-p93r-85wp-75v3) · CVE-2026-5598 |
+| org.bouncycastle:bcprov-jdk18on | 1.79 | [GHSA-qp49-qgx5-5m26](https://osv.dev/vulnerability/GHSA-qp49-qgx5-5m26) · CVE-2026-13506 |
+| org.bitbucket.b_c:jose4j | 0.9.5 | [GHSA-3677-xxcr-wjqv](https://osv.dev/vulnerability/GHSA-3677-xxcr-wjqv) · CVE-2024-29371 |
+| org.jdom:jdom2 | 2.0.6 | [GHSA-2363-cqg2-863c](https://osv.dev/vulnerability/GHSA-2363-cqg2-863c) · CVE-2021-33813 |
+| io.netty:netty-codec-http2 | 4.1.110.Final | [GHSA-563q-j3cm-6jxm](https://osv.dev/vulnerability/GHSA-563q-j3cm-6jxm) · CVE-2026-50560 |
+| io.netty:netty-codec-http2 | 4.1.110.Final | [GHSA-5x3r-wrvg-rp6q](https://osv.dev/vulnerability/GHSA-5x3r-wrvg-rp6q) · CVE-2026-47244 |
+| io.netty:netty-codec-http2 | 4.1.110.Final | [GHSA-93wv-jw9v-4972](https://osv.dev/vulnerability/GHSA-93wv-jw9v-4972) · CVE-2026-56819 |
+| io.netty:netty-codec-http2 | 4.1.110.Final | [GHSA-c2gf-v879-257j](https://osv.dev/vulnerability/GHSA-c2gf-v879-257j) · CVE-2026-48043 |
+| io.netty:netty-codec-http2 | 4.1.110.Final | [GHSA-c69g-56f8-xwqj](https://osv.dev/vulnerability/GHSA-c69g-56f8-xwqj) · CVE-2026-59900 |
+| io.netty:netty-codec-http2 | 4.1.110.Final | [GHSA-f6hv-jmp6-3vwv](https://osv.dev/vulnerability/GHSA-f6hv-jmp6-3vwv) · CVE-2026-42587 |
+| io.netty:netty-codec-http2 | 4.1.110.Final | [GHSA-prj3-ccx8-p6x4](https://osv.dev/vulnerability/GHSA-prj3-ccx8-p6x4) · CVE-2025-55163 |
+| io.netty:netty-codec-http2 | 4.1.110.Final | [GHSA-w9fj-cfpg-grvv](https://osv.dev/vulnerability/GHSA-w9fj-cfpg-grvv) · CVE-2026-33871 |
+| io.netty:netty-handler-proxy | 4.1.110.Final | [GHSA-45q3-82m4-75jr](https://osv.dev/vulnerability/GHSA-45q3-82m4-75jr) · CVE-2026-42578 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-38f8-5428-x5cv](https://osv.dev/vulnerability/GHSA-38f8-5428-x5cv) · CVE-2026-42585 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-4mp9-239f-g9hg](https://osv.dev/vulnerability/GHSA-4mp9-239f-g9hg) · CVE-2026-59898 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-57rv-r2g8-2cj3](https://osv.dev/vulnerability/GHSA-57rv-r2g8-2cj3) · CVE-2026-42584 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-6cqp-g7gg-8hr5](https://osv.dev/vulnerability/GHSA-6cqp-g7gg-8hr5) · CVE-2026-56746 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-6jqx-86gh-f27w](https://osv.dev/vulnerability/GHSA-6jqx-86gh-f27w) · CVE-2026-55831 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-84h7-rjj3-6jx4](https://osv.dev/vulnerability/GHSA-84h7-rjj3-6jx4) · CVE-2025-67735 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-8c42-7qj2-3j46](https://osv.dev/vulnerability/GHSA-8c42-7qj2-3j46) · CVE-2026-59903 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-f6hv-jmp6-3vwv](https://osv.dev/vulnerability/GHSA-f6hv-jmp6-3vwv) · CVE-2026-42587 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-fghv-69vj-qj49](https://osv.dev/vulnerability/GHSA-fghv-69vj-qj49) · CVE-2025-58056 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-gcjf-9mgh-3p7g](https://osv.dev/vulnerability/GHSA-gcjf-9mgh-3p7g) · CVE-2026-59921 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-hvcg-qmg6-jm4c](https://osv.dev/vulnerability/GHSA-hvcg-qmg6-jm4c) · CVE-2026-50020 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-jppx-w49h-x2qq](https://osv.dev/vulnerability/GHSA-jppx-w49h-x2qq) · CVE-2026-56745 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-m4cv-j2px-7723](https://osv.dev/vulnerability/GHSA-m4cv-j2px-7723) · CVE-2026-42580 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-mvh2-crg5-v77c](https://osv.dev/vulnerability/GHSA-mvh2-crg5-v77c) · CVE-2026-55833 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-pwqr-wmgm-9rr8](https://osv.dev/vulnerability/GHSA-pwqr-wmgm-9rr8) · CVE-2026-33870 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-q4f6-jm68-57ww](https://osv.dev/vulnerability/GHSA-q4f6-jm68-57ww) · CVE-2026-59899 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-v8h7-rr48-vmmv](https://osv.dev/vulnerability/GHSA-v8h7-rr48-vmmv) · CVE-2026-41417 |
+| io.netty:netty-codec-http | 4.1.110.Final | [GHSA-xxqh-mfjm-7mv9](https://osv.dev/vulnerability/GHSA-xxqh-mfjm-7mv9) · CVE-2026-42581 |
+| io.netty:netty-handler | 4.1.110.Final | [GHSA-3qp7-7mw8-wx86](https://osv.dev/vulnerability/GHSA-3qp7-7mw8-wx86) · CVE-2026-44249 |
+| io.netty:netty-handler | 4.1.110.Final | [GHSA-4g8c-wm8x-jfhw](https://osv.dev/vulnerability/GHSA-4g8c-wm8x-jfhw) · CVE-2025-24970 |
+| io.netty:netty-handler | 4.1.110.Final | [GHSA-c4c3-7fpv-j4q5](https://osv.dev/vulnerability/GHSA-c4c3-7fpv-j4q5) · CVE-2026-75595 |
+| io.netty:netty-handler | 4.1.110.Final | [GHSA-c653-97m9-rcg9](https://osv.dev/vulnerability/GHSA-c653-97m9-rcg9) · CVE-2026-50010 |
+| io.netty:netty-handler | 4.1.110.Final | [GHSA-fccg-mwvh-qqg4](https://osv.dev/vulnerability/GHSA-fccg-mwvh-qqg4) · CVE-2026-75596 |
+| io.netty:netty-handler | 4.1.110.Final | [GHSA-x4gw-5cx5-pgmh](https://osv.dev/vulnerability/GHSA-x4gw-5cx5-pgmh) · CVE-2026-45416 |
+| io.netty:netty-codec | 4.1.110.Final | [GHSA-3p8m-j85q-pgmj](https://osv.dev/vulnerability/GHSA-3p8m-j85q-pgmj) · CVE-2025-58057 |
+| io.netty:netty-codec | 4.1.110.Final | [GHSA-558v-64gr-wgg4](https://osv.dev/vulnerability/GHSA-558v-64gr-wgg4) · CVE-2026-59901 |
+| io.netty:netty-codec | 4.1.110.Final | [GHSA-mj4r-2hfc-f8p6](https://osv.dev/vulnerability/GHSA-mj4r-2hfc-f8p6) · CVE-2026-42583 |
+| io.netty:netty-common | 4.1.110.Final | [GHSA-389x-839f-4rhx](https://osv.dev/vulnerability/GHSA-389x-839f-4rhx) · CVE-2025-25193 |
+| io.netty:netty-common | 4.1.110.Final | [GHSA-xq3w-v528-46rv](https://osv.dev/vulnerability/GHSA-xq3w-v528-46rv) · CVE-2024-47535 |
+
+Patched build dependency lines: Netty 4.1.140.Final, Bouncy Castle jdk18on 1.86, Guava 33.8.0-jre, Commons Compress 1.28.0, jose4j 0.9.7, and JDOM 2.0.6.1. Exact versions were checked against Maven Central metadata. The CI inventory and audit must validate the actual resolved versions, and APK assembly/lint must pass before accepting these overrides.
+
+The separate WSL cryptographic verification completed **42 tests passed, 0 failed, 0 skipped**, including vendored byte/hash checks and real encryption/decryption. This does not clear runtime or platform advisory blockers.
+
+## Completed remediation verification
+
+On code commit `22db6b405254d8b09ec3b8d4d8702b61033abba2`:
+
+- [Application verification](https://github.com/Colin1337X/Tanuki/actions/runs/42814448430) succeeded: **717 passed, 0 failed, 0 skipped**, followed by runtime crash/recovery, installed-profile, production-only dependency, and worker identity/isolation checks.
+- [Android job](https://github.com/Colin1337X/Tanuki/actions/runs/42814448506/job/129824673575) completed successfully in mobile workflow run **42814448506**: resolved dependency audit, URL policy tests, debug and release APK assembly, release lint, and debug APK signature verification.
+- The patched Android graph has **128 exact package/version entries and zero known OSV advisory matches**. Before/after inventory and full advisory responses are committed alongside the npm/Rust evidence. This establishes the scanned versions and successful builds, not reachability analysis of every advisory or absence of unknown defects.
+- Actionlint and JavaScript syntax checks passed. No npm versions, cryptographic algorithms, or server runtime binaries were changed.
+
+The iOS simulator and server installer matrix run separately. These unchanged-platform runs are not needed to prove the Android dependency resolution, and their status must not be inferred from the successful Android job. **The runtime release hold remains in force even when all CI jobs pass.**

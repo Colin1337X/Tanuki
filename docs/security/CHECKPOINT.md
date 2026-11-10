@@ -89,3 +89,7 @@ Added Git-rendered Mermaid before/after diagrams, a complete RT-01–RT-11 index
 Verification: ten published artifact checksums/byte sizes and sanitizer fixtures passed; 62 local documentation links resolved; both diagram definitions cover all eleven findings (structural check, not a visual-render assertion). All eleven selectors ran in isolated WSL: 22 targeted cases passed, zero failed/skipped. Application runtime code was unchanged by this publication; the final 586-case assessment result above remains the historical full verification.
 
 PR #51 was already merged when this follow-up was prepared, so publication uses a new branch/PR based on current main. The original ignored logs remain untouched. No blanket force-add of coverage, keys, data or environment files occurred.
+
+## Dependency security follow-up — 2026-11-10
+
+See [DEPENDENCY_AUDIT.md](DEPENDENCY_AUDIT.md) for the completed npm/OSV inventory, raw evidence, upstream Gradle findings, Android transitive remediation, and unresolved Node/SQLite production-release hold. Application security tests do not supersede this runtime dependency hold.

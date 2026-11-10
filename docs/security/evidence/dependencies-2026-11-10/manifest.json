@@ -1,0 +1,59 @@
+{
+  "androidRun": 42814448506,
+  "verificationRun": 42814448430,
+  "capturedAt": "2026-11-10T12:21:46.0386889Z",
+  "scope": "Public package/version inventories and advisory responses only; no user or production data",
+  "files": [
+    {
+      "bytes": 21336,
+      "sha256": "a1c0af60e5501af6cf5077cd828bdbb20e208161c7e481f54af2e9dfe209eaf6",
+      "file": "android-after-inventory.json"
+    },
+    {
+      "bytes": 20482,
+      "sha256": "b312359a2d748908c240f7cf3d29a922ad81ba19d4a52713e6790893864fe2ab",
+      "file": "android-after.json"
+    },
+    {
+      "bytes": 21015,
+      "sha256": "e72b6ee8a722e9e411651b8a0bf1982a5846222f1a06c5df11383b379b6392e7",
+      "file": "android-before-inventory.json"
+    },
+    {
+      "bytes": 587227,
+      "sha256": "7940d9981411774b4fe58fcdc2433eda77279aa0e00689cde72b4a1a1b870a1a",
+      "file": "android-before.json"
+    },
+    {
+      "bytes": 382,
+      "sha256": "10a04b6b27a231e178917702ff818bd455809fd3a0da1adfc8a3675f3e669371",
+      "file": "dependency-npm-app.json"
+    },
+    {
+      "bytes": 382,
+      "sha256": "6fd36f796f61dfa557e2bdb5de3914560246a11b439a39a16fee833deca11e94",
+      "file": "dependency-npm-worker.json"
+    },
+    {
+      "bytes": 102661,
+      "sha256": "e8a67430792223d5dfa807e4037c3982ba968cc1fd6c996a08ef9093966ef3e1",
+      "file": "dependency-osv.json"
+    },
+    {
+      "bytes": 12908,
+      "sha256": "80942f58b8a83baf19151a1e45a7cd41c981817be4c17e12fd72bbbda9c16042",
+      "file": "gradle-advisories.json"
+    },
+    {
+      "bytes": 135897,
+      "sha256": "c8ffa8c60cc650e9bf3403ff4d8acca8b071d8ca1bff5d17ea82dc99b3023bcc",
+      "file": "inactive-tauri-Cargo.lock"
+    },
+    {
+      "bytes": 1144,
+      "sha256": "623f07cf654d8f0b36d02d2e101797a57c480c6094978e22a9449a8ac146e96e",
+      "file": "runtime-review.json"
+    }
+  ],
+  "codeCommit": "22db6b405254d8b09ec3b8d4d8702b61033abba2"
+}

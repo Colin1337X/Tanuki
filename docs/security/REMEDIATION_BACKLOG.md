@@ -55,3 +55,7 @@ node --test scripts/production-smoke.test.js
 ```
 
 The production harness requires a separate `npm ci --omit=dev` installation and OpenSSL. All harness accounts/keys/data are synthetic and disposable. Existing private temporary fixture directories remain for investigation; test services exit at the end of each run.
+
+## Dependency release hold — 2026-11-10
+
+Before production publication, resolve the bundled SQLite CVE-2026-119375 and apply/retest the announced Node November security release. Review [DEPENDENCY_AUDIT.md](DEPENDENCY_AUDIT.md) and require the resolved Android scan plus APK build/lint to pass. Do not reactivate the historical Tauri target with its documented vulnerable graph.
