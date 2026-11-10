@@ -70,3 +70,5 @@ and generated output still pass through the server/provider in plaintext during 
 The full legacy-reader migration, encrypted feedback and public-publishing workflows are not
 finished. Keep the feature disabled for sensitive rollout. Read the
 [architecture, verification evidence and remaining blockers](docs/security/RECIPIENT_ENCRYPTION.md).
+
+Teachers can explore classroom participation, daily creation trends, reading-level settings, and individual activity in the [statistics overview](docs/TEACHER-STATISTICS.md).

@@ -133,3 +133,5 @@ tests**. Night now receives the same login, student, reader and administrator la
 375, 768 and 1440 pixels as the other themes, plus keyboard, reading-text contrast and theme
 persistence checks. This does not replace manual assistive-technology or physical-device review.
 Night printing additionally verifies black text on white paper with workspace controls hidden.
+
+The teacher and administrator overview images were refreshed for the expanded [teacher statistics](TEACHER-STATISTICS.md) on November 10, 2026, using the same isolated synthetic fixture. The teacher capture includes the full page.

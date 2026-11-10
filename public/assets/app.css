@@ -238,3 +238,26 @@
   .app-theme[data-theme=focus] .login-story {padding:20px 8px}.site-footer {gap:16px;flex-wrap:wrap}
 }
 @media print {.reading-page {border:0!important;background:#fff!important;color:#000!important}.reader-main {max-width:none!important;padding:0!important}}
+
+/* Teacher statistics: native meters keep exact values accessible without chart dependencies. */
+.analytics-intro{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.analytics-intro h2{font-size:clamp(1.6rem,3vw,2.3rem);margin:.5rem 0}
+.analytics-filters{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0}
+.analytics-filters label{display:grid;gap:8px;min-width:160px;flex:1}
+.analytics-filters input,.analytics-filters select{width:100%;min-height:44px}
+.analytics-columns{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0}
+.analytics-columns>.surface{min-width:0;margin:0}
+.analytics-bars{list-style:none;padding:0;display:grid;gap:14px}
+.analytics-bars li>div{display:flex;justify-content:space-between;gap:12px;overflow-wrap:anywhere}
+.analytics-bars meter{width:100%;height:16px;accent-color:var(--accent)}
+.analytics-trend{display:flex;gap:5px;height:140px;align-items:center;margin-top:24px}
+.analytics-trend meter{writing-mode:vertical-lr;direction:rtl;width:100%;height:130px;min-width:0;accent-color:var(--accent)}
+.analytics-checkins{list-style:none;padding:0;display:grid;gap:20px}
+.analytics-checkins strong{font-size:1.6rem;margin-right:8px}
+.analytics-note{font-size:.85rem;line-height:1.7;max-width:95ch}
+#stats-results .stat-card{gap:12px}
+#stats-results caption{text-align:left;padding:12px 0}
+#stats-results th[scope=row]{text-align:left;overflow-wrap:anywhere}
+@media(max-width:800px){.analytics-columns{grid-template-columns:1fr}.analytics-intro{display:block}.analytics-filters label{min-width:0;flex-basis:100%}.analytics-trend{gap:2px}}
+.analytics-bars meter::-webkit-meter-optimum-value,.analytics-trend meter::-webkit-meter-optimum-value{background:var(--accent)}
+.analytics-bars meter::-moz-meter-bar,.analytics-trend meter::-moz-meter-bar{background:var(--accent)}
