@@ -1,6 +1,8 @@
 # Dependency security review — 2026-11-10
 
-**Release status: HOLD.** A clean npm audit is not a clean bill of health for the embedded runtime or build toolchain. Do not publish the current candidates as production-ready.
+**Runtime remediation update:** the active runtime is being upgraded to official LTS Node 26.13.0, which embeds SQLite 3.54.0 and the upstream WAL zero-fill fix. App and worker startup reject older Node/SQLite engines. The findings below describe the original scanned runtime; its SQLite finding is superseded by this upgrade once validated. The separately announced November security patch remains unpublished and cannot yet be applied.
+
+**Release status: HOLD for the announced Node update.** A clean npm audit is not a clean bill of health for the embedded runtime or build toolchain. Do not publish the current candidates as production-ready.
 
 ## Confirmed findings and remediation
 

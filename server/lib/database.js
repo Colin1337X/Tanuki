@@ -1,3 +1,5 @@
+import { assertSupportedRuntime } from './runtime.js';
+assertSupportedRuntime();
 import { randomUUID } from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
 import fs from 'node:fs';
