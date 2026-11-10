@@ -1,6 +1,16 @@
 # Tanuki Stories
 
-A Node.js and vanilla JavaScript reading workspace with student, teacher, and administrator accounts. Studio, claymorphic Classroom, and Focus themes use a locally hosted Jua font. Students set a **0–1800L Lexile writing target in 50L steps** with an accessible slider. This target is a generation instruction, not a certified measurement; teacher reading levels and content restrictions remain authoritative.
+A Node.js and vanilla JavaScript reading workspace with student, teacher, and administrator accounts. Studio, claymorphic Classroom, Focus, and Night themes use a locally hosted Jua font. Students set a **0–1800L Lexile writing target in 50L steps** with an accessible slider. This target is a generation instruction, not a certified measurement; teacher reading levels and content restrictions remain authoritative.
+
+![Tanuki Studio workspace with synthetic demonstration data](docs/screenshots/studio-workspace.png)
+
+| Classroom | Focus | Night |
+| --- | --- | --- |
+| ![Claymorphic Classroom theme](docs/screenshots/classroom-workspace.png) | ![Minimal Focus theme](docs/screenshots/focus-workspace.png) | ![Navy and amber Night theme](docs/screenshots/dark-workspace.png) |
+
+Explore the [screenshot tour](docs/SCREENSHOTS.md) for the actual website, reader, teacher/admin
+dashboards, mobile layout, Lexile preferences and graphical server installation. All website
+examples use synthetic data.
 
 ## Run locally
 

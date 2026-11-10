@@ -20,6 +20,11 @@ privileged application service.
 
 ## Install and configure
 
+![Actual Tanuki Server graphical setup wizard](screenshots/server-setup-address.png)
+
+The [illustrated setup walkthrough](SCREENSHOTS.md#tanuki-server-graphical-installation) shows
+administrator creation, review and successful provisioning with synthetic data.
+
 For script-based **Tanuki Server GUI installation**, extract the complete portable release and
 double-click `install.bat` on Windows, or run `sh install.sh` on Linux/macOS. Both verify the
 release manifest and open the same local graphical wizard used by native installers. They use

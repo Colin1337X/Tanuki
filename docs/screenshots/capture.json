@@ -1,0 +1,120 @@
+{
+  "capturedAt": "2026-11-10T02:45:56.409Z",
+  "method": "Playwright Chromium against isolated local Node/SQLite instances; no external AI requests",
+  "entries": [
+    {
+      "file": "studio-workspace.png",
+      "description": "studio student workspace",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "studio-library.png",
+      "description": "studio populated student library",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "classroom-workspace.png",
+      "description": "classroom student workspace",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "classroom-library.png",
+      "description": "classroom populated student library",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "focus-workspace.png",
+      "description": "focus student workspace",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "focus-library.png",
+      "description": "focus populated student library",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "dark-workspace.png",
+      "description": "dark student workspace",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "dark-library.png",
+      "description": "dark populated student library",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "studio-login.png",
+      "description": "studio login",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "focus-reader.png",
+      "description": "focus reader",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "night-reader.png",
+      "description": "night reader",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "classroom-teacher.png",
+      "description": "classroom teacher",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "studio-admin.png",
+      "description": "studio admin",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "classroom-mobile.png",
+      "description": "classroom mobile",
+      "width": 390,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "classroom-preferences.png",
+      "description": "Classroom preferences and Lexile slider",
+      "width": 1440,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "server-setup-address.png",
+      "description": "Server graphical installer: HTTPS address",
+      "width": 1240,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "server-setup-account.png",
+      "description": "Server graphical installer: administrator",
+      "width": 1240,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "server-setup-review.png",
+      "description": "Server graphical installer: review",
+      "width": 1240,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    },
+    {
+      "file": "server-setup-complete.png",
+      "description": "Server graphical installer: completed provisioning",
+      "width": 1240,
+      "source": "Real locally rendered UI; synthetic fixture data"
+    }
+  ]
+}

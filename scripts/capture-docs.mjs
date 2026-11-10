@@ -1,0 +1,33 @@
+// Developer-only screenshot capture: real app/routes, disposable accounts and keys.
+import fs from 'node:fs';import path from 'node:path';import {once} from 'node:events';
+import {chromium} from 'playwright';
+import {isolate,provisionKeys,password,fixtureStory} from '../tests/node/helpers.js';
+const fixture=isolate();await provisionKeys();
+const store=await import('../server/lib/storage.js'),auth=await import('../server/lib/auth.js'),db=await import('../server/lib/database.js');
+const {createAppServer}=await import('../server/index.js'),{createSetup}=await import('../installer/setup.mjs');
+const out=path.resolve('docs/screenshots');fs.mkdirSync(out,{recursive:true});
+const entries=[],server=createAppServer();server.listen(0,'127.0.0.1');await once(server,'listening');
+const origin=`http://127.0.0.1:${server.address().port}`,browser=await chromium.launch({headless:true});let setup;
+for(const username of ['mina','theo','jules'])store.addStoredUser({username,password,role:'student',onboardingCompleted:true,readingLevel:'Elementary',lexileTarget:650,preferences:{favoriteGenres:['Fantasy','Science']}});
+store.addStoredUser({username:'ms-rivera',password,role:'teacher',managedClassroomIds:['willow'],onboardingCompleted:true});
+store.saveConfig({...store.getConfig(),classrooms:{willow:{name:'The Willow Room',members:['mina','theo','jules']}}});
+const prose='Every evening, the little fox counted the lights above the forest. One night, there was an empty space where her favorite star had been.\n\nShe packed a jar of moonberries, tied a ribbon around her notebook, and followed a silver trail into the trees. At the old willow, she found something unexpected: a tiny star, asleep in a bird’s nest.\n\n“I think you took a wrong turn,” she whispered. The star opened one bright eye.\n\n“Perhaps,” it said. “But I have never heard the forest sing.”\n\nSo the fox sat beside it until morning, listening to the crickets, the river, and the slow rustle of leaves. Some adventures, she decided, were worth being a little late for.';
+store.saveStory(fixtureStory('lost-star','mina',{title:'The fox who found a star',request:'A fox who collects lost stars',story:prose,chapters:[prose],options:{genre:'Fantasy'},createdAt:'2026-10-28T12:00:00Z'}));
+store.saveStory(fixtureStory('ocean-notebook','mina',{title:'A city beneath the waves',request:'How coral reefs work',infoMode:true,options:{genre:'Science'},story:'A coral reef is a neighborhood built by tiny animals. Fish find shelter between its branches, while sunlight helps the reef grow. Let’s meet the creatures that keep this underwater city alive.',createdAt:'2026-10-29T12:00:00Z'}));
+store.saveStory(fixtureStory('garden','theo',{title:'The midnight garden',story:'At midnight, the school garden woke up. Every flower had a story to tell.',createdAt:'2026-10-27T12:00:00Z'}));
+async function shot(page,name,description,fullPage=false){await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:path.join(out,name+'.png'),fullPage});entries.push({file:name+'.png',description,width:page.viewportSize().width,source:'Real locally rendered UI; synthetic fixture data'});}
+async function visit(role,route,theme='studio',width=1440){const context=await browser.newContext({viewport:{width,height:1000},locale:'en-US',timezoneId:'UTC',reducedMotion:'reduce'});await context.addInitScript(t=>localStorage.setItem('tanuki_theme',t),theme);if(role)await context.addCookies([{name:'tanuki_session',value:auth.createSessionToken({username:role}),url:origin,httpOnly:true,sameSite:'Lax'}]);const page=await context.newPage();await page.goto(origin+route);await page.locator('main').waitFor();await page.evaluate(()=>document.fonts.ready);return {context,page};}
+try {
+ for(const theme of ['studio','classroom','focus','dark']){
+  const {page,context}=await visit('mina','/student',theme);await page.locator('#story-idea').waitFor();await shot(page,`${theme}-workspace`,`${theme} student workspace`);
+  await page.locator('#library').scrollIntoViewIfNeeded();await shot(page,`${theme}-library`,`${theme} populated student library`);await context.close();
+ }
+ for(const [name,role,route,theme,width]of[['studio-login',null,'/login','studio',1440],['focus-reader','mina','/student/reader/lost-star','focus',1440],['night-reader','mina','/student/reader/lost-star','dark',1440],['classroom-teacher','ms-rivera','/teacher','classroom',1440],['studio-admin','admin','/admin','studio',1440],['classroom-mobile','mina','/student','classroom',390]]){
+  const {page,context}=await visit(role,route,theme,width);if(route.includes('reader'))await page.locator('#reading-text').waitFor();if(role==='admin'||role==='ms-rivera')await page.locator('#educator-content table').waitFor();await shot(page,name,name.replaceAll('-',' '),width<700);await context.close();
+ }
+ const prefs=await visit('mina','/student','classroom');await prefs.page.getByRole('button',{name:'Preferences',exact:true}).click();await prefs.page.locator('#modal').waitFor();await shot(prefs.page,'classroom-preferences','Classroom preferences and Lexile slider');await prefs.context.close();
+ setup=await createSetup({profile:path.join(fixture,'documentation-profile')});const page=await browser.newPage({viewport:{width:1240,height:940}});await page.goto(setup.origin+'/#'+setup.token);await page.getByLabel('Your public web address').fill('https://stories.example.org');await shot(page,'server-setup-address','Server graphical installer: HTTPS address');
+ await page.getByRole('button',{name:/Continue/}).click();await page.getByLabel('Administrator username').fill('school-admin');await page.getByLabel('Password',{exact:true}).fill('synthetic documentation passphrase');await page.getByLabel('Repeat password').fill('synthetic documentation passphrase');await shot(page,'server-setup-account','Server graphical installer: administrator');
+ await page.getByRole('button',{name:/Continue/}).click();await shot(page,'server-setup-review','Server graphical installer: review');await page.getByRole('button',{name:/Create my workspace/}).click();await page.getByRole('heading',{name:'Welcome home.'}).waitFor();await shot(page,'server-setup-complete','Server graphical installer: completed provisioning');
+ fs.writeFileSync(path.join(out,'capture.json'),JSON.stringify({capturedAt:new Date().toISOString(),method:'Playwright Chromium against isolated local Node/SQLite instances; no external AI requests',entries},null,2)+'\n');console.log(`Captured ${entries.length} real UI screenshots in ${out}`);
+}finally {if(setup)await setup.close();await browser.close();server.closeAllConnections();await new Promise(r=>server.close(r));db.closeDatabase();}
