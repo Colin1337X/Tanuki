@@ -1,3 +1,32 @@
+// AGP 8.13.2 still requests vulnerable transitive build libraries. Keep compatible
+// patched lines explicit until upstream catches up; audit the resolved graph in CI.
+buildscript {
+    configurations.classpath {
+        resolutionStrategy.eachDependency { details ->
+            def group = details.requested.group
+            def name = details.requested.name
+            if (group == 'io.netty' && !name.startsWith('netty-tcnative')) {
+                details.useVersion '4.1.140.Final'
+                details.because 'Patch HTTP/TLS/decoder advisories; retain the compatible 4.1 line'
+            }
+            if (group == 'org.bouncycastle' && name.endsWith('-jdk18on')) {
+                details.useVersion '1.86'
+                details.because 'Patch certificate, signature and cipher advisories'
+            }
+            def patched = [
+                'com.google.guava:guava': '33.8.0-jre',
+                'org.apache.commons:commons-compress': '1.28.0',
+                'org.bitbucket.b_c:jose4j': '0.9.7',
+                'org.jdom:jdom2': '2.0.6.1'
+            ]
+            def version = patched["${group}:${name}".toString()]
+            if (version) {
+                details.useVersion version
+                details.because 'Patch known advisories in the Android build dependency graph'
+            }
+        }
+    }
+}
 plugins { id 'com.android.application' version '8.13.2' apply false }
 
 // Resolve the build plugins and shipping runtime graph; emit exact versions for advisory scanning.
