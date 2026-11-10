@@ -1,0 +1,23 @@
+{
+  "sourceSha256": "2da161e310ef0aba3465f22a4d12b8a43723236f0942fa76e8aac523c3317243",
+  "applicationTests": {
+    "passed": 721,
+    "skipped": 0,
+    "failed": 0
+  },
+  "verificationRun": 42826432878,
+  "mobileRun": 42826432944,
+  "codeCommit": "690e7d5e7d0fe84aea8281bc28f950383b226215",
+  "reviewedDate": "2026-11-11 Asia/Seoul",
+  "upstreamWalZeroFillPresent": true,
+  "additionalWslRuntimeTests": {
+    "passed": 15,
+    "skipped": 0,
+    "failed": 0
+  },
+  "remaining": "November 2026 Node security release is still preannounced; no published patch to apply.",
+  "sqlite": "3.54.0",
+  "node": "26.13.0",
+  "sourceUrl": "https://raw.githubusercontent.com/nodejs/node/v26.13.0/deps/sqlite/sqlite3.c",
+  "installerRun": 42826433079
+}

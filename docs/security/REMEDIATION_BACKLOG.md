@@ -59,3 +59,5 @@ The production harness requires a separate `npm ci --omit=dev` installation and 
 ## Dependency release hold — 2026-11-10
 
 Before production publication, resolve the bundled SQLite CVE-2026-119375 and apply/retest the announced Node November security release. Review [DEPENDENCY_AUDIT.md](DEPENDENCY_AUDIT.md) and require the resolved Android scan plus APK build/lint to pass. Do not reactivate the historical Tauri target with its documented vulnerable graph.
+
+Update 2026-11-11: active SQLite CVE-2026-119375 is fixed by the validated Node 26.13.0 runtime upgrade. Replace old deployed bundles. Keep the announced November Node security release as outstanding; do not carry the already-fixed active SQLite item as an unresolved blocker. Historical Tauri remains inactive.

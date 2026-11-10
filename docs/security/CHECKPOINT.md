@@ -93,3 +93,7 @@ PR #51 was already merged when this follow-up was prepared, so publication uses 
 ## Dependency security follow-up — 2026-11-10
 
 See [DEPENDENCY_AUDIT.md](DEPENDENCY_AUDIT.md) for the completed npm/OSV inventory, raw evidence, upstream Gradle findings, Android transitive remediation, and unresolved Node/SQLite production-release hold. Application security tests do not supersede this runtime dependency hold.
+
+## Runtime remediation — 2026-11-11
+
+Node 26.13.0 / SQLite 3.54.0 fixes the active SQLite finding. Full WSL/CI: 721 passed, zero failed/skipped; additional WSL runtime tests: 15 passed. All four installer matrix targets and both mobile jobs succeeded. See DEPENDENCY_AUDIT.md for exact run links. Only the separate unpublished November Node security patch remains an upstream runtime blocker. Existing installed bundles are not automatically upgraded.
