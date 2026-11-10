@@ -1,3 +1,5 @@
+import { assertSupportedRuntime } from '../server/lib/runtime.js';
+assertSupportedRuntime();
 // Trusted plaintext boundary. No imports of application authentication/storage or recipient secrets.
 import { DatabaseSync } from 'node:sqlite';
 import { createHash } from 'node:crypto';

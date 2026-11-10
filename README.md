@@ -18,7 +18,7 @@ For self-contained Windows, macOS (Intel/Apple Silicon), and Linux installers, s
 [installable releases and production rollout](docs/RELEASES.md). They include Node and a
 graphical setup wizard; the source-development commands below are not required by end users.
 
-Use Node.js **24.8 or newer** (latest WSL verification: 24.22.2). SQLite and ML-KEM require a recent Node runtime.
+Use Node.js **26.13.0 or newer within 26.x**, with SQLite **3.54.0+**. Older runtimes are rejected before application or worker databases open. Release bundles pin the tested runtime.
 
 ```sh
 npm ci
@@ -72,3 +72,5 @@ finished. Keep the feature disabled for sensitive rollout. Read the
 [architecture, verification evidence and remaining blockers](docs/security/RECIPIENT_ENCRYPTION.md).
 
 Teachers can explore classroom participation, daily creation trends, reading-level settings, and individual activity in the [statistics overview](docs/TEACHER-STATISTICS.md).
+
+The latest [dependency security review](docs/security/DEPENDENCY_AUDIT.md) documents a production-release hold for unresolved bundled-runtime advisories, plus the build-tool remediations and scan evidence.

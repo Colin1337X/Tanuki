@@ -1,11 +1,13 @@
+import { lockProfile } from './profile-lock.mjs';
 import fs from 'node:fs';import path from 'node:path';import {defaultProfile} from './profile.mjs';
 const profile=defaultProfile();
 if(!fs.existsSync(path.join(profile,'installed')))throw new Error('Complete Tanuki Setup before starting the server.');
+lockProfile(profile);
 const config=JSON.parse(fs.readFileSync(path.join(profile,'config.json'),'utf8'));if(config.version!==1)throw new Error('Unsupported installation profile');
 const origin=new URL(config.origin);if(origin.protocol!=='https:'||origin.origin!==config.origin||!Number.isInteger(config.port)||config.port<1024||config.port>65535)throw new Error('Invalid installation profile');
 process.env.TANUKI_KEYRING_FILE=path.join(profile,'keyring.json');process.env.NODE_ENV='production';
 const{unseal}=await import('../server/lib/crypto.js'),secrets=JSON.parse(unseal(fs.readFileSync(path.join(profile,'secrets.json'),'utf8'),'installation-provider-v1').toString());
-const env={PATH:process.env.PATH,SystemRoot:process.env.SystemRoot,TEMP:process.env.TEMP,TMP:process.env.TMP,HOME:process.env.HOME,NODE_ENV:'production',HOST:'127.0.0.1',PORT:String(config.port),APP_ORIGIN:config.origin,TANUKI_DATA_DIR:path.join(profile,'data'),TANUKI_KEYRING_FILE:process.env.TANUKI_KEYRING_FILE,OPENAI_BASE_URL:secrets.providerUrl,OPENAI_API_KEY:secrets.providerKey,TANUKI_RECIPIENT_ENCRYPTION:'0',TANUKI_TRUSTED_WORKER:'0'};
+const env={PATH:process.env.PATH,SystemRoot:process.env.SystemRoot,TEMP:process.env.TEMP,TMP:process.env.TMP,HOME:process.env.HOME,NODE_ENV:'production',HOST:'127.0.0.1',TANUKI_TRUSTED_PROXY_IPS:'127.0.0.1,::1',PORT:String(config.port),APP_ORIGIN:config.origin,TANUKI_DATA_DIR:path.join(profile,'data'),TANUKI_KEYRING_FILE:process.env.TANUKI_KEYRING_FILE,OPENAI_BASE_URL:secrets.providerUrl,OPENAI_API_KEY:secrets.providerKey,TANUKI_RECIPIENT_ENCRYPTION:'0',TANUKI_TRUSTED_WORKER:'0'};
 for(const name of Object.keys(process.env))delete process.env[name];for(const[name,value]of Object.entries(env))if(value!==undefined)process.env[name]=value;
 const {createAppServer}=await import('../server/index.js'),server=createAppServer();
 server.on('error',()=>{console.error('Server could not listen. Check the configured local port.');process.exitCode=1;});

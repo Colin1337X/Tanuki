@@ -1,0 +1,407 @@
+[
+  {
+    "ghsa_id": "GHSA-j5m7-59rp-24f5",
+    "cve_id": null,
+    "severity": "high",
+    "summary": "Failure to disable repositories failing to establish an SSL connection can expose builds to malicious artifacts",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-j5m7-59rp-24f5",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "org.gradle:gradle-core"
+        },
+        "vulnerable_version_range": "<= 8.14.5",
+        "patched_versions": "8.14.6",
+        "vulnerable_functions": []
+      },
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "org.gradle:gradle-core"
+        },
+        "vulnerable_version_range": ">= 9.0.0, <= 9.8.0",
+        "patched_versions": "9.8.1",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-xwqc-3h47-hg64",
+    "cve_id": null,
+    "severity": "high",
+    "summary": "Deserialization of untrusted Java objects before authentication in the client - daemon communication",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-xwqc-3h47-hg64",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "org.gradle:gradle-core"
+        },
+        "vulnerable_version_range": "<= 8.14.5",
+        "patched_versions": "8.14.6",
+        "vulnerable_functions": []
+      },
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "org.gradle:gradle-core"
+        },
+        "vulnerable_version_range": ">= 9.0.0, <= 9.8.0",
+        "patched_versions": "9.8.1",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-mvvg-497x-hmj8",
+    "cve_id": null,
+    "severity": "high",
+    "summary": "Unauthenticated worker-to-daemon channel deserializes untrusted Java objects",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-mvvg-497x-hmj8",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "org.gradle:gradle-core"
+        },
+        "vulnerable_version_range": "<= 8.14.5",
+        "patched_versions": "8.14.6",
+        "vulnerable_functions": []
+      },
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "org.gradle:gradle-core"
+        },
+        "vulnerable_version_range": ">= 9.0.0, <= 9.8.0",
+        "patched_versions": "9.8.1",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-mqwm-5m85-gmcv",
+    "cve_id": "CVE-2026-22865",
+    "severity": "high",
+    "summary": "Failure to disable repositories failing to answer can expose builds to malicious artifacts",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-mqwm-5m85-gmcv",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "org.gradle:gradle-core"
+        },
+        "vulnerable_version_range": "< 8.14.4, 9.0.0 to 9.2.1",
+        "patched_versions": "8.14.4, >= 9.3.0",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-w78c-w6vf-rw82",
+    "cve_id": "CVE-2026-22816",
+    "severity": "high",
+    "summary": "Failure to disable repositories with unknown host can expose builds to malicious artifacts",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-w78c-w6vf-rw82",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "maven",
+          "name": "org.gradle:gradle-core"
+        },
+        "vulnerable_version_range": "< 8.14.4, 9.0.0 to 9.2.1",
+        "patched_versions": "8.14.4, >= 9.3.0",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-465q-w4mf-4f4r",
+    "cve_id": "CVE-2025-27148",
+    "severity": "high",
+    "summary": "Local privilege escalation through system temporary directory",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-465q-w4mf-4f4r",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "8.12",
+        "patched_versions": "8.12.1",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-43r3-pqhv-f7h9",
+    "cve_id": "CVE-2023-44387",
+    "severity": "low",
+    "summary": "Incorrect permission assignment for symlinked files used in copy or archiving operations",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-43r3-pqhv-f7h9",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "<7.6.3, <8.4",
+        "patched_versions": "7.6.3, 8.4",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-mrff-q8qj-xvg8",
+    "cve_id": "CVE-2023-42445",
+    "severity": "medium",
+    "summary": "Possible local text file exfiltration by XML External entity injection",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-mrff-q8qj-xvg8",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "<7.6.3, <8.4",
+        "patched_versions": "7.6.3, 8.4",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-2h6c-rv6q-494v",
+    "cve_id": "CVE-2023-35946",
+    "severity": "medium",
+    "summary": "Dependency cache path traversal",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-2h6c-rv6q-494v",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "<7.6.1, [8.0,8.1.1]",
+        "patched_versions": "7.6.2, 8.2",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-84mw-qh6q-v842",
+    "cve_id": "CVE-2023-35947",
+    "severity": "medium",
+    "summary": "Path traversal vulnerabilities in handling of Tar archives",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-84mw-qh6q-v842",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "<7.6.1, [8.0,8.1.1]",
+        "patched_versions": "7.6.2, 8.2",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-c724-3xg7-g3hf",
+    "cve_id": "CVE-2023-26053",
+    "severity": "medium",
+    "summary": "Dependency verification: Usage of long IDs for PGP keys is unsafe and is subject to collision attacks",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-c724-3xg7-g3hf",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "6.2 to 7.6",
+        "patched_versions": "6.9.4, 7.6.1, 8.0",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-j6wc-xfg8-jx2j",
+    "cve_id": "CVE-2022-31156",
+    "severity": "medium",
+    "summary": "Dependency verification can ignore checksum verification when signature verification cannot be performed",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-j6wc-xfg8-jx2j",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "6.2 to 7.4.2",
+        "patched_versions": "7.5",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-9pf5-88jw-3qgr",
+    "cve_id": "CVE-2022-23630",
+    "severity": "medium",
+    "summary": "Dependency verification can be bypassed when using `ResolutionStrategy.disableDependencyVerification()`",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-9pf5-88jw-3qgr",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "6.2 to 7.3.3",
+        "patched_versions": "7.4",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-6j2p-252f-7mw8",
+    "cve_id": "CVE-2021-32751",
+    "severity": "high",
+    "summary": "Arbitrary code execution via specially crafted environment variables",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-6j2p-252f-7mw8",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "<7.2",
+        "patched_versions": "7.2",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-fp8h-qmr5-j4c8",
+    "cve_id": "CVE-2021-29429",
+    "severity": "medium",
+    "summary": "Information disclosure through temporary directory permissions",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-fp8h-qmr5-j4c8",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "<7.0",
+        "patched_versions": "7.0",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-jvmj-rh6q-x395",
+    "cve_id": "CVE-2021-29427",
+    "severity": "high",
+    "summary": "Repository content filters do not work in Settings pluginManagement",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-jvmj-rh6q-x395",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "5.1 to 6.8.3",
+        "patched_versions": "7.0",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-j45w-qrgf-25vm",
+    "cve_id": "CVE-2020-11979",
+    "severity": "medium",
+    "summary": "CVE-2020-11979: Apache Ant insecure temporary file vulnerability",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-j45w-qrgf-25vm",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "<6.8",
+        "patched_versions": "6.8",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-89qm-pxvm-p336",
+    "cve_id": "CVE-2021-29428",
+    "severity": "high",
+    "summary": "Local privilege escalation through system temporary directory",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-89qm-pxvm-p336",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "<7.0",
+        "patched_versions": "7.0",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-ww7h-4fx5-8c2j",
+    "cve_id": "CVE-2020-13165",
+    "severity": "medium",
+    "summary": "Signing: GnuPG key passphrase captured in INFO and DEBUG logs",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-ww7h-4fx5-8c2j",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java, android, c/c++, build tooling",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "4.5 through 6.4.x",
+        "patched_versions": "6.5",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-mrm8-42q4-6rm7",
+    "cve_id": "CVE-2019-16370",
+    "severity": "low",
+    "summary": "Signing Plugin: SHA1 used when signing artifacts",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-mrm8-42q4-6rm7",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java, android, c/c++, build tooling",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "< 6.0",
+        "patched_versions": "6.0",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-4cwg-f7qc-6r95",
+    "cve_id": "CVE-2019-15052",
+    "severity": "critical",
+    "summary": "Repository authentication sent to server of HTTP redirection response",
+    "html_url": "https://github.com/gradle/gradle/security/advisories/GHSA-4cwg-f7qc-6r95",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "java, android, c/c++, build tooling",
+          "name": "Gradle"
+        },
+        "vulnerable_version_range": "< 5.6",
+        "patched_versions": "5.6",
+        "vulnerable_functions": []
+      }
+    ]
+  }
+]

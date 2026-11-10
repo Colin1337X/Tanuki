@@ -1,7 +1,9 @@
 # Installable releases and production rollout
 
+**Production release hold (2026-11-10):** Node has announced a forthcoming high-severity security release affecting 26.x. The known SQLite advisory is addressed by the upgrade to Node 26.13.0 / SQLite 3.54.0. See the [dependency security review](security/DEPENDENCY_AUDIT.md). Candidate artifacts remain for testing; do not publish them as production-ready until the runtime is patched and reverified.
+
 Tanuki ships a self-contained Node application, not a compiled rewrite of its JavaScript.
-Every bundle includes the reviewed Node **24.22.2** runtime and platform-specific native
+Every bundle includes the reviewed Node **26.13.0** runtime and platform-specific native
 Argon2 binary. End users do not need Node, npm, a compiler, or a development checkout.
 
 | Platform | Installer | Portable bundle |
@@ -124,7 +126,9 @@ not present in this repository. Generated installers are unsigned candidates; Gi
 does not replace OS trust signatures. Do not instruct users to disable Gatekeeper or SmartScreen.
 Public desktop distribution needs those signing/notarization steps before publishing a release.
 
-Real-host TLS/DNS, backups and restore acceptance, realistic capacity testing, administrator
-recovery, and the security review of the new cryptographic envelope remain necessary. Passing
+Offline backup, session-revoking restore and administrator recovery are implemented and tested;
+use the [operations guide](OPERATIONS.md) for installed profiles. Real-host TLS/DNS, a restore
+drill on the actual backup storage, realistic capacity testing, and independent security review
+of the new cryptographic envelope remain necessary. Passing
 CI or producing installers does not establish production readiness. Earlier reports describe
 unfinished encrypted multi-chapter/feedback/history workflows; packaging does not complete them.

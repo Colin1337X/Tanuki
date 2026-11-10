@@ -1,3 +1,4 @@
+import { clientAddress } from './lib/client-address.js';
 import { createServer } from 'node:http';
 import { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
@@ -74,7 +75,7 @@ export function createAppServer() {
         const mod=await import(route.file);const handler=mod[req.method];
         if(!handler)throw Object.assign(new Error('Method not allowed'),{status:405});
         const response=await requestContext.run(request,async()=>{
-          if(url.pathname==='/api/auth/login'&&!consumeRateLimit(`ip:${req.socket.remoteAddress}`,100,15*60*1000))throw Object.assign(new Error('Too many sign-in attempts'),{status:429});
+          if(url.pathname==='/api/auth/login'&&!consumeRateLimit(`ip:${clientAddress(req.socket.remoteAddress,req.headers['x-forwarded-for'])}`,100,15*60*1000))throw Object.assign(new Error('Too many sign-in attempts'),{status:429});
           if(req.method==='POST' && /^\/api\/stories\/(generate|plan|[^/]+\/chapter)$/.test(url.pathname)) {
             if(trustedWorkerEnabled())throw Object.assign(new Error('Use Trusted Worker Encryption in the encrypted workspace; legacy plaintext generation is disabled'),{status:409});
             const user=await getCurrentUser();

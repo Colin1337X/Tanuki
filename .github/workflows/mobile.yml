@@ -1,7 +1,7 @@
 name: Build mobile clients
 on:
   pull_request:
-    paths: ['mobile/**', '.github/workflows/mobile.yml']
+    paths: ['mobile/**', '.github/workflows/mobile.yml', 'scripts/security/audit-inventory.mjs']
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,10 +22,23 @@ jobs:
           java-version: '17'
       - name: Install reviewed Gradle
         run: |
-          curl --fail --location --retry 3 https://services.gradle.org/distributions/gradle-8.13-bin.zip -o "$RUNNER_TEMP/gradle.zip"
-          echo "20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78  $RUNNER_TEMP/gradle.zip" | sha256sum -c -
+          curl --fail --location --retry 3 https://services.gradle.org/distributions/gradle-8.14.6-bin.zip -o "$RUNNER_TEMP/gradle.zip"
+          echo "7988ed071b2a07900e2ec715fca15c6ab72bce6db433af301fa7fa7e9407bd24  $RUNNER_TEMP/gradle.zip" | sha256sum -c -
           unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP"
-          echo "$RUNNER_TEMP/gradle-8.13/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/gradle-8.14.6/bin" >> "$GITHUB_PATH"
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 26.13.0
+      - name: Resolve and audit Android dependency graph
+        run: |
+          gradle -p mobile/android --no-daemon dependencyInventory
+          node scripts/security/audit-inventory.mjs mobile/android/build/dependency-inventory.json mobile/android/build/dependency-audit.json
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: android-dependency-evidence
+          path: mobile/android/build/dependency-*.json
+          if-no-files-found: warn
       - name: Test URL authorization policy
         working-directory: mobile/android
         run: |
@@ -46,7 +59,10 @@ jobs:
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: mobile-android-candidates
-          path: mobile/android/build/artifacts/*
+          path: |
+            mobile/android/build/artifacts/*
+            mobile/android/build/dependency-inventory.json
+            mobile/android/build/dependency-audit.json
           if-no-files-found: error
   ios:
     runs-on: macos-15
