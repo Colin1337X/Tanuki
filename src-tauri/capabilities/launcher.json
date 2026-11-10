@@ -1,0 +1,1 @@
+{"identifier":"launcher","description":"Only the bundled server chooser can select a workspace. Hosted pages have no native permissions.","local":true,"windows":["main"],"permissions":["allow-connect-server"]}

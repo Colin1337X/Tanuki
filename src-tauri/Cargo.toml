@@ -1,29 +1,22 @@
 [package]
 name = "tanuki-app"
-version = "0.1.0"
-description = "Tanuki Stories - Offline-accessible PWA with Tauri"
+version = "1.0.0"
+description = "Tanuki Stories secure server-connected client"
 authors = ["Tanuki Team"]
 license = "MIT"
-repository = ""
 edition = "2021"
+rust-version = "1.90"
+
+[lib]
+name = "tanuki_app"
+crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2", features = [] }
+tauri-build = { version = "=2.7.4", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = ["tray-icon"] }
-tauri-plugin-shell = "2"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-tokio = { version = "1", features = ["full"] }
-reqwest = { version = "0.12", features = ["json"] }
-rusqlite = { version = "0.31", features = ["bundled"] }
-uuid = { version = "1", features = ["v4"] }
-chrono = { version = "0.4", features = ["serde"] }
-sysinfo = "0.30"
-directories = "5"
-log = "0.4"
-env_logger = "0.11"
+tauri = { version = "=2.12.5", features = [] }
+url = "2.5"
 
 [features]
 default = ["custom-protocol"]
