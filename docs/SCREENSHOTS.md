@@ -128,7 +128,8 @@ Screenshots are examples, not evidence of production readiness or complete acces
 
 ## Theme verification
 
-The 2026-11-10 isolated WSL run passed **696 tests, 0 failed, 0 skipped**, including **86 browser
+The 2026-11-10 isolated WSL run passed **697 tests, 0 failed, 0 skipped**, including **87 browser
 tests**. Night now receives the same login, student, reader and administrator layout checks at
 375, 768 and 1440 pixels as the other themes, plus keyboard, reading-text contrast and theme
 persistence checks. This does not replace manual assistive-technology or physical-device review.
+Night printing additionally verifies black text on white paper with workspace controls hidden.

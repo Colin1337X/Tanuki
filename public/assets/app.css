@@ -237,4 +237,4 @@
   .reader-main {padding:28px 18px 48px!important}.reader-title {font-size:34px}.reading-page {padding:28px 24px}.reader-tools .quiet-button {font-size:13px;padding:10px}
   .app-theme[data-theme=focus] .login-story {padding:20px 8px}.site-footer {gap:16px;flex-wrap:wrap}
 }
-@media print {.reading-page {border:0!important}.reader-main {max-width:none!important;padding:0!important}}
+@media print {.reading-page {border:0!important;background:#fff!important;color:#000!important}.reader-main {max-width:none!important;padding:0!important}}
