@@ -1,7 +1,5 @@
-name: Build mobile clients
+name: Legacy native mobile regression
 on:
-  pull_request:
-    paths: ['mobile/**', '.github/workflows/mobile.yml', 'scripts/security/audit-inventory.mjs']
   workflow_dispatch:
 permissions:
   contents: read

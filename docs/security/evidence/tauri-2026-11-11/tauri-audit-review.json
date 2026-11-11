@@ -1,0 +1,26 @@
+{
+  "reviewedAt": "2026-11-11T03:50:22.064Z",
+  "findings": [
+    {
+      "name": "glib",
+      "version": "0.18.5",
+      "ecosystem": "crates.io",
+      "id": "GHSA-wrw7-89jp-8q8g",
+      "disposition": "upstream two-line fix backported; source integrity verified; optimized Linux regression required"
+    },
+    {
+      "name": "glib",
+      "version": "0.18.5",
+      "ecosystem": "crates.io",
+      "id": "RUSTSEC-2024-0429",
+      "disposition": "upstream two-line fix backported; source integrity verified; optimized Linux regression required"
+    },
+    {
+      "name": "proc-macro-error",
+      "version": "1.0.4",
+      "ecosystem": "crates.io",
+      "id": "RUSTSEC-2024-0370",
+      "disposition": "unmaintained build-time macro dependency; retained maintenance risk, not a runtime vulnerability fix"
+    }
+  ]
+}

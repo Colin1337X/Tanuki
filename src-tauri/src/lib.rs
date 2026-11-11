@@ -1,49 +1,78 @@
-mod device_identity;
-mod sync_engine;
-mod llm_sidecar;
-mod system_info;
+mod policy;
+use std::sync::{Arc, Mutex};
+use tauri::{WebviewUrl, WebviewWindowBuilder};
+use url::Url;
 
-use tauri::Manager;
+type Selected = Arc<Mutex<Option<Url>>>;
+
+#[tauri::command]
+async fn connect_server(webview: tauri::WebviewWindow, selected: tauri::State<'_, Selected>, address: String) -> Result<(), String> {
+    let current = webview.url().map_err(|_| "Cannot inspect current page")?;
+    if webview.label() != "main" || !policy::local_launcher(&current) {
+        return Err("Only the bundled launcher can choose a server.".into());
+    }
+    let origin = policy::server_origin(&address).map_err(str::to_owned)?;
+    {
+        let mut selection = selected.lock().map_err(|_| "Server selection unavailable")?;
+        if selection.is_some() { return Err("Restart the client to change servers.".into()); }
+        // Clear previous cookies/storage before selecting another account or institution.
+        webview.clear_all_browsing_data().map_err(|_| "Cannot clear previous workspace data")?;
+        *selection = Some(origin.clone());
+    }
+    // Android queues clearing asynchronously. Do not navigate with a previous
+    // account's cookies just because the clear request was accepted.
+    let checked_window = webview.clone();
+    let checked_origin = origin.clone();
+    let cleared = tauri::async_runtime::spawn_blocking(move || {
+        for _ in 0..60 {
+            match checked_window.cookies_for_url(checked_origin.clone()) {
+                Ok(cookies) if cookies.is_empty() => return true,
+                Ok(_) => std::thread::sleep(std::time::Duration::from_millis(50)),
+                Err(_) => return false,
+            }
+        }
+        false
+    }).await.unwrap_or(false);
+    if !cleared {
+        *selected.lock().map_err(|_| "Server selection unavailable")? = None;
+        return Err("Previous session data could not be cleared. Close and restart the client.".into());
+    }
+    if webview.navigate(origin.join("login").map_err(|_| "Invalid login address")?).is_err() {
+        *selected.lock().map_err(|_| "Server selection unavailable")? = None;
+        return Err("Cannot open this server. Restart and check the address.".into());
+    }
+    Ok(())
+}
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    let selected: Selected = Arc::new(Mutex::new(None));
+    let navigation = selected.clone();
     tauri::Builder::default()
-        .plugin(tauri_plugin_shell::init())
-        .setup(|app| {
-            let app_handle = app.handle().clone();
-
-            // Initialize device identity on first run
-            let data_dir = app.path().app_data_dir().expect("Failed to get app data dir");
-            std::fs::create_dir_all(&data_dir).ok();
-            device_identity::ensure_device_identity(&data_dir);
-
-            // Start background broadcast task
-            let data_dir_clone = data_dir.clone();
-            tauri::async_runtime::spawn(async move {
-                sync_engine::start_broadcast_loop(app_handle, data_dir_clone).await;
-            });
-
+        .manage(selected)
+        .invoke_handler(tauri::generate_handler![connect_server])
+        .setup(move |app| {
+            let window = WebviewWindowBuilder::new(app, "main", WebviewUrl::App("index.html".into()))
+                .title("Tanuki Stories")
+                .inner_size(1100.0, 780.0)
+                .min_inner_size(360.0, 540.0)
+                .devtools(false)
+                .incognito(true)
+                .on_navigation(move |target| {
+                    let Ok(selection) = navigation.lock() else { return false; };
+                    match selection.as_ref() {
+                        Some(origin) => policy::allows(origin, target),
+                        None => policy::local_launcher(target),
+                    }
+                })
+                .on_download(|_, _| false)
+                .on_permission_request(|_, _| tauri::webview::PermissionResponse::Deny);
+            #[cfg(desktop)]
+            let window = window.on_new_window(|_, _| tauri::webview::NewWindowResponse::Deny);
+            window.build()?;
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![
-            device_identity::get_device_id,
-            sync_engine::get_sync_status,
-            sync_engine::set_control_center_url,
-            sync_engine::get_control_center_url,
-            sync_engine::get_control_center_hash,
-            sync_engine::queue_mutation,
-            sync_engine::get_pending_mutations,
-            sync_engine::force_sync,
-            sync_engine::get_local_config,
-            sync_engine::set_local_config,
-            llm_sidecar::load_model,
-            llm_sidecar::unload_model,
-            llm_sidecar::generate_text,
-            llm_sidecar::get_model_status,
-            system_info::get_system_info,
-            system_info::get_optimal_ctx_size,
-            system_info::get_gpu_layers,
-        ])
         .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .expect("Tanuki client could not start");
 }
+
