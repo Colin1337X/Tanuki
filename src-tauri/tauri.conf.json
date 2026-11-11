@@ -3,22 +3,59 @@
   "productName": "Tanuki Stories",
   "version": "1.0.0",
   "identifier": "org.tanuki.stories",
-  "build": { "frontendDist": "../clients/web" },
+  "build": {
+    "frontendDist": "../clients/web"
+  },
   "app": {
     "withGlobalTauri": true,
     "windows": [],
     "security": {
       "csp": "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src ipc: http://ipc.localhost; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'",
-      "capabilities": ["launcher"]
+      "capabilities": [
+        "launcher"
+      ]
     }
   },
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
-    "windows": { "nsis": { "installMode": "currentUser" } },
-    "macOS": { "minimumSystemVersion": "11.0" },
-    "iOS": { "minimumSystemVersion": "14.0" },
-    "android": { "minSdkVersion": 26 }
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "headerImage": "installer-assets/header.bmp",
+        "sidebarImage": "installer-assets/sidebar.bmp"
+      }
+    },
+    "macOS": {
+      "minimumSystemVersion": "11.0",
+      "dmg": {
+        "background": "installer-assets/dmg-background.png",
+        "windowSize": {
+          "width": 720,
+          "height": 480
+        },
+        "appPosition": {
+          "x": 210,
+          "y": 275
+        },
+        "applicationFolderPosition": {
+          "x": 510,
+          "y": 275
+        }
+      }
+    },
+    "iOS": {
+      "minimumSystemVersion": "14.0"
+    },
+    "android": {
+      "minSdkVersion": 26
+    }
   }
 }

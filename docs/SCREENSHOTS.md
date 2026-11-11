@@ -141,3 +141,35 @@ persistence checks. This does not replace manual assistive-technology or physica
 Night printing additionally verifies black text on white paper with workspace controls hidden.
 
 The teacher and administrator overview images were refreshed for the expanded [teacher statistics](TEACHER-STATISTICS.md) on November 10, 2026, using the same isolated synthetic fixture. The teacher capture includes the full page.
+
+## Installer visual refresh — 2026-11-11
+
+The shared server setup now uses larger Jua text, warm paper surfaces, sage panels,
+clay-style buttons and clearer progress indicators. These fresh Chromium captures come
+from the real local setup server using a disposable database. The earlier native
+Windows captures above show the previous artwork.
+
+![Refreshed server setup on desktop](screenshots/installer-desktop.png)
+
+<img src="screenshots/installer-mobile.png" width="375" alt="Refreshed mobile setup with labeled administrator fields">
+
+The Tauri Windows installer uses the following rendered sidebar; this is **installer
+artwork**, not a screenshot of a running installer.
+
+![Windows client installer sidebar artwork](../src-tauri/installer-assets/sidebar.png)
+
+The macOS client disk image uses this background, with the application and Applications
+folder placed over the two panels by Finder. This is **background artwork**, not a
+capture of Finder.
+
+![macOS client installer background artwork](../src-tauri/installer-assets/dmg-background.png)
+
+Artwork is reproduced with `node scripts/release/installer-art.mjs` after installing
+the project's Playwright Chromium. Native installer templates and install/uninstall
+behavior remain upstream-managed. The server's macOS package welcome and completion
+pages also bundle Jua locally with its license.
+
+Verification: the existing installer suite passed **11/11, no failures or skips** in
+WSL2, including real browser provisioning, mobile layout/focus, concurrent installation,
+credential storage and local setup access controls. The prior complete application
+suite passed **741/741**; installer styling alone does not establish release readiness.

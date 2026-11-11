@@ -9,7 +9,7 @@ Tanuki has not been released to public users. This checklist concerns a fresh in
 | RT-01–RT-08 | Original twelve security regressions preserved; original findings and sanitized reproduction evidence remain in this directory. |
 | RT-09–RT-11 | Static symlink disclosure, classroom privilege confusion and plaintext migration startup paths blocked by existing runtime/browser tests. |
 | Runtime dependencies | Node 26.13.0 supplies SQLite 3.54.0, fixing the previously identified active SQLite advisory. Runtime guards reject older bundles. See DEPENDENCY_AUDIT.md and evidence/runtime-2026-11-11. |
-| Android build dependencies | Reviewed overrides and Gradle update remove the previously detected advisory matches; scan and APK build/lint remain CI gates. Historical Tauri is inactive. |
+| Android build dependencies | Reviewed overrides and Gradle update remove the previously detected advisory matches; scan and APK build/lint remain CI gates. The old Tauri local-model/SQLite graph has been replaced by the server-connected client; see the current Tauri section in DEPENDENCY_AUDIT.md. |
 | Offline recovery | Installed-profile backup/restore validates encrypted records, rejects corrupt inventories, preserves data and revokes restored sessions. Existing-admin recovery uses Argon2id and revokes all sessions. See tests/node/maintenance.test.js and ../OPERATIONS.md. |
 | Exclusive profile access | Server, provider configuration and maintenance share a lock. Dead-owner recovery is tested with SIGKILL; ambiguous ownership fails closed. |
 | Authentication capacity | Four concurrent password verifications maximum. Excess requests fail with 429; real Argon2 tests verify recovery of capacity. |
