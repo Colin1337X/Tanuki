@@ -1,9 +1,9 @@
 # Installable releases and production rollout
 
-**Production release hold (2026-11-10):** Node has announced a forthcoming high-severity security release affecting 26.x. The known SQLite advisory is addressed by the upgrade to Node 26.13.0 / SQLite 3.54.0. See the [dependency security review](security/DEPENDENCY_AUDIT.md). Candidate artifacts remain for testing; do not publish them as production-ready until the runtime is patched and reverified.
+**Production release hold (2026-11-10):** Node has announced a forthcoming high-severity security release affecting 26.x. The known SQLite advisory is addressed by the upgrade to Node 26.13.1 / SQLite 3.54.0. See the [dependency security review](security/DEPENDENCY_AUDIT.md). Candidate artifacts remain for testing; do not publish them as production-ready until the runtime is patched and reverified.
 
 Tanuki ships a self-contained Node application, not a compiled rewrite of its JavaScript.
-Every bundle includes the reviewed Node **26.13.0** runtime and platform-specific native
+Every bundle includes the reviewed Node **26.13.1** runtime and platform-specific native
 Argon2 binary. End users do not need Node, npm, a compiler, or a development checkout.
 
 | Platform | Installer | Portable bundle |

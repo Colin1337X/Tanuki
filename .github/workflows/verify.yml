@@ -19,13 +19,15 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: 26.13.0
+          node-version: 26.13.1
           cache: npm
       - name: Audit application and isolated worker dependencies
         run: |
           npm audit --audit-level=low
           npm audit --prefix worker --audit-level=low
       - run: npm ci
+      - name: Prepare signed Ubuntu package sources
+        run: bash scripts/ci/ubuntu-packages.sh
       - run: npx playwright install --with-deps chromium
       - run: npm run build
       - name: Full application and browser coverage

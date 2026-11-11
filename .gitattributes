@@ -8,3 +8,4 @@ install.sh text eol=lf
 install.bat text eol=crlf
 mobile/**/*.sh text eol=lf
 deploy/*.service text eol=lf
+scripts/ci/*.sh text eol=lf

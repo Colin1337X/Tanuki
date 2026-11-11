@@ -18,7 +18,7 @@ For self-contained Windows, macOS (Intel/Apple Silicon), and Linux installers, s
 [installable releases and production rollout](docs/RELEASES.md). They include Node and a
 graphical setup wizard; the source-development commands below are not required by end users.
 
-Use Node.js **26.13.0 or newer within 26.x**, with SQLite **3.54.0+**. Older runtimes are rejected before application or worker databases open. Release bundles pin the tested runtime.
+Use Node.js **26.13.1 or newer within 26.x**, with SQLite **3.54.0+**. Older runtimes are rejected before application or worker databases open. Release bundles pin the tested runtime.
 
 ```sh
 npm ci
