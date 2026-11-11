@@ -33,3 +33,19 @@ Signing credentials, Apple notarization/provisioning, physical-device and screen
 acceptance, a real target host's TLS/ACL/backup configuration, independent crypto review
 and school-scale capacity acceptance remain separate gates. No public release is
 authorized by this checkpoint. See [the release backlog](REMEDIATION_BACKLOG.md).
+
+### Observed local results
+
+- Node 26.13.1 in isolated WSL2: **741 passed, 0 failed, 0 skipped**.
+- Additional runtime/installed-profile checks: **15 passed, 0 failed, 0 skipped**.
+- Coverage: **86.30% lines, 81.22% branches, 91.58% functions**. The machine-readable
+  report is [tracked here](evidence/runtime-2026-11-12/coverage-summary.json).
+- Fresh Linux production-only bundle: **591 files verified**, installation integrity
+  check passed, actual bundled runtime provisioning/login smoke **1 passed**.
+- Application and worker npm audits: **zero reported vulnerabilities**.
+- All workflow files passed actionlint. The local Docker Linux engine was stopped,
+  so container acceptance is delegated to the required CI job, not counted as passed.
+- PR #65 had merged into the dependency branch after PR #62 reached main. The migration
+  and runtime fixes are now combined in [PR #66](https://github.com/Colin1337X/Tanuki/pull/66).
+  Fresh native/platform and container job conclusions remain the source of truth for
+  packaging acceptance; local tests do not establish signing or device behavior.
