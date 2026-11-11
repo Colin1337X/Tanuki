@@ -22,10 +22,20 @@ gradle.projectsEvaluated {
             rootProject.allprojects.each { p ->
                 def configs = p.buildscript.configurations.findAll { it.canBeResolved }
                 configs += p.configurations.findAll { it.canBeResolved && it.name.toLowerCase().endsWith('releaseruntimeclasspath') }
-                configs.each { c -> c.resolvedConfiguration.resolvedArtifacts.each { a ->
-                    def id = a.moduleVersion.id
-                    entries.add([ecosystem:'Maven',name:"${id.group}:${id.name}".toString(),version:id.version])
-                } }
+                configs.each { c ->
+                    def graph = c.incoming.resolutionResult
+                    graph.allDependencies.each { dependency ->
+                        if (dependency instanceof org.gradle.api.artifacts.result.UnresolvedDependencyResult) {
+                            throw new GradleException("Unresolved dependency in ${p.path}:${c.name}", dependency.failure)
+                        }
+                    }
+                    graph.allComponents.each { component ->
+                        def id = component.id
+                        if (id instanceof org.gradle.api.artifacts.component.ModuleComponentIdentifier) {
+                            entries.add([ecosystem:'Maven',name:"${id.group}:${id.module}".toString(),version:id.version])
+                        }
+                    }
+                }
             }
             entries.add([ecosystem:'Maven',name:'org.gradle:gradle-core',version:gradle.gradleVersion])
             def output = new File(rootProject.buildDir, 'dependency-inventory.json')
