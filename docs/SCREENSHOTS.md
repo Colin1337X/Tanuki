@@ -4,6 +4,12 @@ These are screenshots of the implemented application, not design mockups. Websit
 captures use isolated local SQLite databases, synthetic accounts/stories and disposable keys.
 No production records or provider credentials appear here. Captured 2026-11-10.
 
+## Shared Tauri client — Windows capture, 2026-11-11
+
+![Running Tauri client rejecting a non-HTTPS server address](screenshots/tauri-windows-validation.png)
+
+The same server address works in a modern browser or the desktop/mobile client. Enter a reachable HTTPS domain or IPv4/IPv6 address, with a port when needed. This is an actual locally compiled Windows capture; earlier native mobile screenshots below are historical, not screenshots of the new Tauri mobile binaries.
+
 ## Four ways to feel at home
 
 All themes retain locally hosted **Jua**, the same functionality, keyboard access and saved

@@ -2,6 +2,10 @@
 
 The shared Tauri 2 client in `src-tauri` targets Windows, macOS, Linux, Android and iOS. It connects to the same Node.js Tanuki Server used by regular modern browsers. The server installers remain separate: no server, AI worker, SQLite database or provider secret is embedded in the client.
 
+![Actual locally compiled Windows Tauri client rejecting an insecure server address](screenshots/tauri-windows-validation.png)
+
+This capture is from the running Windows client, not a design mockup. Native welcome-screen rendering and HTTP rejection were checked; it does not establish physical mobile-device acceptance.
+
 ## Connect by domain or IP
 
 Configure one reachable HTTPS origin on the server and its reverse proxy. Open that exact address in a browser, or enter it in the app's server chooser:

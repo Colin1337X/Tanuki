@@ -86,7 +86,7 @@ jobs:
         run: npm run tauri -- android build --ci --target aarch64 --apk --aab
       - name: Audit resolved Android build and runtime dependencies
         run: |
-          (cd src-tauri/gen/android && ./gradlew --no-daemon tanukiDependencyInventory)
+          (cd src-tauri/gen/android && ./gradlew --no-daemon --no-configuration-cache tanukiDependencyInventory)
           node scripts/security/audit-inventory.mjs src-tauri/gen/android/build/dependency-inventory.json coverage/tauri-android-audit.json
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         if: always()
