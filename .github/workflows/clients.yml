@@ -47,7 +47,7 @@ jobs:
       - run: rustup default 1.98.1
       - run: npm ci --prefix clients
       - run: cargo test --manifest-path src-tauri/Cargo.toml --locked
-      - run: node clients/node_modules/@tauri-apps/cli/tauri.js build --ci --bundles ${{ matrix.bundles }} -- --locked
+      - run: npm run tauri -- build --ci --bundles ${{ matrix.bundles }} -- --locked
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         with:
           name: tauri-${{ matrix.os }}-unsigned-candidate
@@ -69,10 +69,10 @@ jobs:
       - name: Initialize Android project
         run: |
           echo "NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
-          sdkmanager 'ndk;27.2.12479018'
-          node clients/node_modules/@tauri-apps/cli/tauri.js android init --ci
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'ndk;27.2.12479018'
+          npm run tauri -- android init --ci
       - name: Build Android client
-        run: node clients/node_modules/@tauri-apps/cli/tauri.js android build --ci --target aarch64 --apk --aab
+        run: npm run tauri -- android build --ci --target aarch64 --apk --aab
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         with:
           name: tauri-android-unsigned-candidate
@@ -91,8 +91,8 @@ jobs:
       - run: rustup toolchain install 1.98.1 --profile minimal
       - run: rustup default 1.98.1
       - run: npm ci --prefix clients
-      - run: node clients/node_modules/@tauri-apps/cli/tauri.js ios init --ci
-      - run: node clients/node_modules/@tauri-apps/cli/tauri.js ios build --ci --target aarch64 --no-sign --archive-only
+      - run: npm run tauri -- ios init --ci
+      - run: npm run tauri -- ios build --ci --target aarch64 --no-sign --archive-only
       - name: Package unsigned device archive
         run: |
           set -euo pipefail
@@ -109,4 +109,5 @@ jobs:
             coverage/ios/*.ipa
             coverage/ios/README.txt
           if-no-files-found: error
+
 

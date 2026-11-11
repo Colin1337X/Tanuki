@@ -23,7 +23,8 @@
     "release:bundle": "node scripts/release/bundle.mjs",
     "release:archive": "node scripts/release/archive.mjs",
     "setup": "node installer/setup.mjs",
-    "start:installed": "node installer/start.mjs"
+    "start:installed": "node installer/start.mjs",
+    "tauri": "node clients/node_modules/@tauri-apps/cli/tauri.js"
   },
   "dependencies": {
     "@noble/ciphers": "^2.4.0",

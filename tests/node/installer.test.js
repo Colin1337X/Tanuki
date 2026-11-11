@@ -3,6 +3,12 @@ import {createSetup} from '../../installer/setup.mjs';import {validateSettings} 
 import {request as rawRequest} from 'node:http';
 import {spawnSync} from 'node:child_process';
 const settings={origin:'https://stories.synthetic.example',port:31821,username:'principal',password:' a synthetic passphrase 123 ',providerUrl:'https://provider.synthetic.example/v1',providerKey:'synthetic-install-provider-secret'};
+test('Setup supports the same HTTPS domain or IP endpoint for browsers and native clients',()=>{
+  for(const origin of ['https://stories.school.test','https://192.168.1.20:8443','https://[2001:db8::20]:8443']){
+    assert.equal(validateSettings({...settings,origin}).origin,origin);
+  }
+  for(const origin of ['https://[::]','https://[::1]','https://school.test:0','https://[2001:db8::20]/admin'])assert.throws(()=>validateSettings({...settings,origin}));
+});
 async function fixture(){const root=fs.mkdtempSync(path.join(os.tmpdir(),'tanuki-installer-'));return createSetup({profile:path.join(root,'profile')});}
 async function request(s,body,headers={}){const options={method:'POST',headers:{Authorization:'Bearer '+s.token,'Content-Type':'application/json',Origin:s.origin,...headers}},data=typeof body==='string'?body:JSON.stringify(body);if(headers.Host)return new Promise((resolve,reject)=>{const req=rawRequest(s.origin+'/api/install',options,res=>{res.resume();res.on('end',()=>resolve({status:res.statusCode}));});req.on('error',reject);req.end(data);});return fetch(s.origin+'/api/install',{...options,body:data});}
 test('Setup rejects insecure origins, unbounded ports, weak credentials and embedded provider credentials',()=>{

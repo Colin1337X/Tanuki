@@ -38,6 +38,8 @@ mod tests {
         assert_eq!(server_origin("https://SCHOOL.test:443").unwrap().as_str(), "https://school.test/");
         assert_eq!(server_origin("https://school.test:8443").unwrap().port(), Some(8443));
         assert!(server_origin("https://[::1]:8443").is_ok());
+        assert_eq!(server_origin("https://192.168.1.20:8443").unwrap().host_str(), Some("192.168.1.20"));
+        assert!(server_origin("https://[2001:db8::20]:8443").is_ok());
     }
     #[test]
     fn navigation_is_bound_to_exact_origin() {
