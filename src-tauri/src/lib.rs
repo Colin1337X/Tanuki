@@ -12,12 +12,31 @@ async fn connect_server(webview: tauri::WebviewWindow, selected: tauri::State<'_
         return Err("Only the bundled launcher can choose a server.".into());
     }
     let origin = policy::server_origin(&address).map_err(str::to_owned)?;
-    let mut selection = selected.lock().map_err(|_| "Server selection unavailable")?;
-    if selection.is_some() { return Err("Restart the client to change servers.".into()); }
-    // Clear previous cookies/storage before selecting another account or institution.
-    webview.clear_all_browsing_data().map_err(|_| "Cannot clear previous workspace data")?;
-    *selection = Some(origin.clone());
-    drop(selection);
+    {
+        let mut selection = selected.lock().map_err(|_| "Server selection unavailable")?;
+        if selection.is_some() { return Err("Restart the client to change servers.".into()); }
+        // Clear previous cookies/storage before selecting another account or institution.
+        webview.clear_all_browsing_data().map_err(|_| "Cannot clear previous workspace data")?;
+        *selection = Some(origin.clone());
+    }
+    // Android queues clearing asynchronously. Do not navigate with a previous
+    // account's cookies just because the clear request was accepted.
+    let checked_window = webview.clone();
+    let checked_origin = origin.clone();
+    let cleared = tauri::async_runtime::spawn_blocking(move || {
+        for _ in 0..60 {
+            match checked_window.cookies_for_url(checked_origin.clone()) {
+                Ok(cookies) if cookies.is_empty() => return true,
+                Ok(_) => std::thread::sleep(std::time::Duration::from_millis(50)),
+                Err(_) => return false,
+            }
+        }
+        false
+    }).await.unwrap_or(false);
+    if !cleared {
+        *selected.lock().map_err(|_| "Server selection unavailable")? = None;
+        return Err("Previous session data could not be cleared. Close and restart the client.".into());
+    }
     if webview.navigate(origin.join("login").map_err(|_| "Invalid login address")?).is_err() {
         *selected.lock().map_err(|_| "Server selection unavailable")? = None;
         return Err("Cannot open this server. Restart and check the address.".into());
@@ -38,6 +57,7 @@ pub fn run() {
                 .inner_size(1100.0, 780.0)
                 .min_inner_size(360.0, 540.0)
                 .devtools(false)
+                .incognito(true)
                 .on_navigation(move |target| {
                     let Ok(selection) = navigation.lock() else { return false; };
                     match selection.as_ref() {

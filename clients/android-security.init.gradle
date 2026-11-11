@@ -5,6 +5,8 @@ gradle.beforeProject { project ->
         configuration.resolutionStrategy.eachDependency { details ->
             def group = details.requested.group
             def name = details.requested.name
+            if (group == 'org.jetbrains.kotlin' && name.startsWith('kotlin-gradle-plugin')) details.useVersion '2.4.21'
+            if (group.startsWith('com.fasterxml.jackson')) details.useVersion (name == 'jackson-annotations' ? '2.22' : '2.22.4')
             if (group == 'io.netty' && !name.startsWith('netty-tcnative')) details.useVersion '4.1.140.Final'
             if (group == 'org.bouncycastle' && name.endsWith('-jdk18on')) details.useVersion '1.86'
             def patched = ['com.google.guava:guava':'33.8.0-jre', 'org.apache.commons:commons-compress':'1.28.0', 'org.bitbucket.b_c:jose4j':'0.9.7', 'org.jdom:jdom2':'2.0.6.1']
