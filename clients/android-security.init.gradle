@@ -1,0 +1,36 @@
+// Applies before generated build scripts resolve plugins. Keep the generated
+// Tauri project out of source control while retaining reviewed build overrides.
+gradle.beforeProject { project ->
+    def secure = { configuration ->
+        configuration.resolutionStrategy.eachDependency { details ->
+            def group = details.requested.group
+            def name = details.requested.name
+            if (group == 'io.netty' && !name.startsWith('netty-tcnative')) details.useVersion '4.1.140.Final'
+            if (group == 'org.bouncycastle' && name.endsWith('-jdk18on')) details.useVersion '1.86'
+            def patched = ['com.google.guava:guava':'33.8.0-jre', 'org.apache.commons:commons-compress':'1.28.0', 'org.bitbucket.b_c:jose4j':'0.9.7', 'org.jdom:jdom2':'2.0.6.1']
+            def version = patched["${group}:${name}".toString()]
+            if (version) details.useVersion version
+        }
+    }
+    project.buildscript.configurations.all(secure)
+    project.configurations.all(secure)
+}
+gradle.projectsEvaluated {
+    rootProject.tasks.register('tanukiDependencyInventory') {
+        doLast {
+            def entries = []
+            rootProject.allprojects.each { p ->
+                def configs = p.buildscript.configurations.findAll { it.canBeResolved }
+                configs += p.configurations.findAll { it.canBeResolved && it.name.toLowerCase().endsWith('releaseruntimeclasspath') }
+                configs.each { c -> c.resolvedConfiguration.resolvedArtifacts.each { a ->
+                    def id = a.moduleVersion.id
+                    entries.add([ecosystem:'Maven',name:"${id.group}:${id.name}".toString(),version:id.version])
+                } }
+            }
+            entries.add([ecosystem:'Maven',name:'org.gradle:gradle-core',version:gradle.gradleVersion])
+            def output = new File(rootProject.buildDir, 'dependency-inventory.json')
+            output.parentFile.mkdirs()
+            output.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(entries.unique { "${it.name}@${it.version}" }))
+        }
+    }
+}

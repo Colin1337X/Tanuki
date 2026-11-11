@@ -21,3 +21,10 @@ url = "2.5"
 [features]
 default = ["custom-protocol"]
 custom-protocol = ["tauri/custom-protocol"]
+
+[patch.crates-io]
+# Upstream gtk-rs PR 1343 backport; see vendor/README.md and the audit evidence.
+glib = { path = "vendor/glib" }
+
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+glib = "=0.18.5"

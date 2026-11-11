@@ -1,71 +1,46 @@
-# Android and iOS clients
+# Tauri desktop and mobile clients
 
-<img src="screenshots/ios-server-picker.png" width="320" alt="Actual iOS simulator client showing the HTTPS server picker">
+The shared Tauri 2 client in `src-tauri` targets Windows, macOS, Linux, Android and iOS. It connects to the same Node.js Tanuki Server used by regular modern browsers. The server installers remain separate: no server, AI worker, SQLite database or provider secret is embedded in the client.
 
-See the [website and installer screenshot gallery](SCREENSHOTS.md) for all four themes and
-the responsive classroom workspace. This native capture comes from the verified iOS simulator
-run, not a physical-device acceptance test.
+## Connect by domain or IP
 
-These apps connect to an existing HTTPS Tanuki Server; they do not run Node, SQLite or AI
-generation on the phone. The server retains its independent generation worker and resumable
-response architecture. Native shells use Android WebView and iOS WKWebView with no JavaScript
-bridge or third-party runtime. The hosted application supplies its Jua UI and four themes.
+Configure one reachable HTTPS origin on the server and its reverse proxy. Open that exact address in a browser, or enter it in the app's server chooser:
 
-## Build outputs
+- Domain: `https://stories.school.edu`
+- IPv4 with a custom port: `https://192.168.1.20:8443`
+- IPv6 with a custom port: `https://[2001:db8::20]:8443`
 
-The `Build mobile clients` GitHub workflow builds:
+The IP examples are illustrative. Use an address reachable from the device, permit the HTTPS port through your firewall and configure a certificate valid for that domain or IP. A private certificate authority must be trusted on each device. The app does not bypass TLS verification. Loopback is not a shared network endpoint. The installed server listens privately on loopback; the reverse proxy serves the configured reachable address.
 
-- `Tanuki-Android-test.apk`: signed using an ephemeral Android debug identity, for isolated
-  testing only. Successive builds may need uninstalling the prior test app because keys differ.
-- `Tanuki-Android-release-unsigned.apk`: production build requiring your stable Android signing
-  key before distribution. Sign with Android SDK `apksigner`, verify it, then distribute.
-- `Tanuki-iOS-UNSIGNED.ipa`: a correctly packaged device app **without a signing identity**.
-  It is not installable on physical iPhones. The unsigned Xcode archive and a simulator app
-  accompany it. This is not an App Store or TestFlight release.
+Selecting an address chooses the server; it does not create an account or grant a role. Sign in with the same account and server authorization used in the browser. No app-only API, pairing secret or subscription is required. Server-side AI generation remains independent of browser/app connectivity. The hosted UI provides the same themes, classroom access and teacher statistics.
 
-Android requires JDK 17, Gradle 8.14.6 and Android SDK 36. Run `gradle :app:assembleDebug
-:app:assembleRelease :app:lintRelease` from `mobile/android`. The CI download verifies the
-pinned Gradle distribution SHA-256. No server credentials or signing secrets belong in Git.
+## Client trust boundary
 
-For an installable IPA, open `mobile/ios/Tanuki.xcodeproj` in Xcode, select your Apple team
-and an app identifier owned by that team, and provision the intended distribution method.
-Use Xcode Archive/Distribute, or set `TANUKI_APPLE_TEAM` and `TANUKI_EXPORT_OPTIONS` (absolute
-path to your reviewed ExportOptions.plist) then run `sh mobile/ios/export-signed.sh` on a Mac
-with the relevant certificate/private key already in its keychain. Apple signing assets are
-not generated or bypassed by CI. See [Apple distribution signing](https://help.apple.com/xcode/mac/current/en.lproj/devcac6ab5b3.html).
+The bundled Jua chooser can invoke one native command to select the server. Rust validates the HTTPS origin and restricts subsequent top-level navigation to that exact scheme/host/port. Hosted pages receive no Tauri capabilities. Shell execution, local model sidecars, filesystem commands, offline mutation queues and device-identity broadcasting have been removed.
 
-## Security and acceptance limits
+Restart the app to return to the chooser. Selecting a workspace clears the previous webview browsing data before navigation. This is intended for shared-device baseline use; client-held preview encryption keys must not be treated as durably backed up by this shell. Native permission requests and downloads are denied in this first version, so microphone recording, file downloads and encrypted key-file workflows need additional permission UX and device acceptance before being offered in the apps. Those browser features remain available through supported browsers.
 
-Enter only the HTTPS origin your administrator provides. Scheme, hostname and effective port
-must match for workspace navigation; credentials in URLs and foreign origins are rejected.
-Normal OS TLS validation remains enabled. Android disables cleartext traffic, file/content
-access, third-party cookies, backups, screenshots and WebView debugging. iOS uses an ephemeral
-website data store; closing/reopening the workspace loses that session and local preferences.
-The native server-address preference contains no credentials. Android clears web cookies and
-storage before opening a workspace; local preferences are not a durable backup on either app.
+The navigation policy does not constrain every server-page subresource request; the server's CSP and normal browser isolation still apply. No automatic certificate trust or native token storage is introduced. Platform webviews and their OS updates remain part of the security boundary.
 
-No microphone, camera, file picker, download handler, notification or native JavaScript bridge
-is implemented in this initial client. Reading-recording uploads and encrypted key-backup file
-flows therefore need browser use and further native implementation/acceptance. An interrupted
-network is not an instruction to cancel generation. Feature support and authenticated content
-remain subject to the server's existing policy and preview flags.
+## Build
 
-URL-policy assertions, native compilation and Android lint are automated. Physical-device login,
-classroom use, encrypted content, server switching, accessibility, background/reconnect behavior
-and OS-version compatibility still require acceptance testing before distribution. Passing a
-build is not evidence that all web features work inside mobile WebViews. Store acceptance of
-a web-based client has not been evaluated.
+Use the pinned Rust toolchain and install the platform prerequisites described by [Tauri](https://v2.tauri.app/start/prerequisites/).
 
-## Verification checkpoint — 2026-11-10
+```sh
+npm ci --prefix clients
+cargo test --manifest-path src-tauri/Cargo.toml --locked
+npm run tauri -- build --ci -- --locked
+npm run tauri -- android init --ci
+node clients/prepare-android.mjs
+# Install clients/android-security.init.gradle into a private GRADLE_USER_HOME/init.d.
+npm run tauri -- android build --ci --target aarch64 --apk --aab
+# On macOS with Xcode:
+npm run tauri -- ios init --ci
+npm run tauri -- ios build --ci --target aarch64 --no-sign --archive-only
+```
 
-Source `9729b05` is tracked by the [mobile build run](https://github.com/Colin1337X/Tanuki/actions/runs/42716071897).
-Android passed 19 URL-policy assertions, debug/release compilation, release lint and debug
-APK signature verification. iOS passed 18 URL-policy assertions, simulator/device compilation
-and unsigned IPA packaging. These assertion counts are not additional Node test-case counts.
-The workflow also attempts an installed iOS simulator launch and records a screenshot; consult
-the run's final status for that check. Physical-device acceptance remains outstanding.
+`Build Tauri clients` produces Windows NSIS, Linux DEB, macOS app/DMG, Android APK/AAB and an unsigned iOS review IPA. The unsigned IPA is not installable on a physical iPhone until correctly signed/provisioned. Artifacts are candidates, never automatically published. Windows and Apple distribution require signing/notarization; Android needs a stable production signing key. Developer/store credentials are not included.
 
-The [server installer run](https://github.com/Colin1337X/Tanuki/actions/runs/42715785826)
-passed on all four OS/architecture targets, including actual script-entry integrity checks and
-native installation/login tests. The shared GUI passed all 10 installer regressions locally
-in isolated WSL2, with zero failures or skips; the complete CI application suite passed 680.
+The independent audit job preserves the exact Cargo inventory and raw advisory results. GLib 0.18.5 uses the upstream iterator fix as a source-verified compatibility backport, with an optimized Linux regression. The `proc-macro-error` unmaintained advisory remains a documented build-time maintenance risk, not a claimed fix. Only these exact dispositions are recognized; new findings fail. Generated Android builds retain the reviewed Gradle/transitive overrides and a resolved Maven audit. See `src-tauri/vendor/README.md`.
+
+The earlier hand-written Android/iOS shells and their policy tests remain under `mobile/` as migration evidence. Their [historical build guide](MOBILE_NATIVE_LEGACY.md) and screenshots do not describe the new Tauri binaries. The historical workflow is manual-only and does not produce the active client release.
