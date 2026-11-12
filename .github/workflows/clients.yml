@@ -1,0 +1,142 @@
+name: Build Tauri clients
+on:
+  pull_request:
+    paths: ['src-tauri/**', 'clients/**', '.github/workflows/clients.yml', 'public/assets/Jua*', 'scripts/security/audit-inventory.mjs', 'scripts/ci/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: tauri-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with: {node-version: 26.13.1}
+      - run: npm ci --prefix clients --ignore-scripts
+      - run: npm audit --prefix clients --audit-level=low
+      - run: node clients/audit.mjs
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        if: always()
+        with:
+          name: tauri-dependency-evidence
+          path: coverage/tauri-*.json
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: windows-2025, bundles: nsis}
+          - {os: ubuntu-24.04, bundles: deb}
+          - {os: macos-15, bundles: "app,dmg"}
+          - {os: macos-15-intel, bundles: "app,dmg"}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with: {node-version: 26.13.1}
+      - if: runner.os == 'Linux'
+        run: |
+          bash scripts/ci/ubuntu-packages.sh
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+      - run: rustup toolchain install 1.98.1 --profile minimal
+      - run: rustup default 1.98.1
+      - run: npm ci --prefix clients
+      - run: cargo test --manifest-path src-tauri/Cargo.toml --locked
+      - if: runner.os == 'Linux'
+        name: Optimized GLib backport regression
+        run: cargo test --manifest-path src-tauri/Cargo.toml --locked --release --test glib_backport
+      - run: npm run tauri -- build --ci --bundles ${{ matrix.bundles }} -- --locked
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: tauri-${{ matrix.os }}-unsigned-candidate
+          path: src-tauri/target/release/bundle/**
+          if-no-files-found: error
+  android:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with: {node-version: 26.13.1}
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3
+        with: {distribution: temurin, java-version: '17'}
+      - name: Preserve original Android origin-policy regressions
+        run: |
+          mkdir -p coverage/android-policy
+          javac -d coverage/android-policy mobile/android/app/src/main/java/org/tanuki/stories/OriginPolicy.java mobile/android/OriginPolicyTest.java
+          java -cp coverage/android-policy OriginPolicyTest
+      - run: rustup toolchain install 1.98.1 --profile minimal
+      - run: rustup default 1.98.1
+      - run: npm ci --prefix clients
+      - name: Initialize Android project
+        run: |
+          echo "NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'ndk;27.2.12479018'
+          npm run tauri -- android init --ci
+          node clients/prepare-android.mjs
+          mkdir -p "$RUNNER_TEMP/tanuki-gradle/init.d"
+          cp clients/android-security.init.gradle "$RUNNER_TEMP/tanuki-gradle/init.d/"
+          echo "GRADLE_USER_HOME=$RUNNER_TEMP/tanuki-gradle" >> "$GITHUB_ENV"
+      - name: Build Android client
+        run: npm run tauri -- android build --ci --target aarch64 --apk --aab
+      - name: Audit resolved Android build and runtime dependencies
+        run: |
+          (cd src-tauri/gen/android && ./gradlew --no-daemon --no-configuration-cache tanukiDependencyInventory)
+          node scripts/security/audit-inventory.mjs src-tauri/gen/android/build/dependency-inventory.json coverage/tauri-android-audit.json
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        if: always()
+        with:
+          name: tauri-android-dependency-evidence
+          path: |
+            src-tauri/gen/android/build/dependency-inventory.json
+            coverage/tauri-android-audit.json
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: tauri-android-unsigned-candidate
+          path: |
+            src-tauri/gen/android/app/build/outputs/apk/**/*.apk
+            src-tauri/gen/android/app/build/outputs/bundle/**/*.aab
+          if-no-files-found: error
+  ios:
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with: {node-version: 26.13.1}
+      - name: Preserve original iOS origin-policy regressions
+        run: |
+          mkdir -p coverage
+          xcrun clang -fobjc-arc -framework Foundation mobile/ios/Tanuki/OriginPolicy.m mobile/ios/OriginPolicyTests.m -o coverage/ios-policy
+          coverage/ios-policy
+      - run: rustup toolchain install 1.98.1 --profile minimal
+      - run: rustup default 1.98.1
+      - run: npm ci --prefix clients
+      - run: npm run tauri -- ios init --ci
+      - run: npm run tauri -- ios build --ci --target aarch64 --no-sign --archive-only
+      - name: Package unsigned device archive
+        run: |
+          set -euo pipefail
+          app=$(find src-tauri/gen/apple -path '*/Products/Applications/*.app' -type d -print -quit)
+          test -n "$app"
+          mkdir -p coverage/ios/Payload
+          cp -R "$app" coverage/ios/Payload/
+          (cd coverage/ios && zip -qr Tanuki-iOS-UNSIGNED.ipa Payload)
+          echo 'Unsigned review artifact. Requires Apple provisioning/signing before device installation.' > coverage/ios/README.txt
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: tauri-ios-unsigned-candidate
+          path: |
+            coverage/ios/*.ipa
+            coverage/ios/README.txt
+          if-no-files-found: error
+
+

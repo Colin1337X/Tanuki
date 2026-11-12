@@ -1,5 +1,7 @@
 # Dependency security review — 2026-11-10
 
+**Tauri migration update (2026-11-11):** the historical Tauri graph below has been replaced by the server-connected client in `src-tauri`. Its 419-entry locked graph no longer includes the old SQLite binding, sidecar or sync dependencies. GLib 0.18.5 receives the exact upstream iterator fix through a source-verified compatibility backport, with an optimized Linux regression. The raw scan still records both aliases of that finding; `proc-macro-error` 1.0.4 remains an explicitly retained unmaintained build-time dependency risk. See [backport provenance](../../src-tauri/vendor/README.md) and [raw scan and review](evidence/tauri-2026-11-11/). Successful builds alone do not verify native webview behavior on physical mobile devices. The entries below remain the historical pre-migration evidence, not the current client dependency inventory.
+
 **Runtime remediation update:** the active runtime has been upgraded to official LTS Node 26.13.0, which embeds SQLite 3.54.0 and the upstream WAL zero-fill fix. App and worker startup reject older Node/SQLite engines. The findings below describe the original scanned runtime; its SQLite finding is fixed in the validated runtime upgrade. The separately announced November security patch remains unpublished and cannot yet be applied.
 
 **Release status: HOLD for the announced Node update.** A clean npm audit is not a clean bill of health for the embedded runtime or build toolchain. Do not publish the current candidates as production-ready.

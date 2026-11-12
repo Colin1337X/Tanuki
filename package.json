@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=26.13.0 <27"
+    "node": ">=26.13.1 <27"
   },
   "scripts": {
     "dev": "node --env-file-if-exists=.env.local --watch server/index.js",
@@ -23,7 +23,8 @@
     "release:bundle": "node scripts/release/bundle.mjs",
     "release:archive": "node scripts/release/archive.mjs",
     "setup": "node installer/setup.mjs",
-    "start:installed": "node installer/start.mjs"
+    "start:installed": "node installer/start.mjs",
+    "tauri": "node clients/node_modules/@tauri-apps/cli/tauri.js"
   },
   "dependencies": {
     "@noble/ciphers": "^2.4.0",

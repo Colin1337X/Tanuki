@@ -18,7 +18,7 @@ For self-contained Windows, macOS (Intel/Apple Silicon), and Linux installers, s
 [installable releases and production rollout](docs/RELEASES.md). They include Node and a
 graphical setup wizard; the source-development commands below are not required by end users.
 
-Use Node.js **26.13.0 or newer within 26.x**, with SQLite **3.54.0+**. Older runtimes are rejected before application or worker databases open. Release bundles pin the tested runtime.
+Use Node.js **26.13.1 or newer within 26.x**, with SQLite **3.54.0+**. Older runtimes are rejected before application or worker databases open. Release bundles pin the tested runtime.
 
 ```sh
 npm ci
@@ -27,7 +27,7 @@ npm run dev
 
 Open http://localhost:3000. Development creates `admin / admin123` and `student / student123`, plus a development encryption key in `.secrets`. **Do not reuse this development database or its credentials in production.** Development returns clearly marked demo stories until an AI provider is configured.
 
-The active application is `server/`, `public/index.html`, and `public/assets/`. It has no bundler, Next.js, React, or TypeScript runtime. Its cryptographic dependencies provide native Rust Argon2id, Noble AES-GCM-SIV/PQ/browser hashing, browser Argon2 WASM, and OpenPGP legacy-read compatibility. New encryption uses the [AES-256-GCM-SIV / Argon2id / HKDF-SHA-512 / ML-KEM-1024 / ML-DSA-87 stack](docs/security/CRYPTO_STACK.md), with native OpenSSL PQ operations on the server. Historical `src/`, `src-tauri/`, framework configuration and Selenium tests remain inactive. The current `install.bat` / `install.sh` scripts launch verified server graphical setup from portable release bundles. [Android and iOS clients](docs/MOBILE.md) connect to an existing HTTPS server.
+The active application is `server/`, `public/index.html`, and `public/assets/`. It has no bundler, Next.js, React, or TypeScript runtime. Its cryptographic dependencies provide native Rust Argon2id, Noble AES-GCM-SIV/PQ/browser hashing, browser Argon2 WASM, and OpenPGP legacy-read compatibility. New encryption uses the [AES-256-GCM-SIV / Argon2id / HKDF-SHA-512 / ML-KEM-1024 / ML-DSA-87 stack](docs/security/CRYPTO_STACK.md), with native OpenSSL PQ operations on the server. Historical `src/`, framework configuration and Selenium tests remain inactive. The shared Tauri desktop/mobile client is in `src-tauri/` with a vanilla JavaScript launcher in `clients/web/`. The current `install.bat` / `install.sh` scripts launch verified server graphical setup from portable release bundles. [Windows, macOS, Linux, Android and iOS clients](docs/MOBILE.md) connect by HTTPS domain or IP to the same server used by modern browsers.
 
 ## Features
 

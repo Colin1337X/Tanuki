@@ -1,5 +1,5 @@
-// Node 26.13.0 is the first reviewed LTS runtime for this application with
-// SQLite's CVE-2026-119375 fix. Check before opening any database, including
+// Node 26.13.1 includes the November security release; SQLite 3.54.0
+// includes the CVE-2026-119375 fix. Check before opening any database, including
 // source checkouts and the independently deployed generation worker.
 export function assertSupportedRuntime(versions = process.versions) {
   const atLeast = (actual, minimum) => {
@@ -8,7 +8,7 @@ export function assertSupportedRuntime(versions = process.versions) {
     for (let i=0;i<3;i++) { if(parts[i]!==minimum[i]) return parts[i]>minimum[i]; }
     return true;
   };
-  if (!String(versions.node).startsWith('26.') || !atLeast(versions.node,[26,13,0]) || !atLeast(versions.sqlite,[3,54,0])) {
-    throw new Error('Tanuki requires reviewed Node 26.13.0+ (26.x) with SQLite 3.54.0+. Update the runtime before opening application data.');
+  if (!String(versions.node).startsWith('26.') || !atLeast(versions.node,[26,13,1]) || !atLeast(versions.sqlite,[3,54,0])) {
+    throw new Error('Tanuki requires reviewed Node 26.13.1+ (26.x) with SQLite 3.54.0+. Update the runtime before opening application data.');
   }
 }

@@ -1,7 +1,5 @@
-name: Build mobile clients
+name: Legacy native mobile regression
 on:
-  pull_request:
-    paths: ['mobile/**', '.github/workflows/mobile.yml', 'scripts/security/audit-inventory.mjs']
   workflow_dispatch:
 permissions:
   contents: read
@@ -28,7 +26,7 @@ jobs:
           echo "$RUNNER_TEMP/gradle-8.14.6/bin" >> "$GITHUB_PATH"
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: 26.13.0
+          node-version: 26.13.1
       - name: Resolve and audit Android dependency graph
         run: |
           gradle -p mobile/android --no-daemon dependencyInventory
