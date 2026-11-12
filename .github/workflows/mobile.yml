@@ -24,7 +24,7 @@ jobs:
           echo "7988ed071b2a07900e2ec715fca15c6ab72bce6db433af301fa7fa7e9407bd24  $RUNNER_TEMP/gradle.zip" | sha256sum -c -
           unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/gradle-8.14.6/bin" >> "$GITHUB_PATH"
-      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 26.13.1
       - name: Resolve and audit Android dependency graph
