@@ -31,7 +31,7 @@ jobs:
         run: |
           gradle -p mobile/android --no-daemon dependencyInventory
           node scripts/security/audit-inventory.mjs mobile/android/build/dependency-inventory.json mobile/android/build/dependency-audit.json
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: android-dependency-evidence
@@ -54,7 +54,7 @@ jobs:
           cp mobile/android/app/build/outputs/apk/release/app-release-unsigned.apk mobile/android/build/artifacts/Tanuki-Android-release-unsigned.apk
           cd mobile/android/build/artifacts
           sha256sum ./*.apk > SHA256SUMS.txt
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: mobile-android-candidates
           path: |
@@ -102,7 +102,7 @@ jobs:
           xcrun simctl spawn "$device" launchctl list | grep org.tanuki.stories
           xcrun simctl io "$device" screenshot build/artifacts/ios-server-picker.png
           xcrun simctl shutdown "$device"
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: mobile-ios-candidates
           path: mobile/ios/build/artifacts/*
