@@ -72,7 +72,7 @@ installed payload, add `--installed`, which permits only Inno's three known unin
 outside the manifest. This does not replace verifying the installer signature/provenance.
 
 To configure/change the provider later: stop Tanuki and run the bundled runtime with
-`installer/provider.mjs`. It prompts for the approved HTTPS URL and hides key input; the key is
+`installer/provider.mjs`. It prompts for the approved provider URL and hides optional key input; a supplied key is
 encrypted on disk. Restart after configuration. Do not put credentials into shell command
 arguments. HTTPS provider trust and credential scope remain an operator responsibility.
 
@@ -132,3 +132,51 @@ drill on the actual backup storage, realistic capacity testing, and independent 
 of the new cryptographic envelope remain necessary. Passing
 CI or producing installers does not establish production readiness. Earlier reports describe
 unfinished encrypted multi-chapter/feedback/history workflows; packaging does not complete them.
+
+### Providers without API keys
+
+Leave **Provider API key (optional)** blank if the provider does not require authentication.
+Tanuki sends no Authorization header in that case. Remote providers must use HTTPS.
+For KoboldCpp on the same machine, use `http://127.0.0.1:8080/v1`; IPv6 loopback
+`http://[::1]:8080/v1` is also accepted. HTTP on LAN addresses and DNS names is rejected.
+Provider redirects remain disabled. A key without an endpoint is rejected.
+
+For a real Windows acceptance run against a running local KoboldCpp service:
+
+```powershell
+$env:TANUKI_WINDOWS_INSTALL_DIR = 'E:\proj\tanukitest'
+& "$env:TANUKI_WINDOWS_INSTALL_DIR\runtime\node.exe" scripts/acceptance/windows-kobold.mjs
+```
+
+Run from the development checkout with Playwright Chromium installed. The harness uses
+the checkout's setup code and the installed production runtime/server, creates a new
+synthetic profile beneath the installation, makes one real generation request to port
+8080, and stops its server/proxy/browser afterward. It uses an isolated browser context
+for a self-signed test certificate without changing the Windows trust store. It does not
+verify public TLS, native Tauri behavior, output quality or model safety.
+
+## Listening on all interfaces and localhost access
+
+The graphical setup's **Server network settings → Listening address** accepts
+`0.0.0.0` (all IPv4 interfaces), `::` (IPv6), or a specific IP. Existing profiles
+without this field retain `127.0.0.1`. You can override the address at startup:
+
+```powershell
+$env:HOST = '0.0.0.0'
+& .\runtime\node.exe .\installer\start.mjs
+```
+
+```sh
+HOST=0.0.0.0 ./runtime/node installer/start.mjs
+```
+
+Open `http://localhost:3000` or `http://127.0.0.1:3000` on the server machine
+(use your configured port). `0.0.0.0` is a listening address, not the browser URL.
+Direct same-origin loopback requests work even when the public HTTPS address differs.
+The exception requires a loopback peer, matching Host/origin and listening port,
+and no forwarding headers; cross-site requests remain rejected.
+
+Remote browser access continues to use the configured HTTPS origin and a TLS proxy.
+Binding to all interfaces does not configure TLS, firewall rules or public origins.
+Production session cookies retain Secure/HttpOnly; Chromium localhost and 127.0.0.1
+login behavior is covered by real browser regression tests.
