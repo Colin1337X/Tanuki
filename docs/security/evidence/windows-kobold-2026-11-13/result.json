@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "Windows profile provisioning accepts local keyless KoboldCpp",
+    "Installed Node 26.13.1 launches production server",
+    "HTTPS login has secure cookies and private cache control",
+    "Administrator creates isolated synthetic student accounts",
+    "Lexile and Classroom preferences persist",
+    "Actual KoboldCpp generation returns and persists owned story text",
+    "Second student cannot retrieve generated story",
+    "Real Windows Chromium login renders Classroom with Jua without script errors",
+    "Forced Windows restart preserves session and generated story",
+    "Logged-out session cannot be replayed",
+    "Synthetic password absent from persisted configuration and SQLite"
+  ],
+  "profile": "E:\\proj\\tanukitest\\validation-V1TOof\\profile",
+  "node": "v26.13.1",
+  "provider": "http://127.0.0.1:8080/v1",
+  "storyCharacters": 2271,
+  "systemTrustChanged": false
+}
