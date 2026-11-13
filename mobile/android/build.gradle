@@ -27,7 +27,7 @@ buildscript {
         }
     }
 }
-plugins { id 'com.android.application' version '8.13.2' apply false }
+plugins { id 'com.android.application' version '9.5.1' apply false }
 
 // Resolve the build plugins and shipping runtime graph; emit exact versions for advisory scanning.
 tasks.register('dependencyInventory') {
