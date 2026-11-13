@@ -51,3 +51,13 @@ test('Desktop graphical installer completes provisioning without retaining crede
   }finally{await browser.close();await s.close();}
 });
 test('Mobile graphical installer preserves labels, keyboard focus and layout',async()=>{const s=await fixture(),browser=await chromium.launch({headless:true});try{const page=await browser.newPage({viewport:{width:375,height:812}});await page.goto(s.origin+'/#'+s.token);await page.getByLabel('Your public web address').waitFor();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);assert.deepEqual(await page.locator('input').evaluateAll(inputs=>inputs.filter(i=>!i.labels.length).map(i=>i.id)),[]);await page.getByLabel('Your public web address').fill(settings.origin);await page.getByRole('button',{name:/Continue/}).click();assert.equal(await page.evaluate(()=>document.activeElement.tagName),'H2');await page.screenshot({path:'coverage/installer-mobile.png',fullPage:true});}finally{await browser.close();await s.close();}});
+
+test('Setup validates explicit all-interface binding while keeping old profiles loopback by default',async()=>{
+ assert.equal(validateSettings(settings).host,'127.0.0.1');
+ for(const host of ['0.0.0.0','127.0.0.1','::'])assert.equal(validateSettings({...settings,host}).host,host);
+ for(const host of ['','localhost','https://example.test','0.0.0.0:3000',123])assert.throws(()=>validateSettings({...settings,host}));
+ const s=await fixture();try{
+  assert.equal((await request(s,{...settings,host:'0.0.0.0'})).status,201);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(s.profile,'config.json'),'utf8')).host,'0.0.0.0');
+ }finally{await s.close();}
+});

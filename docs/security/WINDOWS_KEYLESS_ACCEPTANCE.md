@@ -30,3 +30,16 @@ in WSL2 on Node 26.13.1. The focused Windows installer/provider suite passed
 **15/15**, with no failures or skips. Existing rotation assertions were updated to
 treat an empty key as valid, while preserving rejection of missing destinations and
 checking that key removal is durably stored in the authenticated provider envelope.
+
+### Listener and local-origin follow-up
+
+The installed launcher now accepts `HOST=0.0.0.0` or a saved setup listening address.
+Existing profiles default to loopback. A direct local browser request is permitted
+when Origin and Host match localhost/loopback on the actual listener port, the TCP
+peer is loopback, no forwarding headers are present, and Fetch Metadata does not
+indicate a cross-site request. Public-origin policy and authentication remain enforced.
+
+Windows focused verification: **18 passed, 0 failed, 0 skipped**, including real
+Chromium login on localhost and 127.0.0.1 with production Secure/HttpOnly cookies.
+Full WSL2 suite: **752 passed, 0 failed, 0 skipped**. Remote HTTP access is not enabled
+by this exception; remote browsers still use the configured HTTPS origin.

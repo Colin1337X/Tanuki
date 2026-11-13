@@ -154,3 +154,29 @@ synthetic profile beneath the installation, makes one real generation request to
 8080, and stops its server/proxy/browser afterward. It uses an isolated browser context
 for a self-signed test certificate without changing the Windows trust store. It does not
 verify public TLS, native Tauri behavior, output quality or model safety.
+
+## Listening on all interfaces and localhost access
+
+The graphical setup's **Server network settings → Listening address** accepts
+`0.0.0.0` (all IPv4 interfaces), `::` (IPv6), or a specific IP. Existing profiles
+without this field retain `127.0.0.1`. You can override the address at startup:
+
+```powershell
+$env:HOST = '0.0.0.0'
+& .\runtime\node.exe .\installer\start.mjs
+```
+
+```sh
+HOST=0.0.0.0 ./runtime/node installer/start.mjs
+```
+
+Open `http://localhost:3000` or `http://127.0.0.1:3000` on the server machine
+(use your configured port). `0.0.0.0` is a listening address, not the browser URL.
+Direct same-origin loopback requests work even when the public HTTPS address differs.
+The exception requires a loopback peer, matching Host/origin and listening port,
+and no forwarding headers; cross-site requests remain rejected.
+
+Remote browser access continues to use the configured HTTPS origin and a TLS proxy.
+Binding to all interfaces does not configure TLS, firewall rules or public origins.
+Production session cookies retain Secure/HttpOnly; Chromium localhost and 127.0.0.1
+login behavior is covered by real browser regression tests.

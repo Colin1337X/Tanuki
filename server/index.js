@@ -1,3 +1,4 @@
+import { allowedMutation } from './lib/request-origin.js';
 import { clientAddress } from './lib/client-address.js';
 import { createServer } from 'node:http';
 import { Readable } from 'node:stream';
@@ -59,7 +60,7 @@ export function createAppServer() {
       if(url.pathname.startsWith('/api/'))url.pathname=url.pathname.replace(/\/+$/,'');
       if(url.pathname.startsWith('/api/')) {
         res.setHeader('Cache-Control','no-store, private');
-        if(writeMethods.has(req.method) && (req.headers.origin && req.headers.origin!==new URL(origin).origin || req.headers['sec-fetch-site']==='cross-site'))throw Object.assign(new Error('Cross-origin request rejected'),{status:403});
+        if(writeMethods.has(req.method) && !allowedMutation(req,new URL(origin).origin))throw Object.assign(new Error('Cross-origin request rejected'),{status:403});
         const route=routes.find(r=>r.regex.test(url.pathname));
         if(!route)throw Object.assign(new Error('Not found'),{status:404});
         if(writeMethods.has(req.method) && req.headers['content-type'] && !/^(application\/json|multipart\/form-data)(;|$)/i.test(req.headers['content-type']))throw Object.assign(new Error('Unsupported content type'),{status:415});

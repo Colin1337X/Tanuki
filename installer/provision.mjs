@@ -7,7 +7,7 @@ process.env.NODE_ENV='production';process.env.TANUKI_DATA_DIR=path.join(root,'da
 const{generateKeyring,seal}=await import('../server/lib/crypto.js');fs.writeFileSync(process.env.TANUKI_KEYRING_FILE,JSON.stringify(generateKeyring()),{flag:'wx',mode:0o600});
 const db=await import('../server/lib/database.js');
 try{db.putUser({username:input.username,password:input.password,role:'admin'});db.database().exec('PRAGMA wal_checkpoint(TRUNCATE)');}finally{db.closeDatabase();}
-const config={version:1,origin:input.origin,port:input.port,providerUrl:input.providerUrl,created:new Date().toISOString()};
+const config={version:1,origin:input.origin,port:input.port,host:input.host,providerUrl:input.providerUrl,created:new Date().toISOString()};
 fs.writeFileSync(path.join(root,'config.json'),JSON.stringify(config,null,2)+'\n',{flag:'wx',mode:0o600});
 fs.writeFileSync(path.join(root,'secrets.json'),seal(JSON.stringify({providerUrl:input.providerUrl,providerKey:input.providerKey}),'installation-provider-v1'),{flag:'wx',mode:0o600});
 input.password='';input.providerKey='';for(const chunk of chunks)chunk.fill(0);

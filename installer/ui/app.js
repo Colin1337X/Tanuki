@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id),form=$('setup'),error=$('error');
 async function request(route,body){const response=await fetch('/api/'+route,{method:body?'POST':'GET',headers:{Authorization:'Bearer '+token,...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify(body):undefined,cache:'no-store'});const result=await response.json();if(!response.ok)throw new Error(result.error||'Setup could not continue.');return result;}
 function showError(message){error.textContent=message;error.hidden=false;error.scrollIntoView({block:'nearest'});}
 function showStep(){document.querySelectorAll('.step').forEach((el,i)=>{el.hidden=i!==step;});document.querySelectorAll('nav li').forEach((el,i)=>{if(i===step)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});$('back').hidden=step===0;$('step-label').textContent=`0${step+1} / 03`;$('next').textContent=step===2?'Create my workspace ✦':'Continue →';document.querySelector(`[data-step="${step}"] h2`).focus();}
-function settings(){return Object.fromEntries(['origin','username','password','providerUrl','providerKey'].map(id=>[id,id==='password'?$(id).value:$(id).value.trim()]).concat([['port',Number($('port').value)]]));}
+function settings(){return Object.fromEntries(['origin','username','password','providerUrl','providerKey','host'].map(id=>[id,id==='password'?$(id).value:$(id).value.trim()]).concat([['port',Number($('port').value)]]));}
 $('back').addEventListener('click',()=>{step--;error.hidden=true;showStep();});
 form.addEventListener('submit',async event=>{
   event.preventDefault();error.hidden=true;const current=document.querySelector(`[data-step="${step}"]`);for(const input of current.querySelectorAll('input'))if(!input.reportValidity())return;
