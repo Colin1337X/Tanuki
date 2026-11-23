@@ -35,6 +35,6 @@
     "openpgp": "6.3.2"
   },
   "devDependencies": {
-    "playwright": "^1.56.1"
+    "playwright": "^1.65.1"
   }
 }
